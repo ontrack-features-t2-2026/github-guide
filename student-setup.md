@@ -69,19 +69,6 @@ git clone https://github.com/ontrack-features-t2-2026/doubtfire-web.git
 git clone https://github.com/ontrack-features-t2-2026/doubtfire-api.git
 ```
 
-The organisation repositories are your `origin` remotes. Add the Thoth Tech repositories as `upstream` references:
-
-```bash
-git -C doubtfire-deploy remote add upstream \
-  https://github.com/thoth-tech/doubtfire-deploy.git
-
-git -C doubtfire-web remote add upstream \
-  https://github.com/thoth-tech/doubtfire-web.git
-
-git -C doubtfire-api remote add upstream \
-  https://github.com/thoth-tech/doubtfire-api.git
-```
-
 Check the result:
 
 ```bash
