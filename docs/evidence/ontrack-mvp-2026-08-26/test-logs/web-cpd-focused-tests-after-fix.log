@@ -1,0 +1,43 @@
+
+> doubtfire@11.0.0-45 test:ci
+> ng test --no-watch --no-progress --include=src/app/dashboard/f-cross-dashboard.component.spec.ts --include=src/app/dashboard/f-cross-dashboard.route.spec.ts
+
+Application bundle generation complete. [11.483 seconds] - 2026-08-26T11:54:39.014Z
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.9 [39m[90m/doubtfire-web[39m
+
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/index.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/html5-qrcode.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/core.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/strings.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/utils.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/code-decoder.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/zxing-html5-qrcode-decoder.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/native-bar-code-detector.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/camera/factories.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/camera/core-impl.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/camera/retriever.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/state-manager.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/html5-qrcode-scanner.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/image-assets.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/storage.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/ui.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/camera/permissions.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/ui/scanner/scan-type-selector.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/ui/scanner/torch-button.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/ui/scanner/base.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/ui/scanner/file-selection-ui.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/ui/scanner/camera-selection-ui.js" points to missing source files
+Sourcemap for "/doubtfire-web/node_modules/html5-qrcode/esm/ui/scanner/camera-zoom-ui.js" points to missing source files
+ [32m✓[39m [30m[43m doubtfire [49m[39m src/app/dashboard/f-cross-dashboard.route.spec.ts [2m([22m[2m3 tests[22m[2m | [22m[90m1 todo[39m[2m)[22m[32m 227[2mms[22m[39m
+ [32m✓[39m [30m[43m doubtfire [49m[39m src/app/dashboard/f-cross-dashboard.component.spec.ts [2m([22m[2m53 tests[22m[2m)[22m[33m 4504[2mms[22m[39m
+     [33m[2m✓[22m[39m uses Active units as the default scope [33m 522[2mms[22m[39m
+     [33m[2m✓[22m[39m binds both multiple-select controls and Clear all through the rendered toolbar [33m 329[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m      Tests [22m [1m[32m55 passed[39m[22m[2m | [22m[90m1 todo[39m[90m (56)[39m
+[2m   Start at [22m 11:54:39
+[2m   Duration [22m 8.38s[2m (transform 3.10s, setup 1.68s, import 7.28s, tests 4.73s, environment 2.21s)[22m
+
+__EXIT_CODE=0

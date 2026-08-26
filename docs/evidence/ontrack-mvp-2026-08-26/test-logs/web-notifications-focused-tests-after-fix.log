@@ -1,0 +1,25 @@
+
+> doubtfire@11.0.0-45 test:ci
+> ng test --no-watch --no-progress --include=src/app/api/services/spec/notification-route.service.spec.ts --include=src/app/api/services/spec/notification.service.spec.ts --include=src/app/api/services/spec/push-notification-click.service.spec.ts --include=src/app/api/services/spec/push-notification.service.spec.ts --include=src/app/common/header/notification-bell/notification-bell.component.spec.ts --include=src/app/common/notification-settings/notification-settings.component.spec.ts --include=src/app/common/notifications-page/notifications-page.component.spec.ts
+
+Application bundle generation complete. [10.949 seconds] - 2026-08-26T11:56:47.630Z
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.9 [39m[90m/doubtfire-web[39m
+
+ [32m✓[39m [30m[43m doubtfire [49m[39m src/app/api/services/spec/notification-route.service.spec.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 34[2mms[22m[39m
+ [32m✓[39m [30m[43m doubtfire [49m[39m src/app/api/services/spec/push-notification-click.service.spec.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+ [32m✓[39m [30m[43m doubtfire [49m[39m src/app/api/services/spec/notification.service.spec.ts [2m([22m[2m20 tests[22m[2m)[22m[33m 494[2mms[22m[39m
+ [32m✓[39m [30m[43m doubtfire [49m[39m src/app/api/services/spec/push-notification.service.spec.ts [2m([22m[2m28 tests[22m[2m)[22m[33m 320[2mms[22m[39m
+ [32m✓[39m [30m[43m doubtfire [49m[39m src/app/common/notification-settings/notification-settings.component.spec.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 597[2mms[22m[39m
+ [32m✓[39m [30m[43m doubtfire [49m[39m src/app/common/header/notification-bell/notification-bell.component.spec.ts [2m([22m[2m40 tests[22m[2m)[22m[33m 2171[2mms[22m[39m
+     [33m[2m✓[22m[39m shows how many are unread [33m 402[2mms[22m[39m
+ [32m✓[39m [30m[43m doubtfire [49m[39m src/app/common/notifications-page/notifications-page.component.spec.ts [2m([22m[2m37 tests[22m[2m)[22m[33m 3150[2mms[22m[39m
+     [33m[2m✓[22m[39m says it is loading before the list arrives [33m 655[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m7 passed[39m[22m[90m (7)[39m
+[2m      Tests [22m [1m[32m148 passed[39m[22m[90m (148)[39m
+[2m   Start at [22m 11:56:48
+[2m   Duration [22m 8.74s[2m (transform 2.89s, setup 5.49s, import 5.86s, tests 6.79s, environment 17.26s)[22m
+
+__EXIT_CODE=0

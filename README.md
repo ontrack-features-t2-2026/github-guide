@@ -8,12 +8,18 @@ This guide explains where the repositories are, which shared feature branch your
 
 1. Accept the invitation to the `ontrack-features-t2-2026` GitHub organisation.
 2. Find your assigned Jira ticket using the [short Jira tutorial](https://youtu.be/GyJWYpOGj1o).
-3. Open [branch-register.md](branch-register.md) and find your objective's Web and API branches.
+3. Open [branch-register.md](branch-register.md) and find your repository's operational target. Some planned objectives do not yet have an approved code branch.
 4. Follow [student-setup.md](student-setup.md) to clone and run OnTrack.
 5. Create a separate task branch from your objective's shared feature branch.
 6. Open a pull request back into that same shared feature branch.
 7. Use [pull-request-template.md](pull-request-template.md) in your pull request.
 8. Ask at least two students to review your pull request using [review-checklist.md](review-checklist.md).
+
+## Getting set up
+
+- [Student setup and contribution guide](student-setup.md) — installs the prerequisites, clones the three repositories, selects the correct objective branches, starts Docker and opens a task pull request. Allow roughly 20–40 minutes plus the first Docker image download/build.
+
+> **DOC-2 blocker (26 August 2026):** The separate environment setup video URL has not been supplied and verified. Add it here only after DOC-1 confirms the URL, content and duration. The [Jira ticket tutorial](https://youtu.be/GyJWYpOGj1o) explains how to find a ticket; it is not the environment setup video.
 
 ## Urgent access help
 
@@ -31,12 +37,13 @@ Include your GitHub username, the repository you cannot access, and a screenshot
 | [doubtfire-api](https://github.com/ontrack-features-t2-2026/doubtfire-api) | Rails backend. This contains APIs, data handling, permissions and background work. | Your objective's feature branch |
 | [doubtfire-deploy](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/fix/local-dev-run) | Local Docker environment used to run Web and API together. | `fix/local-dev-run` |
 
-The Web and API repositories contain separate shared branches for the four objectives:
+The current operational feature targets are:
 
-- Cross-Unit Dashboard
-- Email Notifications
-- Mobile Notifications
-- Peer Progress Indicator
+- Cross-Project Dashboard: `feature/cross-unit` in Web and API;
+- Email and Mobile Notifications: the shared canonical `feature/notifications` in Web and API; and
+- Peer Progress Indicator: `feature/peer-progress-indicator` in Web and API.
+
+The First-Time Tutorial Web branch is still a suggestion awaiting written lead approval. It has no API or Deploy branch. Do not create one from the planning name alone.
 
 All exact links are listed in [branch-register.md](branch-register.md).
 
@@ -45,7 +52,7 @@ All exact links are listed in [branch-register.md](branch-register.md).
 ```text
 Jira ticket
     ↓
-Correct shared feature branch
+Correct operational shared feature branch
     ↓
 Your separate task branch
     ↓
@@ -66,6 +73,8 @@ Jira is used to record the task, scope, assignee and progress. GitHub is used fo
 - Do not work directly on a shared feature branch.
 - Create one task branch for each Jira ticket.
 - Open your task pull request into your objective's shared feature branch, not directly into `11.0.x`.
+- Do not use a combined integration or validation branch as a student task pull-request target.
+- Do not create a suggested objective branch until the repository lead approves its name and exact base commit.
 - Previous `10.0.x` work is outside this T2 workspace. New work uses the provided T2 branches.
 - Use meaningful branch names and commit messages.
 - Explain what changed, why it changed and how it was tested.
@@ -103,6 +112,9 @@ Local test accounts use the password `password`.
 ## Related guides
 
 - [Branch register](branch-register.md)
+- [Cross-objective coordination, shared surfaces and integration order](cross-objective-coordination.md)
+- [First-Time Tutorial objective, branch plan and evidence index](first-time-tutorial-objective.md)
+- [Four-stream MVP evidence and handover index](docs/evidence/ontrack-mvp-2026-08-26/README.md)
 - [Student setup and contribution steps](student-setup.md)
 - [Pull request template](pull-request-template.md)
 - [Peer review checklist](review-checklist.md)

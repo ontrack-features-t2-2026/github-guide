@@ -1,0 +1,7 @@
+> doubtfire@11.0.0-45 lint
+> ng lint --max-warnings 0
+
+
+Linting "doubtfire"...
+
+All files pass linting.

@@ -1,0 +1,24 @@
+
+> doubtfire@11.0.0-45 test:ci
+> ng test --no-watch --no-progress --include=src/app/api/fixtures/peer-progress-indicator.fixtures.spec.ts --include=src/app/api/models/peer-progress-indicator-state.spec.ts --include=src/app/api/models/peer-progress-unit-summary-state.spec.ts --include=src/app/api/services/spec/peer-progress-indicator.service.spec.ts --include=src/app/api/services/spec/peer-progress.service.spec.ts --include=src/app/projects/states/dashboard/directives/progress-dashboard/peer-progress-unit-summary/peer-progress-unit-summary.component.spec.ts --include=src/app/projects/states/dashboard/directives/task-dashboard/directives/task-description-card/ppi-widget/ppi-widget.component.spec.ts
+
+Application bundle generation complete. [16.726 seconds] - 2026-08-26T11:56:10.218Z
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.9 [39m[90m/doubtfire-web[39m
+
+ [32m✓[39m [30m[43m doubtfire [49m[39m src/app/api/fixtures/peer-progress-indicator.fixtures.spec.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 74[2mms[22m[39m
+ [32m✓[39m [30m[43m doubtfire [49m[39m src/app/api/models/peer-progress-unit-summary-state.spec.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 60[2mms[22m[39m
+ [32m✓[39m [30m[43m doubtfire [49m[39m src/app/api/models/peer-progress-indicator-state.spec.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 83[2mms[22m[39m
+ [32m✓[39m [30m[43m doubtfire [49m[39m src/app/api/services/spec/peer-progress.service.spec.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 23[2mms[22m[39m
+ [32m✓[39m [30m[43m doubtfire [49m[39m src/app/api/services/spec/peer-progress-indicator.service.spec.ts [2m([22m[2m22 tests[22m[2m)[22m[32m 171[2mms[22m[39m
+ [32m✓[39m [30m[43m doubtfire [49m[39m src/app/projects/states/dashboard/directives/progress-dashboard/peer-progress-unit-summary/peer-progress-unit-summary.component.spec.ts [2m([22m[2m7 tests[22m[2m)[22m[33m 484[2mms[22m[39m
+ [32m✓[39m [30m[43m doubtfire [49m[39m src/app/projects/states/dashboard/directives/task-dashboard/directives/task-description-card/ppi-widget/ppi-widget.component.spec.ts [2m([22m[2m22 tests[22m[2m)[22m[33m 868[2mms[22m[39m
+     [33m[2m✓[22m[39m should create [33m 431[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m7 passed[39m[22m[90m (7)[39m
+[2m      Tests [22m [1m[32m93 passed[39m[22m[90m (93)[39m
+[2m   Start at [22m 11:56:10
+[2m   Duration [22m 5.99s[2m (transform 4.66s, setup 5.38s, import 5.97s, tests 1.76s, environment 14.62s)[22m
+
+__EXIT_CODE=0

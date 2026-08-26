@@ -1,0 +1,31 @@
+
+> doubtfire@11.0.0-45 build
+> ng build --configuration production
+
+❯ Building...
+Killed
+fatal error: all goroutines are asleep - deadlock!
+
+goroutine 1 [chan receive]:
+github.com/evanw/esbuild/internal/helpers.(*ThreadSafeWaitGroup).Wait(...)
+	github.com/evanw/esbuild/internal/helpers/waitgroup.go:36
+main.runService.func2()
+	github.com/evanw/esbuild/cmd/esbuild/service.go:114 +0x8c
+main.runService(0x1)
+	github.com/evanw/esbuild/cmd/esbuild/service.go:160 +0x560
+main.main()
+	github.com/evanw/esbuild/cmd/esbuild/main.go:252 +0xb5c
+
+goroutine 33 [chan receive]:
+main.runService.func1()
+	github.com/evanw/esbuild/cmd/esbuild/service.go:98 +0x40
+created by main.runService in goroutine 1
+	github.com/evanw/esbuild/cmd/esbuild/service.go:97 +0x188
+
+goroutine 34 [chan receive]:
+main.(*serviceType).sendRequest(0x4b5e121180c0, {0x52c880, 0x4b5e3c064cf0})
+	github.com/evanw/esbuild/cmd/esbuild/service.go:192 +0x134
+main.runService.func3()
+	github.com/evanw/esbuild/cmd/esbuild/service.go:125 +0x44
+created by main.runService in goroutine 1
+	github.com/evanw/esbuild/cmd/esbuild/service.go:122 +0x2a8
