@@ -2,9 +2,9 @@
 
 This is the working register for **MISC-X01 - Coordinate Cross-Objective Branches, Shared Surfaces, and Integration Order**.
 
-- **Snapshot:** 26 August 2026 (AEST)
+- **Source snapshot:** Planner workbook exported 26 August 2026; public GitHub refs and pull requests refreshed 27 August 2026 at 09:49:05Z
 - **Coordinator recorded in Planner:** Maple Fox
-- **Approval state:** Draft coordination record. It does not assert product, branch, merge, deploy or release approval where a linked written decision is absent.
+- **Approval state:** Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester. This closes MISC-X01 document/coordination approval only and is not attributed to uncontacted individuals or converted into product/release approval.
 
 Contributors must read this register before changing a shared frontend, API contract, CI rule or Deploy configuration. A Planner assignee is not automatically an objective lead, reviewer or merge authority.
 
@@ -13,10 +13,10 @@ Contributors must read this register before changing a shared frontend, API cont
 | Item | Current state | Required decision or evidence |
 |---|---|---|
 | Web and API combined validation branches | Published candidates are recorded in the [branch register](branch-register.md); they remain unapproved. | Link the branch/commit, pull request, checks and reviewer decision before any merge or release use. |
-| First-Time Tutorial Web branch | `feature/student-onboarding` is suggested only; no public branch was found. | Repository lead must approve the name and exact source SHA in writing. |
-| Shared preferences and help structure | A proposed structure is recorded below. | Objective/product lead plus accessibility and frontend reviewers must approve it before CAL-F01, THM-F02 or TUT-W04 alters a shared surface. |
-| Optional sub-category leads | All are explicitly **Unassigned** below. | Nominate a lead or retain Unassigned and escalate conflicts to the objective owner/coordinator. |
-| Final Deploy path | The current public all-features foundation is recorded; final validation/release use is unresolved. | Deploy lead must select the branch/commit and approve any configuration change. |
+| First-Time Tutorial Web branch | Requester approved the plan `feature/student-onboarding` from observed Web `9c618c3b`; named-leader confirmation was waived. No public branch was found or created. | Re-audit the base and assign an implementation owner before branch creation. |
+| Shared preferences and help structure | Requester approved the coordination default below for MISC-X01 closure and waived named-leader confirmation. | Downstream tickets must still record owners, accessibility review and any change to this default before altering a shared surface. |
+| Optional sub-category leads | All are explicitly **Unassigned** below; requester accepted that state for MISC-X01 closure. | Assign the relevant role before downstream implementation/review or retain Unassigned and escalate conflicts. |
+| Final Deploy path | The historical foundation was merged and its remote branch deleted. Local unpublished prior-candidate head `32c7abbf5551d172970c31acea9522ec4da29b08` documents gitlinks introduced at `c4c0d9a5` for the focused-test candidates. | Supersede it with final SHAs, publish/review, reproduce from a fresh clone and obtain a Deploy/release decision before release use. |
 | New accessibility lint/CI gates | Coordination policy is defined, but no new gate is treated as approved here. | Demonstrate the rule on every active Web objective branch, assign remediation and obtain branch-protection approval. |
 | Objective evidence indexes | Existing evidence is linked where available; several new objectives do not yet have a public index. | Publish one index per objective and replace each explicit **TBD** entry. |
 
@@ -30,35 +30,43 @@ The [branch register](branch-register.md) is the source of truth for current hea
 | Email Notifications | [`feature/notifications`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/feature/notifications) | [`feature/notifications`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/feature/notifications) | Shares the canonical Notifications branches with Mobile. |
 | Mobile Notifications | [`feature/notifications`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/feature/notifications) | [`feature/notifications`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/feature/notifications) | Shares the canonical Notifications branches with Email. |
 | Peer Progress Indicator | [`feature/peer-progress-indicator`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/feature/peer-progress-indicator) | [`feature/peer-progress-indicator`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/feature/peer-progress-indicator) | Operational feature targets; MVP card owner is Maple Fox. Lead/merge approval link is not recorded here. |
-| First-Time Tutorial | Suggested `feature/student-onboarding` | None unless approved state design requires it | Suggested Web branch is unapproved; no API or Deploy branch. See the [objective index](first-time-tutorial-objective.md). |
+| First-Time Tutorial | Requester-approved plan `feature/student-onboarding`; branch not created | None unless approved state design requires it | Named-leader confirmation was waived for TUT-F01 closure; downstream implementation still records owner and re-audited base. No API or Deploy branch. See the [objective index](first-time-tutorial-objective.md). |
 | Calendar, Theme, Accessibility and Safe Uploads | Pending their objective branch decisions | Only where their tickets require API work | Suggested ticket-pack names do not create approved branches. |
 
 ### Combined validation candidate composition
 
-The following describes the local candidate history; it is evidence of composition, not approval:
+The following describes the frozen 26 August candidate history; it is evidence of composition, not approval of later branch movement:
 
-1. Web began from the published all-features integration foundation, merged the current `11.0.x`, then current `feature/cross-unit`, `feature/peer-progress-indicator` and `feature/notifications`, followed by the focused-test constructor repair. Candidate head: `832d5e47eb26ff2e21ce25e576daa13b3054cc3e`.
-2. API began from the published all-features integration foundation, merged the current `11.0.x`, then current `feature/cross-unit` and `feature/notifications`. Candidate head: `75d7337fd0dd04f9b3a985f287e40f3ec6a467a0`.
+1. Web began from the published all-features integration foundation, merged the then-current `11.0.x`, `feature/cross-unit`, `feature/peer-progress-indicator` and `feature/notifications`, followed by the focused-test constructor repair. Candidate head: `832d5e47eb26ff2e21ce25e576daa13b3054cc3e`.
+2. API began from the published all-features integration foundation, merged the then-current `11.0.x`, `feature/cross-unit` and `feature/notifications`. Candidate head: `75d7337fd0dd04f9b3a985f287e40f3ec6a467a0`.
 3. Both refs are published validation candidates and remain unapproved. They are evidence/review inputs, not student task pull-request targets or release refs.
-4. Deploy remains at the public [all-features foundation](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/integration/deploy-all-features-foundation-20260824) until a deploy lead records a different validated choice.
+4. Local unpublished Deploy head `32c7abbf5551d172970c31acea9522ec4da29b08` starts from public Deploy [`5351009d`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/5351009df475c4a3d4f788110b0197ce64b3d3f4); gitlinks introduced at `c4c0d9a5` pin those two exact prior candidates. It is a reproducibility aid, not the final lock or release approval.
+5. Current API/Web release and feature heads moved after the candidates were tested. The [branch register](branch-register.md) records the 27 August heads; equivalent patches cannot be inferred solely from ancestry.
 
 ### Current pull-request disposition gate
 
-The public pull-request snapshot was checked at **2026-08-26T11:28Z**. The umbrella pull requests remain open:
+The public pull-request snapshot was refreshed at **2026-08-27T09:49:05Z**.
+The previously named API, Web and Deploy umbrella/follow-up pull requests were
+merged: API #43, #56, #57, #60, #62, #63, #65 and #74; Web #59, #60, #61,
+#69, #70, #71, #77, #78, #81 and #96; Deploy #11, #12, #18, #24 and #25.
+This resolves their live PR disposition; it does not retroactively extend the
+focused test evidence to their later merge commits.
 
-- [API #60](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/60)
-- [Web #81](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/81)
-- [Deploy #12](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/12)
+The remaining open review surfaces observed in the audited repositories were:
 
-The following exact open heads were not ancestors of the local candidates and need an explicit **merge**, **superseded by equivalent patch**, or **rejected** decision:
+| Repository | Open pull request | Review state and coordination impact |
+|---|---|---|
+| API | [#72](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/72) | Changes requested; Safe Upload security work outside the four-MVP candidate but on an API shared surface. |
+| Web | [#72](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/72) | Review required; CPD sizing/documentation work. |
+| Web | [#103](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/103) | Changes requested; CPD project-card work on `feature/cross-unit`. |
+| Web | [#104](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/104) | Changes requested; layout standardisation touches a shared presentation surface. |
+| Guide | [#1](https://github.com/ontrack-features-t2-2026/github-guide/pull/1) | Review required; documentation CI policy, not product approval. |
+| Deploy | None | No open Deploy pull request was returned. The local validation lock is still unpublished. |
 
-| Repository | Pull requests needing disposition |
-|---|---|
-| API | [#43](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/43), [#56](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/56), [#57](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/57), [#62](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/62), [#63](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/63), [#65](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/65), [#74](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/74) |
-| Web | [#59](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/59), [#60](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/60), [#61](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/61), [#72](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/72), [#77](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/77), [#78](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/78), [#96](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/96) |
-| Deploy | [#11](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/11), [#12](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/12), [#18](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/18) |
-
-“Not an ancestor” does not prove that a change is absent; an equivalent patch can have a different commit. The integration owner must compare patches, tests and review history before marking a PR superseded. The full audit and acceptance gaps are in the [four-stream MVP evidence index](docs/evidence/ontrack-mvp-2026-08-26/README.md).
+An integration owner must review the current heads and patches before building
+a refreshed candidate. “Not an ancestor” does not prove absence; an equivalent
+patch can have a different commit. The full acceptance gaps are in the
+[four-stream MVP evidence index](docs/evidence/ontrack-mvp-2026-08-26/README.md).
 
 ## Ownership and escalation
 
@@ -119,12 +127,14 @@ Paths link to the branch that currently demonstrates the surface. They identify 
 | Theme tokens and global styles | [Theme entry](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/src/theme.scss) and [Material theme](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/src/styles/m3-theme.scss) | Feature teams retain feature logic | THM-F01/Theme integration owner: **Unassigned** | Theme tickets own semantic tokens and presentation. They must not alter role checks, submission logic, notifications or feature state. |
 | Frontend CI and lint | [Web workflows](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/11.0.x/.github/workflows) and [review policy](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/11.0.x/.github/review-policy) | Repository CI maintainer: **Unassigned**; A11Y-T01 ticket owner Duong Bao Huy Tran | Each failing feature branch needs a named remediation owner | A new blocking lint rule follows the staged-gate process below; it cannot strand an active branch. |
 | API CI and shared contracts | [API workflows](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/11.0.x/.github/workflows) and [review policy](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/11.0.x/.github/review-policy) | API integration/CI owner: **Unassigned** | Security reviewer: **Unassigned** | Effective deadline, notification and upload contracts each keep one API source of truth. |
-| Deploy and proxy configuration | [Deploy workflows](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/11.0.x/.github/workflows) and [all-features runbook](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/blob/integration/deploy-all-features-foundation-20260824/ALL-FEATURES-INTEGRATION.md) | Deploy integration owner: **Unassigned** | Security/operations reviewer: **Unassigned** | No branch until a ticket demonstrates a Deploy-specific requirement. |
+| Deploy and proxy configuration | [Deploy workflows](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/11.0.x/.github/workflows) and immutable [merged handover](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/blob/5351009df475c4a3d4f788110b0197ce64b3d3f4/HANDOVER.md) | Deploy integration owner: **Unassigned** | Security/operations reviewer: **Unassigned** | Feature-specific Deploy work remains conditional; the local MVP validation lock is a coordination artifact, not approval. |
 | Shared documentation | [GitHub guide](https://github.com/ontrack-features-t2-2026/github-guide) plus objective docs linked below | Documentation integration owner: **Unassigned** | Objective reviewer and security/privacy reviewer: **Unassigned** | Keep one canonical evidence index per objective and link, rather than copy, existing work. |
 
 ## Proposed shared preferences and help decision
 
-**Decision status: Proposed for review; not yet lead-approved.**
+**Decision status: Requester-approved coordination default on 27 August 2026;
+named-leader confirmation waived by requester.** This approval is not
+attributed to an uncontacted product, accessibility or frontend lead.
 
 The coordination default is one discoverable account/settings structure and one permanent help entry:
 
@@ -254,18 +264,19 @@ For proven Deploy work:
 | Objective or control | Evidence link | Current status |
 |---|---|---|
 | Branch heads and PR destinations | [T2 2026 branch register](branch-register.md) | Current snapshot; approvals identified separately from observations. |
+| 27 August ticket closure | [Documentation, tutorial and MVP closure status](closure-status-20260827.md) | DOC-2, TUT-F01, MISC-X01, scan and ON-MVP01 Planner-ready outcomes separated from publication/release follow-up. |
 | Combined four-stream validation and handover | [OnTrack MVP evidence and handover index](docs/evidence/ontrack-mvp-2026-08-26/README.md) | Current candidates and blockers recorded; no MVP completion or release is claimed. |
-| First-Time Tutorial | [Objective, branch plan and evidence index](first-time-tutorial-objective.md) | Foundation drafted; branch and reviewer approvals pending. |
+| First-Time Tutorial | [Objective, branch plan and evidence index](first-time-tutorial-objective.md) | Repository foundation complete with requester-approved branch plan; publication and downstream role assignment remain. |
 | Cross-Project Dashboard | [Web status](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/feature/cross-unit/CROSS_UNIT_STATUS.md), [data-source map](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/feature/cross-unit/docs/cpd-data-source-map.md) | Existing evidence; CPD-MVP01 must still link exact final commits, runs and reviews. |
 | Email Notifications | [API notification status](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/notifications/NOTIFICATIONS_STATUS.md), [event index](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/notifications/docs/notifications/events/README.md) | Shared Notifications evidence; EN-MVP01 must identify email-specific final evidence. |
 | Mobile Notifications | [Push setup](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/notifications/docs/notifications/push-setup.md), [local push testing](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/notifications/docs/notifications/testing-push-locally.md) | Shared Notifications evidence; MN-MVP01 must identify device/browser results and final review. |
 | Peer Progress Indicator | [Web handover](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/feature/peer-progress-indicator/docs/ppi-f02-unit-summary-handover.md), [API data-source map](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/peer-progress-indicator/docs/peer-progress/data-source-map.md) | Existing evidence; PPI-MVP01 must link exact final privacy, test and demo results. |
-| Combined stack | [Deploy integration runbook](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/blob/integration/deploy-all-features-foundation-20260824/ALL-FEATURES-INTEGRATION.md) | Public foundation only; final candidate/release selection unresolved. |
+| Combined stack | [Merged Deploy handover](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/blob/5351009df475c4a3d4f788110b0197ce64b3d3f4/HANDOVER.md); local prior-candidate head `32c7abbf5551d172970c31acea9522ec4da29b08` | Exact focused-test candidates are locally pinned only as prior evidence; final SHA update, publication, fresh-clone verification and release decision remain unresolved. |
 | Accessibility | **TBD - no public objective evidence index linked** | Blocker |
 | Theme | **TBD - no public objective evidence index linked** | Blocker |
 | Safe Uploads | **TBD - no public objective evidence index linked** | Blocker |
 | Calendar and SLR effective-deadline integration | **TBD - link CAL and SLR evidence indexes after the one-source-of-truth decision** | Blocker |
-| Weekly integration workflow | Web [workflow branch](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/automation/weekly-integration-prs-20260826), API [workflow branch](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/automation/weekly-integration-prs-20260826), Deploy [workflow branch](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/automation/weekly-integration-prs-20260826) | Candidate automation branches; merge/enforcement approval is not claimed. |
+| Weekly integration workflow | API [#73](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/73), Web [#98](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/98), Deploy [#25](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/25) | Automation pull requests were merged. This records repository state, not organisation-wide enforcement approval. |
 
 ## Weekly conflict review
 
@@ -274,9 +285,26 @@ Review this table at least weekly while the objectives are active.
 | Review date | Reviewer | Branch movement | Shared-file conflict | CI/deploy change | Decision and evidence |
 |---|---|---|---|---|---|
 | 2026-08-26 | MISC-X01 documentation audit | Canonical Notifications targets corrected; combined Web/API validation candidates published | Preferences/help structure, objective integration owners and sub-category leads remain unresolved | Staged CI and conditional Deploy rules documented | This register and [branch register](branch-register.md); approval links remain pending |
+| 2026-08-27 | MISC-X01 closure audit | Release/feature heads moved; named umbrella/follow-up PRs merged; old Web/Deploy integration refs deleted | Web #103/#104 and API #72 remain active shared-surface review points; owners remain as recorded above | Weekly workflow PRs merged; prior-candidate Deploy head `32c7abb` created without release claim | [Branch register](branch-register.md), this PR table and prior gitlink commit `c4c0d9a5fc37b9346206ed2963fbfa3684c2a696` |
 | YYYY-MM-DD | **Unassigned** |  |  |  |  |
 
 ## Team-chat update template
+
+The repository-side MISC-X01 deliverables are complete as a factual
+coordination handover: current branches and PRs, explicit Unassigned roles,
+shared surfaces, proposed preferences/help structure, dependency order,
+feature/accessibility/theme boundaries, CI staging, conditional Deploy rules
+and the weekly review register are recorded. Requester approval recorded 27
+Aug 2026; named-leader confirmation waived by requester. MISC-X01 is therefore
+**repository complete / publication follow-up**. The effective coordination
+deadline and merged Guide link still need to be posted in Planner/team chat,
+and downstream implementation must assign its relevant Unassigned roles.
+
+Planner-ready status:
+
+```text
+MISC-X01 REPOSITORY COMPLETE / PUBLICATION FOLLOW-UP — Branch heads and live PR dispositions were refreshed on 27 August; shared surfaces, integration order, CI/Deploy rules and explicit Unassigned roles are documented. Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester. Prior-candidate Deploy head 32c7abb is reproducibility evidence only, not the final lock. Remaining human actions: publish the Guide, post the effective deadline and add Planner/team-chat links; downstream work assigns relevant roles. No product or release approval is inferred.
+```
 
 ```text
 MISC-X01 coordination register updated: [LINK TO MERGED REGISTER]
@@ -285,10 +313,10 @@ Current operational targets:
 - CPD: feature/cross-unit (Web and API)
 - Email + Mobile: feature/notifications (Web and API)
 - PPI: feature/peer-progress-indicator (Web and API)
-- First-Time Tutorial: Web branch still pending written lead approval; no API or Deploy branch
+- First-Time Tutorial: requester-approved Web branch plan; branch not created; no API or Deploy branch
 
 Before changing profile, preferences, help, menus, header, dashboard, task, upload/comment, CI or Deploy files, check the ownership row and merge order. If the owner is Unassigned, stop and ask the objective owner/MISC coordinator to assign the surface. Post any ownership or order change here before a second contributor starts.
 
-Open decisions/blockers:
-[LIST CURRENT UNASSIGNED ROLES, APPROVALS AND EVIDENCE LINKS]
+Publication/downstream follow-up:
+[PLANNER/TEAM-CHAT LINKS, EFFECTIVE DEADLINE, AND RELEVANT ROLE ASSIGNMENTS]
 ```

@@ -12,19 +12,19 @@ Use this page to find the current branch for an objective and to distinguish an 
 
 ## Current public branch heads
 
-These heads were verified against GitHub on **26 August 2026 (AEST)**. Re-check GitHub before creating a branch because heads can move.
+These heads were verified against GitHub on **27 August 2026 at 09:49:05Z**. Re-check GitHub before creating a branch because heads can move.
 
 | Repository | Branch | Observed head | Status and use |
 |---|---|---|---|
-| Web | [`11.0.x`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/11.0.x) | [`11bbcbf7`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/11bbcbf700836013cbd40a44bab0d99ef30cca9f) | Public release-line head. Record lead approval before using this exact commit as a new objective base. |
-| API | [`11.0.x`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/11.0.x) | [`2a67e30f`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/2a67e30f0f1cfebbf90ad49f264515e7618e7f79) | Public release-line head. Record lead approval before using this exact commit as a new objective base. |
-| Deploy | [`11.0.x`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/11.0.x) | [`c4264f21`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/c4264f21ad7c5789251e8be58ba239432c759dbd) | Public release-line head; not a general feature-work destination. |
-| Web | [`feature/cross-unit`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/feature/cross-unit) | [`7b1aeb80`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/7b1aeb804cde94b7b8e8324f478f59c4b5278ae1) | Operational target for Cross-Project Dashboard Web tasks. |
+| Web | [`11.0.x`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/11.0.x) | [`9c618c3b`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/9c618c3b04c272a34bceba62bba4c7a7627cf96d) | Public release-line head. Record lead approval before using this exact commit as a new objective base. |
+| API | [`11.0.x`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/11.0.x) | [`cb03f80b`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/cb03f80bdba5a19d12a821d3cb7e11f19b1b5c7f) | Public release-line head. Record lead approval before using this exact commit as a new objective base. |
+| Deploy | [`11.0.x`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/11.0.x) | [`5351009d`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/5351009df475c4a3d4f788110b0197ce64b3d3f4) | Public release-line head; not a general feature-work destination. |
+| Web | [`feature/cross-unit`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/feature/cross-unit) | [`9962e7ea`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/9962e7ea171a2bf6d7a12be50874fa5c7ee77e21) | Operational target for Cross-Project Dashboard Web tasks. |
 | API | [`feature/cross-unit`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/feature/cross-unit) | [`18f9f0da`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/18f9f0daec1d34e79d704bcffdd2213322d62a20) | Operational target for Cross-Project Dashboard API tasks. |
 | Web | [`feature/notifications`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/feature/notifications) | [`35ee9fa3`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/35ee9fa31c4b1c987e79c62cdfce93c270d30dc9) | **Canonical operational target for both Email and Mobile Notifications.** |
-| API | [`feature/notifications`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/feature/notifications) | [`cc46e034`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/cc46e034004359477c8c06ee1fcc6fa0d666fdae) | **Canonical operational target for both Email and Mobile Notifications.** |
-| Web | [`feature/peer-progress-indicator`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/feature/peer-progress-indicator) | [`eda7b6b0`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/eda7b6b044cac5f9b6630270a0ee37684fb692be) | Operational target for Peer Progress Indicator Web tasks. |
-| API | [`feature/peer-progress-indicator`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/feature/peer-progress-indicator) | [`40d676ce`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/40d676ce1fcbf3abddd19559a7e392221f4bb7ba) | Operational target for Peer Progress Indicator API tasks. |
+| API | [`feature/notifications`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/feature/notifications) | [`ad708860`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/ad708860d72f16dca0f4e7ab5aa6bf0310c08131) | **Canonical operational target for both Email and Mobile Notifications.** |
+| Web | [`feature/peer-progress-indicator`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/feature/peer-progress-indicator) | [`e12b5f89`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/e12b5f8927830ab35f0243039a23bbf70e4a9cf3) | Operational target for Peer Progress Indicator Web tasks. |
+| API | [`feature/peer-progress-indicator`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/feature/peer-progress-indicator) | [`b0ac35f4`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/b0ac35f4083aaec66c10e1db4b3822655a66ae90) | Operational target for Peer Progress Indicator API tasks. |
 
 The older `feature/email-notifications` and `feature/mobile-notifications` refs are not T2 task pull-request targets. They are retained repository history. New Email and Mobile work must use `feature/notifications`.
 
@@ -32,11 +32,12 @@ The older `feature/email-notifications` and `feature/mobile-notifications` refs 
 
 | Repository | Integration branch | Head | Status |
 |---|---|---|---|
-| Web | [`integration/11.0.x-all-features-20260824`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/integration/11.0.x-all-features-20260824) | [`231a8127`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/231a8127d530ceec07f01a6e4d15e30a914bd167) | Published historical integration foundation; not a student PR target. |
-| API | [`integration/11.0.x-all-features-20260824`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/integration/11.0.x-all-features-20260824) | [`e5d8c58a`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/e5d8c58a8eaac91ca93bef9b3e7a1443dec8c8e8) | Published historical integration foundation; not a student PR target. |
-| Web | [`integration/ontrack-mvp-validation-20260826`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/integration/ontrack-mvp-validation-20260826) | [`832d5e47`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/832d5e47eb26ff2e21ce25e576daa13b3054cc3e) | **Published validation candidate / unapproved.** Combines the current release line with Cross-Project Dashboard, PPI and canonical Notifications, plus the focused-test constructor repair. It is evidence and review input, not a student PR target or release approval. |
-| API | [`integration/ontrack-mvp-validation-20260826`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/integration/ontrack-mvp-validation-20260826) | [`75d7337f`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/75d7337fd0dd04f9b3a985f287e40f3ec6a467a0) | **Published validation candidate / unapproved.** Combines the current release line with Cross-Project Dashboard and canonical Notifications on the existing integration foundation. It is evidence and review input, not a student PR target or release approval. |
-| Deploy | [`integration/deploy-all-features-foundation-20260824`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/integration/deploy-all-features-foundation-20260824) | [`7410f196`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/7410f1963aa2fdd9ecd7fbe76843b0705c6d74cb) | Current public combined-stack foundation. Its use for final MVP validation or release remains unresolved and requires deploy-lead approval. |
+| Web | `integration/11.0.x-all-features-20260824` | [`231a8127`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/231a8127d530ceec07f01a6e4d15e30a914bd167) | Historical immutable integration commit; the remote branch was deleted after merge. Not a student PR target. |
+| API | [`integration/11.0.x-all-features-20260824`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/integration/11.0.x-all-features-20260824) | [`fc976800`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/fc97680031ac377f5c71379243ae9214da3a83b5) | Published historical integration branch; not a student PR target. |
+| Web | [`integration/ontrack-mvp-validation-20260826`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/integration/ontrack-mvp-validation-20260826) | [`832d5e47`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/832d5e47eb26ff2e21ce25e576daa13b3054cc3e) | **Published validation candidate / unapproved.** Frozen 26 August composition of its then-current release line, Cross-Project Dashboard, PPI and canonical Notifications, plus the focused-test constructor repair. Later branch movement is not automatically covered. |
+| API | [`integration/ontrack-mvp-validation-20260826`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/integration/ontrack-mvp-validation-20260826) | [`75d7337f`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/75d7337fd0dd04f9b3a985f287e40f3ec6a467a0) | **Published validation candidate / unapproved.** Frozen 26 August composition of its then-current release line, Cross-Project Dashboard and canonical Notifications on the integration foundation. Later branch movement is not automatically covered. |
+| Deploy | `integration/deploy-all-features-foundation-20260824` | [`7410f196`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/7410f1963aa2fdd9ecd7fbe76843b0705c6d74cb) | Historical immutable integration commit; the remote branch was deleted after merge into `11.0.x`. |
+| Deploy | `chore/ontrack-mvp-lock-20260827` | `32c7abbf5551d172970c31acea9522ec4da29b08` | **Local, unpublished prior-candidate lock.** Gitlinks introduced at `c4c0d9a5` pin API `75d7337f` plus Web `832d5e47`; the head explicitly requires a successor for final SHAs. Not a student target or release approval. |
 
 Do not open student task pull requests into an integration branch. See [cross-objective-coordination.md](cross-objective-coordination.md) for merge order, shared surfaces, CI rules and deploy triggers.
 
@@ -81,10 +82,10 @@ The tutorial is a planned Web objective. Its user-facing name is **First-Time Tu
 
 | Repository | Branch plan | Status |
 |---|---|---|
-| Web | `feature/student-onboarding` is the suggested objective branch name. | **Suggested / unapproved.** No matching public branch was found on 26 August 2026. A repository lead must approve the name and exact Web base SHA before it is created. |
+| Web | Create `feature/student-onboarding` from observed Web `11.0.x` SHA `9c618c3b04c272a34bceba62bba4c7a7627cf96d` when implementation begins. | **Requester-approved plan; branch not created.** Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester. Re-audit before creation and record any moved base. |
 | API | No branch. | **Conditional.** Create one only if the approved state design and TUT-S01 security review require server-side tutorial state. Do not reuse or redefine `has_run_first_time_setup`. |
 | Deploy | No branch. | **Conditional.** Create one only after a reproducible migration, environment, submodule or release need is demonstrated and approved. |
-| Guide documentation | [`docs/ontrack-mvp-evidence-20260826`](https://github.com/ontrack-features-t2-2026/github-guide/tree/docs/ontrack-mvp-evidence-20260826), based on guide `main` at `5d20dd8d7f6451cbab01e216ab130843e4046528`. | Published documentation candidate; pending review/merge. |
+| Guide documentation | [`docs/ontrack-mvp-evidence-20260826`](https://github.com/ontrack-features-t2-2026/github-guide/tree/docs/ontrack-mvp-evidence-20260826) at `c07f60f29c05364e1d643047456033c1bfae2b0d`; local closure branch `docs/closure-tutorial-mvp-deploy-20260827` includes current setup media through `58b3913`. | Published evidence plus local, unpublished closure work; pending review/merge. |
 
 Read the complete [First-Time Tutorial objective and evidence index](first-time-tutorial-objective.md) before assigning or starting tutorial work.
 
@@ -96,7 +97,7 @@ Read the complete [First-Time Tutorial objective and evidence index](first-time-
 | Email Notifications | `feature/notifications` | `feature/notifications` | None unless separately approved |
 | Mobile Notifications | `feature/notifications` | `feature/notifications` | None unless separately approved |
 | Peer Progress Indicator | `feature/peer-progress-indicator` | `feature/peer-progress-indicator` | None unless separately approved |
-| First-Time Tutorial | Pending lead-approved tutorial branch | None unless state design requires it | None unless a Deploy need is proven |
+| First-Time Tutorial | Approved plan `feature/student-onboarding`; create only when implementation starts | None unless state design requires it | None unless a Deploy need is proven |
 
 Do not use `11.0.x` or an integration branch as the base for an ordinary student task pull request.
 
@@ -123,7 +124,7 @@ Suggested branch names in Planner do not override this register or lead approval
 
 When a branch decision changes:
 
-1. Link the written lead decision or pull request.
+1. Link the authorised written decision or pull request and state who supplied it.
 2. Record repository, source branch, full source SHA, target branch, owner and date.
 3. Update this register and the relevant objective evidence index in the same documentation pull request.
 4. Post the changed ownership or merge order in team chat before another contributor edits the affected shared surface.

@@ -2,9 +2,10 @@
 
 This document establishes the working foundation for **TUT-F01 - Establish the First-Time Tutorial objective, branch plan and evidence index**.
 
-- **Snapshot:** 26 August 2026 (AEST)
+- **Source snapshot:** Planner workbook exported 26 August 2026; public GitHub refs refreshed 27 August 2026 at 09:49:05Z
 - **Planner ticket owner:** Maple Fox
-- **TUT-F01 state:** In progress. The objective map and evidence index exist, but branch, role and reviewer approvals listed below are unresolved.
+- **TUT-F01 state:** Repository foundation complete; publication follow-up remains.
+- **Closure authority:** Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester. This is not attributed to any uncontacted individual.
 - **User-facing name:** First-Time Tutorial
 - **Code, folder and branch name:** `student-onboarding`
 
@@ -80,17 +81,20 @@ DOC-9, DOC-10 and DOC-11 are existing cards. Expand them as TUT-D01, TUT-D03 and
 
 ## Branch plan
 
-The branch names below remain suggestions until the named approval is linked.
+The Web branch plan below was approved by the requester for TUT-F01 closure on
+27 August 2026; named-leader confirmation was waived by the requester. The
+branch has not been created, and downstream state/API decisions remain
+conditional.
 
 | Repository | Source/base record | Planned branch or target | Status and rule |
 |---|---|---|---|
-| Web | Current public `11.0.x` observed at [`11bbcbf7`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/11bbcbf700836013cbd40a44bab0d99ef30cca9f). This is an observation, not the approved objective base. | Suggested objective integration branch: `feature/student-onboarding` | **Suggested / unapproved.** Repository lead must approve the name and exact base SHA before the branch or child code branches are created. |
-| API | Current public `11.0.x` observed at [`2a67e30f`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/2a67e30f0f1cfebbf90ad49f264515e7618e7f79). | No API objective branch | **No branch.** Conditional only if TUT-D03 plus TUT-S01 approve server-side state and document why browser/existing storage is insufficient. Keep `has_run_first_time_setup` separate. |
+| Web | Public `11.0.x` observed at [`9c618c3b`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/9c618c3b04c272a34bceba62bba4c7a7627cf96d). | Approved branch plan: create `feature/student-onboarding` from this exact base when implementation starts. | **Requester-approved plan, branch not created.** Requester approval was recorded 27 August and named-leader confirmation was waived by the requester. Re-audit the base before creation; a moved base requires a recorded update. |
+| API | Current public `11.0.x` observed at [`cb03f80b`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/cb03f80bdba5a19d12a821d3cb7e11f19b1b5c7f). | No API objective branch | **No branch.** Conditional only if TUT-D03 plus TUT-S01 approve server-side state and document why browser/existing storage is insufficient. Keep `has_run_first_time_setup` separate. |
 | Deploy | Public local-development and integration foundations are listed in the [branch register](branch-register.md). | No Deploy objective branch | **No branch.** Conditional only if later work demonstrates a migration, submodule, environment, proxy or release requirement. |
-| GitHub guide | Guide `main` at `5d20dd8d7f6451cbab01e216ab130843e4046528` | [`docs/ontrack-mvp-evidence-20260826`](https://github.com/ontrack-features-t2-2026/github-guide/tree/docs/ontrack-mvp-evidence-20260826) | Published documentation candidate containing this index; pending review/merge. |
-| Other documentation | Documentation lead has not provided an approved integration target here. | Suggested `docs/student-onboarding-*` task branches | **Pending documentation-lead decision.** Do not invent a repository/target. |
+| GitHub guide | Published evidence branch at [`c07f60f`](https://github.com/ontrack-features-t2-2026/github-guide/commit/c07f60f29c05364e1d643047456033c1bfae2b0d) | Local closure branch `docs/closure-tutorial-mvp-deploy-20260827`, including the setup walkthrough at `58b3913` | Local, unpublished documentation continuation containing this refreshed index; pending review/merge. |
+| Other documentation | GitHub Guide is the approved foundation/evidence target for TUT-F01. | `docs/student-onboarding-*` task branches only when a downstream docs ticket begins | **Requester-approved for foundation closure.** Named-leader confirmation was waived by the requester; downstream contributors still record their exact branch/target. |
 
-After the Web objective branch is approved, every child ticket must record:
+When the Web objective branch is created, every child ticket must record:
 
 - repository;
 - approved source branch and full source SHA;
@@ -101,7 +105,9 @@ After the Web objective branch is approved, every child ticket must record:
 - test commands/results; and
 - pull request and evidence links.
 
-An integration or validation branch is not a child-ticket target. Ordinary task pull requests go to the lead-approved tutorial feature branch.
+An integration or validation branch is not a child-ticket target. Ordinary
+task pull requests go to the requester-approved tutorial feature branch after
+it is created from the recorded base.
 
 ## Required role decisions
 
@@ -110,10 +116,10 @@ Planner ticket assignment is preserved below, but it does not automatically fill
 | Role | Current assignment | Status | Required evidence |
 |---|---|---|---|
 | Objective and evidence owner | Maple Fox | Recorded through TUT-F01/TUT-MVP01 assignment | Link the Planner objective and written branch/scope decision |
-| Documentation reviewer | **Unassigned** | Blocker | Name and linked review of TUT-D01/D02/D03 and TUT-D04 |
-| Frontend integration owner | **Unassigned** | Blocker | Name and written approval of Web branch/base and shared-surface merge order |
-| Security/privacy reviewer | **Unassigned** | Blocker | Name and linked TUT-S01 decision |
-| Accessibility reviewer | **Unassigned** | Blocker | Name and linked prototype/QA review |
+| Documentation reviewer | **Unassigned** | Waived for TUT-F01 closure; required downstream | Name and linked review of TUT-D01/D02/D03 and TUT-D04 before those items close |
+| Frontend integration owner | **Unassigned** | Waived for TUT-F01 closure; required before Web implementation | Record owner and shared-surface merge order before branch work begins |
+| Security/privacy reviewer | **Unassigned** | Waived for TUT-F01 closure; required downstream | Name and linked TUT-S01 decision |
+| Accessibility reviewer | **Unassigned** | Waived for TUT-F01 closure; required downstream | Name and linked prototype/QA review |
 | Automated test owner | Thien Phuc Tran is assigned TUT-T01 | Ticket owner recorded; objective test-lead role not inferred | Confirm role and link test plan/results |
 | Manual QA owner | Sujay Aitham is assigned TUT-Q01 | Ticket owner recorded; QA approval role not inferred | Confirm role and link QA matrix/results |
 | Pilot owner | Jay Shrimpton is assigned TUT-U01 | Ticket owner recorded; approval role not inferred | Link de-identified pilot result |
@@ -143,11 +149,11 @@ TUT-W04 also depends on the proposed shared preferences/help decision in [MISC-X
 
 ## Central ticket and evidence index
 
-Statuses and assignees reflect the 26 August 2026 Planner workbook snapshot. Suggested branches are planning aids only.
+Statuses and assignees reflect the 26 August 2026 Planner workbook snapshot; they were not changed from Git history. Suggested branches are planning aids only.
 
 | Ticket | Recorded owner | Repository and suggested task branch | Depends on | Snapshot status | Required evidence / current link |
 |---|---|---|---|---|---|
-| TUT-F01 objective foundation | Maple Fox | GitHub guide: `docs/ontrack-mvp-evidence-20260826` | None | In progress | This document; [branch register](branch-register.md); [MISC-X01 register](cross-objective-coordination.md). Planner link, approval and team-chat confirmation: **TBD**. |
+| TUT-F01 objective foundation | Maple Fox | GitHub guide: local `docs/closure-tutorial-mvp-deploy-20260827` on published evidence base | None | In progress | This document; [branch register](branch-register.md); [MISC-X01 register](cross-objective-coordination.md). Planner link, branch/scope approvals and team-chat confirmation: **TBD**. |
 | DOC-9 / TUT-D01 problem and user stories | Jeffy Sam Babu | Documentation target pending | TUT-F01 | Not started | Problem evidence, four to six user stories, review and existing-card link: **TBD**. |
 | DOC-11 / TUT-D02 route map and copy | **Unassigned** | Documentation target pending | TUT-D01 | Not started | Four real targets, approved copy, fallbacks and review: **TBD**. |
 | DOC-10 / TUT-D03 trigger and state rules | **Unassigned** | Documentation target pending | TUT-D01 | Not started | Eligibility, skip/dismiss/replay, storage/version decision and approval: **TBD**. |
@@ -205,46 +211,66 @@ Every evidence row must use portable GitHub, Planner or approved documentation l
 
 | Decision | Required approver | Current state | Link/date |
 |---|---|---|---|
-| Objective scope and MVP boundary | Objective/product lead | Pending | TBD |
-| Web objective branch name and exact base SHA | Web repository lead | Pending | TBD |
-| Documentation repository/target | Documentation lead | Pending | TBD |
+| Objective scope and MVP boundary | Requester for TUT-F01 closure | Approved for foundation closure | Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester |
+| Web objective branch name and exact base SHA | Requester for TUT-F01 closure | Approved plan: `feature/student-onboarding` from observed `9c618c3b`; branch not created | Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester |
+| Documentation repository/target | Requester for TUT-F01 closure | GitHub Guide approved for this foundation | Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester |
 | Trigger, storage and version rules | Objective, frontend and security reviewers | Pending | TBD |
 | API branch needed or not needed | Security reviewer plus API lead | **No API branch by default; conditional decision pending design** | TBD |
 | Deploy branch needed or not needed | Deploy lead | **No Deploy branch; no demonstrated trigger** | Not required unless a trigger appears |
-| Shared Tutorial and Help placement | MISC-X01/product/accessibility reviewers | Pending | See [proposed decision](cross-objective-coordination.md#proposed-shared-preferences-and-help-decision) |
+| Shared Tutorial and Help placement | Requester for MISC-X01 closure; downstream owners/reviewers before implementation | Coordination default approved; implementation evidence remains downstream | Requester approval recorded 27 Aug 2026; see [coordination decision](cross-objective-coordination.md#proposed-shared-preferences-and-help-decision) |
 | MVP completion/handover | Objective, docs, technical, security and accessibility reviewers | Not started | TBD |
 
 ## TUT-F01 completion checklist
+
+### 27 August closure disposition
+
+The objectively completable foundation work is present: objective/scope,
+preserved setup boundaries, dependency map, ticket/evidence index, role gaps,
+branch rules and a Planner/team-chat update are all documented. The remote
+audit found no public `feature/student-onboarding` branch, so no code branch was
+created. No API or Deploy need has been demonstrated.
+
+Requester approval recorded 27 Aug 2026; named-leader confirmation waived by
+requester. The branch plan and Guide target are therefore no longer approval
+blockers for this foundation ticket, and no approval is attributed to an
+uncontacted person. The explicit Unassigned roles remain visible and must be
+filled before their downstream implementation/review work starts.
+
+**TUT-F01 repository result: complete.** Planner cross-links and team-chat
+publication are separate human follow-up, not missing repository content.
 
 - [x] Objective, scope and existing foundation are recorded.
 - [x] Existing welcome/profile setup and setup-flag boundaries are explicit.
 - [x] No API or Deploy branch has been created by this foundation plan.
 - [x] Dependency order and central evidence fields are documented.
 - [x] Existing DOC-9, DOC-10 and DOC-11 are mapped for expansion rather than duplication.
-- [ ] Objective section/bucket and every confirmed Planner card are cross-linked.
-- [ ] Required leads/reviewers are named or an authorised decision accepts the explicit Unassigned roles.
-- [ ] Web repository lead approves the tutorial branch and exact base SHA.
-- [ ] Documentation lead approves its repository/target.
-- [ ] Planner, pull-request and review links replace every required TBD.
-- [ ] Objective map, ownership, dependency order and branch rules are posted in team chat with a link to the merged document.
+- [ ] Publication follow-up: objective section/bucket and every confirmed Planner card are cross-linked in Planner.
+- [x] Requester accepted the explicit Unassigned roles for foundation closure; downstream work must assign them before implementation/review.
+- [x] Requester approved the Web branch plan and exact observed base, waiving named-leader confirmation.
+- [x] Requester approved GitHub Guide as the foundation target, waiving named-leader confirmation.
+- [ ] Downstream evidence follow-up: Planner, pull-request and review links replace the relevant ticket TBDs as work occurs.
+- [ ] Publication follow-up: objective map, ownership, dependency order and branch rules are posted in team chat with a link to the merged document.
 
-Until the unchecked items are resolved, record TUT-F01 as **in progress / foundation drafted**, not completed.
+Record TUT-F01 as **repository complete / publication follow-up**. The unchecked
+Planner/team-chat items must still be performed after the Guide branch is
+published.
 
 ## Planner or team-chat update
 
 ```text
-TUT-F01 foundation drafted: [LINK TO MERGED OBJECTIVE INDEX]
+TUT-F01 REPOSITORY COMPLETE / PUBLICATION FOLLOW-UP: [LINK TO MERGED OBJECTIVE INDEX]
 
 Recorded boundaries:
 - First-Time Tutorial is separate from the existing welcome/profile setup.
 - has_run_first_time_setup keeps its existing setup meaning and is not tutorial completion.
-- feature/student-onboarding is suggested only; Web lead approval and exact base SHA are still required.
+- Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester.
+- Approved plan: feature/student-onboarding from Web 9c618c3b when implementation starts; re-audit before creation.
 - No API branch unless TUT-D03 and TUT-S01 approve server-side state.
 - No Deploy branch unless later work proves a Deploy-specific need.
 - DOC-9, DOC-10 and DOC-11 will be expanded as TUT-D01, TUT-D03 and TUT-D02, not duplicated.
 
-Open blockers:
-[NAMES/APPROVAL LINKS FOR FRONTEND INTEGRATION, DOCS, SECURITY, ACCESSIBILITY AND TEST/QA ROLES]
+Publication/follow-up:
+[PLANNER CROSS-LINKS, TEAM-CHAT POST, AND DOWNSTREAM IMPLEMENTATION/REVIEW ROLE ASSIGNMENTS]
 
 Contributors must add their source SHA, branch, PR, commits, tests, screenshots and reviews to the central evidence row before handover.
 ```

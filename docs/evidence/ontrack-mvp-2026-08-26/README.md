@@ -1,6 +1,11 @@
 # OnTrack MVP evidence and handover index
 
-Snapshot time: **2026-08-26T11:28:50Z** (`2026-08-26 21:28:50 AEST`)
+Evidence snapshot time: **2026-08-26T11:28:50Z** (`2026-08-26 21:28:50 AEST`)
+
+Live branch and pull-request disposition was refreshed at
+**2026-08-27T09:49:05Z**. Focused test and scan results remain attached to the
+exact 26 August candidates; later branch movement is not silently promoted to
+fresh evidence.
 
 Tickets covered:
 
@@ -15,6 +20,11 @@ separates code that exists from evidence collected against the current remote
 heads. A green result from an older commit is retained as historical evidence
 only and is not promoted to a pass for a newer branch.
 
+Requester approval recorded 27 Aug 2026; named-leader confirmation waived by
+requester for publication of this factual blocked/handover record. This is not
+attributed to an uncontacted individual and is not a product, deployment or
+release approval.
+
 ## Executive handover decision
 
 | Ticket | Implementation status | Fresh evidence against current heads | Handover decision |
@@ -23,7 +33,7 @@ only and is not promoted to a pass for a newer branch.
 | `EN-MVP01` | In-app notification, queued email, preferences, event documentation and Mailpit integration exist. | Fresh focused API email coverage passes 77 runs/428 assertions, seven Web notification files pass 148 tests, and historical email delivery is green. Full validation and the complete event/recipient matrix are not complete. | **Blocked** |
 | `CPD-MVP01` | Cross-project dashboard, filtering/sorting, recommendations and role-safe API work exist. | Fresh focused Web tests pass 55 with one todo after the constructor-spec repair; Web lint/type-check and focused API task-prioritisation tests are also green. Production build is resource-blocked and full suites were not run. No auditable `CPD-Q05` or `CPD-D02` completion evidence was located. | **Blocked** |
 | `PPI-MVP01` | The task-level widget calls an authorised API and has privacy-safe suppression. | Fresh API core/preference tests pass 103 runs/5,608 assertions, and seven focused Web files pass 93 tests. The unit-summary and burndown surfaces are still demo/mock-backed; no `PPI-Q02` or live unit-summary API evidence was located. | **Blocked** |
-| `ON-MVP01` | A combined historical stack and newer API/Web integration candidates exist. | The current candidates are published but unapproved; open PR heads require disposition, the Deploy lock is stale, full suites were not run, end-to-end acceptance is incomplete, and exact-image scans contain unresolved critical/high findings. | **Blocked** |
+| `ON-MVP01` | A combined historical stack and published API/Web validation candidates exist. | Previously named umbrella/follow-up PRs were merged, and local unpublished prior-candidate Deploy head `32c7abb` records exact focused-test gitlinks. Current feature/release heads moved after testing; full suites, composed-stack and end-to-end acceptance remain incomplete, and exact-image scans contain unresolved critical/high findings. | **Blocked** |
 
 `Blocked` means the remaining gate is named below. It does not mean the existing
 implementation should be discarded.
@@ -65,41 +75,42 @@ implementation should be discarded.
 
 ## Current remote branch snapshot
 
-The following SHAs were read directly from GitHub with `git ls-remote`. Branch
-links are mutable; the linked commit is the immutable audit reference.
+The following SHAs were read directly from GitHub during the 27 August refresh.
+Branch links are mutable; the linked commit is the immutable audit reference.
 
 ### API
 
 | Branch | SHA |
 | --- | --- |
-| [`11.0.x`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/11.0.x) | [`2a67e30f0f1cfebbf90ad49f264515e7618e7f79`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/2a67e30f0f1cfebbf90ad49f264515e7618e7f79) |
+| [`11.0.x`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/11.0.x) | [`cb03f80bdba5a19d12a821d3cb7e11f19b1b5c7f`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/cb03f80bdba5a19d12a821d3cb7e11f19b1b5c7f) |
 | [`feature/cross-unit`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/feature/cross-unit) | [`18f9f0daec1d34e79d704bcffdd2213322d62a20`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/18f9f0daec1d34e79d704bcffdd2213322d62a20) |
-| [`feature/peer-progress-indicator`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/feature/peer-progress-indicator) | [`40d676ce1fcbf3abddd19559a7e392221f4bb7ba`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/40d676ce1fcbf3abddd19559a7e392221f4bb7ba) |
-| [`feature/notifications`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/feature/notifications) | [`cc46e034004359477c8c06ee1fcc6fa0d666fdae`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/cc46e034004359477c8c06ee1fcc6fa0d666fdae) |
+| [`feature/peer-progress-indicator`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/feature/peer-progress-indicator) | [`b0ac35f4083aaec66c10e1db4b3822655a66ae90`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/b0ac35f4083aaec66c10e1db4b3822655a66ae90) |
+| [`feature/notifications`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/feature/notifications) | [`ad708860d72f16dca0f4e7ab5aa6bf0310c08131`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/ad708860d72f16dca0f4e7ab5aa6bf0310c08131) |
 | [`feature/email-notifications`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/feature/email-notifications) | [`5850668ae8b1e05c38d6c99aeb4aa0c3ab5d866a`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/5850668ae8b1e05c38d6c99aeb4aa0c3ab5d866a) |
 | [`feature/mobile-notifications`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/feature/mobile-notifications) | [`dc76a5a0e67ec4b751a5830c462c71b961eb60b1`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/dc76a5a0e67ec4b751a5830c462c71b961eb60b1) |
-| [`integration/11.0.x-all-features-20260824`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/integration/11.0.x-all-features-20260824) | [`e5d8c58a8eaac91ca93bef9b3e7a1443dec8c8e8`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/e5d8c58a8eaac91ca93bef9b3e7a1443dec8c8e8) |
+| [`integration/11.0.x-all-features-20260824`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/integration/11.0.x-all-features-20260824) | [`fc97680031ac377f5c71379243ae9214da3a83b5`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/fc97680031ac377f5c71379243ae9214da3a83b5) |
 
 ### Web
 
 | Branch | SHA |
 | --- | --- |
-| [`11.0.x`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/11.0.x) | [`11bbcbf700836013cbd40a44bab0d99ef30cca9f`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/11bbcbf700836013cbd40a44bab0d99ef30cca9f) |
-| [`feature/cross-unit`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/feature/cross-unit) | [`7b1aeb804cde94b7b8e8324f478f59c4b5278ae1`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/7b1aeb804cde94b7b8e8324f478f59c4b5278ae1) |
-| [`feature/peer-progress-indicator`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/feature/peer-progress-indicator) | [`eda7b6b044cac5f9b6630270a0ee37684fb692be`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/eda7b6b044cac5f9b6630270a0ee37684fb692be) |
+| [`11.0.x`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/11.0.x) | [`9c618c3b04c272a34bceba62bba4c7a7627cf96d`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/9c618c3b04c272a34bceba62bba4c7a7627cf96d) |
+| [`feature/cross-unit`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/feature/cross-unit) | [`9962e7ea171a2bf6d7a12be50874fa5c7ee77e21`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/9962e7ea171a2bf6d7a12be50874fa5c7ee77e21) |
+| [`feature/peer-progress-indicator`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/feature/peer-progress-indicator) | [`e12b5f8927830ab35f0243039a23bbf70e4a9cf3`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/e12b5f8927830ab35f0243039a23bbf70e4a9cf3) |
 | [`feature/notifications`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/feature/notifications) | [`35ee9fa31c4b1c987e79c62cdfce93c270d30dc9`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/35ee9fa31c4b1c987e79c62cdfce93c270d30dc9) |
 | [`feature/email-notifications`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/feature/email-notifications) | [`20d1f380c20fa6f6601eea1db6814a77401f391c`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/20d1f380c20fa6f6601eea1db6814a77401f391c) |
 | [`feature/mobile-notifications`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/feature/mobile-notifications) | [`20d1f380c20fa6f6601eea1db6814a77401f391c`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/20d1f380c20fa6f6601eea1db6814a77401f391c) |
-| [`integration/11.0.x-all-features-20260824`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/integration/11.0.x-all-features-20260824) | [`231a8127d530ceec07f01a6e4d15e30a914bd167`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/231a8127d530ceec07f01a6e4d15e30a914bd167) |
+| `integration/11.0.x-all-features-20260824` | [`231a8127d530ceec07f01a6e4d15e30a914bd167`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/231a8127d530ceec07f01a6e4d15e30a914bd167) — remote branch deleted after merge |
 
 ### Deploy and guide
 
 | Repository / branch | SHA or state |
 | --- | --- |
-| Deploy [`11.0.x`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/11.0.x) | [`c4264f21ad7c5789251e8be58ba239432c759dbd`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/c4264f21ad7c5789251e8be58ba239432c759dbd) |
+| Deploy [`11.0.x`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/11.0.x) | [`5351009df475c4a3d4f788110b0197ce64b3d3f4`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/5351009df475c4a3d4f788110b0197ce64b3d3f4) |
 | Deploy [`fix/production-ready-compose-20260824`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/fix/production-ready-compose-20260824) | [`a9f468285c0fcc6bcde83f9902897b9df5604b1b`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/a9f468285c0fcc6bcde83f9902897b9df5604b1b) |
-| Deploy `integration/11.0.x-all-features-20260824` | **No remote branch at the snapshot time.** Local-only head: `686a81a6e40cd1045638077e539ec147649eb5ca`. |
-| Guide [`main`](https://github.com/ontrack-features-t2-2026/github-guide/tree/main) | [`5d20dd8d7f6451cbab01e216ab130843e4046528`](https://github.com/ontrack-features-t2-2026/github-guide/commit/5d20dd8d7f6451cbab01e216ab130843e4046528) |
+| Deploy `integration/deploy-all-features-foundation-20260824` | Remote branch deleted after merge; immutable historical commit [`7410f196`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/7410f1963aa2fdd9ecd7fbe76843b0705c6d74cb). |
+| Deploy local `chore/ontrack-mvp-lock-20260827` | Unpublished prior-candidate head `32c7abbf5551d172970c31acea9522ec4da29b08`; gitlinks introduced at `c4c0d9a5` pin API `75d7337f` and Web `832d5e47`. A successor is required for final SHAs. |
+| Guide published evidence branch | [`c07f60f29c05364e1d643047456033c1bfae2b0d`](https://github.com/ontrack-features-t2-2026/github-guide/commit/c07f60f29c05364e1d643047456033c1bfae2b0d); local closure continuation includes setup media at `58b3913`. |
 
 In both API and Web, the specialised email and mobile branch heads are
 ancestors of the current unified `feature/notifications` head. The unified
@@ -115,9 +126,9 @@ approval.
 
 | Repository | Validation branch | SHA | Evidence state |
 | --- | --- | --- | --- |
-| API | [`integration/ontrack-mvp-validation-20260826`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/integration/ontrack-mvp-validation-20260826) | [`75d7337f`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/75d7337fd0dd04f9b3a985f287e40f3ec6a467a0) | Current `11.0.x`, CPD, PPI and unified notifications are ancestors; diff/ancestry and Zeitwerk checks passed. Fresh task-prioritisation passed 17 runs/80 assertions; PPI core/preference 103 runs/5,608 assertions; email 77 runs/428 assertions; push 72 runs/295 assertions. Full suite was not run. |
-| Web | [`integration/ontrack-mvp-validation-20260826`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/integration/ontrack-mvp-validation-20260826) | [`832d5e47`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/832d5e47eb26ff2e21ce25e576daa13b3054cc3e) | Current `11.0.x`, CPD, PPI and unified notifications are ancestors. The parent passed diff/ancestry and type-check; final candidate lint passed. Focused CPD passes 55 tests with one todo, PPI passes 93, and notifications/push passes 148. Both production-build attempts on the parent were OS-killed; the build is not green and the full suite was not run. |
-| Deploy | `integration/11.0.x-all-features-20260824` | `686a81a6e40cd1045638077e539ec147649eb5ca` | Clean historical lock, but it does not pin the two current candidates above and is behind current remote `11.0.x`. |
+| API | [`integration/ontrack-mvp-validation-20260826`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/integration/ontrack-mvp-validation-20260826) | [`75d7337f`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/75d7337fd0dd04f9b3a985f287e40f3ec6a467a0) | Frozen 26 August composition. Diff/ancestry and Zeitwerk checks passed; fresh task-prioritisation passed 17 runs/80 assertions; PPI core/preference 103 runs/5,608 assertions; email 77 runs/428 assertions; push 72 runs/295 assertions. Full suite was not run, and the 27 August release/feature heads are not automatically covered. |
+| Web | [`integration/ontrack-mvp-validation-20260826`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/integration/ontrack-mvp-validation-20260826) | [`832d5e47`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/832d5e47eb26ff2e21ce25e576daa13b3054cc3e) | Frozen 26 August composition. The parent passed diff/ancestry and type-check; final candidate lint passed. Focused CPD passes 55 tests with one todo, PPI passes 93, and notifications/push passes 148. Both production-build attempts on the parent were OS-killed; the build is not green, the full suite was not run, and later branch movement is not automatically covered. |
+| Deploy | Local `chore/ontrack-mvp-lock-20260827` | `32c7abbf5551d172970c31acea9522ec4da29b08` | Prior-candidate head; gitlinks introduced at `c4c0d9a5` pin API `75d7337f` plus Web `832d5e47`. It is unpublished, not the final lock, has not been fresh-clone/composed-stack validated, and is not release approval. |
 
 Reference integration order:
 
@@ -252,10 +263,10 @@ Material observations:
   images. The receiving platform must scan the final minimal production image
   digests too; these development-image results cannot substitute for that
   release scan.
-- Raw JSON/table outputs are currently local under
-  `outputs/docker-image-vulnerability-scan-20260826/fresh/`. Publish sanitised
-  results plus checksums with the release evidence before closing the scan or
-  combined handover ticket.
+- Compressed raw JSON/table outputs and checksums are committed under
+  `evidence/raw/docker-image-vulnerability-scan-20260826/`. Final runtime-image
+  scans, SBOM/provenance and any risk-acceptance records remain separate release
+  evidence.
 
 ### Fresh browser smoke — 2026-08-26
 
@@ -273,28 +284,28 @@ This was a local synthetic-data smoke, not production acceptance:
 - browser/OS version, full role matrix and production-like external services
   still need to be recorded with final manual acceptance.
 
-## Open pull-request disposition gate
+## Pull-request disposition refresh — 2026-08-27
 
-The public GitHub API was checked at the snapshot time. The umbrella release
-PRs are still open:
+The previously named candidate/release and follow-up pull requests have a live
+disposition: API #43, #56, #57, #60, #62, #63, #65 and #74; Web #59, #60,
+#61, #69, #70, #71, #77, #78, #81 and #96; and Deploy #11, #12, #18, #24
+and #25 were merged. This closes the prior PR-disposition question but does not
+promote tests from candidates `75d7337f`/`832d5e47` to the later merge heads.
 
-- [API #60](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/60)
-- [Web #81](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/81)
-- [Deploy #12](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/12)
+Current open review items returned by the audit are:
 
-An exact-head ancestry audit found the following open, in-scope follow-up heads
-were **not** ancestors of the current local candidates:
+| Repository | Open item | State / relevance |
+| --- | --- | --- |
+| API | [#72](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/72) | Changes requested; Safe Upload security work, outside the four-MVP candidate but on a shared API surface. |
+| Web | [#72](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/72) | Review required; CPD sizing/documentation. |
+| Web | [#103](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/103) | Changes requested; CPD project-card work. |
+| Web | [#104](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/104) | Changes requested; shared layout standardisation. |
+| Guide | [#1](https://github.com/ontrack-features-t2-2026/github-guide/pull/1) | Review required; documentation CI policy. |
+| Deploy | None | No live Deploy PR; prior-candidate head `32c7abb` remains local/unpublished and requires a successor for final SHAs. |
 
-| Repository | PRs needing an explicit merge, superseded or rejected decision |
-| --- | --- |
-| API | [#43](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/43), [#56](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/56), [#57](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/57), [#62](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/62), [#63](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/63), [#65](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/65), [#74](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/74) |
-| Web | [#59](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/59), [#60](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/60), [#61](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/61), [#72](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/72), [#77](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/77), [#78](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/78), [#96](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/96) |
-| Deploy | [#11](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/11), [#12](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/12), [#18](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/18) |
-
-“Not an ancestor” does not by itself prove the change is absent: an equivalent
-patch may have been integrated under another commit. The release owner must
-record the decision for each exact head and use patch comparison plus tests
-before labelling it superseded.
+The next integration owner must compare current patches and rerun evidence on a
+refreshed candidate. Ancestry alone neither proves feature absence nor
+acceptance of an equivalent patch.
 
 ## Historical evidence retained, not promoted
 
@@ -362,8 +373,8 @@ candidate before treating their commands or contracts as current.
 - The current browser smoke rendered the permission-denied state, but that is
   not a delivery pass.
 - API PR [#74](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/74)
-  aligns tests with privacy-safe lock-screen expectations and is not an exact
-  ancestor of the current local candidate.
+  was merged after the frozen candidate was tested. Its later merge state is
+  not fresh candidate evidence.
 - Browser/OS support acceptance, HTTPS, permission policy, VAPID ownership and
   vendor endpoint access are receiving-environment gates.
 
@@ -380,8 +391,8 @@ candidate before treating their commands or contracts as current.
 
 ### Next owner and action
 
-Client support plus the privacy/data owner: disposition API #74, rerun the
-current automated packs, then perform real HTTPS background-push acceptance on
+Client support plus the privacy/data owner: refresh the candidate after the
+merged notification work, rerun the automated packs, then perform real HTTPS background-push acceptance on
 every promised browser/device combination. Record browser/OS versions,
 subscription, receipt, safe lock-screen text, click-through and expired
 subscription cleanup without recording private keys or student data.
@@ -409,9 +420,9 @@ subscription cleanup without recording private keys or student data.
   assertions, zero failures/errors/skips. Full-suite evidence remains
   incomplete.
 - No complete, current feedback/event matrix was located.
-- Exact open heads for queued delivery, group link handling, test isolation and
-  task-availability paths still need disposition; see API #43, #56, #57 and
-  #65 above.
+- The previously open queued-delivery, group-link, test-isolation and
+  task-availability pull requests (#43, #56, #57 and #65) were merged after
+  the candidate run; their later heads need refreshed validation.
 - Production SMTP sender policy, bounce/failure monitoring and duplicate-on-
   retry acceptance belong to the receiving institution.
 
@@ -430,8 +441,8 @@ subscription cleanup without recording private keys or student data.
 Messaging owner plus notification feature lead: create a versioned matrix of
 each MVP event × intended recipient × preference on/off × retry/deduplication ×
 HTML/text rendering, link each row to a current automated or manual result,
-disposition the open notification PRs, and rerun the matrix against the exact
-published candidate.
+rerun the matrix against a refreshed exact candidate and retain the frozen
+candidate result as historical evidence only.
 
 ## `CPD-MVP01` — Cross-Project Dashboard
 
@@ -460,7 +471,9 @@ published candidate.
   Both production build attempts were OS-killed during esbuild, including the
   reduced-worker retry at exit code 137. The build/full suites are not green.
 - No auditable completion evidence was located for `CPD-Q05` or `CPD-D02`.
-- Exact open Web CPD heads #59, #60, #61 and #72 require explicit disposition.
+- Web #59, #60 and #61 were merged. Web #72 remains review-required and Web
+  #103 is changes-requested; neither changes the existing Q05/D02 or manual
+  acceptance gaps.
 - Recommended-order behaviour at the current API/Web heads must be tested
   together; older records describing placeholder ordering must not be used as
   proof of the newer implementation.
@@ -476,7 +489,7 @@ published candidate.
 ### Next owner and action
 
 CPD feature lead plus product owner: review the committed `TaskService` spec
-repair, disposition the open CPD heads, finish the production build and full
+repair, disposition Web #72/#103, refresh the candidate, finish the production build and full
 Web/API suites at the accepted SHA, complete `CPD-Q05` usability validation and
 `CPD-D02` evidence or explicitly defer them with owners, then capture a
 privacy-safe student-role browser acceptance for filtering, sorting,
@@ -509,9 +522,8 @@ recommendations, empty/error states and cross-unit authorisation.
   no aggregate backend contract exists.
 - No auditable `PPI-Q02` completion evidence was located.
 - Web PR [#77](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/77)
-  is not an exact ancestor of the current candidate even though equivalent
-  live task-level code is present; the release owner must record whether it is
-  superseded or merge it.
+  was merged after the frozen candidate. Equivalent task-level code existed in
+  the candidate, but the later merge head needs refreshed validation.
 
 ### Privacy and security boundary
 
@@ -525,8 +537,8 @@ recommendations, empty/error states and cross-unit authorisation.
 
 ### Next owner and action
 
-PPI feature lead plus privacy/data owner: disposition Web #77 and the open PPI
-API heads, retain the fresh focused API/Web results, complete the full suites
+PPI feature lead plus privacy/data owner: refresh the candidate after the
+merged PPI work, retain the fresh focused API/Web results, complete the full suites
 and manual task-level eligible/suppressed/stale/disabled/error acceptance with
 synthetic cohorts, and keep `PPI-Q02` plus live unit-summary API work
 open/deferred until real evidence exists.
@@ -535,25 +547,30 @@ open/deferred until real evidence exists.
 
 ### Current state
 
-The historical stack proves that the four implementations can coexist, but the
-current source branches have advanced. The local API/Web candidates include the
-current feature heads; the Deploy branch neither pins those heads nor contains
-all current remote Deploy work. The combined ticket therefore cannot be marked
-complete yet.
+The historical stack proves that the four implementations can coexist, and the
+published API/Web candidates preserve focused evidence for their exact 26
+August SHAs. Current release/feature branches have advanced. Local unpublished
+Deploy head `32c7abbf5551d172970c31acea9522ec4da29b08` documents gitlinks introduced
+at `c4c0d9a5` for the two prior tested candidates on merged Deploy `11.0.x`, closing the prior-candidate reproducibility gap but
+not the publication, refreshed-composition, full-suite or end-to-end gates.
+The combined ticket therefore cannot be marked complete yet.
 
 ### Release blockers
 
-1. Publish reviewable API and Web candidates or recreate them from immutable
-   remote refs.
-2. Record a merge/superseded/rejected decision for every in-scope open PR head.
-3. Run the focused and full suites against the exact candidates.
-4. Update and publish the Deploy lock so its gitlinks, manifest and images use
-   those exact accepted SHAs.
+1. Refresh API/Web candidates from the audited current bases and record how the
+   later merged/open work is included, superseded or deferred.
+2. Disposition remaining in-scope open Web #72/#103 work and preserve the
+   changes-requested state rather than assuming acceptance.
+3. Run the focused and full suites against the refreshed exact candidates.
+4. Publish and review the Deploy lock (or refresh it), verify its gitlinks from
+   a fresh recursive clone and record the exact accepted SHAs.
 5. Run Compose configuration, build, migration/population and composed-stack
    verification from a fresh clone.
 6. Complete manual student/convenor acceptance for CPD, task-level PPI, email
    and real background Web Push, including a non-hanging previous-unit CPD
-   request and an eligible privacy-safe PPI fixture.
+   request and an eligible privacy-safe PPI fixture. Build the required
+   traceability matrix for all 85 recorded feedback responses; no complete
+   matrix was located in this audit.
 7. Triage/remediate the exact-image critical/high scan findings, rebuild and
    rescan, then attach the accepted scan, SBOM, provenance and signature
    evidence for the immutable production digests. A source test pass is not an
@@ -562,7 +579,7 @@ complete yet.
    client-support owners; record go/no-go and rollback inputs outside Git.
 
 The detailed production responsibilities and evidence exclusions are in the
-[Deploy handover](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/blob/7410f1963aa2fdd9ecd7fbe76843b0705c6d74cb/HANDOVER.md).
+[merged Deploy handover](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/blob/5351009df475c4a3d4f788110b0197ce64b3d3f4/HANDOVER.md).
 
 ## Exact commands to rerun
 
@@ -702,31 +719,31 @@ include authentication tokens, private keys or real student data.
 ### `MN-MVP01`
 
 ```text
-BLOCKED — The unified mobile/Web Push implementation, PWA flows, permission states and privacy-safe lock-screen documentation are present. Fresh API push coverage passes 72 runs/295 assertions and Web notification/push coverage passes seven files/148 tests. The browser permission-denied state rendered, but no real background push receipt was proven. The exact API/Web candidates are published for review. Next: disposition API PR #74, finish full validation, then record HTTPS browser/device receipt, safe lock-screen text, click-through and expired-subscription cleanup. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — The unified mobile/Web Push implementation, PWA flows, permission states and privacy-safe lock-screen documentation are present. Fresh API push coverage passes 72 runs/295 assertions and Web notification/push coverage passes seven files/148 tests. The browser permission-denied state rendered, but no real background push receipt was proven. API #74 was merged after the frozen candidate. Next: refresh the candidate, finish full validation, then record HTTPS browser/device receipt, safe lock-screen text, click-through and expired-subscription cleanup. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```
 
 ### `EN-MVP01`
 
 ```text
-BLOCKED — In-app notifications, Sidekiq email delivery, preferences, event docs and Mailpit integration exist. Fresh focused API email coverage passes 77 runs/428 assertions, fresh Web coverage passes seven files/148 tests, and a historical synthetic email reached Mailpit successfully. The exact API/Web candidates are published for review. Full suites were not run, and there is no complete current event/recipient/preference/retry/rendering matrix. Next: disposition open notification PRs, complete the matrix and finish full/API-to-Mailpit checks. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — In-app notifications, Sidekiq email delivery, preferences, event docs and Mailpit integration exist. Fresh focused API email coverage passes 77 runs/428 assertions, fresh Web coverage passes seven files/148 tests, and a historical synthetic email reached Mailpit successfully. Later notification PRs were merged after the frozen candidates. Full suites were not run, and there is no complete current event/recipient/preference/retry/rendering matrix. Next: refresh the candidate, complete the matrix and finish full/API-to-Mailpit checks. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```
 
 ### `CPD-MVP01`
 
 ```text
-BLOCKED — The cross-project dashboard, role-safe API, toolbar/filter/sort and recommendation work are implemented. Fresh focused Web tests pass 55 with one todo at published candidate 832d5e47; Web lint/type-check and the focused API task-prioritisation test (17 runs, 80 assertions) also pass. Browser smoke passed active-unit loading, filters and mobile-width rendering, but the previous-unit API request hung. Both production-build attempts on the Web parent were OS-killed (reduced-worker retry exit 137), full suites are incomplete, open CPD PR heads require disposition, and no auditable CPD-Q05 or CPD-D02 completion evidence was located. Next: fix/verify previous-unit loading, obtain a resource-sufficient production-build result and full validation, complete or explicitly defer Q05/D02, and record privacy-safe role acceptance. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — The cross-project dashboard, role-safe API, toolbar/filter/sort and recommendation work are implemented. Fresh focused Web tests pass 55 with one todo at frozen candidate 832d5e47; Web lint/type-check and the focused API task-prioritisation test (17 runs, 80 assertions) also pass. Browser smoke passed active-unit loading, filters and mobile-width rendering, but the previous-unit API request hung. Web #59/#60/#61 were merged; #72 remains review-required and #103 changes-requested. Both production-build attempts were OS-killed (retry exit 137), full suites are incomplete, and no auditable CPD-Q05 or CPD-D02 completion evidence was located. Next: refresh the candidate, fix/verify previous-unit loading, obtain a resource-sufficient build/full validation, complete or explicitly defer Q05/D02, and record privacy-safe role acceptance. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```
 
 ### `PPI-MVP01`
 
 ```text
-BLOCKED — The task-level PPI uses an authorised live endpoint with privacy-safe suppression. Fresh API core/preference coverage passes 103 runs and 5,608 assertions, and focused Web coverage passes seven files/93 tests. Browser smoke showed only the safe unavailable state. The unit-summary and burndown remain demo/mock-backed; passing their mock-state tests is not live API evidence, and no PPI-Q02 or live unit-summary API evidence was located. Next: disposition Web PR #77 and open PPI heads, complete full-suite plus eligible/suppressed synthetic-cohort manual acceptance, and keep Q02/live unit-summary work open or explicitly deferred. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — The task-level PPI uses an authorised live endpoint with privacy-safe suppression. Fresh API core/preference coverage passes 103 runs and 5,608 assertions, and focused Web coverage passes seven files/93 tests. Browser smoke showed only the safe unavailable state. Web #77 was merged after the frozen candidate. The unit-summary and burndown remain demo/mock-backed; passing their mock-state tests is not live API evidence, and no PPI-Q02 or live unit-summary API evidence was located. Next: refresh the candidate, complete full-suite plus eligible/suppressed synthetic-cohort manual acceptance, and keep Q02/live unit-summary work open or explicitly deferred. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```
 
 ### `ON-MVP01`
 
 ```text
-BLOCKED — A historical combined CPD/PPI/EN/MN stack is evidenced, and newer clean API/Web integration candidates include the current feature heads. The exact candidates are published but unapproved; full suites were not run, composed-stack acceptance is incomplete, multiple open PR heads need explicit disposition, and the Deploy lock does not pin the current candidates. Exact candidate-image scans are not clean: API has 35 critical/577 high instances and Web has 33 critical/394 high instances, requiring applicability review, remediation or named risk acceptance and rescan. Next: finish PR disposition and fresh validation, update Deploy gitlinks/manifest, run composed/manual acceptance including real Web Push, resolve the image scan gate, attach SBOM/provenance/signature evidence, and obtain named-owner go/no-go. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — A historical combined CPD/PPI/EN/MN stack is evidenced, and frozen published API/Web candidates retain focused passes for their exact SHAs. Previously named umbrella/follow-up PRs were merged; current release/feature heads moved afterward. Local unpublished prior-candidate Deploy head 32c7abb records the exact tested API/Web gitlinks, but it is not the final lock and has not been published or fresh-clone/composed-stack validated. Full suites, real Web Push, previous-unit CPD, eligible live PPI and the 85-response traceability matrix remain incomplete. Exact candidate-image scans are not clean: API has 35 critical/577 high instances and Web has 33 critical/394 high instances. Next: refresh/publish/review the composition, run full/composed/manual acceptance, resolve and rescan image findings, attach SBOM/provenance/signature evidence, and obtain authorised go/no-go. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```
 
 ## Evidence capture checklist

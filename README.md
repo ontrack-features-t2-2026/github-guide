@@ -45,7 +45,7 @@ The current operational feature targets are:
 - Email and Mobile Notifications: the shared canonical `feature/notifications` in Web and API; and
 - Peer Progress Indicator: `feature/peer-progress-indicator` in Web and API.
 
-The First-Time Tutorial Web branch is still a suggestion awaiting written lead approval. It has no API or Deploy branch. Do not create one from the planning name alone.
+The First-Time Tutorial plan uses `feature/student-onboarding` from the exact base recorded in the branch register when implementation begins. Requester approval was recorded on 27 August and named-leader confirmation was waived by the requester; the branch has not yet been created. It has no API or Deploy branch.
 
 All exact links are listed in [branch-register.md](branch-register.md).
 
@@ -117,6 +117,7 @@ Local test accounts use the password `password`.
 - [Cross-objective coordination, shared surfaces and integration order](cross-objective-coordination.md)
 - [First-Time Tutorial objective, branch plan and evidence index](first-time-tutorial-objective.md)
 - [Four-stream MVP evidence and handover index](docs/evidence/ontrack-mvp-2026-08-26/README.md)
+- [27 August documentation, tutorial and MVP closure status](closure-status-20260827.md)
 - [Student setup and contribution steps](student-setup.md)
 - [OnTrack T2 2026 setup walkthrough](media/setup/ontrack-t2-2026-setup-walkthrough.mp4)
 - [Setup walkthrough transcript](media/setup/ontrack-t2-2026-setup-walkthrough-transcript.md)
