@@ -22,7 +22,65 @@ The dataset was synthetic. The only local state difference was enabling Demo
 mode at `/demo-controls`. The initial one-unit quiet view was the intentional
 `DemoDataMaskInterceptor` baseline, not a product defect.
 
-## As-built text wireframe
+## Mobile-layout follow-up — Web PR #120
+
+The exact `16c22c9` validation below remains the historical as-built baseline.
+It is not rewritten as if it tested later code. Web
+[#120](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/120),
+head
+[`275a9a5ecd7ac3fa63043eaf10fec8f323824024`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/275a9a5ecd7ac3fa63043eaf10fec8f323824024),
+subsequently implements the requested stacked phone layout while preserving the
+existing desktop presentation at 640 px and wider.
+
+```text
+Phone layout below 640 px
+┌────────────────────────────────────────┐
+│ Unit scope [Active units            ▾] │
+│ Search all units and tasks [_________] │
+│ More filters                 [3 active] │
+├────────────────────────────────────────┤
+│ COS10001 · Foundations        Active  ▾│
+│ 12 matching tasks · Due within 24 hrs  │
+├────────────────────────────────────────┤
+│ COS20007 · Active Learning    Active  ▾│
+│ 8 matching tasks · Next due 2 Sep      │
+└────────────────────────────────────────┘
+
+Expanded project
+┌────────────────────────────────────────┐
+│ COS10001 · Foundations        Active  ▴│
+│ Open COS10001 dashboard                │
+│ Search tasks [_______________________] │
+│ [Sort] [Filter]                        │
+│ Grade completion summary, when active  │
+│ Existing task rows and detail controls │
+└────────────────────────────────────────┘
+```
+
+The follow-up uses one task DOM tree rather than separate desktop and mobile
+copies. Native disclosure buttons have 48 px minimum targets, visible keyboard
+focus, `aria-expanded` and unique `aria-controls` relationships. Collapsed
+project summaries expose unit name/state, matching task count and the nearest
+actionable deadline or warning. Secondary status, grade and date controls stay
+available through a labelled `More filters` disclosure whose active count keeps
+hidden criteria discoverable.
+
+Validation recorded on PR #120:
+
+| Follow-up surface | Evidence | Result |
+| --- | --- | --- |
+| Focused component behavior | Cross-dashboard and list-item tests cover filter disclosure state/count, single-open project behavior, task/deadline summaries, controlled-region IDs, reused task rows and keyboard task links. | 73/73 passing. |
+| Full Web regression | Full hosted component suite at the PR head. | 612 passing, one existing todo. |
+| Static checks | Repository lint, Angular typecheck and production build. | Pass. |
+| Computed layout | Production build checked in Chrome at 320 px closed/open, 390 px open, 640 px after resize from an open mobile disclosure, and 1024 px. | Pass; document width did not exceed viewport. |
+| Desktop preservation | Media rule restores the fixed 512 px horizontal unit-card strip, 64 px side padding, visible secondary filters and independent task scrolling at 640 px and wider. | Pass. |
+| Review boundary | Source/test heuristic review found no blocking accessibility regression. | Pass for implemented semantics; no claim of independent assistive-technology certification. |
+
+PR #120 remains subject to its configured GitHub review and required checks.
+This follow-up is implementation evidence, not a false claim that the earlier
+live run exercised code that did not yet exist.
+
+## Original `16c22c9` as-built text wireframe
 
 ```text
 Cross-Project Dashboard
@@ -53,7 +111,7 @@ and
 [`dashboard-list-item.component.html`](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/16c22c992c821e16981c8f8cb2601f0a61f73007/src/app/dashboard/list-item/dashboard-list-item.component.html).
 It describes the implemented interface rather than a proposed redesign.
 
-## Validation matrix
+## Original `16c22c9` validation matrix
 
 | Surface | Exact evidence | Result |
 | --- | --- | --- |
@@ -83,7 +141,7 @@ Responsive provenance is retained in the exact merged
 and the committed [desktop](screenshots/cpd-dashboard-desktop.png) and
 [390×844](screenshots/cpd-dashboard-narrow-viewport.png) privacy-safe captures.
 
-## Decision and honest limitations
+## Original baseline decision and honest limitations
 
 `CPD-Q05` is **validated as an as-built usability/accessibility evidence
 record**. The requester, acting as owner, waived an inactive-peer subjective
@@ -94,13 +152,15 @@ The result does not claim:
 
 - independent participant research, accessibility certification or assistive-
   technology conformance testing;
-- a fully stacked phone layout—the documented narrow view intentionally uses
-  horizontal scrolling;
+- a fully stacked phone layout at the `16c22c9` baseline—the documented narrow
+  view used horizontal scrolling and was superseded by the PR #120 follow-up;
 - production-data validation; or
 - protected GitHub approval for open Web documentation
   [#108](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/108).
 
-No CPD product-fix PR was required for the final live result. Web #108 is
-technically green but remains open and review-required. CPD can therefore be
-handed over as **validated / handed over — protected publication review
-pending**.
+No CPD product-fix PR was required for the original live result. Web #108 is
+technically green but remains open and review-required. The later product
+follow-up is Web #120 and is also review-required. CPD can therefore be handed
+over as **validated / handed over — protected publication review pending**,
+with the phone improvement tracked separately and without rewriting historical
+evidence.
