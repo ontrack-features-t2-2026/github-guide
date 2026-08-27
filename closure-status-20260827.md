@@ -81,17 +81,17 @@ required Notifications → CAL-F01 → THM-F02 → TUT-W04 order, CI staging,
 conditional Deploy rules and weekly review row. Previously named umbrella and
 follow-up PRs are recorded as merged; current open review items remain visible.
 
-Local Deploy head `32c7abbf5551d172970c31acea9522ec4da29b08`
-records the prior 26 August candidate only. Its gitlink commit `c4c0d9a5` pins
-API `75d7337f` and Web `832d5e47`; it is not the final lock and must be
-superseded. The exact local final candidates are now API
-`f25945d228c1a3b321412047dcfe304e43cb7658` and Web
-`5255c271778643cd6f972e3bce1d83ecdb2e292d`; neither candidate nor a successor
-Deploy lock has been published.
+Deploy commits `c4c0d9a5` and `32c7abbf` preserve the prior 26 August lock as
+historical provenance: API `75d7337f` and Web `832d5e47`. Published Deploy
+branch `chore/ontrack-mvp-lock-20260827` now ends at
+`ff4aad5efaedff58a48f0840dfe2431196b116bd` and pins the published final
+validation candidates API `f25945d228c1a3b321412047dcfe304e43cb7658` and Web
+`5255c271778643cd6f972e3bce1d83ecdb2e292d`. The API, Web, Deploy and Guide
+closure branches are published, but no pull requests are open.
 
 Requester approval recorded 27 Aug 2026; named-leader confirmation waived by
 requester. This is not attributed to any uncontacted individual and does not
-convert the prior-candidate lock into release approval.
+convert the final validation lock into release approval.
 
 **Repository result: complete / publication follow-up.** Publish the Guide,
 post the effective deadline and add the merged link to Planner/team chat.
@@ -100,7 +100,7 @@ Downstream implementation still assigns the relevant Unassigned roles.
 Planner-ready text:
 
 ```text
-MISC-X01 REPOSITORY COMPLETE / PUBLICATION FOLLOW-UP — Current heads/PRs, owners and Unassigned roles, shared surfaces, integration order, CI/Deploy rules and weekly review are documented. Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester. Final local candidates are API f25945d and Web 5255c27; prior-candidate Deploy head 32c7abb is reproducibility evidence only and still needs a successor lock. Next: publish the Guide, post the effective deadline and add Planner/team-chat links; downstream work assigns relevant roles.
+MISC-X01 REPOSITORY COMPLETE / PUBLICATION FOLLOW-UP — Current heads/PRs, owners and Unassigned roles, shared surfaces, integration order, CI/Deploy rules and weekly review are documented. Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester. Published final candidates API f25945d and Web 5255c27 are pinned by published Deploy lock ff4aad5; c4c0d9a/32c7abb remain prior-candidate provenance. Fresh recursive clone plus Compose render/contract validation passed. No PR, running composed-stack or release approval is claimed. Next: open/review the required PRs, post the effective deadline and add Planner/team-chat links; downstream work assigns relevant roles.
 ```
 
 ## Docker Image Vulnerability Scan
@@ -130,9 +130,13 @@ DOCKER IMAGE VULNERABILITY SCAN — FINAL REFRESH PARTIAL. Historical Trivy evid
 
 The [central MVP evidence index](docs/evidence/ontrack-mvp-2026-08-26/README.md)
 preserves focused passes for the exact candidates and records the 27 August
-branch/PR refresh. Final local candidates are fixed at API `f25945d` and Web
-`5255c271`, but the prior-candidate Deploy lock has not yet been superseded or
-published.
+branch/PR refresh. Published final candidates API `f25945d` and Web `5255c271`
+are pinned by published Deploy lock `ff4aad5`. The earlier `c4c0d9a`/`32c7abb`
+lock remains historical provenance. A fresh recursive clone resolved API
+`f25945d`, Web `5255c271`, LTI `ec0df42` and nested JPlag viewer `4132c30`; the
+merged Compose configuration rendered and `compose_contract_test.py` passed.
+No pull request, running composed-stack validation or release approval is
+claimed.
 
 Requester approval recorded 27 Aug 2026; named-leader confirmation waived by
 requester for this factual blocked/handover disposition. This is not a product
@@ -148,12 +152,12 @@ full-suite attempt is not a pass: Docker-dependent LaTeX/JPlag/helper-service
 tests could not access `/var/run/docker.sock`; hosted CI is pending and is the
 authoritative gate. Composed-stack and browser previous/all CPD acceptance,
 eligible live PPI, current Sidekiq-to-Mailpit email, real background Web Push,
-the complete 85-response matrix, the final API image scan, the successor Deploy
-lock and an authorised release decision remain open. The final Web image still
-has unresolved Critical/High findings and is not production-safe.
+the complete 85-response matrix, the final API image scan, running-stack
+verification and an authorised release decision remain open. The final Web
+image still has unresolved Critical/High findings and is not production-safe.
 
 Planner-ready text:
 
 ```text
-ON-MVP01 BLOCKED / HANDED OVER — Final local candidates are API f25945d and Web 5255c27. Web lint/type-check, focused packs, the 103-file full suite (605 pass/1 todo) and Node 22 production build pass; API previous/all CPD performance/regression and deterministic 8-way test partition checks pass. API hosted full-suite CI is pending; the local attempt is not green because Docker-dependent helper tests could not access the sandboxed socket. Still required: successor Deploy lock publication/fresh-clone verification, composed-stack and browser previous/all CPD acceptance, eligible live PPI, current Sidekiq→Mailpit email, real background Web Push, all-85 feedback traceability, final API image scan and image remediation/risk decisions, plus authorised go/no-go/rollback records. Central evidence: docs/evidence/ontrack-mvp-2026-08-26/README.md
+ON-MVP01 BLOCKED / HANDED OVER — Published final candidates API f25945d and Web 5255c27 are pinned by published Deploy lock ff4aad5; prior commits c4c0d9a/32c7abb remain historical provenance. Web lint/type-check, focused packs, the 103-file full suite (605 pass/1 todo) and Node 22 production build pass; API previous/all CPD performance/regression and deterministic 8-way test partition checks pass. Fresh recursive clone plus Compose render/contract validation passed; this is not a running-stack pass. No PR is open. API hosted full-suite CI is pending; the local attempt is not green because Docker-dependent helper tests could not access the sandboxed socket. Still required: running composed-stack verification, browser previous/all CPD acceptance, eligible live PPI, current Sidekiq→Mailpit email, real background Web Push, all-85 feedback traceability, final API image scan and image remediation/risk decisions, plus authorised go/no-go/rollback records. Central evidence: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```
