@@ -4,10 +4,12 @@ Evidence snapshot time: **2026-08-26T11:28:50Z** (`2026-08-26 21:28:50 AEST`)
 
 Live branch and pull-request disposition was refreshed at
 **2026-08-27T09:49:05Z**. A later closure pass selected and validated exact
-published final candidates API `f25945d228c1a3b321412047dcfe304e43cb7658` and Web
+published final candidates API `6c74dbbc07e219d60ca49e1b5ea42f737e5ef225` and Web
 `5255c271778643cd6f972e3bce1d83ecdb2e292d`. Published Deploy lock
-`ff4aad5efaedff58a48f0840dfe2431196b116bd` pins that pair. No pull requests
-are open.
+`4851fc1b0ac64f9eabdd7a6c057e417b644d42cd` pins that pair; predecessor lock
+`ff4aad5efaedff58a48f0840dfe2431196b116bd` remains immutable provenance. No
+pull requests are open for the final closure branches.
+
 Results remain attached to the exact SHA named beside them; 26 August evidence
 is retained as historical and is not silently promoted to either final SHA.
 
@@ -33,11 +35,11 @@ release approval.
 
 | Ticket | Implementation status | Exact-SHA evidence and remaining gate | Handover decision |
 | --- | --- | --- | --- |
-| `MN-MVP01` | Unified in-app/mobile Web Push implementation exists. | Final Web `5255c271` passes 177 focused notification/push/profile tests and the 605-test full suite. API push passed 72 runs/295 assertions only at historical `75d7337f`; exact final API hosted CI is pending. The browser permission-denied state rendered, but no real background Web Push receipt was proven. | **Blocked** |
+| `MN-MVP01` | Unified in-app/mobile Web Push implementation exists. | Final Web `5255c271` passes 177 focused notification/push/profile tests and the 605-test full suite. API push passed 72 runs/295 assertions only at historical `75d7337f`; final API `6c74dbbc` has focused security-contract fixes but no hosted full-suite pass. The browser permission-denied state rendered, but no real background Web Push receipt was proven. | **Blocked** |
 | `EN-MVP01` | In-app notification, queued email, preferences, event documentation and Mailpit integration exist. | Final Web `5255c271` passes 177 focused notification tests and the full suite. API email passed 77 runs/428 assertions only at historical `75d7337f`; no current composed Sidekiq-to-Mailpit result or complete event/recipient matrix exists. | **Blocked** |
-| `CPD-MVP01` | Cross-project dashboard, filtering/sorting, recommendations and role-safe API work exist. | Final Web `5255c271` passes 98 CPD tests/one todo, the full suite and a 99.911-second Node 22 production build. Final API `f25945d` reduces the previous/all path from 453 to 38 SQL queries and 4.218 to 2.390 seconds; its focused regression passes one run/six assertions. Composed browser previous/all acceptance and auditable `CPD-Q05`/`CPD-D02` evidence remain absent. | **Blocked** |
-| `PPI-MVP01` | The task-level widget calls an authorised API and has privacy-safe suppression. | Final Web `5255c271` passes 109 focused PPI tests and the full suite. API core/preference passed 103 runs/5,608 assertions only at historical `75d7337f`; exact final API hosted CI is pending. Unit-summary/burndown remain demo/mock-backed; no `PPI-Q02`, eligible live browser result or live unit-summary API evidence exists. | **Blocked** |
-| `ON-MVP01` | Published final API/Web candidates and an exact published Deploy lock now exist in addition to the historical combined stack. | Web final validation is green; API CPD regression/shard integrity are green, while hosted API full-suite CI and final API image scan are pending. Fresh recursive clone plus Compose render/contract validation passed, but no running composed-stack/manual acceptance, complete traceability, security disposition or release decision exists. | **Blocked** |
+| `CPD-MVP01` | Cross-project dashboard, filtering/sorting, recommendations and role-safe API work exist. | Final Web `5255c271` passes 98 CPD tests/one todo, the full suite and a 99.911-second Node 22 production build. Final API `6c74dbbc` retains the previous/all reduction from 453 to 38 SQL queries and 4.218 to 2.390 seconds; its focused regression passes one run/six assertions. Composed browser previous/all acceptance and auditable `CPD-Q05`/`CPD-D02` evidence remain absent. | **Blocked** |
+| `PPI-MVP01` | The task-level widget calls an authorised API and has privacy-safe suppression. | Final Web `5255c271` passes 109 focused PPI tests and the full suite. API core/preference passed 103 runs/5,608 assertions only at historical `75d7337f`; final API `6c74dbbc` still lacks hosted full-suite evidence. Unit-summary/burndown remain demo/mock-backed; no `PPI-Q02`, eligible live browser result or live unit-summary API evidence exists. | **Blocked** |
+| `ON-MVP01` | Published final API/Web candidates and an exact published Deploy lock now exist in addition to the historical combined stack. | Web final validation is green; API CPD regression/shard integrity and exact-image scan are complete, while hosted API full-suite CI is pending. A fresh recursive clone of Deploy `4851fc1` plus Compose render/contract validation passed, but no running composed-stack/manual acceptance, complete traceability, security disposition or release decision exists. | **Blocked** |
 
 `Blocked` means the remaining gate is named below. It does not mean the existing
 implementation should be discarded.
@@ -119,7 +121,7 @@ Branch links are mutable; the linked commit is the immutable audit reference.
 | Deploy [`fix/production-ready-compose-20260824`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/fix/production-ready-compose-20260824) | [`a9f468285c0fcc6bcde83f9902897b9df5604b1b`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/a9f468285c0fcc6bcde83f9902897b9df5604b1b) |
 | Deploy `integration/deploy-all-features-foundation-20260824` | Remote branch deleted after merge; immutable historical commit [`7410f196`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/7410f1963aa2fdd9ecd7fbe76843b0705c6d74cb). |
 | Deploy historical prior lock | Gitlinks introduced at [`c4c0d9a5`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/c4c0d9a5fc37b9346206ed2963fbfa3684c2a696) pin API `75d7337f` / Web `832d5e47`; [`32c7abbf`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/32c7abbf5551d172970c31acea9522ec4da29b08) records that pair as prior candidates. Historical provenance only. |
-| Deploy final lock [`chore/ontrack-mvp-lock-20260827`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/chore/ontrack-mvp-lock-20260827) | Published [`ff4aad5efaedff58a48f0840dfe2431196b116bd`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/ff4aad5efaedff58a48f0840dfe2431196b116bd); pins API `f25945d` / Web `5255c271`. No PR or release approval. |
+| Deploy final lock [`chore/ontrack-mvp-lock-20260827`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/chore/ontrack-mvp-lock-20260827) | Published [`4851fc1b0ac64f9eabdd7a6c057e417b644d42cd`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/4851fc1b0ac64f9eabdd7a6c057e417b644d42cd); pins API `6c74dbbc` / Web `5255c271`. Predecessor lock [`ff4aad5`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/ff4aad5efaedff58a48f0840dfe2431196b116bd) pinned API `f25945d` / the same Web revision and remains historical. No PR or release approval. |
 | Guide historical evidence branch | [`c07f60f29c05364e1d643047456033c1bfae2b0d`](https://github.com/ontrack-features-t2-2026/github-guide/commit/c07f60f29c05364e1d643047456033c1bfae2b0d). |
 | Guide closure branch [`docs/closure-tutorial-mvp-deploy-20260827`](https://github.com/ontrack-features-t2-2026/github-guide/tree/docs/closure-tutorial-mvp-deploy-20260827) | Published through [`4bb0bc99c9a88b1b6995899cfa4aa33a22b58809`](https://github.com/ontrack-features-t2-2026/github-guide/commit/4bb0bc99c9a88b1b6995899cfa4aa33a22b58809); no PR open. |
 
@@ -150,8 +152,8 @@ unapproved; no pull requests or hosted API run links exist yet.
 | Repository | Published branch | Exact SHA | Current evidence state |
 | --- | --- | --- | --- |
 | Web | [`closure/web-ontrack-mvp-20260827`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/closure/web-ontrack-mvp-20260827) | [`5255c271778643cd6f972e3bce1d83ecdb2e292d`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/5255c271778643cd6f972e3bce1d83ecdb2e292d) | Type-check and zero-warning lint pass. CPD: 8 files/98 passed/one todo. PPI: 9 files/109 passed. Notifications/push/profile: 11 files/177 passed. Full suite: 103 files/605 passed/one todo. Node 22 optimised production build: pass in 99.911 seconds. No PR open. |
-| API | [`closure/api-ontrack-mvp-20260827`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/closure/api-ontrack-mvp-20260827) | [`f25945d228c1a3b321412047dcfe304e43cb7658`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/f25945d228c1a3b321412047dcfe304e43cb7658) | Retains the parent `d920892` previous/all CPD result: 453 to 38 SQL queries and 4.218 to 2.390 seconds; focused regression passes one run/six assertions. Eight deterministic CI shards assign all 129 discovered tests exactly once, with 15–17 files and 4,278–4,284 lines per shard; sharding unit coverage passes five runs/29 assertions. RuboCop, actionlint and syntax checks pass. Hosted full-suite CI and final image scan are pending; no PR open. |
-| Deploy | [`chore/ontrack-mvp-lock-20260827`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/chore/ontrack-mvp-lock-20260827) | [`ff4aad5efaedff58a48f0840dfe2431196b116bd`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/ff4aad5efaedff58a48f0840dfe2431196b116bd) | Pins API `f25945d` / Web `5255c271`. Fresh recursive clone resolved those gitlinks plus LTI `ec0df42` and nested JPlag viewer `4132c30`; merged all-features Compose rendered with the cloned component paths and `compose_contract_test.py` passed. No PR, running composed-stack acceptance or release approval. |
+| API | [`closure/api-ontrack-mvp-20260827`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/closure/api-ontrack-mvp-20260827) | [`6c74dbbc07e219d60ca49e1b5ea42f737e5ef225`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/6c74dbbc07e219d60ca49e1b5ea42f737e5ef225) | Retains the parent `d920892` previous/all CPD result: 453 to 38 SQL queries and 4.218 to 2.390 seconds; focused regression passes one run/six assertions. Eight deterministic CI shards assign all 129 discovered tests exactly once, with 15–17 files and 4,278–4,284 lines per shard; sharding unit coverage passes five runs/29 assertions. Protected push-settings and portfolio-isolation regressions pass 7 runs/42 assertions and 1 run/16 assertions respectively. RuboCop, actionlint and syntax checks pass. Exact development-image scan is complete; hosted full-suite CI remains pending and no PR is open. |
+| Deploy | [`chore/ontrack-mvp-lock-20260827`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/chore/ontrack-mvp-lock-20260827) | [`4851fc1b0ac64f9eabdd7a6c057e417b644d42cd`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/4851fc1b0ac64f9eabdd7a6c057e417b644d42cd) | Pins API `6c74dbbc` / Web `5255c271`. A fresh recursive clone resolved those gitlinks plus LTI `ec0df42` and nested JPlag viewer `4132c30`; merged all-features Compose rendered with the cloned component paths and `compose_contract_test.py` passed. Predecessor lock `ff4aad5` remains historical. No PR, running composed-stack acceptance or release approval. |
 
 The Web validation pack records Node `v22.22.3`, npm `10.9.8`, and logs named
 `typecheck-final.log`, `lint-final.log`, `cpd-focused-tests-final.log`,
@@ -161,13 +163,18 @@ build ran outside the macOS sandbox because that sandbox blocked the Angular
 persistent compiler cache's System V IPC; the successful source/build result is
 the unsandboxed transcript, not either retained sandbox failure.
 
-The API local full-suite attempt is **not a pass**. Its observed errors are in
-LaTeX/JPlag/helper-service tests whose Docker-backed helpers could not access
-`/var/run/docker.sock` in the sandbox. Hosted CI is the authoritative complete
+The API local unsharded run completed **1,145 runs, 16,245 assertions and zero
+skips in 2,785.068 seconds**, but it is **not a suite pass**. All 26 non-green
+tests were classified: 22 exercise Docker-backed PDF, portfolio, JPlag or TII
+helpers without an accessible `/var/run/docker.sock`; two inspect
+`.github/workflows` paths absent from the standalone image mount; and two were
+stale notification assertions fixed by the final `c95f553` and `6c74dbbc`
+test-only commits. Their focused regressions pass, but the complete unsharded
+run was not repeated at `6c74dbbc`. Hosted CI is the authoritative complete
 gate and has not run; publishing the branch without opening a PR or recording a
-workflow dispatch does not create a pass. Do not turn that harness
-limitation into a product pass or failure, and do not promote the focused
-notification/PPI runs from API `75d7337f` to `f25945d`.
+workflow dispatch does not create a pass. Do not turn the classified harness
+limitations into a product pass or failure, and do not promote historical
+notification/PPI focused results from API `75d7337f` to the exact final SHA.
 
 The exact final Web development image at
 `sha256:ae5a90c845bbfec38e2dc1f84c5447fe4b301c189ea9c7f19d910c6b2c7bf23c`
@@ -175,8 +182,19 @@ was scanned with Trivy `0.74.0`: 33 Critical/395 High/1,592 Medium/1,197
 Low/163 Unknown instances. All 16 language findings are bundled npm
 dependencies in the inherited Node image; the project `npm ci` layer produced
 no Trivy result and `npm audit` reported zero. This image is not
-production-safe. The exact final API image scan is **pending**; the historical
-`75d7337f` scan must not be reused as final evidence.
+production-safe. The exact final API `6c74dbbc` development image was scanned
+at local OCI index/tag digest
+`sha256:f938fef1889985574c3dd22290ea41db3df7431474710ac3c125fe62ccdbb312`
+and Linux/ARM64 manifest
+`sha256:d351d2c79a55eac1f59024c67709124702b6451c35d2efab340e6699bb0fddc5`.
+Trivy `0.74.0` reported 4,072 instances across 2,312 unique IDs: 35 Critical,
+579 High, 1,843 Medium, 1,368 Low and 247 Unknown. It reports 49 fixable High
+instances across 12 unique IDs, no fixable Critical instance, and 63 fixable
+instances overall. The image runs as root and includes Docker, Redis, build
+tools, source and development/test gems; it is not production-safe. The final
+raw API pack is retained in the local closure evidence and still needs
+publication. Neither development-image scan is remediation, risk acceptance
+or release approval.
 
 Reference integration order:
 
@@ -350,7 +368,7 @@ Current open review items returned by the audit are:
 | Web | [#103](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/103) | Changes requested; CPD project-card work. |
 | Web | [#104](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/104) | Changes requested; shared layout standardisation. |
 | Guide | [#1](https://github.com/ontrack-features-t2-2026/github-guide/pull/1) | Review required; documentation CI policy. |
-| Deploy | None | Published final lock `ff4aad5` pins API `f25945d` / Web `5255c271`; no pull request is open. Prior `c4c0d9a` / `32c7abb` commits remain historical provenance. |
+| Deploy | None | Published final lock `4851fc1` pins API `6c74dbbc` / Web `5255c271`; no pull request is open. Predecessor lock `ff4aad5` and prior `c4c0d9a` / `32c7abb` commits remain historical provenance. |
 
 The integration owner must open/review the final candidate and lock pull
 requests and attach hosted checks. Ancestry alone neither proves feature absence nor
@@ -415,7 +433,7 @@ candidate before treating their commands or contracts as current.
 - Final Web `5255c271` notification/push/profile coverage is green: 11 files,
   177 tests, exit 0; the 103-file full Web suite also passes.
 - API push coverage is green only at historical candidate `75d7337f`: 72 runs,
-  295 assertions, zero failures/errors/skips. Exact final API `f25945d` hosted
+  295 assertions, zero failures/errors/skips. Exact final API `6c74dbbc` hosted
   validation is pending.
 - The historical environment proved configuration and service-worker
   prerequisites only.
@@ -515,7 +533,7 @@ as historical evidence only.
 - Final Web `5255c271` lint and type-check pass; CPD/shared coverage passes 98
   tests with one todo, the full suite passes 605 tests with one todo, and the
   Node 22 production build passes in 99.911 seconds.
-- Final API `f25945d` retains the previous/all query repair measured at parent
+- Final API `6c74dbbc` retains the previous/all query repair measured at parent
   `d9208922948fc49674dfacc9aab15b75057a8c81`: 453 to 38 SQL queries and 4.218
   to 2.390 seconds. The focused
   regression passes one run/six assertions.
@@ -565,7 +583,7 @@ recommendations, empty/error states and cross-unit authorisation.
 
 - API endpoint/model/service/job and preference coverage is green only at
   historical `75d7337f`: 103 runs, 5,608 assertions, zero
-  failures/errors/skips. Exact final API `f25945d` hosted validation is pending.
+  failures/errors/skips. Exact final API `6c74dbbc` hosted validation is pending.
 - Final Web `5255c271` focused PPI coverage passes nine files/109 tests; its
   103-file full suite also passes.
 - Browser smoke reached only the privacy-safe unavailable state; no eligible
@@ -603,16 +621,18 @@ open/deferred until real evidence exists.
 
 The historical stack proves that the four implementations once coexisted.
 Published final candidates are API
-`f25945d228c1a3b321412047dcfe304e43cb7658` and Web
+`6c74dbbc07e219d60ca49e1b5ea42f737e5ef225` and Web
 `5255c271778643cd6f972e3bce1d83ecdb2e292d`. Published Deploy lock
-`ff4aad5efaedff58a48f0840dfe2431196b116bd` pins that exact pair. A fresh
+`4851fc1b0ac64f9eabdd7a6c057e417b644d42cd` pins that exact pair. A fresh
 recursive clone checked out those gitlinks, LTI `ec0df42` and nested JPlag
 viewer `4132c30`; the merged Compose configuration rendered with the cloned
 paths and `compose_contract_test.py` passed. Web final validation is green
 through its full suite and production build; API CPD regression and
-deterministic shard integrity checks are green, but hosted full-suite CI is
-pending. Prior Deploy commits `c4c0d9a5` / `32c7abbf` remain historical. No
-running composed-stack acceptance or release approval is inferred.
+deterministic shard integrity checks and exact development-image scan are
+complete, but hosted full-suite CI is pending. The classified local unsharded
+run is not a suite pass. Predecessor lock `ff4aad5` and prior Deploy commits
+`c4c0d9a5` / `32c7abbf` remain historical. No running composed-stack
+acceptance or release approval is inferred.
 
 ### Release blockers
 
@@ -620,10 +640,11 @@ running composed-stack acceptance or release approval is inferred.
    branches and attach hosted checks without treating publication as approval.
 2. Disposition remaining in-scope open Web #72/#103 work and preserve the
    changes-requested state rather than assuming acceptance.
-3. Complete authoritative hosted API full-suite CI and final API exact-image
-   scanning. The Web focused/full/build lanes are already green at `5255c271`.
+3. Complete authoritative hosted API full-suite CI. The final API exact-image
+   scan is complete but its findings still require the disposition in item 7;
+   the Web focused/full/build lanes are already green at `5255c271`.
 4. Retain the successful fresh-clone/config-contract evidence for Deploy
-   `ff4aad5`; do not promote it to a running-stack pass.
+   `4851fc1`; do not promote it to a running-stack pass.
 5. Run Compose build, migration/population and a running composed-stack
    verification from the fresh clone.
 6. Complete manual student/convenor acceptance for CPD, task-level PPI, email
@@ -796,31 +817,31 @@ include authentication tokens, private keys or real student data.
 ### `MN-MVP01`
 
 ```text
-BLOCKED — The unified mobile/Web Push implementation, PWA flows, permission states and privacy-safe lock-screen documentation are present. Published final Web 5255c27 passes 177 focused notification/push/profile tests and the 605-test full suite. API push coverage passes 72 runs/295 assertions only at historical 75d7337f; hosted validation at published final API f25945d is pending. The browser permission-denied state rendered, but no real background push receipt was proven. Next: open/review final PRs, complete hosted API validation, then record HTTPS browser/device receipt, safe lock-screen text, click-through and expired-subscription cleanup. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — The unified mobile/Web Push implementation, PWA flows, permission states and privacy-safe lock-screen documentation are present. Published final Web 5255c27 passes 177 focused notification/push/profile tests and the 605-test full suite. API push coverage passes 72 runs/295 assertions only at historical 75d7337f; final API 6c74dbb fixes and passes the protected anonymous settings contract (7 runs/42 assertions), but hosted full-suite validation is pending. The browser permission-denied state rendered, but no real background push receipt was proven. Next: open/review final PRs, complete hosted API validation, then record HTTPS browser/device receipt, safe lock-screen text, click-through and expired-subscription cleanup. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```
 
 ### `EN-MVP01`
 
 ```text
-BLOCKED — In-app notifications, Sidekiq email delivery, preferences, event docs and Mailpit integration exist. Published final Web 5255c27 passes 177 focused notification tests and the 605-test full suite. API email coverage passes 77 runs/428 assertions only at historical 75d7337f; hosted validation at published final API f25945d is pending. A historical synthetic email reached Mailpit, but no current composed Sidekiq-to-Mailpit result or complete event/recipient/preference/retry/rendering matrix exists. Next: open/review final PRs, complete hosted API validation and the matrix, then rerun the composed email path. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — In-app notifications, Sidekiq email delivery, preferences, event docs and Mailpit integration exist. Published final Web 5255c27 passes 177 focused notification tests and the 605-test full suite. API email coverage passes 77 runs/428 assertions only at historical 75d7337f; final API 6c74dbb passes the portfolio receipt isolation regression (1 run/16 assertions), but hosted full-suite validation is pending. A historical synthetic email reached Mailpit, but no current composed Sidekiq-to-Mailpit result or complete event/recipient/preference/retry/rendering matrix exists. Next: open/review final PRs, complete hosted API validation and the matrix, then rerun the composed email path. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```
 
 ### `CPD-MVP01`
 
 ```text
-BLOCKED — The cross-project dashboard, role-safe API, toolbar/filter/sort and recommendation work are implemented. Published final Web 5255c27 passes lint/type-check, 98 CPD tests/1 todo, the 103-file full suite (605 pass/1 todo) and a 99.911-second Node 22 production build. Published final API f25945d reduces the audited previous/all request from 453 to 38 SQL queries and 4.218 to 2.390 seconds; its regression passes 1 run/6 assertions. Historical browser smoke passed active-unit/filter/mobile rendering but the previous-unit request hung; composed browser acceptance was not rerun. No auditable CPD-Q05 or CPD-D02 completion evidence was located. Next: open/review final PRs, complete hosted API CI, rerun privacy-safe composed acceptance, and complete or explicitly defer Q05/D02. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — The cross-project dashboard, role-safe API, toolbar/filter/sort and recommendation work are implemented. Published final Web 5255c27 passes lint/type-check, 98 CPD tests/1 todo, the 103-file full suite (605 pass/1 todo) and a 99.911-second Node 22 production build. Published final API 6c74dbb retains the audited previous/all reduction from 453 to 38 SQL queries and 4.218 to 2.390 seconds; its regression passes 1 run/6 assertions. Historical browser smoke passed active-unit/filter/mobile rendering but the previous-unit request hung; composed browser acceptance was not rerun. No auditable CPD-Q05 or CPD-D02 completion evidence was located. Next: open/review final PRs, complete hosted API CI, rerun privacy-safe composed acceptance, and complete or explicitly defer Q05/D02. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```
 
 ### `PPI-MVP01`
 
 ```text
-BLOCKED — The task-level PPI uses an authorised live endpoint with privacy-safe suppression. Published final Web 5255c27 passes 109 focused PPI tests and the 605-test full suite. API core/preference coverage passes 103 runs/5,608 assertions only at historical 75d7337f; hosted validation at published final API f25945d is pending. Browser smoke showed only the safe unavailable state. Unit-summary and burndown remain demo/mock-backed; no PPI-Q02, eligible live browser result or live unit-summary API evidence was located. Next: open/review final PRs, complete hosted API CI plus eligible/suppressed synthetic-cohort acceptance, and keep Q02/live unit-summary work open or explicitly deferred. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — The task-level PPI uses an authorised live endpoint with privacy-safe suppression. Published final Web 5255c27 passes 109 focused PPI tests and the 605-test full suite. API core/preference coverage passes 103 runs/5,608 assertions only at historical 75d7337f; hosted validation at published final API 6c74dbb is pending. Browser smoke showed only the safe unavailable state. Unit-summary and burndown remain demo/mock-backed; no PPI-Q02, eligible live browser result or live unit-summary API evidence was located. Next: open/review final PRs, complete hosted API CI plus eligible/suppressed synthetic-cohort acceptance, and keep Q02/live unit-summary work open or explicitly deferred. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```
 
 ### `ON-MVP01`
 
 ```text
-BLOCKED — Published final candidates API f25945d and Web 5255c27 are pinned by published Deploy lock ff4aad5; c4c0d9a/32c7abb remain historical provenance. Fresh recursive clone and Compose render/contract validation pass, but no PR or running-stack pass exists. Web lint/type-check, focused packs, the 103-file full suite (605 pass/1 todo) and Node 22 production build pass. API previous/all CPD regression and deterministic 8-way shard integrity pass, but hosted full-suite CI and the final API image scan are pending. Composed/manual previous/all CPD, eligible PPI, current email, real Web Push and the 85-response matrix remain incomplete. Final Web image scan is not clean (33 critical/395 high) and is not production-safe. Next: open/review final PRs, complete hosted/running-stack/manual gates, resolve scan findings and obtain authorised go/no-go. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — Published final candidates API 6c74dbb and Web 5255c27 are pinned by published Deploy lock 4851fc1; ff4aad5 and c4c0d9a/32c7abb remain historical provenance. A fresh recursive clone of 4851fc1 and Compose render/contract validation pass, but no PR or running-stack pass exists. Web lint/type-check, focused packs, the 103-file full suite (605 pass/1 todo) and Node 22 production build pass. API previous/all CPD regression, deterministic 8-way shard integrity and exact-image scanning are complete, but hosted full-suite CI is pending. The local API run completed 1,145 runs/16,245 assertions/0 skips in 2,785.068s but is not a suite pass: 22 socket-helper tests, two workflow-mount tests and two stale expectations (now fixed) were classified. Composed/manual previous/all CPD, eligible PPI, current email, real Web Push and the 85-response matrix remain incomplete. Final development-image scans are not clean (API 35 critical/579 high; Web 33 critical/395 high) and neither image is production-safe. Next: open/review final PRs, complete hosted/running-stack/manual gates, resolve scan findings and obtain authorised go/no-go. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```
 
 ## Evidence capture checklist
