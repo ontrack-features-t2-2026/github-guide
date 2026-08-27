@@ -3,15 +3,25 @@
 Evidence snapshot time: **2026-08-26T11:28:50Z** (`2026-08-26 21:28:50 AEST`)
 
 Live branch and pull-request disposition was refreshed at
-**2026-08-27T09:49:05Z**. A later closure pass selected and validated exact
-published final candidates API `6c74dbbc07e219d60ca49e1b5ea42f737e5ef225` and Web
-`5255c271778643cd6f972e3bce1d83ecdb2e292d`. Published Deploy lock
-`4851fc1b0ac64f9eabdd7a6c057e417b644d42cd` pins that pair; predecessor lock
-`ff4aad5efaedff58a48f0840dfe2431196b116bd` remains immutable provenance. No
-pull requests are open for the final closure branches.
+**2026-08-27T12:15:29Z**. A later closure pass selected and validated the exact
+composed pair API `6c74dbbc07e219d60ca49e1b5ea42f737e5ef225` and Web
+`5255c271778643cd6f972e3bce1d83ecdb2e292d`, pinned by Deploy lock
+`4851fc1b0ac64f9eabdd7a6c057e417b644d42cd`. API
+[#77](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/77) merged
+that API head into `11.0.x` as `6b45974e`. Web
+[#105](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/105) merged
+an updated, green head `16c22c992c821e16981c8f8cb2601f0a61f73007` into
+`11.0.x` as `4034e7d1`. Deploy
+[#26](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/26) merged
+lock `ad463dc8b1b8005f0774819fe4d506da3c281947`, pinning API `6c74dbbc`
+and Web `16c22c99`, into `11.0.x` as `6c61802e`. Guide
+[#2](https://github.com/ontrack-features-t2-2026/github-guide/pull/2) is the
+publication PR to `main`. The composed evidence remains attached to Web
+`5255c271` / Deploy `4851fc1`; it is not silently promoted to the later Web and
+Deploy heads.
 
 Results remain attached to the exact SHA named beside them; 26 August evidence
-is retained as historical and is not silently promoted to either final SHA.
+is retained as historical and is not silently promoted to any later SHA.
 
 Tickets covered:
 
@@ -35,11 +45,11 @@ release approval.
 
 | Ticket | Implementation status | Exact-SHA evidence and remaining gate | Handover decision |
 | --- | --- | --- | --- |
-| `MN-MVP01` | Unified in-app/mobile Web Push implementation exists. | Final Web `5255c271` passes 177 focused notification/push/profile tests and the 605-test full suite. API push passed 72 runs/295 assertions only at historical `75d7337f`; final API `6c74dbbc` has focused security-contract fixes but no hosted full-suite pass. The browser permission-denied state rendered, but no real background Web Push receipt was proven. | **Blocked** |
-| `EN-MVP01` | In-app notification, queued email, preferences, event documentation and Mailpit integration exist. | Final Web `5255c271` passes 177 focused notification tests and the full suite. API email passed 77 runs/428 assertions only at historical `75d7337f`; no current composed Sidekiq-to-Mailpit result or complete event/recipient matrix exists. | **Blocked** |
-| `CPD-MVP01` | Cross-project dashboard, filtering/sorting, recommendations and role-safe API work exist. | Final Web `5255c271` passes 98 CPD tests/one todo, the full suite and a 99.911-second Node 22 production build. Final API `6c74dbbc` retains the previous/all reduction from 453 to 38 SQL queries and 4.218 to 2.390 seconds; its focused regression passes one run/six assertions. Composed browser previous/all acceptance and auditable `CPD-Q05`/`CPD-D02` evidence remain absent. | **Blocked** |
-| `PPI-MVP01` | The task-level widget calls an authorised API and has privacy-safe suppression. | Final Web `5255c271` passes 109 focused PPI tests and the full suite. API core/preference passed 103 runs/5,608 assertions only at historical `75d7337f`; final API `6c74dbbc` still lacks hosted full-suite evidence. Unit-summary/burndown remain demo/mock-backed; no `PPI-Q02`, eligible live browser result or live unit-summary API evidence exists. | **Blocked** |
-| `ON-MVP01` | Published final API/Web candidates and an exact published Deploy lock now exist in addition to the historical combined stack. | Web final validation is green; API CPD regression/shard integrity and exact-image scan are complete, while hosted API full-suite CI is pending. A fresh recursive clone of Deploy `4851fc1` plus Compose render/contract validation passed, but no running composed-stack/manual acceptance, complete traceability, security disposition or release decision exists. | **Blocked** |
+| `MN-MVP01` | Unified in-app/mobile Web Push implementation exists. | Merged Web `16c22c99` passes its exact-head 177-test Notifications matrix and hosted 607-test suite; merged API head `6c74dbbc` passes the authoritative hosted eight-shard suite. On the exact composed pair, real Chrome permission was enabled, a subscription was created (count 1), and push jobs succeeded with a safe local route. No OS banner or click-through was observed. Sign-out removed the subscription (count 0). | **Blocked** |
+| `EN-MVP01` | In-app notification, queued email, preferences, event documentation and Mailpit integration exist. | Merged Web `16c22c99` and API `6c74dbbc` are green. On the exact composed pair (`6c74dbbc` / `5255c271`), four real MVP events traversed `NotificationService` → Sidekiq → Action Mailer → Mailpit; privacy, preference-suppression and retry-boundary probes passed. This is local MVP handover evidence, not production SMTP/bounce acceptance. | **Validated / handed over** |
+| `CPD-MVP01` | Cross-project dashboard, filtering/sorting, recommendations and role-safe API work exist. | Merged Web `16c22c99` passes its exact-head 98-test CPD matrix plus hosted 607-test suite. Merged API head `6c74dbbc` is green and retains the previous/all reduction from 453 to 38 SQL queries and 4.218 to 2.390 seconds. Exact-composed-pair browser acceptance passed Active, Previous and All scopes plus combined filtering. `CPD-Q05`/`CPD-D02` remain absent. | **Blocked** |
+| `PPI-MVP01` | The task-level widget calls an authorised API and has privacy-safe suppression. | Merged Web `16c22c99` passes its exact-head 109-test PPI matrix and API `6c74dbbc` is green. Exact-composed-pair browser acceptance displayed 60% submitted, 10% complete and the privacy-rounded breakdown for an eligible cohort; the feature-disabled route exposed no values. Unit-summary/burndown remain demo/mock-backed, and `PPI-Q02` plus live unit-summary API evidence remain absent. | **Blocked** |
+| `ON-MVP01` | API, Web and Deploy closure PRs are merged; Guide PR #2 publishes the evidence. | API #77, Web #105 and Deploy #26 merged into `11.0.x`; final lock `ad463dc8` pins API `6c74dbbc` / Web `16c22c99`. Hosted checks, the merged-Web focused matrices and final-lock Compose contract are green; the slowest API test step was 5:25, missing the five-minute target by 25 seconds. The earlier exact running stack passed CPD, eligible/disabled PPI and four-event email acceptance. That runtime pass is not claimed for the later Web/Deploy heads. Observable push receipt/click, the 85-response matrix, `CPD-Q05`/`CPD-D02`, `PPI-Q02`/live unit summary, security disposition and release decision remain open. | **Blocked** |
 
 `Blocked` means the remaining gate is named below. It does not mean the existing
 implementation should be discarded.
@@ -50,8 +60,9 @@ implementation should be discarded.
 - **Historical pass**: a result was recorded against the exact older revision
   named in this file.
 - **Fresh pass**: a command was rerun against the current candidate and its
-  exact SHA and output were recorded. A fresh final Web full-suite pass exists;
-  no fresh final API full-suite pass is claimed.
+  exact SHA and output were recorded. Composed Web `5255c271`, merged Web
+  `16c22c99`, and the authoritative API `6c74dbbc` eight-shard hosted suite plus
+  exact-union rollup are green; their different evidence scopes remain named.
 - **Blocked**: a required acceptance check, publication step, PR disposition or
   owner action remains.
 - **Deferred**: explicitly outside this MVP, with an owner and follow-up rather
@@ -59,6 +70,9 @@ implementation should be discarded.
 
 ## Committed evidence artifacts
 
+- Final 27 August handover:
+  [hosted/composed closure validation](live-closure-validation-20260827.md),
+  including the exact composed-versus-merged revision boundary.
 - Browser captures: [CPD desktop](screenshots/cpd-dashboard-desktop.png),
   [CPD 390×844 viewport](screenshots/cpd-dashboard-narrow-viewport.png), and
   [PPI privacy-safe unavailable state](screenshots/ppi-unavailable-safe-state.png).
@@ -77,17 +91,19 @@ implementation should be discarded.
   [push notifications](test-logs/api-push-notifications-focused-tests.log), and
   [Zeitwerk](test-logs/api-zeitwerk-check.log).
 - Security evidence: [Docker image vulnerability scan report](../../../evidence/docker-image-vulnerability-scan-20260826.md),
-  including links and checksums for the committed compressed raw reports.
+  including links and checksums for the historical compressed raw reports and
+  the [compact exact-API pack](../../../evidence/raw/docker-image-vulnerability-scan-20260827/api-6c74dbb/).
 
-The committed artifacts above preserve the 26 August candidate evidence. The
-27 August final-candidate transcripts are held in the local validation packs
-named in the final-candidate section below and still need publication; this
-index does not imply that local files are available from GitHub.
+The committed artifacts above preserve the historical and selected 27 August
+evidence. Larger local validation packs named below remain local; the factual
+results required for handover are captured in the committed closure report.
 
-## Current remote branch snapshot
+## Remote branch snapshot at 2026-08-27T09:49:05Z
 
-The following SHAs were read directly from GitHub during the 27 August refresh.
-Branch links are mutable; the linked commit is the immutable audit reference.
+The following SHAs were read directly from GitHub during the initial 27 August
+refresh. They are a timestamped audit snapshot, not the post-merge branch
+heads; the later closure revisions are recorded below. Branch links are
+mutable, while each linked commit is an immutable audit reference.
 
 ### API
 
@@ -113,7 +129,7 @@ Branch links are mutable; the linked commit is the immutable audit reference.
 | [`feature/mobile-notifications`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/feature/mobile-notifications) | [`20d1f380c20fa6f6601eea1db6814a77401f391c`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/20d1f380c20fa6f6601eea1db6814a77401f391c) |
 | `integration/11.0.x-all-features-20260824` | [`231a8127d530ceec07f01a6e4d15e30a914bd167`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/231a8127d530ceec07f01a6e4d15e30a914bd167) — remote branch deleted after merge |
 
-### Deploy and guide
+### Deploy and guide, including later closure refresh
 
 | Repository / branch | SHA or state |
 | --- | --- |
@@ -121,9 +137,10 @@ Branch links are mutable; the linked commit is the immutable audit reference.
 | Deploy [`fix/production-ready-compose-20260824`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/fix/production-ready-compose-20260824) | [`a9f468285c0fcc6bcde83f9902897b9df5604b1b`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/a9f468285c0fcc6bcde83f9902897b9df5604b1b) |
 | Deploy `integration/deploy-all-features-foundation-20260824` | Remote branch deleted after merge; immutable historical commit [`7410f196`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/7410f1963aa2fdd9ecd7fbe76843b0705c6d74cb). |
 | Deploy historical prior lock | Gitlinks introduced at [`c4c0d9a5`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/c4c0d9a5fc37b9346206ed2963fbfa3684c2a696) pin API `75d7337f` / Web `832d5e47`; [`32c7abbf`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/32c7abbf5551d172970c31acea9522ec4da29b08) records that pair as prior candidates. Historical provenance only. |
-| Deploy final lock [`chore/ontrack-mvp-lock-20260827`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/chore/ontrack-mvp-lock-20260827) | Published [`4851fc1b0ac64f9eabdd7a6c057e417b644d42cd`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/4851fc1b0ac64f9eabdd7a6c057e417b644d42cd); pins API `6c74dbbc` / Web `5255c271`. Predecessor lock [`ff4aad5`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/ff4aad5efaedff58a48f0840dfe2431196b116bd) pinned API `f25945d` / the same Web revision and remains historical. No PR or release approval. |
+| Deploy composed-evidence lock [`4851fc1b`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/4851fc1b0ac64f9eabdd7a6c057e417b644d42cd) | Pins API `6c74dbbc` / Web `5255c271`; this is the exact lock used for fresh-clone, Compose-contract and running-stack acceptance. |
+| Deploy merged final lock [`ad463dc8`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/ad463dc8b1b8005f0774819fe4d506da3c281947) | Pins API `6c74dbbc` / Web `16c22c99`; [PR #26](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/26) merged into `11.0.x` as [`6c61802e`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/6c61802e). Exact-source Compose render and contract pass; the earlier running-stack pass is not promoted to this updated lock. No release approval. |
 | Guide historical evidence branch | [`c07f60f29c05364e1d643047456033c1bfae2b0d`](https://github.com/ontrack-features-t2-2026/github-guide/commit/c07f60f29c05364e1d643047456033c1bfae2b0d). |
-| Guide closure branch [`docs/closure-tutorial-mvp-deploy-20260827`](https://github.com/ontrack-features-t2-2026/github-guide/tree/docs/closure-tutorial-mvp-deploy-20260827) | Published through [`4bb0bc99c9a88b1b6995899cfa4aa33a22b58809`](https://github.com/ontrack-features-t2-2026/github-guide/commit/4bb0bc99c9a88b1b6995899cfa4aa33a22b58809); no PR open. |
+| Guide closure branch [`docs/closure-tutorial-mvp-deploy-20260827`](https://github.com/ontrack-features-t2-2026/github-guide/tree/docs/closure-tutorial-mvp-deploy-20260827) | Publication [PR #2](https://github.com/ontrack-features-t2-2026/github-guide/pull/2) targets `main` and carries this evidence refresh. |
 
 In both API and Web, the specialised email and mobile branch heads are
 ancestors of the current unified `feature/notifications` head. The unified
@@ -143,17 +160,22 @@ approval.
 | Web | [`integration/ontrack-mvp-validation-20260826`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/integration/ontrack-mvp-validation-20260826) | [`832d5e47`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/832d5e47eb26ff2e21ce25e576daa13b3054cc3e) | Frozen 26 August composition. The parent passed diff/ancestry and type-check; final candidate lint passed. Focused CPD passes 55 tests with one todo, PPI passes 93, and notifications/push passes 148. Both production-build attempts on the parent were OS-killed; the build is not green, the full suite was not run, and later branch movement is not automatically covered. |
 | Deploy | Historical prior-candidate commits | [`32c7abbf`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/32c7abbf5551d172970c31acea9522ec4da29b08) | Gitlinks introduced at [`c4c0d9a5`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/c4c0d9a5fc37b9346206ed2963fbfa3684c2a696) pin API `75d7337f` plus Web `832d5e47`; `32c7abbf` labels that exact pair as prior candidates. Historical provenance only. |
 
-## Published final candidates and lock — 2026-08-27
+## Published composed candidates and merged closure revisions — 2026-08-27
 
-These are the exact final **validation** candidates selected during the closure
-pass. The API, Web, Deploy and Guide closure branches are published and remain
-unapproved; no pull requests or hosted API run links exist yet.
+These are the exact composed **validation** revisions and the later merged
+closure revisions. API, Web and Deploy closure PRs are merged into `11.0.x`;
+Guide PR #2 is the publication PR to `main`. A result is attached only to the exact
+revision tested, and no release approval is inferred. See the
+[final closure validation record](live-closure-validation-20260827.md).
 
 | Repository | Published branch | Exact SHA | Current evidence state |
 | --- | --- | --- | --- |
-| Web | [`closure/web-ontrack-mvp-20260827`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/closure/web-ontrack-mvp-20260827) | [`5255c271778643cd6f972e3bce1d83ecdb2e292d`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/5255c271778643cd6f972e3bce1d83ecdb2e292d) | Type-check and zero-warning lint pass. CPD: 8 files/98 passed/one todo. PPI: 9 files/109 passed. Notifications/push/profile: 11 files/177 passed. Full suite: 103 files/605 passed/one todo. Node 22 optimised production build: pass in 99.911 seconds. No PR open. |
-| API | [`closure/api-ontrack-mvp-20260827`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/closure/api-ontrack-mvp-20260827) | [`6c74dbbc07e219d60ca49e1b5ea42f737e5ef225`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/6c74dbbc07e219d60ca49e1b5ea42f737e5ef225) | Retains the parent `d920892` previous/all CPD result: 453 to 38 SQL queries and 4.218 to 2.390 seconds; focused regression passes one run/six assertions. Eight deterministic CI shards assign all 129 discovered tests exactly once, with 15–17 files and 4,278–4,284 lines per shard; sharding unit coverage passes five runs/29 assertions. Protected push-settings and portfolio-isolation regressions pass 7 runs/42 assertions and 1 run/16 assertions respectively. RuboCop, actionlint and syntax checks pass. Exact development-image scan is complete; hosted full-suite CI remains pending and no PR is open. |
-| Deploy | [`chore/ontrack-mvp-lock-20260827`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/chore/ontrack-mvp-lock-20260827) | [`4851fc1b0ac64f9eabdd7a6c057e417b644d42cd`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/4851fc1b0ac64f9eabdd7a6c057e417b644d42cd) | Pins API `6c74dbbc` / Web `5255c271`. A fresh recursive clone resolved those gitlinks plus LTI `ec0df42` and nested JPlag viewer `4132c30`; merged all-features Compose rendered with the cloned component paths and `compose_contract_test.py` passed. Predecessor lock `ff4aad5` remains historical. No PR, running composed-stack acceptance or release approval. |
+| Web composed candidate | [`closure/web-ontrack-mvp-20260827`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/closure/web-ontrack-mvp-20260827) | [`5255c271778643cd6f972e3bce1d83ecdb2e292d`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/5255c271778643cd6f972e3bce1d83ecdb2e292d) | Type-check and zero-warning lint pass. CPD: 8 files/98 passed/one todo. PPI: 9 files/109 passed. Notifications/push/profile: 11 files/177 passed. Full suite: 103 files/605 passed/one todo. Node 22 optimised production build: pass in 99.911 seconds. This is the Web revision used in the exact running stack and scanned image. |
+| Web merged closure head | `closure/web-ontrack-mvp-20260827` | [`16c22c992c821e16981c8f8cb2601f0a61f73007`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/16c22c992c821e16981c8f8cb2601f0a61f73007) | [PR #105](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/105) merged to `11.0.x` as [`4034e7d1`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/4034e7d1). Hosted validation is green: 104 files/607 tests. Exact-head focused validation also passes: layout 4 tests, CPD 98/one todo, PPI 109 and Notifications 177; formatting and conflict checks pass. The resolution retained `f-page-container` plus selector accessibility/disabled behaviour. The composed browser and Web-image scan evidence at `5255c271` is not promoted to this head. |
+| API merged closure head | [`closure/api-ontrack-mvp-20260827`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/closure/api-ontrack-mvp-20260827) | [`6c74dbbc07e219d60ca49e1b5ea42f737e5ef225`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/6c74dbbc07e219d60ca49e1b5ea42f737e5ef225) | Retains the parent `d920892` previous/all CPD result: 453 to 38 SQL queries and 4.218 to 2.390 seconds. Hosted [PR #77](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/77) validation is green across all eight helper-backed shards and the exact-union rollup; the slowest test step was 5:25, 25 seconds over target. PR #77 merged to `11.0.x` as [`6b45974e`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/6b45974e). |
+| Deploy composed lock | `chore/ontrack-mvp-lock-20260827` | [`4851fc1b0ac64f9eabdd7a6c057e417b644d42cd`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/4851fc1b0ac64f9eabdd7a6c057e417b644d42cd) | Pins API `6c74dbbc` / Web `5255c271`. Fresh recursive clone, Compose render/contract and exact running-stack acceptance passed at this lock. |
+| Deploy merged closure lock | `chore/ontrack-mvp-lock-20260827` | [`ad463dc8b1b8005f0774819fe4d506da3c281947`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/ad463dc8b1b8005f0774819fe4d506da3c281947) | Pins API `6c74dbbc` / Web `16c22c99`; [PR #26](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/26) merged to `11.0.x` as [`6c61802e`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/6c61802e). Exact-source Compose render and `compose_contract_test.py` pass. The earlier running-stack pass is not promoted to this lock. |
+| Guide closure head | [`docs/closure-tutorial-mvp-deploy-20260827`](https://github.com/ontrack-features-t2-2026/github-guide/tree/docs/closure-tutorial-mvp-deploy-20260827) | This evidence refresh | [PR #2](https://github.com/ontrack-features-t2-2026/github-guide/pull/2) publishes it to `main`. |
 
 The Web validation pack records Node `v22.22.3`, npm `10.9.8`, and logs named
 `typecheck-final.log`, `lint-final.log`, `cpd-focused-tests-final.log`,
@@ -170,19 +192,44 @@ helpers without an accessible `/var/run/docker.sock`; two inspect
 `.github/workflows` paths absent from the standalone image mount; and two were
 stale notification assertions fixed by the final `c95f553` and `6c74dbbc`
 test-only commits. Their focused regressions pass, but the complete unsharded
-run was not repeated at `6c74dbbc`. Hosted CI is the authoritative complete
-gate and has not run; publishing the branch without opening a PR or recording a
-workflow dispatch does not create a pass. Do not turn the classified harness
-limitations into a product pass or failure, and do not promote historical
-notification/PPI focused results from API `75d7337f` to the exact final SHA.
+run was not repeated at `6c74dbbc`. The authoritative hosted run attached to
+API PR #77 is now green across all eight helper-backed shards and the stable
+exact-union/duplicate rollup; RuboCop, CodeQL, API/worker images, TeX helper and
+JPlag helper checks also pass, and PR #77 is merged. The eight test steps were
+4:31, 4:58, 5:25, 4:40, 2:50,
+2:31, 3:19 and 3:39. The maximum improved from the earlier 8:31 to 5:25 but
+misses the requested five-minute ceiling by 25 seconds. Do not turn the
+classified local harness limitations into a product failure or imply that the
+performance target was met.
 
-The exact final Web development image at
+The current local evidence packs are retained at:
+
+- API hosted/local/sharding summary:
+  `/Users/ryan/Downloads/test-codex/outputs/ontrack-mvp-closure-20260827/api/API-CLOSURE-VALIDATION-SUMMARY.md`;
+- API test logs and shard manifests:
+  `/Users/ryan/Downloads/test-codex/outputs/ontrack-mvp-closure-20260827/api/test-logs/`
+  and
+  `/Users/ryan/Downloads/test-codex/outputs/ontrack-mvp-closure-20260827/api/sharding/`;
+- exact-stack validation:
+  `/Users/ryan/Downloads/test-codex/outputs/ontrack-mvp-closure-20260827/live/README.md`,
+  `/Users/ryan/Downloads/test-codex/outputs/ontrack-mvp-closure-20260827/live/browser-acceptance.md`
+  and
+  `/Users/ryan/Downloads/test-codex/outputs/ontrack-mvp-closure-20260827/live/live-validation.json`;
+- Deploy final-lock verification:
+  `/Users/ryan/Downloads/test-codex/outputs/ontrack-mvp-closure-20260827/deploy/final-lock-verification.txt`.
+
+These absolute local paths are handover references, not GitHub links. Publish
+only privacy-safe artifacts selected for long-term evidence.
+
+The exact composed-candidate Web development image at
 `sha256:ae5a90c845bbfec38e2dc1f84c5447fe4b301c189ea9c7f19d910c6b2c7bf23c`
 was scanned with Trivy `0.74.0`: 33 Critical/395 High/1,592 Medium/1,197
 Low/163 Unknown instances. All 16 language findings are bundled npm
 dependencies in the inherited Node image; the project `npm ci` layer produced
 no Trivy result and `npm audit` reported zero. This image is not
-production-safe. The exact final API `6c74dbbc` development image was scanned
+production-safe. This scan is attached to Web `5255c271`; updated merged Web
+head `16c22c99` has green source tests but no image scan in this evidence pack.
+The exact final API `6c74dbbc` development image was scanned
 at local OCI index/tag digest
 `sha256:f938fef1889985574c3dd22290ea41db3df7431474710ac3c125fe62ccdbb312`
 and Linux/ARM64 manifest
@@ -191,9 +238,9 @@ Trivy `0.74.0` reported 4,072 instances across 2,312 unique IDs: 35 Critical,
 579 High, 1,843 Medium, 1,368 Low and 247 Unknown. It reports 49 fixable High
 instances across 12 unique IDs, no fixable Critical instance, and 63 fixable
 instances overall. The image runs as root and includes Docker, Redis, build
-tools, source and development/test gems; it is not production-safe. The final
-raw API pack is retained in the local closure evidence and still needs
-publication. Neither development-image scan is remediation, risk acceptance
+tools, source and development/test gems; it is not production-safe. The
+[selected compact raw API pack and checksum manifest](../../../evidence/raw/docker-image-vulnerability-scan-20260827/api-6c74dbb/)
+are published. Neither development-image scan is remediation, risk acceptance
 or release approval.
 
 Reference integration order:
@@ -351,6 +398,32 @@ This was a local synthetic-data smoke, not production acceptance:
 - browser/OS version, full role matrix and production-like external services
   still need to be recorded with final manual acceptance.
 
+### Final exact-stack acceptance — 2026-08-27
+
+The historical failures above are retained as provenance and are superseded
+only for the exact surfaces rerun against API `6c74dbbc` and Web `5255c271`:
+
+- the running stack returned healthy API/Web services and CPD browser
+  acceptance passed Active, Previous and All unit scopes, combined global
+  search/status filtering, and clear/reset behaviour;
+- eligible task-level PPI displayed 60% submitted, 10% complete and its
+  privacy-rounded breakdown; the feature-disabled route exposed no percentage,
+  distribution or cohort values;
+- tutor comment, task-status change, extension-granted and extension-denied
+  events flowed through `NotificationService`, Sidekiq and Action Mailer to
+  four Mailpit messages for the intended synthetic student. Sensitive markers
+  were absent, preference suppression held counts constant, and the bounded
+  retry probe was removed with queues/retry/scheduled sets empty; and
+- real Chrome site permission and Chrome OS notifications were enabled. A
+  browser subscription was created (API count 1), and server push jobs
+  succeeded with a safe local route. No OS banner or click-through was
+  observed, so background receipt/click did not pass. Sign-out removed the
+  subscription and restored the API count to zero.
+
+This exact-stack pass does not fill the separate `CPD-Q05`/`CPD-D02`,
+`PPI-Q02`/live unit-summary, 85-response feedback-traceability, production SMTP
+or production-device push evidence gaps.
+
 ## Pull-request disposition refresh — 2026-08-27
 
 The previously named candidate/release and follow-up pull requests have a live
@@ -359,20 +432,25 @@ disposition: API #43, #56, #57, #60, #62, #63, #65 and #74; Web #59, #60,
 and #25 were merged. This closes the prior PR-disposition question but does not
 promote tests from candidates `75d7337f`/`832d5e47` to the later merge heads.
 
-Current open review items returned by the audit are:
+Current closure PRs plus the earlier open review items returned by the audit
+are:
 
 | Repository | Open item | State / relevance |
 | --- | --- | --- |
+| API | [#77](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/77) | Merged exact head `6c74dbbc` into `11.0.x` as `6b45974e`; eight hosted shards, rollup and all other checks are green. |
 | API | [#72](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/72) | Changes requested; Safe Upload security work, outside the four-MVP candidate but on a shared API surface. |
-| Web | [#72](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/72) | Review required; CPD sizing/documentation. |
+| Web | [#105](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/105) | Merged updated green head `16c22c99` into `11.0.x` as `4034e7d1`; 104 files/607 tests pass. Exact-stack acceptance remains attached to predecessor `5255c271`. |
+| Web | [#72](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/72) | Merged and approved; CPD sizing/documentation. |
 | Web | [#103](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/103) | Changes requested; CPD project-card work. |
-| Web | [#104](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/104) | Changes requested; shared layout standardisation. |
+| Web | [#104](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/104) | Approved and merged after the requested fixes; shared layout standardisation. |
 | Guide | [#1](https://github.com/ontrack-features-t2-2026/github-guide/pull/1) | Review required; documentation CI policy. |
-| Deploy | None | Published final lock `4851fc1` pins API `6c74dbbc` / Web `5255c271`; no pull request is open. Predecessor lock `ff4aad5` and prior `c4c0d9a` / `32c7abb` commits remain historical provenance. |
+| Guide | [#2](https://github.com/ontrack-features-t2-2026/github-guide/pull/2) | Publication PR to `main`; publishes tutorial/setup/coordination/MVP evidence. |
+| Deploy | [#26](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/26) | Merged lock `ad463dc8`, pinning API `6c74dbbc` / Web `16c22c99`, into `11.0.x` as `6c61802e`. Exact-stack acceptance remains attached to predecessor lock `4851fc1`. |
 
-The integration owner must open/review the final candidate and lock pull
-requests and attach hosted checks. Ancestry alone neither proves feature absence nor
-acceptance of an equivalent patch.
+API #77, Web #105 and Deploy #26 are merged; Guide #2 is the closure
+publication PR. The receiving owner must retain the exact-SHA
+boundary between composed and later merged evidence. Ancestry alone neither
+proves feature absence nor acceptance of an equivalent patch.
 
 ## Historical evidence retained, not promoted
 
@@ -430,16 +508,21 @@ candidate before treating their commands or contracts as current.
 ### Evidence status and gaps
 
 - Automated service, payload, subscription and permission-state tests exist.
-- Final Web `5255c271` notification/push/profile coverage is green: 11 files,
-  177 tests, exit 0; the 103-file full Web suite also passes.
-- API push coverage is green only at historical candidate `75d7337f`: 72 runs,
-  295 assertions, zero failures/errors/skips. Exact final API `6c74dbbc` hosted
-  validation is pending.
+- Composed Web `5255c271` notification/push/profile coverage is green: 11 files,
+  177 tests, exit 0; the 103-file full Web suite also passes. Updated merged
+  Web head `16c22c99` passes 607 tests/104 files, but the real browser push
+  attempt below remains attached to composed Web `5255c271`.
+- API push coverage at historical candidate `75d7337f` remains useful focused
+  provenance: 72 runs, 295 assertions, zero failures/errors/skips. Exact final
+  API `6c74dbbc` now passes its authoritative hosted eight-shard suite and
+  exact-union rollup.
 - The historical environment proved configuration and service-worker
   prerequisites only.
-- A real browser/device did not receive a background push in the audited run.
-- The current browser smoke rendered the permission-denied state, but that is
-  not a delivery pass.
+- Final browser acceptance enabled real Chrome site permission and the Chrome
+  OS-notification setting, created one API-side subscription and ran successful
+  push jobs carrying a safe local route. No OS banner or click-through was
+  observed, so background receipt/click is not a pass. Sign-out removed the
+  subscription and restored its count from one to zero.
 - API PR [#74](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/74)
   was merged after the historical focused run; neither merge status nor
   inclusion in a later candidate promotes that old result.
@@ -459,11 +542,12 @@ candidate before treating their commands or contracts as current.
 
 ### Next owner and action
 
-Client support plus the privacy/data owner: open/review the final candidate
-pull requests, complete hosted API validation, then perform real HTTPS background-push
-acceptance on every promised browser/device combination. Record browser/OS versions,
-subscription, receipt, safe lock-screen text, click-through and expired
-subscription cleanup without recording private keys or student data.
+Client support plus the privacy/data owner: repeat real HTTPS background-push
+acceptance on every promised browser/device
+combination until an OS/browser notification and safe click-through are
+observable. Retain the proven subscription/sign-out cleanup and record
+browser/OS versions, receipt, safe lock-screen text and expired-subscription
+cleanup without recording private keys or student data.
 
 ## `EN-MVP01` — Email Notifications
 
@@ -482,15 +566,28 @@ subscription cleanup without recording private keys or student data.
 ### Evidence status and gaps
 
 - Do not convert the existence of per-event files into a claim that every
-  event/recipient/preference/retry case has been run on the current head.
-- Final Web `5255c271` notification coverage is green: 11 files, 177 tests,
-  exit 0; its full suite passes 605 tests with one todo. API email coverage is
+  production sender/bounce/provider case has been run on the current head.
+- Composed Web `5255c271` notification coverage is green: 11 files, 177 tests,
+  exit 0; its full suite passes 605 tests with one todo. Updated merged Web
+  head `16c22c99` passes 607 tests/104 files. API email coverage is
   green only at historical `75d7337f`: 77 runs, 428 assertions, zero
-  failures/errors/skips. Exact final API hosted validation remains pending.
-- No complete, current feedback/event matrix was located.
+  failures/errors/skips. Exact final API `6c74dbbc` passes its authoritative
+  hosted eight-shard suite and rollup.
+- On the exact final running stack, four real MVP model events — tutor comment,
+  task-status change, extension granted and extension denied — traversed
+  `NotificationService`, Sidekiq's `mailers` queue, Action Mailer and Mailpit.
+  All four went only to the intended synthetic student and used safe internal
+  routes. Sensitive comment/status/extension-request markers were absent from
+  bodies; preference suppression held notification and Mailpit counts
+  constant; the retry boundary was exercised and cleaned with final
+  queues/retry/scheduled sets empty.
+- This is a current MVP email-path pass and handover result, not production
+  SMTP sender-policy, bounce-monitoring or provider acceptance. It also does
+  not supply the separate 85-response product-feedback traceability matrix.
 - The previously open queued-delivery, group-link, test-isolation and
   task-availability pull requests (#43, #56, #57 and #65) were merged after
-  the historical API run; the final API SHA needs hosted validation.
+  the historical API run; exact final API `6c74dbbc` now has green hosted
+  validation.
 - Production SMTP sender policy, bounce/failure monitoring and duplicate-on-
   retry acceptance belong to the receiving institution.
 
@@ -506,11 +603,11 @@ subscription cleanup without recording private keys or student data.
 
 ### Next owner and action
 
-Messaging owner plus notification feature lead: create a versioned matrix of
-each MVP event × intended recipient × preference on/off × retry/deduplication ×
-HTML/text rendering, link each row to a current automated or manual result,
-run it against the final exact candidate and retain the frozen candidate result
-as historical evidence only.
+Messaging owner plus notification feature lead: retain the current four-event,
+recipient, privacy, preference and retry
+evidence as the MVP handover. The receiving institution still owns production
+SMTP sender policy, provider delivery/bounce monitoring and duplicate-on-retry
+acceptance; Mailpit is not proof of those external surfaces.
 
 ## `CPD-MVP01` — Cross-Project Dashboard
 
@@ -530,21 +627,24 @@ as historical evidence only.
 
 - Historical evidence records 46 focused Web CPD tests and the API privacy
   regression as green at older commits.
-- Final Web `5255c271` lint and type-check pass; CPD/shared coverage passes 98
+- Composed Web `5255c271` lint and type-check pass; CPD/shared coverage passes 98
   tests with one todo, the full suite passes 605 tests with one todo, and the
-  Node 22 production build passes in 99.911 seconds.
+  Node 22 production build passes in 99.911 seconds. Updated merged Web head
+  `16c22c99` passes 607 tests/104 files; the composed browser evidence below
+  remains attached to `5255c271`.
 - Final API `6c74dbbc` retains the previous/all query repair measured at parent
   `d9208922948fc49674dfacc9aab15b75057a8c81`: 453 to 38 SQL queries and 4.218
   to 2.390 seconds. The focused
-  regression passes one run/six assertions.
+  regression passes one run/six assertions, and the exact final SHA passes the
+  authoritative hosted eight-shard suite and rollup.
 - Historical browser smoke passed active-unit loading, filters and mobile-width
-  rendering, but its previous-unit API request hung. The source-side API repair
-  is fresh evidence; composed browser previous/all acceptance at the final pair
-  has not been rerun and remains blocked.
+  rendering, but its previous-unit API request hung. Exact-stack browser
+  acceptance now passes Active, Previous and All unit scopes, combined global
+  search/status filtering, and clear/reset behaviour at API `6c74dbbc` / Web
+  `5255c271`.
 - No auditable completion evidence was located for `CPD-Q05` or `CPD-D02`.
-- Web #59, #60 and #61 were merged. Web #72 remains review-required and Web
-  #103 is changes-requested; neither changes the existing Q05/D02 or manual
-  acceptance gaps.
+- Web #59, #60, #61 and #72 were merged. Web #103 is changes-requested; these
+  dispositions do not close the existing Q05/D02 or manual acceptance gaps.
 - Recommended-order behaviour at the current API/Web heads must be tested
   together; older records describing placeholder ordering must not be used as
   proof of the newer implementation.
@@ -559,12 +659,11 @@ as historical evidence only.
 
 ### Next owner and action
 
-CPD feature lead plus product owner: review/publish the final candidate,
-disposition Web #72/#103, complete hosted API validation, complete `CPD-Q05`
-usability validation and `CPD-D02` evidence or explicitly defer them with
-owners, then capture a
-privacy-safe student-role browser acceptance for filtering, sorting,
-recommendations, empty/error states and cross-unit authorisation.
+CPD feature lead plus product owner: disposition Web #103 and complete
+`CPD-Q05` usability validation and `CPD-D02`
+evidence or explicitly defer them with owners. Retain the exact-stack
+Active/Previous/All and filter pass, then extend the privacy-safe role matrix to
+sorting, recommendations, empty/error states and cross-unit authorisation.
 
 ## `PPI-MVP01` — Peer Progress Indicator
 
@@ -583,11 +682,15 @@ recommendations, empty/error states and cross-unit authorisation.
 
 - API endpoint/model/service/job and preference coverage is green only at
   historical `75d7337f`: 103 runs, 5,608 assertions, zero
-  failures/errors/skips. Exact final API `6c74dbbc` hosted validation is pending.
-- Final Web `5255c271` focused PPI coverage passes nine files/109 tests; its
-  103-file full suite also passes.
-- Browser smoke reached only the privacy-safe unavailable state; no eligible
-  live task-level distribution was observed.
+  failures/errors/skips. Exact final API `6c74dbbc` passes the authoritative
+  hosted eight-shard suite and is merged through API PR #77.
+- Composed Web `5255c271` focused PPI coverage passes nine files/109 tests; its
+  103-file full suite also passes. Updated Web closure head `16c22c99` passes
+  607 tests/104 files and is merged through Web PR #105.
+- Exact-composed-pair browser acceptance rendered eligible task-level values:
+  60% submitted, 10% complete and an independently privacy-rounded breakdown.
+  The feature-disabled route exposed no percentages, distribution or cohort
+  values; user-disabled API behaviour also returned null metrics/distribution.
 - Task-level live behaviour must not be generalised to a live unit-summary or
   burndown API.
 - The unit-summary and burndown surfaces remain explicit demo/mock views where
@@ -595,7 +698,8 @@ recommendations, empty/error states and cross-unit authorisation.
 - No auditable `PPI-Q02` completion evidence was located.
 - Web PR [#77](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/77)
   was merged after the frozen candidate; equivalent/newer task-level code is in
-  final Web `5255c271` and covered by its focused/full passes.
+  composed Web `5255c271` and covered by its focused/full passes. Later merged
+  Web `16c22c99` is covered by its green 607-test hosted run.
 
 ### Privacy and security boundary
 
@@ -609,58 +713,56 @@ recommendations, empty/error states and cross-unit authorisation.
 
 ### Next owner and action
 
-PPI feature lead plus privacy/data owner: open/review the final candidate pull
-requests, complete hosted API validation and manual task-level
-eligible/suppressed/stale/disabled/error acceptance with synthetic cohorts,
-and keep `PPI-Q02` plus live unit-summary API work
-open/deferred until real evidence exists.
+PPI feature lead plus privacy/data owner: retain the eligible and
+feature/user-disabled exact-stack results, extend the remaining stale/error
+role matrix if required, and keep `PPI-Q02` plus live unit-summary API work
+open/deferred until real evidence exists. Do not promote the composed browser
+result at Web `5255c271` to the later merged Web head without rerunning it.
 
 ## `ON-MVP01` — Combined four-stream handover
 
 ### Current state
 
-The historical stack proves that the four implementations once coexisted.
-Published final candidates are API
-`6c74dbbc07e219d60ca49e1b5ea42f737e5ef225` and Web
-`5255c271778643cd6f972e3bce1d83ecdb2e292d`. Published Deploy lock
-`4851fc1b0ac64f9eabdd7a6c057e417b644d42cd` pins that exact pair. A fresh
-recursive clone checked out those gitlinks, LTI `ec0df42` and nested JPlag
-viewer `4132c30`; the merged Compose configuration rendered with the cloned
-paths and `compose_contract_test.py` passed. Web final validation is green
-through its full suite and production build; API CPD regression and
-deterministic shard integrity checks and exact development-image scan are
-complete, but hosted full-suite CI is pending. The classified local unsharded
-run is not a suite pass. Predecessor lock `ff4aad5` and prior Deploy commits
-`c4c0d9a5` / `32c7abbf` remain historical. No running composed-stack
-acceptance or release approval is inferred.
+The exact running-stack pass used API `6c74dbbc`, Web `5255c271` and Deploy
+lock `4851fc1`. A fresh recursive clone checked out those gitlinks, LTI
+`ec0df42` and nested JPlag viewer `4132c30`; Compose render/contract, runtime
+readiness, CPD, task-level PPI and four-event email acceptance passed. API PR
+#77 subsequently merged the same API head into `11.0.x` as `6b45974e`. Web PR
+#105 merged updated green head `16c22c99` as `4034e7d1` (607 tests/104 files),
+and Deploy PR #26 merged lock `ad463dc8` as `6c61802e`, pinning API `6c74dbbc`
+/ Web `16c22c99`. The composed pass at Web `5255c271` / lock `4851fc1` is not
+promoted to those later Web/Deploy revisions. API hosted validation is green;
+its slowest shard test step was 5:25, 25 seconds over target. Exact merged-Web
+focused matrices and final-lock Compose contract pass. Guide PR #2 publishes
+the evidence. No release approval is inferred.
 
 ### Release blockers
 
-1. Open/review pull requests for the published final API/Web/Deploy/Guide
-   branches and attach hosted checks without treating publication as approval.
-2. Disposition remaining in-scope open Web #72/#103 work and preserve the
-   changes-requested state rather than assuming acceptance.
-3. Complete authoritative hosted API full-suite CI. The final API exact-image
-   scan is complete but its findings still require the disposition in item 7;
-   the Web focused/full/build lanes are already green at `5255c271`.
-4. Retain the successful fresh-clone/config-contract evidence for Deploy
-   `4851fc1`; do not promote it to a running-stack pass.
-5. Run Compose build, migration/population and a running composed-stack
-   verification from the fresh clone.
-6. Complete manual student/convenor acceptance for CPD, task-level PPI, email
-   and real background Web Push, including a non-hanging previous-unit CPD
-   request and an eligible privacy-safe PPI fixture. Build the required
-   traceability matrix for all 85 recorded feedback responses; no complete
-   matrix was located in this audit.
-7. Triage/remediate the exact-image critical/high scan findings, rebuild and
-   rescan, then attach the accepted scan, SBOM, provenance and signature
-   evidence for the immutable production digests. A source test pass is not an
-   image scan.
+1. Publish Guide PR #2. API #77, Web #105 and Deploy #26 are merged; retain
+   their hosted links without treating merge as release approval.
+2. Disposition remaining in-scope open Web #103 work and preserve its
+   changes-requested state rather than assuming acceptance. Web #72 is merged.
+3. API hosted validation is complete and green. If the <=5-minute shard target
+   is a hard requirement, rebalance/reuse setup and rerun: the maximum is 5:25.
+4. Retain the successful fresh-clone, Compose and running-stack evidence for
+   Deploy `4851fc1`; rerun or explicitly accept the boundary before claiming a
+   composed pass for merged Deploy `ad463dc8` / Web `16c22c99`.
+5. Obtain one observable background Web Push receipt and safe click-through on
+   a promised browser/device. Subscription creation, server jobs and sign-out
+   deletion passed, but receipt/click did not.
+6. Complete or explicitly defer `CPD-Q05`, `CPD-D02`, `PPI-Q02` and live
+   unit-summary work with owners. Build the required traceability matrix for
+   all 85 recorded feedback responses; no complete matrix was located.
+7. Triage/remediate the exact-image critical/high findings, build and scan the
+   merged Web `16c22c99` minimal runtime, then attach the accepted scan, SBOM,
+   provenance and signature evidence for immutable production digests. The Web
+   scan in this record is attached to composed predecessor `5255c271`; a source
+   test pass is not an image scan.
 8. Assign release, platform, identity, messaging, privacy/data, product and
    client-support owners; record go/no-go and rollback inputs outside Git.
 
 The detailed production responsibilities and evidence exclusions are in the
-[merged Deploy handover](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/blob/5351009df475c4a3d4f788110b0197ce64b3d3f4/HANDOVER.md).
+[merged Deploy handover](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/blob/6c61802e964b5e9adafad8610610fba9aace467c/HANDOVER.md).
 
 ## Exact commands to rerun
 
@@ -817,31 +919,31 @@ include authentication tokens, private keys or real student data.
 ### `MN-MVP01`
 
 ```text
-BLOCKED — The unified mobile/Web Push implementation, PWA flows, permission states and privacy-safe lock-screen documentation are present. Published final Web 5255c27 passes 177 focused notification/push/profile tests and the 605-test full suite. API push coverage passes 72 runs/295 assertions only at historical 75d7337f; final API 6c74dbb fixes and passes the protected anonymous settings contract (7 runs/42 assertions), but hosted full-suite validation is pending. The browser permission-denied state rendered, but no real background push receipt was proven. Next: open/review final PRs, complete hosted API validation, then record HTTPS browser/device receipt, safe lock-screen text, click-through and expired-subscription cleanup. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — Mobile/Web Push implementation, PWA flows, privacy-safe wording and subscription cleanup are present. API PR77 merged exact green head 6c74dbb; Web PR105 merged green head 16c22c9 (607 tests/104 files). On the exact composed pair 6c74dbb/5255c27, real Chrome permission produced one subscription and successful safe-route push jobs; sign-out deleted it (count 0). No OS banner or notification click was observed, so background receipt/click is not passed. Next: obtain one observable HTTPS browser/device receipt, safe lock-screen result and click-through. Evidence: docs/evidence/ontrack-mvp-2026-08-26/live-closure-validation-20260827.md
 ```
 
 ### `EN-MVP01`
 
 ```text
-BLOCKED — In-app notifications, Sidekiq email delivery, preferences, event docs and Mailpit integration exist. Published final Web 5255c27 passes 177 focused notification tests and the 605-test full suite. API email coverage passes 77 runs/428 assertions only at historical 75d7337f; final API 6c74dbb passes the portfolio receipt isolation regression (1 run/16 assertions), but hosted full-suite validation is pending. A historical synthetic email reached Mailpit, but no current composed Sidekiq-to-Mailpit result or complete event/recipient/preference/retry/rendering matrix exists. Next: open/review final PRs, complete hosted API validation and the matrix, then rerun the composed email path. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+VALIDATED / HANDED OVER — API PR77 merged exact hosted-green head 6c74dbb; Web PR105 merged green head 16c22c9. On exact composed API 6c74dbb/Web 5255c27, four real events (tutor comment, task status, extension granted and denied) traversed NotificationService → Sidekiq → Action Mailer → Mailpit for the intended synthetic student. Privacy markers were absent, preference suppression held counts constant, and the retry boundary was exercised and cleaned. This is MVP/local handover evidence, not production SMTP/bounce acceptance. Evidence: docs/evidence/ontrack-mvp-2026-08-26/live-closure-validation-20260827.md
 ```
 
 ### `CPD-MVP01`
 
 ```text
-BLOCKED — The cross-project dashboard, role-safe API, toolbar/filter/sort and recommendation work are implemented. Published final Web 5255c27 passes lint/type-check, 98 CPD tests/1 todo, the 103-file full suite (605 pass/1 todo) and a 99.911-second Node 22 production build. Published final API 6c74dbb retains the audited previous/all reduction from 453 to 38 SQL queries and 4.218 to 2.390 seconds; its regression passes 1 run/6 assertions. Historical browser smoke passed active-unit/filter/mobile rendering but the previous-unit request hung; composed browser acceptance was not rerun. No auditable CPD-Q05 or CPD-D02 completion evidence was located. Next: open/review final PRs, complete hosted API CI, rerun privacy-safe composed acceptance, and complete or explicitly defer Q05/D02. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — API PR77 merged exact hosted-green head 6c74dbb; Web PR105 merged green head 16c22c9. On exact composed API 6c74dbb/Web 5255c27, browser Active/Previous/All scopes, combined global-search/status filtering and clear/reset passed. The API previous/all request fell from 453 to 38 SQL queries and 4.218s to 2.390s. The composed result is not promoted to later Web 16c22c9. No auditable CPD-Q05 or CPD-D02 completion evidence was located; complete or explicitly defer those items with owners. Evidence: docs/evidence/ontrack-mvp-2026-08-26/live-closure-validation-20260827.md
 ```
 
 ### `PPI-MVP01`
 
 ```text
-BLOCKED — The task-level PPI uses an authorised live endpoint with privacy-safe suppression. Published final Web 5255c27 passes 109 focused PPI tests and the 605-test full suite. API core/preference coverage passes 103 runs/5,608 assertions only at historical 75d7337f; hosted validation at published final API 6c74dbb is pending. Browser smoke showed only the safe unavailable state. Unit-summary and burndown remain demo/mock-backed; no PPI-Q02, eligible live browser result or live unit-summary API evidence was located. Next: open/review final PRs, complete hosted API CI plus eligible/suppressed synthetic-cohort acceptance, and keep Q02/live unit-summary work open or explicitly deferred. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — API PR77 merged exact hosted-green head 6c74dbb; Web PR105 merged green head 16c22c9. On exact composed API 6c74dbb/Web 5255c27, eligible browser acceptance rendered 60% submitted, 10% complete and a privacy-rounded breakdown; feature-disabled and user-disabled paths exposed no values/raw counts. This is live task-level evidence only and is not promoted to later Web 16c22c9. Unit-summary/burndown remain demo/mock-backed; PPI-Q02 and live unit-summary evidence remain open or need explicit deferment. Evidence: docs/evidence/ontrack-mvp-2026-08-26/live-closure-validation-20260827.md
 ```
 
 ### `ON-MVP01`
 
 ```text
-BLOCKED — Published final candidates API 6c74dbb and Web 5255c27 are pinned by published Deploy lock 4851fc1; ff4aad5 and c4c0d9a/32c7abb remain historical provenance. A fresh recursive clone of 4851fc1 and Compose render/contract validation pass, but no PR or running-stack pass exists. Web lint/type-check, focused packs, the 103-file full suite (605 pass/1 todo) and Node 22 production build pass. API previous/all CPD regression, deterministic 8-way shard integrity and exact-image scanning are complete, but hosted full-suite CI is pending. The local API run completed 1,145 runs/16,245 assertions/0 skips in 2,785.068s but is not a suite pass: 22 socket-helper tests, two workflow-mount tests and two stale expectations (now fixed) were classified. Composed/manual previous/all CPD, eligible PPI, current email, real Web Push and the 85-response matrix remain incomplete. Final development-image scans are not clean (API 35 critical/579 high; Web 33 critical/395 high) and neither image is production-safe. Next: open/review final PRs, complete hosted/running-stack/manual gates, resolve scan findings and obtain authorised go/no-go. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED / HANDED OVER — API PR77 merged green head 6c74dbb, Web PR105 merged green head 16c22c9 (607 tests/104 files plus exact-head CPD/PPI/Notifications matrices), and Deploy PR26 merged lock ad463dc pinning that pair; its exact Compose contract passes. Guide PR2 publishes the evidence. API eight-shard CI and rollup are green, though the slowest test step is 5:25 and misses the five-minute target by 25s. Exact composed predecessor lock 4851fc1 (API 6c74dbb/Web 5255c27) passed fresh clone/Compose, CPD, task-level PPI and four-event email acceptance; do not promote that running-stack result to the later Web/Deploy heads without a rerun. Still open: observable Web Push receipt/click, all-85 feedback traceability, CPD-Q05/D02, PPI-Q02/live unit summary, merged-Web image scan plus vulnerability disposition, and authorised go/no-go/rollback records. Evidence: docs/evidence/ontrack-mvp-2026-08-26/live-closure-validation-20260827.md
 ```
 
 ## Evidence capture checklist

@@ -2,7 +2,7 @@
 
 This is the working register for **MISC-X01 - Coordinate Cross-Objective Branches, Shared Surfaces, and Integration Order**.
 
-- **Source snapshot:** Planner workbook exported 26 August 2026; public GitHub refs and pull requests refreshed 27 August 2026 at 09:49:05Z
+- **Source snapshot:** Planner workbook exported 26 August 2026; public GitHub refs refreshed 27 August 2026 at 12:28:17Z and pull requests refreshed at 12:15:29Z
 - **Coordinator recorded in Planner:** Maple Fox
 - **Approval state:** Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester. This closes MISC-X01 document/coordination approval only and is not attributed to uncontacted individuals or converted into product/release approval.
 
@@ -12,11 +12,11 @@ Contributors must read this register before changing a shared frontend, API cont
 
 | Item | Current state | Required decision or evidence |
 |---|---|---|
-| Web and API combined validation branches | Historical candidates and published final candidates API `f25945d` / Web `5255c271` are recorded in the [branch register](branch-register.md); all remain unapproved. | Open/review the required pull requests, link hosted checks and reviewer decisions, and do not treat branch publication as merge or release approval. |
-| First-Time Tutorial Web branch | Requester approved the plan `feature/student-onboarding` from observed Web `9c618c3b`; named-leader confirmation was waived. No public branch was found or created. | Re-audit the base and assign an implementation owner before branch creation. |
+| Web and API combined validation branches | Historical candidates remain provenance only. Closure API `6c74dbbc` and Web `16c22c99` passed hosted checks and merged into `11.0.x` through PRs #77/#105. | Preserve the exact composed predecessor boundary and do not treat merge as security disposition or release approval. |
+| First-Time Tutorial Web branch | Requester approved the plan `feature/student-onboarding` from the then-current Web `11.0.x`; verified planning base `4034e7d1`. Named-leader confirmation was waived. No public branch was found or created. | Re-audit the base and assign an implementation owner before branch creation. |
 | Shared preferences and help structure | Requester approved the coordination default below for MISC-X01 closure and waived named-leader confirmation. | Downstream tickets must still record owners, accessibility review and any change to this default before altering a shared surface. |
 | Optional sub-category leads | All are explicitly **Unassigned** below; requester accepted that state for MISC-X01 closure. | Assign the relevant role before downstream implementation/review or retain Unassigned and escalate conflicts. |
-| Final Deploy path | Published lock [`ff4aad5e`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/ff4aad5efaedff58a48f0840dfe2431196b116bd) pins API `f25945d` / Web `5255c271`; `c4c0d9a5` / `32c7abbf` preserve the prior pair. A fresh recursive clone resolved the exact component/nested submodules, rendered the merged Compose configuration and passed `compose_contract_test.py`. | Open/review a PR, run the hosted/component gates and a running composed-stack acceptance, then obtain a Deploy/release decision before release use. Clone/config-contract evidence is not runtime acceptance. |
+| Final Deploy path | Lock [`ad463dc8`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/ad463dc8b1b8005f0774819fe4d506da3c281947) pins API `6c74dbbc` / Web `16c22c99` and merged into `11.0.x` through PR #26. Fresh clone/Compose and running-stack acceptance belong to predecessor lock `4851fc1` with Web `5255c271`; all final Deploy hosted checks pass. | Rerun the composed acceptance at the merged Web/Deploy pair or explicitly accept that boundary, then obtain security and release decisions before production use. |
 | New accessibility lint/CI gates | Coordination policy is defined, but no new gate is treated as approved here. | Demonstrate the rule on every active Web objective branch, assign remediation and obtain branch-protection approval. |
 | Objective evidence indexes | Existing evidence is linked where available; several new objectives do not yet have a public index. | Publish one index per objective and replace each explicit **TBD** entry. |
 
@@ -50,33 +50,48 @@ The 27 August closure pass produced exact **published** final validation
 candidates:
 
 1. Web `closure/web-ontrack-mvp-20260827` at
-   `5255c271778643cd6f972e3bce1d83ecdb2e292d` passes type-check, zero-warning
-   lint, CPD (98 pass/one todo), PPI (109), notifications (177), the full suite
-   (103 files/605 pass/one todo) and the Node 22 production build (99.911
-   seconds).
+   `16c22c992c821e16981c8f8cb2601f0a61f73007` merged current `11.0.x` into
+   the validated `5255c271` candidate and kept both the new page container and
+   target-grade accessibility/disabled attributes. [PR #105](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/105)
+   merged as `4034e7d1`; hosted test (104 files/607 tests), Node, lint and review
+   policy pass. At `5255c271`, type-check, zero-warning lint, CPD (98 pass/one
+   todo), PPI (109), notifications (177), the full suite (103 files/605
+   pass/one todo) and the Node 22 production build (99.911 seconds) passed.
 2. API `closure/api-ontrack-mvp-20260827` at
-   `f25945d228c1a3b321412047dcfe304e43cb7658` includes the previous/all CPD
+   `6c74dbbc07e219d60ca49e1b5ea42f737e5ef225` includes the previous/all CPD
    repair: the audited request moved from 453 to 38 SQL queries and 4.218 to
    2.390 seconds, and its focused regression passes one run/six assertions. Its
    eight deterministic CI shards assign all 129 discovered test files exactly
    once, 15–17 files and 4,278–4,284 lines per shard; the sharding unit test
    passes five runs/29 assertions, and RuboCop, actionlint and syntax checks are
-   clean.
-3. The API local full-suite run is not a pass because sandboxed
-   Docker-dependent LaTeX/JPlag/helper-service tests could not access
-   `/var/run/docker.sock`; hosted CI is pending and authoritative. The final
-   API image scan is also pending.
+   clean. Hosted [PR #77](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/77)
+   CI passes all eight helper-backed shards and the exact-manifest roll-up;
+   test steps range from 2:31 to 5:25, so the strict five-minute target is
+   missed by 25 seconds.
+3. The classified local unsharded API run remains a diagnostic rather than a
+   suite pass because 22 helper/socket and two workflow-mount outcomes require
+   the hosted environment; all 26 outcomes are classified and two stale test
+   defects were fixed at the final head. Hosted CI is authoritative and green.
+   The exact API scan is complete (35 Critical/579 High) and is not production
+   approval.
 4. Published Deploy lock `chore/ontrack-mvp-lock-20260827` at
-   `ff4aad5efaedff58a48f0840dfe2431196b116bd` pins those exact final
-   candidates. A fresh recursive clone checked out API `f25945d`, Web
+   `ad463dc8b1b8005f0774819fe4d506da3c281947` pins those exact final
+   candidates. [PR #26](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/26)
+   merged it as `6c61802e`. A fresh recursive clone of the preceding lock
+   checked out API `6c74dbbc`, Web
    `5255c271`, LTI `ec0df42` and nested JPlag viewer `4132c30`; the merged
    all-features Compose configuration rendered with the cloned component paths
-   and `compose_contract_test.py` passed. This is clone/configuration evidence,
-   not a running composed-stack, manual acceptance or release decision.
+   and `compose_contract_test.py` passed. The exact composed stack then passed
+   CPD previous/all browser acceptance, eligible/suppressed task-level PPI and
+   the four-event Sidekiq-to-Mailpit matrix. Background Web Push subscription,
+   worker delivery and sign-out cleanup passed, but no OS banner/click was
+   observable. The merged lock advances the Web gitlink to `16c22c99`; all
+   three Deploy workflows and review policy pass. This is validation evidence,
+   not a release decision.
 
 ### Current pull-request disposition gate
 
-The public pull-request snapshot was refreshed at **2026-08-27T09:49:05Z**.
+The public pull-request snapshot was refreshed at **2026-08-27T12:15:29Z**.
 The previously named API, Web and Deploy umbrella/follow-up pull requests were
 merged: API #43, #56, #57, #60, #62, #63, #65 and #74; Web #59, #60, #61,
 #69, #70, #71, #77, #78, #81 and #96; Deploy #11, #12, #18, #24 and #25.
@@ -88,15 +103,19 @@ The remaining open review surfaces observed in the audited repositories were:
 | Repository | Open pull request | Review state and coordination impact |
 |---|---|---|
 | API | [#72](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/72) | Changes requested; Safe Upload security work outside the four-MVP candidate but on an API shared surface. |
-| Web | [#72](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/72) | Review required; CPD sizing/documentation work. |
 | Web | [#103](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/103) | Changes requested; CPD project-card work on `feature/cross-unit`. |
-| Web | [#104](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/104) | Changes requested; layout standardisation touches a shared presentation surface. |
 | Guide | [#1](https://github.com/ontrack-features-t2-2026/github-guide/pull/1) | Review required; documentation CI policy, not product approval. |
-| Deploy | None | Final validation lock branch `chore/ontrack-mvp-lock-20260827` is published at `ff4aad5`; no pull request is open. |
+| Guide | [#2](https://github.com/ontrack-features-t2-2026/github-guide/pull/2) | Closure publication PR to `main`; its evidence refresh is the final documentation surface. |
 
-An integration owner must review the published final candidates and their source
-patches before merge or release use. “Not an ancestor” does not prove
-absence; an equivalent patch can have a different commit. The full acceptance gaps are in the
+Web #72 and #104 are merged and approved. API #77, Web #105 and Deploy #26 are
+also merged with their hosted checks green. Merge state does not imply release
+approval or extend the exact composed-stack evidence to the later Web/Deploy
+heads.
+
+The closure candidates and source patches were reviewed before merge. A release
+owner must still review the evidence boundaries and open risks before release
+use. “Not an ancestor” does not prove absence; an equivalent patch can have a
+different commit. The full acceptance gaps are in the
 [four-stream MVP evidence index](docs/evidence/ontrack-mvp-2026-08-26/README.md).
 
 ## Ownership and escalation
@@ -158,7 +177,7 @@ Paths link to the branch that currently demonstrates the surface. They identify 
 | Theme tokens and global styles | [Theme entry](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/src/theme.scss) and [Material theme](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/src/styles/m3-theme.scss) | Feature teams retain feature logic | THM-F01/Theme integration owner: **Unassigned** | Theme tickets own semantic tokens and presentation. They must not alter role checks, submission logic, notifications or feature state. |
 | Frontend CI and lint | [Web workflows](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/11.0.x/.github/workflows) and [review policy](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/11.0.x/.github/review-policy) | Repository CI maintainer: **Unassigned**; A11Y-T01 ticket owner Duong Bao Huy Tran | Each failing feature branch needs a named remediation owner | A new blocking lint rule follows the staged-gate process below; it cannot strand an active branch. |
 | API CI and shared contracts | [API workflows](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/11.0.x/.github/workflows) and [review policy](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/11.0.x/.github/review-policy) | API integration/CI owner: **Unassigned** | Security reviewer: **Unassigned** | Effective deadline, notification and upload contracts each keep one API source of truth. |
-| Deploy and proxy configuration | [Deploy workflows](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/11.0.x/.github/workflows) and immutable [merged handover](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/blob/5351009df475c4a3d4f788110b0197ce64b3d3f4/HANDOVER.md) | Deploy integration owner: **Unassigned** | Security/operations reviewer: **Unassigned** | Feature-specific Deploy work remains conditional; the local MVP validation lock is a coordination artifact, not approval. |
+| Deploy and proxy configuration | [Deploy workflows](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/tree/11.0.x/.github/workflows) and immutable [merged handover](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/blob/6c61802e964b5e9adafad8610610fba9aace467c/HANDOVER.md) | Deploy integration owner: **Unassigned** | Security/operations reviewer: **Unassigned** | Feature-specific Deploy work remains conditional; the MVP validation lock is a coordination artifact, not approval. |
 | Shared documentation | [GitHub guide](https://github.com/ontrack-features-t2-2026/github-guide) plus objective docs linked below | Documentation integration owner: **Unassigned** | Objective reviewer and security/privacy reviewer: **Unassigned** | Keep one canonical evidence index per objective and link, rather than copy, existing work. |
 
 ## Proposed shared preferences and help decision
@@ -302,7 +321,7 @@ For proven Deploy work:
 | Email Notifications | [API notification status](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/notifications/NOTIFICATIONS_STATUS.md), [event index](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/notifications/docs/notifications/events/README.md) | Shared Notifications evidence; EN-MVP01 must identify email-specific final evidence. |
 | Mobile Notifications | [Push setup](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/notifications/docs/notifications/push-setup.md), [local push testing](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/notifications/docs/notifications/testing-push-locally.md) | Shared Notifications evidence; MN-MVP01 must identify device/browser results and final review. |
 | Peer Progress Indicator | [Web handover](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/feature/peer-progress-indicator/docs/ppi-f02-unit-summary-handover.md), [API data-source map](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/peer-progress-indicator/docs/peer-progress/data-source-map.md) | Existing evidence; PPI-MVP01 must link exact final privacy, test and demo results. |
-| Combined stack | [Published final lock](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/blob/ff4aad5efaedff58a48f0840dfe2431196b116bd/ONTRACK-MVP-VALIDATION-LOCK-20260827.md); historical prior commits [`c4c0d9a5`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/c4c0d9a5fc37b9346206ed2963fbfa3684c2a696) / [`32c7abbf`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/32c7abbf5551d172970c31acea9522ec4da29b08) | Lock `ff4aad5` pins API `f25945d` and Web `5255c271`. Fresh recursive clone and Compose render/contract test pass; no PR, running composed-stack verification or release decision exists. |
+| Combined stack | [Merged final lock](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/blob/ad463dc8b1b8005f0774819fe4d506da3c281947/ONTRACK-MVP-VALIDATION-LOCK-20260827.md); historical prior commits [`c4c0d9a5`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/c4c0d9a5fc37b9346206ed2963fbfa3684c2a696) / [`32c7abbf`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/32c7abbf5551d172970c31acea9522ec4da29b08) | Lock `ad463dc8` pins API `6c74dbbc` and Web `16c22c99` and merged through Deploy #26. Fresh recursive clone, Compose render/contract and running-stack acceptance passed on predecessor lock `4851fc1` with the same API and Web `5255c271`; no release decision is inferred. |
 | Accessibility | **TBD - no public objective evidence index linked** | Blocker |
 | Theme | **TBD - no public objective evidence index linked** | Blocker |
 | Safe Uploads | **TBD - no public objective evidence index linked** | Blocker |
@@ -316,8 +335,8 @@ Review this table at least weekly while the objectives are active.
 | Review date | Reviewer | Branch movement | Shared-file conflict | CI/deploy change | Decision and evidence |
 |---|---|---|---|---|---|
 | 2026-08-26 | MISC-X01 documentation audit | Canonical Notifications targets corrected; combined Web/API validation candidates published | Preferences/help structure, objective integration owners and sub-category leads remain unresolved | Staged CI and conditional Deploy rules documented | This register and [branch register](branch-register.md); approval links remain pending |
-| 2026-08-27 | MISC-X01 closure audit | Release/feature heads moved; named umbrella/follow-up PRs merged; old Web/Deploy integration refs deleted | Web #103/#104 and API #72 remain active shared-surface review points; owners remain as recorded above | Weekly workflow PRs merged; prior-candidate Deploy head `32c7abb` created without release claim | [Branch register](branch-register.md), this PR table and prior gitlink commit `c4c0d9a5fc37b9346206ed2963fbfa3684c2a696` |
-| 2026-08-27 | MVP final-candidate validation | API `f25945d`, Web `5255c271` and Deploy lock `ff4aad5` published; no PRs open | Final composition is recorded; composed/manual gates remain open | Web full suite/build and API eight-shard integrity pass; fresh clone plus Compose render/contract pass; hosted API CI, final API scan and running stack remain pending | [MVP evidence index](docs/evidence/ontrack-mvp-2026-08-26/README.md) and [closure status](closure-status-20260827.md) |
+| 2026-08-27 | MISC-X01 closure audit | Release/feature heads moved; named umbrella/follow-up PRs merged; old Web/Deploy integration refs deleted | Web #103 and API #72 remain active shared-surface review points; Web #72/#104 are merged | Weekly workflow PRs merged; prior-candidate Deploy head `32c7abb` created without release claim | [Branch register](branch-register.md), this PR table and prior gitlink commit `c4c0d9a5fc37b9346206ed2963fbfa3684c2a696` |
+| 2026-08-27 | MVP final-candidate validation | API [#77](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/77), Web [#105](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/105) and Deploy [#26](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/26) merged into `11.0.x`; Guide [#2](https://github.com/ontrack-features-t2-2026/github-guide/pull/2) is the publication PR into `main` | Final API `6c74dbbc`, Web `16c22c99` and Deploy lock `ad463dc8` are recorded | Hosted API eight-shard/roll-up CI, exact-head Web focused/hosted checks, exact final-lock Compose contract and predecessor running-stack CPD/PPI/email acceptance pass; Mobile OS receipt/click, exact merged-Web image rescan, image disposition and release decision remain open | [Final closure validation](docs/evidence/ontrack-mvp-2026-08-26/live-closure-validation-20260827.md), [MVP evidence index](docs/evidence/ontrack-mvp-2026-08-26/README.md) and [closure status](closure-status-20260827.md) |
 | YYYY-MM-DD | **Unassigned** |  |  |  |  |
 
 ## Team-chat update template
@@ -335,7 +354,7 @@ and downstream implementation must assign its relevant Unassigned roles.
 Planner-ready status:
 
 ```text
-MISC-X01 REPOSITORY COMPLETE / PUBLICATION FOLLOW-UP — Branch heads and live PR dispositions were refreshed on 27 August; shared surfaces, integration order, CI/Deploy rules and explicit Unassigned roles are documented. Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester. Published API f25945d and Web 5255c27 are pinned by published Deploy lock ff4aad5; c4c0d9a/32c7abb remain prior-candidate provenance. Fresh recursive clone and Compose render/contract checks pass, but no PR, running composed-stack or release approval is claimed. Remaining human actions: open/review the required PRs, post the effective deadline and add Planner/team-chat links; downstream work assigns relevant roles.
+MISC-X01 REPOSITORY COMPLETE / PUBLICATION FOLLOW-UP — Branch heads and live PR dispositions were refreshed on 27 August; shared surfaces, integration order, CI/Deploy rules and explicit Unassigned roles are documented. Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester. API 6c74dbb and Web 16c22c99 are merged into 11.0.x and pinned by merged Deploy lock ad463dc8; c4c0d9a/32c7abb remain prior-candidate provenance. Guide #2 is the publication PR to main. Fresh recursive clone, Compose contract, hosted API/Web/Deploy CI and composed CPD/PPI/email acceptance pass; observable Mobile OS receipt/click, exact merged-Web image rescan, image disposition and release approval remain open. Remaining publication actions: publish the Guide PR, post the effective deadline and add Planner/team-chat links; downstream work assigns relevant roles.
 ```
 
 ```text

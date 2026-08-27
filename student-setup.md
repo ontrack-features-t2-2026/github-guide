@@ -117,7 +117,7 @@ git -C doubtfire-api switch feature/peer-progress-indicator
 
 ### First-Time Tutorial
 
-Do not create or switch to `feature/student-onboarding` yet. That name is suggested but unapproved. The [First-Time Tutorial branch plan](first-time-tutorial-objective.md) records the required Web lead/base-SHA decision and why there is no API or Deploy branch.
+Do not create or switch to `feature/student-onboarding` until tutorial implementation begins. The branch name and `11.0.x` source rule are requester-approved; the [First-Time Tutorial branch plan](first-time-tutorial-objective.md) records the current planning reference, the required creation-time re-audit and why there is no API or Deploy branch.
 
 If Git says the local branch does not exist, use this form:
 

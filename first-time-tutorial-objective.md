@@ -88,10 +88,10 @@ conditional.
 
 | Repository | Source/base record | Planned branch or target | Status and rule |
 |---|---|---|---|
-| Web | Public `11.0.x` observed at [`9c618c3b`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/9c618c3b04c272a34bceba62bba4c7a7627cf96d). | Approved branch plan: create `feature/student-onboarding` from this exact base when implementation starts. | **Requester-approved plan, branch not created.** Requester approval was recorded 27 August and named-leader confirmation was waived by the requester. Re-audit the base before creation; a moved base requires a recorded update. |
-| API | Current public `11.0.x` observed at [`cb03f80b`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/cb03f80bdba5a19d12a821d3cb7e11f19b1b5c7f). | No API objective branch | **No branch.** Conditional only if TUT-D03 plus TUT-S01 approve server-side state and document why browser/existing storage is insufficient. Keep `has_run_first_time_setup` separate. |
+| Web | Public `11.0.x` verified at [`4034e7d1`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/4034e7d1a8d5f7bb68239eb63f1089ab84a8be3d). | Approved branch plan: create `feature/student-onboarding` from the then-current `11.0.x` when implementation starts. | **Requester-approved plan, branch not created.** Requester approval was recorded 27 August and named-leader confirmation was waived by the requester. Re-audit the base before creation; record the exact head used. |
+| API | Current public `11.0.x` verified at [`6b45974e`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/6b45974eba3417efec8ef5a519ce1f80b4ee32e0). | No API objective branch | **No branch.** Conditional only if TUT-D03 plus TUT-S01 approve server-side state and document why browser/existing storage is insufficient. Keep `has_run_first_time_setup` separate. |
 | Deploy | Public local-development and integration foundations are listed in the [branch register](branch-register.md). | No Deploy objective branch | **No branch.** Conditional only if later work demonstrates a migration, submodule, environment, proxy or release requirement. |
-| GitHub guide | Published evidence branch at [`c07f60f`](https://github.com/ontrack-features-t2-2026/github-guide/commit/c07f60f29c05364e1d643047456033c1bfae2b0d) | Local closure branch `docs/closure-tutorial-mvp-deploy-20260827`, including the setup walkthrough at `58b3913` | Local, unpublished documentation continuation containing this refreshed index; pending review/merge. |
+| GitHub guide | Published evidence branch at [`c07f60f`](https://github.com/ontrack-features-t2-2026/github-guide/commit/c07f60f29c05364e1d643047456033c1bfae2b0d) | Closure branch `docs/closure-tutorial-mvp-deploy-20260827`, including the setup walkthrough at `58b3913` | Publication [PR #2](https://github.com/ontrack-features-t2-2026/github-guide/pull/2) targets `main` and carries this refreshed index. |
 | Other documentation | GitHub Guide is the approved foundation/evidence target for TUT-F01. | `docs/student-onboarding-*` task branches only when a downstream docs ticket begins | **Requester-approved for foundation closure.** Named-leader confirmation was waived by the requester; downstream contributors still record their exact branch/target. |
 
 When the Web objective branch is created, every child ticket must record:
@@ -153,7 +153,7 @@ Statuses and assignees reflect the 26 August 2026 Planner workbook snapshot; the
 
 | Ticket | Recorded owner | Repository and suggested task branch | Depends on | Snapshot status | Required evidence / current link |
 |---|---|---|---|---|---|
-| TUT-F01 objective foundation | Maple Fox | GitHub guide: local `docs/closure-tutorial-mvp-deploy-20260827` on published evidence base | None | In progress | This document; [branch register](branch-register.md); [MISC-X01 register](cross-objective-coordination.md). Planner link, branch/scope approvals and team-chat confirmation: **TBD**. |
+| TUT-F01 objective foundation | Maple Fox | GitHub Guide `docs/closure-tutorial-mvp-deploy-20260827`, published through [PR #2](https://github.com/ontrack-features-t2-2026/github-guide/pull/2) | None | Repository complete / publication follow-up | This document; [branch register](branch-register.md); [MISC-X01 register](cross-objective-coordination.md). Requester branch/scope approval is recorded; Planner cross-link and team-chat confirmation remain publication follow-up. |
 | DOC-9 / TUT-D01 problem and user stories | Jeffy Sam Babu | Documentation target pending | TUT-F01 | Not started | Problem evidence, four to six user stories, review and existing-card link: **TBD**. |
 | DOC-11 / TUT-D02 route map and copy | **Unassigned** | Documentation target pending | TUT-D01 | Not started | Four real targets, approved copy, fallbacks and review: **TBD**. |
 | DOC-10 / TUT-D03 trigger and state rules | **Unassigned** | Documentation target pending | TUT-D01 | Not started | Eligibility, skip/dismiss/replay, storage/version decision and approval: **TBD**. |
@@ -212,7 +212,7 @@ Every evidence row must use portable GitHub, Planner or approved documentation l
 | Decision | Required approver | Current state | Link/date |
 |---|---|---|---|
 | Objective scope and MVP boundary | Requester for TUT-F01 closure | Approved for foundation closure | Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester |
-| Web objective branch name and exact base SHA | Requester for TUT-F01 closure | Approved plan: `feature/student-onboarding` from observed `9c618c3b`; branch not created | Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester |
+| Web objective branch name and base rule | Requester for TUT-F01 closure | Approved plan: `feature/student-onboarding` from then-current `11.0.x`; verified planning reference `4034e7d1`; branch not created | Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester |
 | Documentation repository/target | Requester for TUT-F01 closure | GitHub Guide approved for this foundation | Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester |
 | Trigger, storage and version rules | Objective, frontend and security reviewers | Pending | TBD |
 | API branch needed or not needed | Security reviewer plus API lead | **No API branch by default; conditional decision pending design** | TBD |
@@ -246,7 +246,7 @@ publication are separate human follow-up, not missing repository content.
 - [x] Existing DOC-9, DOC-10 and DOC-11 are mapped for expansion rather than duplication.
 - [ ] Publication follow-up: objective section/bucket and every confirmed Planner card are cross-linked in Planner.
 - [x] Requester accepted the explicit Unassigned roles for foundation closure; downstream work must assign them before implementation/review.
-- [x] Requester approved the Web branch plan and exact observed base, waiving named-leader confirmation.
+- [x] Requester approved the Web branch plan from then-current `11.0.x`; `4034e7d1` is the verified planning reference and the creation-time head must be re-audited. Named-leader confirmation was waived.
 - [x] Requester approved GitHub Guide as the foundation target, waiving named-leader confirmation.
 - [ ] Downstream evidence follow-up: Planner, pull-request and review links replace the relevant ticket TBDs as work occurs.
 - [ ] Publication follow-up: objective map, ownership, dependency order and branch rules are posted in team chat with a link to the merged document.
@@ -264,7 +264,7 @@ Recorded boundaries:
 - First-Time Tutorial is separate from the existing welcome/profile setup.
 - has_run_first_time_setup keeps its existing setup meaning and is not tutorial completion.
 - Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester.
-- Approved plan: feature/student-onboarding from Web 9c618c3b when implementation starts; re-audit before creation.
+- Approved plan: feature/student-onboarding from then-current Web 11.0.x when implementation starts; verified planning reference 4034e7d1; re-audit before creation.
 - No API branch unless TUT-D03 and TUT-S01 approve server-side state.
 - No Deploy branch unless later work proves a Deploy-specific need.
 - DOC-9, DOC-10 and DOC-11 will be expanded as TUT-D01, TUT-D03 and TUT-D02, not duplicated.
