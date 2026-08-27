@@ -34,8 +34,8 @@ Commit `58b3913` adds and links the replacement setup package from the README's
 
 - [current student setup guide](student-setup.md) — maintained written setup,
   contribution and branch workflow;
-- [11 minute 37 second setup
-  walkthrough](media/setup/ontrack-t2-2026-setup-walkthrough.mp4) — H.264/AAC,
+- [11 minute 37 second setup walkthrough (immutable
+  archive)](https://github.com/ontrack-features-t2-2026/github-guide/blob/6eabb08535a9be040e908b7a237765197945badc/media/setup/ontrack-t2-2026-setup-walkthrough.mp4) — H.264/AAC,
   1280×720, 14,704,239 bytes, SHA-256
   `788e9065165ec268d8764ed0b1ebe388700502910b286d8d900c93e00b00f425`;
 - [accessible transcript](media/setup/ontrack-t2-2026-setup-walkthrough-transcript.md)

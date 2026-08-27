@@ -18,7 +18,7 @@ This guide explains where the repositories are, which shared feature branch your
 ## Getting set up
 
 - [Student setup and contribution guide](student-setup.md) — installs the prerequisites, clones the three repositories, selects the correct objective branches, starts Docker and opens a task pull request. Allow roughly 20–40 minutes plus the first Docker image download/build.
-- [OnTrack T2 2026 setup walkthrough](media/setup/ontrack-t2-2026-setup-walkthrough.mp4) — an 11 minute 37 second narrated companion covering access, cloning, objective branches, Docker, local database setup, task branches, validation, pull requests and handover.
+- [OnTrack T2 2026 setup walkthrough (immutable archive)](https://github.com/ontrack-features-t2-2026/github-guide/blob/6eabb08535a9be040e908b7a237765197945badc/media/setup/ontrack-t2-2026-setup-walkthrough.mp4) — an 11 minute 37 second narrated companion covering access, cloning, objective branches, Docker, local database setup, task branches, validation, pull requests and handover. The large binary is linked from its immutable evidence revision rather than retained at the branch tip.
 - [Setup walkthrough transcript](media/setup/ontrack-t2-2026-setup-walkthrough-transcript.md) — the complete accessible transcript. Use the written guide and branch register as the maintained source of truth if a branch changes after the recording.
 
 The [short Jira ticket tutorial](https://youtu.be/GyJWYpOGj1o) only explains how to find a ticket; it is separate from the environment setup walkthrough above.
@@ -123,7 +123,7 @@ Local test accounts use the password `password`.
 - [27 August closure status, refreshed 28 August](closure-status-20260827.md)
 - [Exact merged-Web vulnerability scan evidence](evidence/raw/docker-image-vulnerability-scan-20260827/web-16c22c9/README.md)
 - [Student setup and contribution steps](student-setup.md)
-- [OnTrack T2 2026 setup walkthrough](media/setup/ontrack-t2-2026-setup-walkthrough.mp4)
+- [OnTrack T2 2026 setup walkthrough (immutable archive)](https://github.com/ontrack-features-t2-2026/github-guide/blob/6eabb08535a9be040e908b7a237765197945badc/media/setup/ontrack-t2-2026-setup-walkthrough.mp4)
 - [Setup walkthrough transcript](media/setup/ontrack-t2-2026-setup-walkthrough-transcript.md)
 - [Pull request template](pull-request-template.md)
 - [Peer review checklist](review-checklist.md)
