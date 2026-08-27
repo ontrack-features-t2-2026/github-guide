@@ -1,5 +1,13 @@
 # OnTrack MVP evidence and handover index
 
+> **Current-state addendum:** the
+> [final closure addendum](final-closure-addendum-20260828.md) records the
+> protected merges, final Docker scan, notification queue/verifier fixes and
+> exact API CI cold/warm results completed after this historical index was
+> written. Its current pull-request and ticket dispositions supersede dated
+> “open” or “review pending” statements below; the exact-SHA historical
+> evidence remains unchanged.
+
 Evidence snapshot time: **2026-08-26T11:28:50Z** (`2026-08-26 21:28:50 AEST`)
 
 Live branch and pull-request disposition was refreshed at

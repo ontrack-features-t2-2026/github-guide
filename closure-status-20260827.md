@@ -1,5 +1,13 @@
 # Documentation, tutorial and MVP closure status — 2026-08-27 (refreshed 2026-08-28)
 
+> **Final disposition:** see the
+> [28 August final closure addendum](docs/evidence/ontrack-mvp-2026-08-26/final-closure-addendum-20260828.md)
+> for the protected merges, notification queue/verifier fixes, final Docker
+> scan and exact API CI cold/warm results completed after this dated record.
+> The addendum supersedes current-status statements that those pull requests
+> are open or review-pending; the exact-SHA historical observations below are
+> retained unchanged.
+
 This page records the repository-side closure result for `DOC-2`, `TUT-F01`,
 `MISC-X01`, the Docker Image Vulnerability Scan, `CPD-MVP01`, `PPI-MVP01` and
 `ON-MVP01`.
