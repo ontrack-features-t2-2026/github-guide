@@ -1,8 +1,9 @@
 # Documentation, tutorial and MVP closure status — 2026-08-27
 
 This page records the repository-side closure result for `DOC-2`, `TUT-F01`,
-`MISC-X01`, the Docker Image Vulnerability Scan and `ON-MVP01`. Ticket wording,
-assignees and source statuses came from the 26 August Planner workbook export;
+`MISC-X01`, the Docker Image Vulnerability Scan, `PPI-MVP01` and `ON-MVP01`.
+Ticket wording, assignees and source statuses came from the supplied Planner
+workbook exports;
 GitHub refs and pull requests were audited at `2026-08-27T12:15:29Z` and the
 later closure merges and exact-SHA validation results below were refreshed on
 27 August.
@@ -119,9 +120,11 @@ The [historical scan report](evidence/docker-image-vulnerability-scan-20260826.m
 and its compressed raw JSON/table artifacts identify the 26 August API/Web
 candidate SHAs, image digests, scanner/database provenance, severity counts,
 layer attribution, dependency-mitigation cross-reference, checksums and rerun
-commands. Local final-candidate packs add the 27 August Web/API results; the
-final API compact raw pack is also checksum-verified and published under
-`evidence/raw/docker-image-vulnerability-scan-20260827/api-6c74dbb/`.
+commands. The exact 27 August API and merged-Web compact packs are
+checksum-verified and published under
+[`api-6c74dbb`](evidence/raw/docker-image-vulnerability-scan-20260827/api-6c74dbb/)
+and
+[`web-16c22c9`](evidence/raw/docker-image-vulnerability-scan-20260827/web-16c22c9/).
 
 **Scan-ticket execution result: complete; release risk open.** The 26 August API/Web development-image evidence remains
 reproducible. The composed Web candidate `5255c271` was scanned at immutable digest
@@ -136,16 +139,52 @@ and Linux/ARM64 manifest
 Trivy 0.74.0 reported 35 Critical/579 High/1,843 Medium/1,368 Low/247
 Unknown instances: 4,072 instances across 2,312 unique IDs. It reports 49
 fixable High instances across 12 unique IDs and no fixable Critical instance.
-None of these results is remediation or production approval; both scanned
-development images retain unresolved Critical/High findings and are not
-production-safe. Updated merged Web head `16c22c99` is source-test green but
-has no image scan in this evidence pack, so the `5255c271` scan must not be
-promoted to it.
+The exact merged Web head `16c22c99` was rebuilt at OCI index digest
+`sha256:35aef683f7b52ae761bb679e7a7efb55e1b3a7149ab8851a7164ff3596fa0ac2`,
+Linux/ARM64 manifest
+`sha256:1b634aceb505d078a3a13e98ecdae1ca2687a7ee56433b9730dc54c6608f592f`
+and configuration
+`sha256:51bce86ae9fde71c213a326e81b4e15148b6c2ba666e2278bfb41810d5e5e68a`.
+Trivy 0.74.0 reports the same 33 Critical/395 High/1,592 Medium/1,197
+Low/163 Unknown inventory as the predecessor: 3,380 instances/2,110 unique
+IDs, including 1 fixable Critical and 8 fixable High instances. The stable
+vulnerability-tuple hash is identical, while the new OCI digest records the
+changed source/layout content. None of these results is remediation or
+production approval; both development images retain unresolved Critical/High
+findings and are not production-safe.
 
 Planner-ready text:
 
 ```text
-DOCKER IMAGE VULNERABILITY SCAN — EXECUTION COMPLETE / RELEASE RISK OPEN. Historical Trivy evidence remains complete for API 75d7337f and Web 832d5e47. Composed Web 5255c27 at digest sha256:ae5a90c8… reports 33 Critical/395 High/1,592 Medium/1,197 Low/163 Unknown; 16 language findings are in bundled base-image npm, while the project npm layer/audit report zero. Final API 6c74dbb at OCI index digest sha256:f938fef1… reports 35 Critical/579 High/1,843 Medium/1,368 Low/247 Unknown (4,072 instances/2,312 unique IDs), including 49 fixable High instances/12 unique IDs and no fixable Critical. The compact raw API pack and checksum manifest are published. Merged Web 16c22c9 has not been image-scanned here. These root development images are not production-safe. Next: triage/remediate or approve named expiring exceptions, build minimal non-root runtime images for the merged heads and rescan immutable release digests.
+DOCKER IMAGE VULNERABILITY SCAN — EXECUTION COMPLETE / RELEASE RISK OPEN. Final API 6c74dbb at OCI index digest sha256:f938fef1… reports 35 Critical/579 High/1,843 Medium/1,368 Low/247 Unknown (4,072 instances/2,312 unique IDs), including 49 fixable High instances/12 unique IDs and no fixable Critical. Exact merged Web 16c22c9 at OCI index digest sha256:35aef683… reports 33 Critical/395 High/1,592 Medium/1,197 Low/163 Unknown (3,380 instances/2,110 unique IDs), including 1 fixable Critical and 8 fixable High instances; its vulnerability tuple matches predecessor 5255c27. Both compact raw packs and checksum manifests are published. These development images are not production-safe. Next: triage/remediate or approve named expiring exceptions, build minimal immutable runtime images, and scan the release digests with SBOM/provenance.
+```
+
+## PPI-MVP01 — Peer Progress Indicator handover
+
+The [PPI-Q02 validation and PPI MVP handover](docs/evidence/ontrack-mvp-2026-08-26/ppi-q02-validation-handover-20260827.md)
+maps the supplied Planner acceptance criteria to exact merged Web head
+`16c22c992c821e16981c8f8cb2601f0a61f73007`. The Planner export records
+`PPI-Q02` completed with 10/10 checklist items and expressly accepts a safe
+mock/pre-calculated unit summary while placing a live unit-level API outside
+the MVP.
+
+Merged Web PRs #31, #32, #38 and #39 preserve the typed mock-backed unit
+summary, privacy-safe state resolver, help/copy and wireframe evidence,
+responsive component, and de-identified design decisions. Exact-head focused
+fixture/state validation passes 3 files/40 tests in 3.31 seconds; the broader
+PPI matrix passes 109 tests and the hosted Web suite passes 607 tests across
+104 files. Normal, genuine zero, suppressed, unavailable, disabled and stale
+states, separate student/anonymous labels, privacy suppression, non-colour
+meaning, desktop/narrow layout and the production demo gate are validated.
+
+**Result: validated / handed over.** A live unit-level API remains documented
+future work and is not claimed as delivered. Guide PR #2 still needs its
+independent protected review before publication.
+
+Planner-ready text:
+
+```text
+PPI-MVP01 VALIDATED / HANDED OVER — Exact merged Web head 16c22c9 contains the authorised task-level PPI plus the privacy-safe mock-backed unit summary from merged PRs #31/#32/#38/#39. PPI-Q02 is recorded completed 10/10; normal, genuine 0%, suppressed, unavailable, disabled and stale mappings, privacy suppression, non-colour labels, desktop/narrow layout and production mock gating are validated. Focused exact-head fixture/state validation passed 3 files/40 tests in 3.31s; the broader PPI matrix passes 109 tests and hosted Web passes 607/104. Per Planner acceptance, a live unit-level API is future/out-of-scope and is not claimed as delivered. Evidence: docs/evidence/ontrack-mvp-2026-08-26/ppi-q02-validation-handover-20260827.md
 ```
 
 ## ON-MVP01 — combined four-stream handover
@@ -188,13 +227,15 @@ retry cleanup. The supplied survey contains 88 responses and every source row
 is mapped once in the de-identified feedback traceability table. Web Push
 reached real permission, subscription count one, successful safe-route jobs and
 sign-out deletion back to zero, but no OS banner or click-through was
-observable. Remaining blockers are that receipt/click, `CPD-Q05`/`CPD-D02`,
-`PPI-Q02`/live unit summary, Guide publication, rerunning or explicitly accepting the running-stack
-boundary at final Web/Deploy heads, merged-Web image scanning, vulnerability
+observable. PPI-Q02/PPI-MVP01 are now validated within the Planner-approved
+mock-backed unit-summary boundary, and the exact merged-Web image scan is
+published. Remaining blockers are the Mobile receipt/click,
+`CPD-Q05`/`CPD-D02`, Guide publication, rerunning or explicitly accepting the
+running-stack boundary at final Web/Deploy heads, vulnerability
 remediation/risk decisions and an authorised release decision.
 
 Planner-ready text:
 
 ```text
-ON-MVP01 BLOCKED / HANDED OVER — API PR77 merged hosted-green head 6c74dbb, Web PR105 merged green head 16c22c9 (607 tests/104 files plus exact-head CPD/PPI/Notifications matrices), and Deploy PR26 merged lock ad463dc pinning that pair; its exact Compose contract passes. Guide PR2 is the publication PR to main. API eight-shard CI and rollup pass, though the slowest test step is 5:25 and misses the five-minute target by 25s. Exact predecessor lock 4851fc1 (API 6c74dbb/Web 5255c27) passed fresh clone/Compose plus CPD Active/Previous/All/filtering, eligible/disabled task-level PPI, and four-event Sidekiq→Mailpit privacy/suppression/retry acceptance. The supplied survey contains 88 responses; all 88 are mapped once in the de-identified traceability table. Push subscription/jobs/sign-out cleanup passed but no OS receipt/click was observed. Do not promote that running-stack pass or Web image scan to the later Web/Deploy heads. Still required: observable push receipt/click, CPD-Q05/D02, PPI-Q02/live unit summary, Guide publication, merged-Web image scan and vulnerability disposition, plus authorised go/no-go/rollback records. Evidence: docs/evidence/ontrack-mvp-2026-08-26/live-closure-validation-20260827.md and docs/evidence/ontrack-mvp-2026-08-26/feedback-traceability-20260827.md
+ON-MVP01 BLOCKED / HANDED OVER — API PR77 merged hosted-green head 6c74dbb, Web PR105 merged green head 16c22c9 (607 tests/104 files plus exact-head CPD/PPI/Notifications matrices), and Deploy PR26 merged lock ad463dc pinning that pair; its exact Compose contract passes. Guide PR2 is the publication PR to main. PPI-Q02/PPI-MVP01 are validated within the approved mock-backed unit-summary boundary (focused 3 files/40 tests in 3.31s); no live unit API is claimed. Exact merged-Web 16c22c9 image scanning is complete at sha256:35aef683… with 33 Critical/395 High and is not production-safe. Exact predecessor lock 4851fc1 passed fresh clone/Compose, CPD, task-level PPI and four-event email acceptance; do not promote that running-stack result to later Web/Deploy heads. Still required: observable push receipt/click, CPD-Q05/D02, Guide publication, final-stack boundary acceptance, vulnerability disposition, and authorised go/no-go/rollback records. Evidence: docs/evidence/ontrack-mvp-2026-08-26/live-closure-validation-20260827.md, docs/evidence/ontrack-mvp-2026-08-26/ppi-q02-validation-handover-20260827.md and docs/evidence/ontrack-mvp-2026-08-26/feedback-traceability-20260827.md
 ```

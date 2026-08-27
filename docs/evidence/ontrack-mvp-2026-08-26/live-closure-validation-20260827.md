@@ -90,9 +90,14 @@ and `CPD-D02` evidence was not found and remains a traceability/deferment item.
 - User-disabled API behaviour returned null metrics/distribution without raw
   counts, and the user preference was restored.
 
-This is a live task-level PPI result. It does not convert the demo/mock-backed
-unit summary or burndown into a live API feature. `PPI-Q02` and live
-unit-summary evidence remain open or require explicit deferment.
+This is a live task-level PPI result attached to composed Web `5255c271`. It
+does not convert the demo/mock-backed unit summary or burndown into a live API
+feature. PPI-Q02 is closed separately against exact merged Web `16c22c99` by
+the [validation and handover](ppi-q02-validation-handover-20260827.md): merged
+PRs #31/#32/#38/#39, focused fixture/state validation (3 files/40 tests in
+3.31s), privacy-safe state mapping, responsive evidence and production mock
+gating pass. The supplied Planner criteria expressly place a live unit-level
+API in future/out-of-scope work; no live unit API is claimed.
 
 ### Email Notifications
 
@@ -140,11 +145,12 @@ The development-image scans are evidence, not approval:
 - API: 35 Critical, 579 High, 1,843 Medium, 1,368 Low and 247 Unknown; the
   [compact raw pack and checksums](../../../evidence/raw/docker-image-vulnerability-scan-20260827/api-6c74dbb/)
   are published;
-- Web `5255c271`: 33 Critical, 395 High, 1,592 Medium, 1,197 Low and 163
-  Unknown. The `16c22c99` merge changed no package manifest, lock file or
-  Dockerfile, so the package-risk inventory remains relevant, but its image
-  digest is not an exact scan of the merged head and must be rebuilt/rescanned
-  before release.
+- exact merged Web `16c22c99`: 33 Critical, 395 High, 1,592 Medium, 1,197 Low
+  and 163 Unknown at OCI index digest `sha256:35aef683…`; the
+  [compact pack and checksums](../../../evidence/raw/docker-image-vulnerability-scan-20260827/web-16c22c9/)
+  are published. The vulnerability tuple is identical to predecessor
+  `5255c271` because Docker/package inputs did not change. This closes the exact
+  digest gap, not the risk.
 
 Neither image is production-safe as scanned. Remediation or an authorised,
 expiring risk acceptance is required before release. The subsequently supplied
