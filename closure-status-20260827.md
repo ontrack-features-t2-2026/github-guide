@@ -84,7 +84,10 @@ follow-up PRs are recorded as merged; current open review items remain visible.
 Local Deploy head `32c7abbf5551d172970c31acea9522ec4da29b08`
 records the prior 26 August candidate only. Its gitlink commit `c4c0d9a5` pins
 API `75d7337f` and Web `832d5e47`; it is not the final lock and must be
-superseded when final API/Web SHAs are selected.
+superseded. The exact local final candidates are now API
+`f25945d228c1a3b321412047dcfe304e43cb7658` and Web
+`5255c271778643cd6f972e3bce1d83ecdb2e292d`; neither candidate nor a successor
+Deploy lock has been published.
 
 Requester approval recorded 27 Aug 2026; named-leader confirmation waived by
 requester. This is not attributed to any uncontacted individual and does not
@@ -97,7 +100,7 @@ Downstream implementation still assigns the relevant Unassigned roles.
 Planner-ready text:
 
 ```text
-MISC-X01 REPOSITORY COMPLETE / PUBLICATION FOLLOW-UP — Current heads/PRs, owners and Unassigned roles, shared surfaces, integration order, CI/Deploy rules and weekly review are documented. Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester. Prior-candidate Deploy head 32c7abb is reproducibility evidence only, not the final lock. Next: publish the Guide, post the effective deadline and add Planner/team-chat links; downstream work assigns relevant roles.
+MISC-X01 REPOSITORY COMPLETE / PUBLICATION FOLLOW-UP — Current heads/PRs, owners and Unassigned roles, shared surfaces, integration order, CI/Deploy rules and weekly review are documented. Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester. Final local candidates are API f25945d and Web 5255c27; prior-candidate Deploy head 32c7abb is reproducibility evidence only and still needs a successor lock. Next: publish the Guide, post the effective deadline and add Planner/team-chat links; downstream work assigns relevant roles.
 ```
 
 ## Docker Image Vulnerability Scan
@@ -107,38 +110,50 @@ compressed raw JSON/table artifacts identify exact API/Web candidate SHAs,
 image digests, scanner/database provenance, severity counts, layer attribution,
 dependency-mitigation cross-reference, checksums and rerun commands.
 
-**Scan-ticket evidence result: complete for the exact 26 August development
-images.** This is not remediation or production approval. API reported 35
-Critical/577 High instances and Web reported 33 Critical/394 High instances.
-Current branch heads moved, so final runtime images require applicability
-review, remediation or expiring risk acceptance, rebuild and rescan.
+**Scan-ticket evidence result: historical evidence complete; final-candidate
+refresh partial.** The 26 August API/Web development-image evidence remains
+reproducible. The final Web candidate `5255c271` was scanned at immutable digest
+`sha256:ae5a90c845bbfec38e2dc1f84c5447fe4b301c189ea9c7f19d910c6b2c7bf23c`
+and reported 33 Critical/395 High/1,592 Medium/1,197 Low/163 Unknown instances.
+All 16 language findings are in bundled npm dependencies in the base Node
+image; the project `npm ci` layer and `npm audit` reported zero. The final API
+candidate scan is **pending**. None of these results is remediation or
+production approval; the Web development image is not production-safe.
 
 Planner-ready text:
 
 ```text
-DOCKER IMAGE VULNERABILITY SCAN — EVIDENCE COMPLETE for exact candidates API 75d7337f and Web 832d5e47. Trivy 0.74.0 raw JSON/table reports, checksums, layer attribution and dependency cross-reference are published. Result is not clean: API 35 Critical/577 High; Web 33 Critical/394 High. Next security/release work: triage, remediate or approve expiring exceptions, build final minimal runtime images and rescan their immutable digests.
+DOCKER IMAGE VULNERABILITY SCAN — FINAL REFRESH PARTIAL. Historical Trivy evidence remains complete for API 75d7337f and Web 832d5e47. Final Web 5255c27 at digest sha256:ae5a90c8… reports 33 Critical/395 High/1,592 Medium/1,197 Low/163 Unknown; 16 language findings are in bundled base-image npm, while the project npm layer/audit report zero. Final API f25945d scan is pending. The Web development image is not production-safe. Next: publish the final API scan, triage/remediate or approve expiring exceptions, build minimal runtime images and rescan immutable digests.
 ```
 
 ## ON-MVP01 — combined four-stream handover
 
 The [central MVP evidence index](docs/evidence/ontrack-mvp-2026-08-26/README.md)
 preserves focused passes for the exact candidates and records the 27 August
-branch/PR refresh. The prior candidate is reproducibly pinned locally, but
-final API/Web SHAs are still moving and the lock is unpublished.
+branch/PR refresh. Final local candidates are fixed at API `f25945d` and Web
+`5255c271`, but the prior-candidate Deploy lock has not yet been superseded or
+published.
 
 Requester approval recorded 27 Aug 2026; named-leader confirmation waived by
 requester for this factual blocked/handover disposition. This is not a product
 release approval and is not attributed to uncontacted individuals.
 
-**Result: blocked / handed over.** No current full-suite pass, resource-
-sufficient Web production-build pass, composed-stack acceptance, previous/all
-CPD success, eligible live PPI browser result, real background Web Push receipt
-or complete 85-response feedback traceability matrix exists. The exact-image
-Critical/High findings also remain unresolved. Existing focused tests and safe
-browser states must not be promoted to those missing outcomes.
+**Result: blocked / handed over.** Web `5255c271` now has green lint,
+type-check, focused packs, the full 103-file suite (605 passed/one todo) and a
+Node 22 production build (99.911 seconds). API `f25945d` retains the
+previous/all CPD query reduction (453 to 38 SQL queries; 4.218 to 2.390 seconds),
+passes its focused regression (one run/six assertions), and introduces eight
+deterministic CI shards covering 129/129 test files exactly once. The local API
+full-suite attempt is not a pass: Docker-dependent LaTeX/JPlag/helper-service
+tests could not access `/var/run/docker.sock`; hosted CI is pending and is the
+authoritative gate. Composed-stack and browser previous/all CPD acceptance,
+eligible live PPI, current Sidekiq-to-Mailpit email, real background Web Push,
+the complete 85-response matrix, the final API image scan, the successor Deploy
+lock and an authorised release decision remain open. The final Web image still
+has unresolved Critical/High findings and is not production-safe.
 
 Planner-ready text:
 
 ```text
-ON-MVP01 BLOCKED / HANDED OVER — Exact 26-Aug API/Web candidates retain focused evidence and a local prior-candidate Deploy pin; named umbrella/follow-up PRs were merged, but final heads moved. Still required: final lock publication/fresh-clone verification, full suites and production build, composed-stack acceptance, previous/all CPD, eligible live PPI, current Sidekiq→Mailpit email, real background Web Push, all-85 feedback traceability, image triage/rescan, and authorised go/no-go/rollback records. Central evidence: docs/evidence/ontrack-mvp-2026-08-26/README.md
+ON-MVP01 BLOCKED / HANDED OVER — Final local candidates are API f25945d and Web 5255c27. Web lint/type-check, focused packs, the 103-file full suite (605 pass/1 todo) and Node 22 production build pass; API previous/all CPD performance/regression and deterministic 8-way test partition checks pass. API hosted full-suite CI is pending; the local attempt is not green because Docker-dependent helper tests could not access the sandboxed socket. Still required: successor Deploy lock publication/fresh-clone verification, composed-stack and browser previous/all CPD acceptance, eligible live PPI, current Sidekiq→Mailpit email, real background Web Push, all-85 feedback traceability, final API image scan and image remediation/risk decisions, plus authorised go/no-go/rollback records. Central evidence: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```

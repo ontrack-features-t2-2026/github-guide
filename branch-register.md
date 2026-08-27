@@ -28,7 +28,7 @@ These heads were verified against GitHub on **27 August 2026 at 09:49:05Z**. Re-
 
 The older `feature/email-notifications` and `feature/mobile-notifications` refs are not T2 task pull-request targets. They are retained repository history. New Email and Mobile work must use `feature/notifications`.
 
-## Published and candidate integration heads
+## Published, historical and local candidate heads
 
 | Repository | Integration branch | Head | Status |
 |---|---|---|---|
@@ -36,8 +36,10 @@ The older `feature/email-notifications` and `feature/mobile-notifications` refs 
 | API | [`integration/11.0.x-all-features-20260824`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/integration/11.0.x-all-features-20260824) | [`fc976800`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/fc97680031ac377f5c71379243ae9214da3a83b5) | Published historical integration branch; not a student PR target. |
 | Web | [`integration/ontrack-mvp-validation-20260826`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/integration/ontrack-mvp-validation-20260826) | [`832d5e47`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/832d5e47eb26ff2e21ce25e576daa13b3054cc3e) | **Published validation candidate / unapproved.** Frozen 26 August composition of its then-current release line, Cross-Project Dashboard, PPI and canonical Notifications, plus the focused-test constructor repair. Later branch movement is not automatically covered. |
 | API | [`integration/ontrack-mvp-validation-20260826`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/integration/ontrack-mvp-validation-20260826) | [`75d7337f`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/75d7337fd0dd04f9b3a985f287e40f3ec6a467a0) | **Published validation candidate / unapproved.** Frozen 26 August composition of its then-current release line, Cross-Project Dashboard and canonical Notifications on the integration foundation. Later branch movement is not automatically covered. |
+| Web | `closure/web-ontrack-mvp-20260827` | `5255c271778643cd6f972e3bce1d83ecdb2e292d` | **Local final validation candidate / unapproved.** Type-check, zero-warning lint, CPD (98 pass/1 todo), PPI (109), notifications (177), full suite (103 files/605 pass/1 todo) and Node 22 production build (99.911 seconds) pass. Branch is not pushed; composed/manual acceptance and release approval remain open. |
+| API | `closure/api-ontrack-mvp-20260827` | `f25945d228c1a3b321412047dcfe304e43cb7658` | **Local final validation candidate / unapproved.** Includes the previous/all CPD query repair and deterministic eight-way CI sharding. Focused regression and shard integrity checks pass; hosted full-suite CI and the final image scan are pending. Branch is not pushed. |
 | Deploy | `integration/deploy-all-features-foundation-20260824` | [`7410f196`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/7410f1963aa2fdd9ecd7fbe76843b0705c6d74cb) | Historical immutable integration commit; the remote branch was deleted after merge into `11.0.x`. |
-| Deploy | `chore/ontrack-mvp-lock-20260827` | `32c7abbf5551d172970c31acea9522ec4da29b08` | **Local, unpublished prior-candidate lock.** Gitlinks introduced at `c4c0d9a5` pin API `75d7337f` plus Web `832d5e47`; the head explicitly requires a successor for final SHAs. Not a student target or release approval. |
+| Deploy | `chore/ontrack-mvp-lock-20260827` | `32c7abbf5551d172970c31acea9522ec4da29b08` | **Local, unpublished prior-candidate lock.** Gitlinks introduced at `c4c0d9a5` pin API `75d7337f` plus Web `832d5e47`; it does not pin final local candidates API `f25945d` and Web `5255c271`, so a successor is required. Not a student target or release approval. |
 
 Do not open student task pull requests into an integration branch. See [cross-objective-coordination.md](cross-objective-coordination.md) for merge order, shared surfaces, CI rules and deploy triggers.
 

@@ -12,11 +12,11 @@ Contributors must read this register before changing a shared frontend, API cont
 
 | Item | Current state | Required decision or evidence |
 |---|---|---|
-| Web and API combined validation branches | Published candidates are recorded in the [branch register](branch-register.md); they remain unapproved. | Link the branch/commit, pull request, checks and reviewer decision before any merge or release use. |
+| Web and API combined validation branches | Historical published candidates and final local candidates API `f25945d` / Web `5255c271` are recorded in the [branch register](branch-register.md); all remain unapproved. | Publish the final branches, link checks and reviewer decisions, and do not treat local evidence as merge or release approval. |
 | First-Time Tutorial Web branch | Requester approved the plan `feature/student-onboarding` from observed Web `9c618c3b`; named-leader confirmation was waived. No public branch was found or created. | Re-audit the base and assign an implementation owner before branch creation. |
 | Shared preferences and help structure | Requester approved the coordination default below for MISC-X01 closure and waived named-leader confirmation. | Downstream tickets must still record owners, accessibility review and any change to this default before altering a shared surface. |
 | Optional sub-category leads | All are explicitly **Unassigned** below; requester accepted that state for MISC-X01 closure. | Assign the relevant role before downstream implementation/review or retain Unassigned and escalate conflicts. |
-| Final Deploy path | The historical foundation was merged and its remote branch deleted. Local unpublished prior-candidate head `32c7abbf5551d172970c31acea9522ec4da29b08` documents gitlinks introduced at `c4c0d9a5` for the focused-test candidates. | Supersede it with final SHAs, publish/review, reproduce from a fresh clone and obtain a Deploy/release decision before release use. |
+| Final Deploy path | The historical foundation was merged and its remote branch deleted. Local unpublished prior-candidate head `32c7abbf5551d172970c31acea9522ec4da29b08` documents gitlinks introduced at `c4c0d9a5` for API `75d7337f` / Web `832d5e47`; it does not pin final local API `f25945d` / Web `5255c271`. | Create a successor lock with the final SHAs, publish/review it, reproduce it from a fresh clone and obtain a Deploy/release decision before release use. |
 | New accessibility lint/CI gates | Coordination policy is defined, but no new gate is treated as approved here. | Demonstrate the rule on every active Web objective branch, assign remediation and obtain branch-protection approval. |
 | Objective evidence indexes | Existing evidence is linked where available; several new objectives do not yet have a public index. | Publish one index per objective and replace each explicit **TBD** entry. |
 
@@ -43,6 +43,29 @@ The following describes the frozen 26 August candidate history; it is evidence o
 4. Local unpublished Deploy head `32c7abbf5551d172970c31acea9522ec4da29b08` starts from public Deploy [`5351009d`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/5351009df475c4a3d4f788110b0197ce64b3d3f4); gitlinks introduced at `c4c0d9a5` pin those two exact prior candidates. It is a reproducibility aid, not the final lock or release approval.
 5. Current API/Web release and feature heads moved after the candidates were tested. The [branch register](branch-register.md) records the 27 August heads; equivalent patches cannot be inferred solely from ancestry.
 
+The 27 August closure pass produced exact **local, unpublished** final validation
+candidates:
+
+1. Web `closure/web-ontrack-mvp-20260827` at
+   `5255c271778643cd6f972e3bce1d83ecdb2e292d` passes type-check, zero-warning
+   lint, CPD (98 pass/one todo), PPI (109), notifications (177), the full suite
+   (103 files/605 pass/one todo) and the Node 22 production build (99.911
+   seconds).
+2. API `closure/api-ontrack-mvp-20260827` at
+   `f25945d228c1a3b321412047dcfe304e43cb7658` includes the previous/all CPD
+   repair: the audited request moved from 453 to 38 SQL queries and 4.218 to
+   2.390 seconds, and its focused regression passes one run/six assertions. Its
+   eight deterministic CI shards assign all 129 discovered test files exactly
+   once, 15–17 files and 4,278–4,284 lines per shard; the sharding unit test
+   passes five runs/29 assertions, and RuboCop, actionlint and syntax checks are
+   clean.
+3. The API local full-suite run is not a pass because sandboxed
+   Docker-dependent LaTeX/JPlag/helper-service tests could not access
+   `/var/run/docker.sock`; hosted CI is pending and authoritative. The final
+   API image scan is also pending.
+4. The prior Deploy head still points to the 26 August candidates. A successor
+   lock, composed-stack/manual acceptance and release decision remain required.
+
 ### Current pull-request disposition gate
 
 The public pull-request snapshot was refreshed at **2026-08-27T09:49:05Z**.
@@ -63,9 +86,9 @@ The remaining open review surfaces observed in the audited repositories were:
 | Guide | [#1](https://github.com/ontrack-features-t2-2026/github-guide/pull/1) | Review required; documentation CI policy, not product approval. |
 | Deploy | None | No open Deploy pull request was returned. The local validation lock is still unpublished. |
 
-An integration owner must review the current heads and patches before building
-a refreshed candidate. “Not an ancestor” does not prove absence; an equivalent
-patch can have a different commit. The full acceptance gaps are in the
+An integration owner must review the final local candidates and their source
+patches before publication or release use. “Not an ancestor” does not prove
+absence; an equivalent patch can have a different commit. The full acceptance gaps are in the
 [four-stream MVP evidence index](docs/evidence/ontrack-mvp-2026-08-26/README.md).
 
 ## Ownership and escalation
@@ -265,13 +288,13 @@ For proven Deploy work:
 |---|---|---|
 | Branch heads and PR destinations | [T2 2026 branch register](branch-register.md) | Current snapshot; approvals identified separately from observations. |
 | 27 August ticket closure | [Documentation, tutorial and MVP closure status](closure-status-20260827.md) | DOC-2, TUT-F01, MISC-X01, scan and ON-MVP01 Planner-ready outcomes separated from publication/release follow-up. |
-| Combined four-stream validation and handover | [OnTrack MVP evidence and handover index](docs/evidence/ontrack-mvp-2026-08-26/README.md) | Current candidates and blockers recorded; no MVP completion or release is claimed. |
+| Combined four-stream validation and handover | [OnTrack MVP evidence and handover index](docs/evidence/ontrack-mvp-2026-08-26/README.md) | Final local candidates and remaining blockers recorded; no MVP completion or release is claimed. |
 | First-Time Tutorial | [Objective, branch plan and evidence index](first-time-tutorial-objective.md) | Repository foundation complete with requester-approved branch plan; publication and downstream role assignment remain. |
 | Cross-Project Dashboard | [Web status](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/feature/cross-unit/CROSS_UNIT_STATUS.md), [data-source map](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/feature/cross-unit/docs/cpd-data-source-map.md) | Existing evidence; CPD-MVP01 must still link exact final commits, runs and reviews. |
 | Email Notifications | [API notification status](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/notifications/NOTIFICATIONS_STATUS.md), [event index](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/notifications/docs/notifications/events/README.md) | Shared Notifications evidence; EN-MVP01 must identify email-specific final evidence. |
 | Mobile Notifications | [Push setup](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/notifications/docs/notifications/push-setup.md), [local push testing](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/notifications/docs/notifications/testing-push-locally.md) | Shared Notifications evidence; MN-MVP01 must identify device/browser results and final review. |
 | Peer Progress Indicator | [Web handover](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/feature/peer-progress-indicator/docs/ppi-f02-unit-summary-handover.md), [API data-source map](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/peer-progress-indicator/docs/peer-progress/data-source-map.md) | Existing evidence; PPI-MVP01 must link exact final privacy, test and demo results. |
-| Combined stack | [Merged Deploy handover](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/blob/5351009df475c4a3d4f788110b0197ce64b3d3f4/HANDOVER.md); local prior-candidate head `32c7abbf5551d172970c31acea9522ec4da29b08` | Exact focused-test candidates are locally pinned only as prior evidence; final SHA update, publication, fresh-clone verification and release decision remain unresolved. |
+| Combined stack | [Merged Deploy handover](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/blob/5351009df475c4a3d4f788110b0197ce64b3d3f4/HANDOVER.md); local prior-candidate head `32c7abbf5551d172970c31acea9522ec4da29b08` | Final local candidates are API `f25945d` and Web `5255c271`; the prior Deploy lock still points at the 26 August pair. Successor lock, publication, fresh-clone/composed verification and release decision remain unresolved. |
 | Accessibility | **TBD - no public objective evidence index linked** | Blocker |
 | Theme | **TBD - no public objective evidence index linked** | Blocker |
 | Safe Uploads | **TBD - no public objective evidence index linked** | Blocker |
@@ -286,6 +309,7 @@ Review this table at least weekly while the objectives are active.
 |---|---|---|---|---|---|
 | 2026-08-26 | MISC-X01 documentation audit | Canonical Notifications targets corrected; combined Web/API validation candidates published | Preferences/help structure, objective integration owners and sub-category leads remain unresolved | Staged CI and conditional Deploy rules documented | This register and [branch register](branch-register.md); approval links remain pending |
 | 2026-08-27 | MISC-X01 closure audit | Release/feature heads moved; named umbrella/follow-up PRs merged; old Web/Deploy integration refs deleted | Web #103/#104 and API #72 remain active shared-surface review points; owners remain as recorded above | Weekly workflow PRs merged; prior-candidate Deploy head `32c7abb` created without release claim | [Branch register](branch-register.md), this PR table and prior gitlink commit `c4c0d9a5fc37b9346206ed2963fbfa3684c2a696` |
+| 2026-08-27 | MVP final-candidate validation | Local API `f25945d` and Web `5255c271` selected; branches remain unpublished | Final candidate composition is recorded; composed/manual gates remain open | Web full suite/build pass; API eight-shard integrity passes; hosted API CI, final API scan and successor Deploy lock remain pending | [MVP evidence index](docs/evidence/ontrack-mvp-2026-08-26/README.md) and [closure status](closure-status-20260827.md) |
 | YYYY-MM-DD | **Unassigned** |  |  |  |  |
 
 ## Team-chat update template
@@ -303,7 +327,7 @@ and downstream implementation must assign its relevant Unassigned roles.
 Planner-ready status:
 
 ```text
-MISC-X01 REPOSITORY COMPLETE / PUBLICATION FOLLOW-UP — Branch heads and live PR dispositions were refreshed on 27 August; shared surfaces, integration order, CI/Deploy rules and explicit Unassigned roles are documented. Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester. Prior-candidate Deploy head 32c7abb is reproducibility evidence only, not the final lock. Remaining human actions: publish the Guide, post the effective deadline and add Planner/team-chat links; downstream work assigns relevant roles. No product or release approval is inferred.
+MISC-X01 REPOSITORY COMPLETE / PUBLICATION FOLLOW-UP — Branch heads and live PR dispositions were refreshed on 27 August; shared surfaces, integration order, CI/Deploy rules and explicit Unassigned roles are documented. Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester. Final local candidates are API f25945d and Web 5255c27; prior-candidate Deploy head 32c7abb is reproducibility evidence only and needs a successor lock. Remaining human actions: publish the Guide, post the effective deadline and add Planner/team-chat links; downstream work assigns relevant roles. No product or release approval is inferred.
 ```
 
 ```text

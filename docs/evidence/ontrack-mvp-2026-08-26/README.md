@@ -3,9 +3,11 @@
 Evidence snapshot time: **2026-08-26T11:28:50Z** (`2026-08-26 21:28:50 AEST`)
 
 Live branch and pull-request disposition was refreshed at
-**2026-08-27T09:49:05Z**. Focused test and scan results remain attached to the
-exact 26 August candidates; later branch movement is not silently promoted to
-fresh evidence.
+**2026-08-27T09:49:05Z**. A later closure pass selected and validated exact
+local final candidates API `f25945d228c1a3b321412047dcfe304e43cb7658` and Web
+`5255c271778643cd6f972e3bce1d83ecdb2e292d`. Those branches are not pushed.
+Results remain attached to the exact SHA named beside them; 26 August evidence
+is retained as historical and is not silently promoted to either final SHA.
 
 Tickets covered:
 
@@ -27,13 +29,13 @@ release approval.
 
 ## Executive handover decision
 
-| Ticket | Implementation status | Fresh evidence against current heads | Handover decision |
+| Ticket | Implementation status | Exact-SHA evidence and remaining gate | Handover decision |
 | --- | --- | --- | --- |
-| `MN-MVP01` | Unified in-app/mobile Web Push implementation exists. | Fresh API push coverage passes 72 runs/295 assertions and seven focused Web notification/push files pass 148 tests. The browser permission-denied state rendered, but no real background Web Push receipt was proven. | **Blocked** |
-| `EN-MVP01` | In-app notification, queued email, preferences, event documentation and Mailpit integration exist. | Fresh focused API email coverage passes 77 runs/428 assertions, seven Web notification files pass 148 tests, and historical email delivery is green. Full validation and the complete event/recipient matrix are not complete. | **Blocked** |
-| `CPD-MVP01` | Cross-project dashboard, filtering/sorting, recommendations and role-safe API work exist. | Fresh focused Web tests pass 55 with one todo after the constructor-spec repair; Web lint/type-check and focused API task-prioritisation tests are also green. Production build is resource-blocked and full suites were not run. No auditable `CPD-Q05` or `CPD-D02` completion evidence was located. | **Blocked** |
-| `PPI-MVP01` | The task-level widget calls an authorised API and has privacy-safe suppression. | Fresh API core/preference tests pass 103 runs/5,608 assertions, and seven focused Web files pass 93 tests. The unit-summary and burndown surfaces are still demo/mock-backed; no `PPI-Q02` or live unit-summary API evidence was located. | **Blocked** |
-| `ON-MVP01` | A combined historical stack and published API/Web validation candidates exist. | Previously named umbrella/follow-up PRs were merged, and local unpublished prior-candidate Deploy head `32c7abb` records exact focused-test gitlinks. Current feature/release heads moved after testing; full suites, composed-stack and end-to-end acceptance remain incomplete, and exact-image scans contain unresolved critical/high findings. | **Blocked** |
+| `MN-MVP01` | Unified in-app/mobile Web Push implementation exists. | Final Web `5255c271` passes 177 focused notification/push/profile tests and the 605-test full suite. API push passed 72 runs/295 assertions only at historical `75d7337f`; exact final API hosted CI is pending. The browser permission-denied state rendered, but no real background Web Push receipt was proven. | **Blocked** |
+| `EN-MVP01` | In-app notification, queued email, preferences, event documentation and Mailpit integration exist. | Final Web `5255c271` passes 177 focused notification tests and the full suite. API email passed 77 runs/428 assertions only at historical `75d7337f`; no current composed Sidekiq-to-Mailpit result or complete event/recipient matrix exists. | **Blocked** |
+| `CPD-MVP01` | Cross-project dashboard, filtering/sorting, recommendations and role-safe API work exist. | Final Web `5255c271` passes 98 CPD tests/one todo, the full suite and a 99.911-second Node 22 production build. Final API `f25945d` reduces the previous/all path from 453 to 38 SQL queries and 4.218 to 2.390 seconds; its focused regression passes one run/six assertions. Composed browser previous/all acceptance and auditable `CPD-Q05`/`CPD-D02` evidence remain absent. | **Blocked** |
+| `PPI-MVP01` | The task-level widget calls an authorised API and has privacy-safe suppression. | Final Web `5255c271` passes 109 focused PPI tests and the full suite. API core/preference passed 103 runs/5,608 assertions only at historical `75d7337f`; exact final API hosted CI is pending. Unit-summary/burndown remain demo/mock-backed; no `PPI-Q02`, eligible live browser result or live unit-summary API evidence exists. | **Blocked** |
+| `ON-MVP01` | Final local API/Web candidates now exist in addition to the historical combined stack. | Web final validation is green; API CPD regression/shard integrity are green, while hosted API full-suite CI and final API image scan are pending. The prior Deploy lock points to the old pair; composed/manual acceptance, traceability, security disposition and release decision remain incomplete. | **Blocked** |
 
 `Blocked` means the remaining gate is named below. It does not mean the existing
 implementation should be discarded.
@@ -44,8 +46,8 @@ implementation should be discarded.
 - **Historical pass**: a result was recorded against the exact older revision
   named in this file.
 - **Fresh pass**: a command was rerun against the current candidate and its
-  exact SHA and output were recorded. No fresh full-suite pass is claimed in
-  this snapshot.
+  exact SHA and output were recorded. A fresh final Web full-suite pass exists;
+  no fresh final API full-suite pass is claimed.
 - **Blocked**: a required acceptance check, publication step, PR disposition or
   owner action remains.
 - **Deferred**: explicitly outside this MVP, with an owner and follow-up rather
@@ -56,15 +58,15 @@ implementation should be discarded.
 - Browser captures: [CPD desktop](screenshots/cpd-dashboard-desktop.png),
   [CPD 390×844 viewport](screenshots/cpd-dashboard-narrow-viewport.png), and
   [PPI privacy-safe unavailable state](screenshots/ppi-unavailable-safe-state.png).
-- Web logs: [type-check](test-logs/web-typecheck.log),
+- Historical Web logs: [type-check](test-logs/web-typecheck.log),
   [lint](test-logs/web-lint.log),
   [CPD focused tests](test-logs/web-cpd-focused-tests-after-fix.log),
   [PPI focused tests](test-logs/web-ppi-focused-tests-after-fix.log),
   [notifications focused tests](test-logs/web-notifications-focused-tests-after-fix.log),
-  and the two resource-blocked production-build attempts
+  and the two historical resource-blocked production-build attempts
   ([first](test-logs/web-production-build.log),
   [constrained retry](test-logs/web-production-build-retry.log)).
-- API logs: [CPD task-prioritisation](test-logs/api-cpd-task-prioritization-retry.log),
+- Historical API logs: [CPD task-prioritisation](test-logs/api-cpd-task-prioritization-retry.log),
   [PPI core](test-logs/api-ppi-core-tests.log),
   [PPI preference](test-logs/api-ppi-preference-test-retry.log),
   [email notifications](test-logs/api-email-notifications-focused-tests.log),
@@ -72,6 +74,11 @@ implementation should be discarded.
   [Zeitwerk](test-logs/api-zeitwerk-check.log).
 - Security evidence: [Docker image vulnerability scan report](../../../evidence/docker-image-vulnerability-scan-20260826.md),
   including links and checksums for the committed compressed raw reports.
+
+The committed artifacts above preserve the 26 August candidate evidence. The
+27 August final-candidate transcripts are held in the local validation packs
+named in the final-candidate section below and still need publication; this
+index does not imply that local files are available from GitHub.
 
 ## Current remote branch snapshot
 
@@ -118,7 +125,7 @@ branch is therefore the cross-channel integration input; the specialised
 branches remain useful history but must not be mistaken for the latest complete
 notification stack.
 
-## Published integration candidates
+## Historical published integration candidates
 
 These clean candidates were assembled after the remote snapshot and published
 for review. Publication makes them reproducible; it is not merge or release
@@ -129,6 +136,42 @@ approval.
 | API | [`integration/ontrack-mvp-validation-20260826`](https://github.com/ontrack-features-t2-2026/doubtfire-api/tree/integration/ontrack-mvp-validation-20260826) | [`75d7337f`](https://github.com/ontrack-features-t2-2026/doubtfire-api/commit/75d7337fd0dd04f9b3a985f287e40f3ec6a467a0) | Frozen 26 August composition. Diff/ancestry and Zeitwerk checks passed; fresh task-prioritisation passed 17 runs/80 assertions; PPI core/preference 103 runs/5,608 assertions; email 77 runs/428 assertions; push 72 runs/295 assertions. Full suite was not run, and the 27 August release/feature heads are not automatically covered. |
 | Web | [`integration/ontrack-mvp-validation-20260826`](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/integration/ontrack-mvp-validation-20260826) | [`832d5e47`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/832d5e47eb26ff2e21ce25e576daa13b3054cc3e) | Frozen 26 August composition. The parent passed diff/ancestry and type-check; final candidate lint passed. Focused CPD passes 55 tests with one todo, PPI passes 93, and notifications/push passes 148. Both production-build attempts on the parent were OS-killed; the build is not green, the full suite was not run, and later branch movement is not automatically covered. |
 | Deploy | Local `chore/ontrack-mvp-lock-20260827` | `32c7abbf5551d172970c31acea9522ec4da29b08` | Prior-candidate head; gitlinks introduced at `c4c0d9a5` pin API `75d7337f` plus Web `832d5e47`. It is unpublished, not the final lock, has not been fresh-clone/composed-stack validated, and is not release approval. |
+
+## Final local candidates — 2026-08-27
+
+These are the exact final **validation** candidates selected during the closure
+pass. Both branches are local-only and unapproved; there is no GitHub commit or
+hosted-run link yet.
+
+| Repository | Local branch | Exact SHA | Current evidence state |
+| --- | --- | --- | --- |
+| Web | `closure/web-ontrack-mvp-20260827` | `5255c271778643cd6f972e3bce1d83ecdb2e292d` | Type-check and zero-warning lint pass. CPD: 8 files/98 passed/one todo. PPI: 9 files/109 passed. Notifications/push/profile: 11 files/177 passed. Full suite: 103 files/605 passed/one todo. Node 22 optimised production build: pass in 99.911 seconds. |
+| API | `closure/api-ontrack-mvp-20260827` | `f25945d228c1a3b321412047dcfe304e43cb7658` | Retains the parent `d920892` previous/all CPD result: 453 to 38 SQL queries and 4.218 to 2.390 seconds; focused regression passes one run/six assertions. Eight deterministic CI shards assign all 129 discovered tests exactly once, with 15–17 files and 4,278–4,284 lines per shard; sharding unit coverage passes five runs/29 assertions. RuboCop, actionlint and syntax checks pass. Hosted full-suite CI and final image scan are pending. |
+| Deploy | `chore/ontrack-mvp-lock-20260827` | `32c7abbf5551d172970c31acea9522ec4da29b08` | **Prior candidate only.** It pins API `75d7337f` / Web `832d5e47`, not the final local pair. A successor lock is required. |
+
+The Web validation pack records Node `v22.22.3`, npm `10.9.8`, and logs named
+`typecheck-final.log`, `lint-final.log`, `cpd-focused-tests-final.log`,
+`ppi-focused-tests.log`, `notifications-focused-tests.log`,
+`full-test-suite.log` and `production-build-unsandboxed.log`. The successful
+build ran outside the macOS sandbox because that sandbox blocked the Angular
+persistent compiler cache's System V IPC; the successful source/build result is
+the unsandboxed transcript, not either retained sandbox failure.
+
+The API local full-suite attempt is **not a pass**. Its observed errors are in
+LaTeX/JPlag/helper-service tests whose Docker-backed helpers could not access
+`/var/run/docker.sock` in the sandbox. Hosted CI is the authoritative complete
+gate and has not run because the branch is not pushed. Do not turn that harness
+limitation into a product pass or failure, and do not promote the focused
+notification/PPI runs from API `75d7337f` to `f25945d`.
+
+The exact final Web development image at
+`sha256:ae5a90c845bbfec38e2dc1f84c5447fe4b301c189ea9c7f19d910c6b2c7bf23c`
+was scanned with Trivy `0.74.0`: 33 Critical/395 High/1,592 Medium/1,197
+Low/163 Unknown instances. All 16 language findings are bundled npm
+dependencies in the inherited Node image; the project `npm ci` layer produced
+no Trivy result and `npm audit` reported zero. This image is not
+production-safe. The exact final API image scan is **pending**; the historical
+`75d7337f` scan must not be reused as final evidence.
 
 Reference integration order:
 
@@ -147,7 +190,7 @@ Do not merge the older `feature/email-notifications` and
 `feature/mobile-notifications` heads again after the unified notifications
 branch: they are already ancestors at this snapshot.
 
-### Fresh validation update — through 2026-08-26T11:59:56Z
+### Historical exact validation update — through 2026-08-26T11:59:56Z
 
 - Web parent `c48ffb228b59931d6b28ff9a25c711485fd63cc4`:
   `npm run typecheck` passed and `npm run lint` passed with
@@ -231,9 +274,10 @@ branch: they are already ancestors at this snapshot.
   It passed **72 runs, 295 assertions, zero failures/errors/skips**, seed
   `29751`.
 - API `bundle exec rails zeitwerk:check` passed with `All is good!`.
-- No current full API or Web suite pass is claimed.
+- At this 26 August snapshot, no full API or Web suite pass was claimed. The
+  27 August final-candidate section supersedes that Web limitation only.
 
-### Fresh exact-SHA image scan — 2026-08-26
+### Historical exact-SHA image scan — 2026-08-26
 
 Trivy `0.74.0` scanned local ARM64 Debian `12.15` development images built from
 the exact API/Web candidates. Counts below are vulnerability instances; the
@@ -244,7 +288,7 @@ same vulnerability ID can occur in more than one package or layer.
 | API `75d7337fd0dd04f9b3a985f287e40f3ec6a467a0` | `sha256:7e8adf5eb97e7a1a266124b5d53a5398285c4be0e279630b9616f8936ecb232a` | 3,994 / 2,249 | 35 critical; 577 high; 1,839 medium; 1,368 low; 175 unknown | 63 | 3,921 OS; 73 language |
 | Web `832d5e47eb26ff2e21ce25e576daa13b3054cc3e` | `sha256:70afe3981246213d7ebfaa8d1ddb8d4949f80f49b580884554fcf4320f4fe436` | 3,302 / 2,047 | 33 critical; 394 high; 1,589 medium; 1,197 low; 89 unknown | 16 | 3,286 OS; 16 language |
 
-This is current scan evidence, **not a clean bill of health** and not an
+This is historical exact-SHA scan evidence, **not a clean bill of health** and not an
 automatic statement that every scanner match is exploitable in production.
 The release needs a package/path/reachability review, remediation or a named,
 expiring risk acceptance for every applicable critical/high finding, followed
@@ -268,7 +312,7 @@ Material observations:
   scans, SBOM/provenance and any risk-acceptance records remain separate release
   evidence.
 
-### Fresh browser smoke — 2026-08-26
+### Historical browser smoke — 2026-08-26
 
 This was a local synthetic-data smoke, not production acceptance:
 
@@ -301,10 +345,10 @@ Current open review items returned by the audit are:
 | Web | [#103](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/103) | Changes requested; CPD project-card work. |
 | Web | [#104](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/104) | Changes requested; shared layout standardisation. |
 | Guide | [#1](https://github.com/ontrack-features-t2-2026/github-guide/pull/1) | Review required; documentation CI policy. |
-| Deploy | None | No live Deploy PR; prior-candidate head `32c7abb` remains local/unpublished and requires a successor for final SHAs. |
+| Deploy | None | No live Deploy PR; prior-candidate head `32c7abb` remains local/unpublished and requires a successor pinning API `f25945d` / Web `5255c271`. |
 
-The next integration owner must compare current patches and rerun evidence on a
-refreshed candidate. Ancestry alone neither proves feature absence nor
+The integration owner must review and publish the final local candidate patches
+and attach hosted checks. Ancestry alone neither proves feature absence nor
 acceptance of an equivalent patch.
 
 ## Historical evidence retained, not promoted
@@ -363,18 +407,19 @@ candidate before treating their commands or contracts as current.
 ### Evidence status and gaps
 
 - Automated service, payload, subscription and permission-state tests exist.
-- Fresh focused Web notification/push coverage is green at source-identical
-  committed candidate `832d5e47e`: seven files, 148 tests, exit 0.
-- Fresh focused API push coverage is green: 72 runs, 295 assertions, zero
-  failures/errors/skips.
+- Final Web `5255c271` notification/push/profile coverage is green: 11 files,
+  177 tests, exit 0; the 103-file full Web suite also passes.
+- API push coverage is green only at historical candidate `75d7337f`: 72 runs,
+  295 assertions, zero failures/errors/skips. Exact final API `f25945d` hosted
+  validation is pending.
 - The historical environment proved configuration and service-worker
   prerequisites only.
 - A real browser/device did not receive a background push in the audited run.
 - The current browser smoke rendered the permission-denied state, but that is
   not a delivery pass.
 - API PR [#74](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/74)
-  was merged after the frozen candidate was tested. Its later merge state is
-  not fresh candidate evidence.
+  was merged after the historical focused run; neither merge status nor
+  inclusion in a later candidate promotes that old result.
 - Browser/OS support acceptance, HTTPS, permission policy, VAPID ownership and
   vendor endpoint access are receiving-environment gates.
 
@@ -391,9 +436,9 @@ candidate before treating their commands or contracts as current.
 
 ### Next owner and action
 
-Client support plus the privacy/data owner: refresh the candidate after the
-merged notification work, rerun the automated packs, then perform real HTTPS background-push acceptance on
-every promised browser/device combination. Record browser/OS versions,
+Client support plus the privacy/data owner: publish/review the final candidates,
+complete hosted API validation, then perform real HTTPS background-push
+acceptance on every promised browser/device combination. Record browser/OS versions,
 subscription, receipt, safe lock-screen text, click-through and expired
 subscription cleanup without recording private keys or student data.
 
@@ -415,14 +460,14 @@ subscription cleanup without recording private keys or student data.
 
 - Do not convert the existence of per-event files into a claim that every
   event/recipient/preference/retry case has been run on the current head.
-- Fresh focused Web notification coverage is green: seven files, 148 tests,
-  exit 0. Fresh focused API email coverage is also green: 77 runs, 428
-  assertions, zero failures/errors/skips. Full-suite evidence remains
-  incomplete.
+- Final Web `5255c271` notification coverage is green: 11 files, 177 tests,
+  exit 0; its full suite passes 605 tests with one todo. API email coverage is
+  green only at historical `75d7337f`: 77 runs, 428 assertions, zero
+  failures/errors/skips. Exact final API hosted validation remains pending.
 - No complete, current feedback/event matrix was located.
 - The previously open queued-delivery, group-link, test-isolation and
   task-availability pull requests (#43, #56, #57 and #65) were merged after
-  the candidate run; their later heads need refreshed validation.
+  the historical API run; the final API SHA needs hosted validation.
 - Production SMTP sender policy, bounce/failure monitoring and duplicate-on-
   retry acceptance belong to the receiving institution.
 
@@ -441,8 +486,8 @@ subscription cleanup without recording private keys or student data.
 Messaging owner plus notification feature lead: create a versioned matrix of
 each MVP event × intended recipient × preference on/off × retry/deduplication ×
 HTML/text rendering, link each row to a current automated or manual result,
-rerun the matrix against a refreshed exact candidate and retain the frozen
-candidate result as historical evidence only.
+run it against the final exact candidate and retain the frozen candidate result
+as historical evidence only.
 
 ## `CPD-MVP01` — Cross-Project Dashboard
 
@@ -462,14 +507,17 @@ candidate result as historical evidence only.
 
 - Historical evidence records 46 focused Web CPD tests and the API privacy
   regression as green at older commits.
-- Fresh Web lint and type-check pass at the candidate's parent; the committed
-  test-only `TaskService` constructor repair at `832d5e47e` makes 55 focused
-  tests pass with one todo. Fresh API task-prioritisation coverage passed 17
-  runs and 80 assertions.
-- Fresh browser smoke passed active-unit loading, filters and mobile-width
-  rendering. The previous-unit API request hung, so that path remains blocked.
-  Both production build attempts were OS-killed during esbuild, including the
-  reduced-worker retry at exit code 137. The build/full suites are not green.
+- Final Web `5255c271` lint and type-check pass; CPD/shared coverage passes 98
+  tests with one todo, the full suite passes 605 tests with one todo, and the
+  Node 22 production build passes in 99.911 seconds.
+- Final API `f25945d` retains the previous/all query repair measured at parent
+  `d9208922948fc49674dfacc9aab15b75057a8c81`: 453 to 38 SQL queries and 4.218
+  to 2.390 seconds. The focused
+  regression passes one run/six assertions.
+- Historical browser smoke passed active-unit loading, filters and mobile-width
+  rendering, but its previous-unit API request hung. The source-side API repair
+  is fresh evidence; composed browser previous/all acceptance at the final pair
+  has not been rerun and remains blocked.
 - No auditable completion evidence was located for `CPD-Q05` or `CPD-D02`.
 - Web #59, #60 and #61 were merged. Web #72 remains review-required and Web
   #103 is changes-requested; neither changes the existing Q05/D02 or manual
@@ -488,10 +536,10 @@ candidate result as historical evidence only.
 
 ### Next owner and action
 
-CPD feature lead plus product owner: review the committed `TaskService` spec
-repair, disposition Web #72/#103, refresh the candidate, finish the production build and full
-Web/API suites at the accepted SHA, complete `CPD-Q05` usability validation and
-`CPD-D02` evidence or explicitly defer them with owners, then capture a
+CPD feature lead plus product owner: review/publish the final candidate,
+disposition Web #72/#103, complete hosted API validation, complete `CPD-Q05`
+usability validation and `CPD-D02` evidence or explicitly defer them with
+owners, then capture a
 privacy-safe student-role browser acceptance for filtering, sorting,
 recommendations, empty/error states and cross-unit authorisation.
 
@@ -510,10 +558,11 @@ recommendations, empty/error states and cross-unit authorisation.
 
 ### Evidence status and gaps
 
-- Fresh API endpoint/model/service/job and preference coverage is green at the
-  local candidate: 103 runs, 5,608 assertions, zero failures/errors/skips.
-- Fresh focused Web coverage is green at source-identical committed candidate
-  `832d5e47e`: seven files, 93 tests, exit 0.
+- API endpoint/model/service/job and preference coverage is green only at
+  historical `75d7337f`: 103 runs, 5,608 assertions, zero
+  failures/errors/skips. Exact final API `f25945d` hosted validation is pending.
+- Final Web `5255c271` focused PPI coverage passes nine files/109 tests; its
+  103-file full suite also passes.
 - Browser smoke reached only the privacy-safe unavailable state; no eligible
   live task-level distribution was observed.
 - Task-level live behaviour must not be generalised to a live unit-summary or
@@ -522,8 +571,8 @@ recommendations, empty/error states and cross-unit authorisation.
   no aggregate backend contract exists.
 - No auditable `PPI-Q02` completion evidence was located.
 - Web PR [#77](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/77)
-  was merged after the frozen candidate. Equivalent task-level code existed in
-  the candidate, but the later merge head needs refreshed validation.
+  was merged after the frozen candidate; equivalent/newer task-level code is in
+  final Web `5255c271` and covered by its focused/full passes.
 
 ### Privacy and security boundary
 
@@ -537,32 +586,34 @@ recommendations, empty/error states and cross-unit authorisation.
 
 ### Next owner and action
 
-PPI feature lead plus privacy/data owner: refresh the candidate after the
-merged PPI work, retain the fresh focused API/Web results, complete the full suites
-and manual task-level eligible/suppressed/stale/disabled/error acceptance with
-synthetic cohorts, and keep `PPI-Q02` plus live unit-summary API work
+PPI feature lead plus privacy/data owner: publish/review the final candidates,
+complete hosted API validation and manual task-level
+eligible/suppressed/stale/disabled/error acceptance with synthetic cohorts,
+and keep `PPI-Q02` plus live unit-summary API work
 open/deferred until real evidence exists.
 
 ## `ON-MVP01` — Combined four-stream handover
 
 ### Current state
 
-The historical stack proves that the four implementations can coexist, and the
-published API/Web candidates preserve focused evidence for their exact 26
-August SHAs. Current release/feature branches have advanced. Local unpublished
-Deploy head `32c7abbf5551d172970c31acea9522ec4da29b08` documents gitlinks introduced
-at `c4c0d9a5` for the two prior tested candidates on merged Deploy `11.0.x`, closing the prior-candidate reproducibility gap but
-not the publication, refreshed-composition, full-suite or end-to-end gates.
-The combined ticket therefore cannot be marked complete yet.
+The historical stack proves that the four implementations once coexisted.
+Final local candidates are API `f25945d228c1a3b321412047dcfe304e43cb7658`
+and Web `5255c271778643cd6f972e3bce1d83ecdb2e292d`. Web final validation is green
+through its full suite and production build; API CPD regression and deterministic
+shard integrity checks are green, but hosted full-suite CI is pending. Local
+unpublished Deploy head `32c7abbf5551d172970c31acea9522ec4da29b08`
+still pins the two 26 August candidates introduced at `c4c0d9a5`, not the final
+pair. The combined ticket therefore cannot be marked complete yet.
 
 ### Release blockers
 
-1. Refresh API/Web candidates from the audited current bases and record how the
-   later merged/open work is included, superseded or deferred.
+1. Publish/review the exact final API/Web candidate branches and attach hosted
+   checks without treating branch creation as approval.
 2. Disposition remaining in-scope open Web #72/#103 work and preserve the
    changes-requested state rather than assuming acceptance.
-3. Run the focused and full suites against the refreshed exact candidates.
-4. Publish and review the Deploy lock (or refresh it), verify its gitlinks from
+3. Complete authoritative hosted API full-suite CI and final API exact-image
+   scanning. The Web focused/full/build lanes are already green at `5255c271`.
+4. Create, publish and review a successor Deploy lock, verify its gitlinks from
    a fresh recursive clone and record the exact accepted SHAs.
 5. Run Compose configuration, build, migration/population and composed-stack
    verification from a fresh clone.
@@ -618,6 +669,15 @@ bundle exec rails test \
   test/services/push_notification_service_test.rb \
   test/sidekiq/*notification*_test.rb
 
+bundle exec rails test test/lib/test_shard_test.rb
+
+for shard in 1 2 3 4 5 6 7 8; do
+  TEST_SHARD_COUNT=8 \
+  TEST_SHARD_NUMBER="$shard" \
+  TEST_SHARD_MANIFEST="tmp/test-shard-manifests/shard-$shard.txt" \
+  bundle exec ruby script/test_shard.rb --dry-run
+done
+
 bundle exec rails test
 git diff --check
 git status --short
@@ -625,7 +685,11 @@ git status --short
 
 The complete API suite needs the repository's real test dependencies and fresh
 external state, including MariaDB, Redis, TexLive and JPlag where exercised.
-Record the seed and dependency/container revisions.
+Record the seed and dependency/container revisions. In hosted CI, require all
+eight shard jobs plus the stable `unit-tests` aggregator in
+`.github/workflows/push.yml`; the aggregator downloads all eight manifests,
+rejects missing manifests/duplicates and compares their union with every
+discovered `test/**/*_test.rb` file.
 
 ### Web focused confidence and full validation
 
@@ -661,6 +725,10 @@ npm run test:ci -- \
   --include=src/app/common/notifications-page/notifications-page.component.spec.ts
 
 npm run test:ci
+NG_BUILD_MAX_WORKERS=1 \
+NG_BUILD_PARALLEL_TS=0 \
+GOMAXPROCS=1 \
+ESBUILD_WORKER_THREADS=0 \
 npm run deploy:build2api
 git diff --check
 git status --short
@@ -719,31 +787,31 @@ include authentication tokens, private keys or real student data.
 ### `MN-MVP01`
 
 ```text
-BLOCKED — The unified mobile/Web Push implementation, PWA flows, permission states and privacy-safe lock-screen documentation are present. Fresh API push coverage passes 72 runs/295 assertions and Web notification/push coverage passes seven files/148 tests. The browser permission-denied state rendered, but no real background push receipt was proven. API #74 was merged after the frozen candidate. Next: refresh the candidate, finish full validation, then record HTTPS browser/device receipt, safe lock-screen text, click-through and expired-subscription cleanup. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — The unified mobile/Web Push implementation, PWA flows, permission states and privacy-safe lock-screen documentation are present. Final Web 5255c27 passes 177 focused notification/push/profile tests and the 605-test full suite. API push coverage passes 72 runs/295 assertions only at historical 75d7337f; hosted validation at final API f25945d is pending. The browser permission-denied state rendered, but no real background push receipt was proven. Next: publish/review final candidates, complete hosted API validation, then record HTTPS browser/device receipt, safe lock-screen text, click-through and expired-subscription cleanup. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```
 
 ### `EN-MVP01`
 
 ```text
-BLOCKED — In-app notifications, Sidekiq email delivery, preferences, event docs and Mailpit integration exist. Fresh focused API email coverage passes 77 runs/428 assertions, fresh Web coverage passes seven files/148 tests, and a historical synthetic email reached Mailpit successfully. Later notification PRs were merged after the frozen candidates. Full suites were not run, and there is no complete current event/recipient/preference/retry/rendering matrix. Next: refresh the candidate, complete the matrix and finish full/API-to-Mailpit checks. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — In-app notifications, Sidekiq email delivery, preferences, event docs and Mailpit integration exist. Final Web 5255c27 passes 177 focused notification tests and the 605-test full suite. API email coverage passes 77 runs/428 assertions only at historical 75d7337f; hosted validation at final API f25945d is pending. A historical synthetic email reached Mailpit, but no current composed Sidekiq-to-Mailpit result or complete event/recipient/preference/retry/rendering matrix exists. Next: publish/review final candidates, complete hosted API validation and the matrix, then rerun the composed email path. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```
 
 ### `CPD-MVP01`
 
 ```text
-BLOCKED — The cross-project dashboard, role-safe API, toolbar/filter/sort and recommendation work are implemented. Fresh focused Web tests pass 55 with one todo at frozen candidate 832d5e47; Web lint/type-check and the focused API task-prioritisation test (17 runs, 80 assertions) also pass. Browser smoke passed active-unit loading, filters and mobile-width rendering, but the previous-unit API request hung. Web #59/#60/#61 were merged; #72 remains review-required and #103 changes-requested. Both production-build attempts were OS-killed (retry exit 137), full suites are incomplete, and no auditable CPD-Q05 or CPD-D02 completion evidence was located. Next: refresh the candidate, fix/verify previous-unit loading, obtain a resource-sufficient build/full validation, complete or explicitly defer Q05/D02, and record privacy-safe role acceptance. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — The cross-project dashboard, role-safe API, toolbar/filter/sort and recommendation work are implemented. Final Web 5255c27 passes lint/type-check, 98 CPD tests/1 todo, the 103-file full suite (605 pass/1 todo) and a 99.911-second Node 22 production build. Final API f25945d reduces the audited previous/all request from 453 to 38 SQL queries and 4.218 to 2.390 seconds; its regression passes 1 run/6 assertions. Historical browser smoke passed active-unit/filter/mobile rendering but the previous-unit request hung; composed browser acceptance was not rerun. No auditable CPD-Q05 or CPD-D02 completion evidence was located. Next: publish/review candidates, complete hosted API CI, rerun privacy-safe composed acceptance, and complete or explicitly defer Q05/D02. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```
 
 ### `PPI-MVP01`
 
 ```text
-BLOCKED — The task-level PPI uses an authorised live endpoint with privacy-safe suppression. Fresh API core/preference coverage passes 103 runs and 5,608 assertions, and focused Web coverage passes seven files/93 tests. Browser smoke showed only the safe unavailable state. Web #77 was merged after the frozen candidate. The unit-summary and burndown remain demo/mock-backed; passing their mock-state tests is not live API evidence, and no PPI-Q02 or live unit-summary API evidence was located. Next: refresh the candidate, complete full-suite plus eligible/suppressed synthetic-cohort manual acceptance, and keep Q02/live unit-summary work open or explicitly deferred. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — The task-level PPI uses an authorised live endpoint with privacy-safe suppression. Final Web 5255c27 passes 109 focused PPI tests and the 605-test full suite. API core/preference coverage passes 103 runs/5,608 assertions only at historical 75d7337f; hosted validation at final API f25945d is pending. Browser smoke showed only the safe unavailable state. Unit-summary and burndown remain demo/mock-backed; no PPI-Q02, eligible live browser result or live unit-summary API evidence was located. Next: publish/review candidates, complete hosted API CI plus eligible/suppressed synthetic-cohort acceptance, and keep Q02/live unit-summary work open or explicitly deferred. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```
 
 ### `ON-MVP01`
 
 ```text
-BLOCKED — A historical combined CPD/PPI/EN/MN stack is evidenced, and frozen published API/Web candidates retain focused passes for their exact SHAs. Previously named umbrella/follow-up PRs were merged; current release/feature heads moved afterward. Local unpublished prior-candidate Deploy head 32c7abb records the exact tested API/Web gitlinks, but it is not the final lock and has not been published or fresh-clone/composed-stack validated. Full suites, real Web Push, previous-unit CPD, eligible live PPI and the 85-response traceability matrix remain incomplete. Exact candidate-image scans are not clean: API has 35 critical/577 high instances and Web has 33 critical/394 high instances. Next: refresh/publish/review the composition, run full/composed/manual acceptance, resolve and rescan image findings, attach SBOM/provenance/signature evidence, and obtain authorised go/no-go. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
+BLOCKED — Final local candidates are API f25945d and Web 5255c27. Web lint/type-check, focused packs, the 103-file full suite (605 pass/1 todo) and Node 22 production build pass. API previous/all CPD regression and deterministic 8-way shard integrity pass, but hosted full-suite CI and the final API image scan are pending. Prior Deploy head 32c7abb pins the old pair and needs a successor. Composed/manual previous/all CPD, eligible PPI, current email, real Web Push and the 85-response matrix remain incomplete. Final Web image scan is not clean (33 critical/395 high) and is not production-safe. Next: publish/review final branches and successor lock, complete hosted/composed/manual gates, resolve scan findings and obtain authorised go/no-go. Evidence index: docs/evidence/ontrack-mvp-2026-08-26/README.md
 ```
 
 ## Evidence capture checklist
