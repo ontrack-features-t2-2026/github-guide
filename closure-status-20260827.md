@@ -184,16 +184,17 @@ On the exact earlier composed pair, CPD Active/Previous/All and combined
 filtering passed; eligible PPI rendered 60% submitted, 10% complete and a
 privacy-rounded breakdown while the disabled route exposed no values; and four
 real email events passed Sidekiq-to-Mailpit delivery, privacy, suppression and
-retry cleanup. Web Push reached real permission, subscription count one,
-successful safe-route jobs and sign-out deletion back to zero, but no OS banner
-or click-through was observable. Remaining blockers are that receipt/click,
-the separate 85-response matrix, `CPD-Q05`/`CPD-D02`, `PPI-Q02`/live unit
-summary, Guide publication, rerunning or explicitly accepting the running-stack
+retry cleanup. The supplied survey contains 88 responses and every source row
+is mapped once in the de-identified feedback traceability table. Web Push
+reached real permission, subscription count one, successful safe-route jobs and
+sign-out deletion back to zero, but no OS banner or click-through was
+observable. Remaining blockers are that receipt/click, `CPD-Q05`/`CPD-D02`,
+`PPI-Q02`/live unit summary, Guide publication, rerunning or explicitly accepting the running-stack
 boundary at final Web/Deploy heads, merged-Web image scanning, vulnerability
 remediation/risk decisions and an authorised release decision.
 
 Planner-ready text:
 
 ```text
-ON-MVP01 BLOCKED / HANDED OVER — API PR77 merged hosted-green head 6c74dbb, Web PR105 merged green head 16c22c9 (607 tests/104 files plus exact-head CPD/PPI/Notifications matrices), and Deploy PR26 merged lock ad463dc pinning that pair; its exact Compose contract passes. Guide PR2 is the publication PR to main. API eight-shard CI and rollup pass, though the slowest test step is 5:25 and misses the five-minute target by 25s. Exact predecessor lock 4851fc1 (API 6c74dbb/Web 5255c27) passed fresh clone/Compose plus CPD Active/Previous/All/filtering, eligible/disabled task-level PPI, and four-event Sidekiq→Mailpit privacy/suppression/retry acceptance. Push subscription/jobs/sign-out cleanup passed but no OS receipt/click was observed. Do not promote that running-stack pass or Web image scan to the later Web/Deploy heads. Still required: observable push receipt/click, all-85 feedback traceability, CPD-Q05/D02, PPI-Q02/live unit summary, Guide publication, merged-Web image scan and vulnerability disposition, plus authorised go/no-go/rollback records. Evidence: docs/evidence/ontrack-mvp-2026-08-26/live-closure-validation-20260827.md
+ON-MVP01 BLOCKED / HANDED OVER — API PR77 merged hosted-green head 6c74dbb, Web PR105 merged green head 16c22c9 (607 tests/104 files plus exact-head CPD/PPI/Notifications matrices), and Deploy PR26 merged lock ad463dc pinning that pair; its exact Compose contract passes. Guide PR2 is the publication PR to main. API eight-shard CI and rollup pass, though the slowest test step is 5:25 and misses the five-minute target by 25s. Exact predecessor lock 4851fc1 (API 6c74dbb/Web 5255c27) passed fresh clone/Compose plus CPD Active/Previous/All/filtering, eligible/disabled task-level PPI, and four-event Sidekiq→Mailpit privacy/suppression/retry acceptance. The supplied survey contains 88 responses; all 88 are mapped once in the de-identified traceability table. Push subscription/jobs/sign-out cleanup passed but no OS receipt/click was observed. Do not promote that running-stack pass or Web image scan to the later Web/Deploy heads. Still required: observable push receipt/click, CPD-Q05/D02, PPI-Q02/live unit summary, Guide publication, merged-Web image scan and vulnerability disposition, plus authorised go/no-go/rollback records. Evidence: docs/evidence/ontrack-mvp-2026-08-26/live-closure-validation-20260827.md and docs/evidence/ontrack-mvp-2026-08-26/feedback-traceability-20260827.md
 ```

@@ -147,5 +147,8 @@ The development-image scans are evidence, not approval:
   before release.
 
 Neither image is production-safe as scanned. Remediation or an authorised,
-expiring risk acceptance is required before release. The required 85-response
-feedback traceability matrix was not supplied and was not fabricated.
+expiring risk acceptance is required before release. The subsequently supplied
+survey contains 88 responses; all 88 are mapped once in the
+[de-identified feedback traceability table](feedback-traceability-20260827.md).
+Email addresses, Discord usernames, timestamps and verbatim free-text responses
+remain excluded from version control.

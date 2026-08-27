@@ -49,7 +49,7 @@ release approval.
 | `EN-MVP01` | In-app notification, queued email, preferences, event documentation and Mailpit integration exist. | Merged Web `16c22c99` and API `6c74dbbc` are green. On the exact composed pair (`6c74dbbc` / `5255c271`), four real MVP events traversed `NotificationService` → Sidekiq → Action Mailer → Mailpit; privacy, preference-suppression and retry-boundary probes passed. This is local MVP handover evidence, not production SMTP/bounce acceptance. | **Validated / handed over** |
 | `CPD-MVP01` | Cross-project dashboard, filtering/sorting, recommendations and role-safe API work exist. | Merged Web `16c22c99` passes its exact-head 98-test CPD matrix plus hosted 607-test suite. Merged API head `6c74dbbc` is green and retains the previous/all reduction from 453 to 38 SQL queries and 4.218 to 2.390 seconds. Exact-composed-pair browser acceptance passed Active, Previous and All scopes plus combined filtering. `CPD-Q05`/`CPD-D02` remain absent. | **Blocked** |
 | `PPI-MVP01` | The task-level widget calls an authorised API and has privacy-safe suppression. | Merged Web `16c22c99` passes its exact-head 109-test PPI matrix and API `6c74dbbc` is green. Exact-composed-pair browser acceptance displayed 60% submitted, 10% complete and the privacy-rounded breakdown for an eligible cohort; the feature-disabled route exposed no values. Unit-summary/burndown remain demo/mock-backed, and `PPI-Q02` plus live unit-summary API evidence remain absent. | **Blocked** |
-| `ON-MVP01` | API, Web and Deploy closure PRs are merged; Guide PR #2 publishes the evidence. | API #77, Web #105 and Deploy #26 merged into `11.0.x`; final lock `ad463dc8` pins API `6c74dbbc` / Web `16c22c99`. Hosted checks, the merged-Web focused matrices and final-lock Compose contract are green; the slowest API test step was 5:25, missing the five-minute target by 25 seconds. The earlier exact running stack passed CPD, eligible/disabled PPI and four-event email acceptance. That runtime pass is not claimed for the later Web/Deploy heads. Observable push receipt/click, the 85-response matrix, `CPD-Q05`/`CPD-D02`, `PPI-Q02`/live unit summary, security disposition and release decision remain open. | **Blocked** |
+| `ON-MVP01` | API, Web and Deploy closure PRs are merged; Guide PR #2 publishes the evidence. | API #77, Web #105 and Deploy #26 merged into `11.0.x`; final lock `ad463dc8` pins API `6c74dbbc` / Web `16c22c99`. Hosted checks, the merged-Web focused matrices and final-lock Compose contract are green; the slowest API test step was 5:25, missing the five-minute target by 25 seconds. The earlier exact running stack passed CPD, eligible/disabled PPI and four-event email acceptance. The supplied survey contains 88 responses, all mapped once in the [de-identified traceability table](feedback-traceability-20260827.md). That runtime pass is not claimed for the later Web/Deploy heads. Observable push receipt/click, `CPD-Q05`/`CPD-D02`, `PPI-Q02`/live unit summary, security disposition and release decision remain open. | **Blocked** |
 
 `Blocked` means the remaining gate is named below. It does not mean the existing
 implementation should be discarded.
@@ -73,6 +73,9 @@ implementation should be discarded.
 - Final 27 August handover:
   [hosted/composed closure validation](live-closure-validation-20260827.md),
   including the exact composed-versus-merged revision boundary.
+- Product-feedback decision record:
+  [88/88 de-identified response traceability](feedback-traceability-20260827.md),
+  with source-row order, theme, decision, status, reason and ticket/PR mapping.
 - Browser captures: [CPD desktop](screenshots/cpd-dashboard-desktop.png),
   [CPD 390×844 viewport](screenshots/cpd-dashboard-narrow-viewport.png), and
   [PPI privacy-safe unavailable state](screenshots/ppi-unavailable-safe-state.png).
@@ -421,8 +424,9 @@ only for the exact surfaces rerun against API `6c74dbbc` and Web `5255c271`:
   subscription and restored the API count to zero.
 
 This exact-stack pass does not fill the separate `CPD-Q05`/`CPD-D02`,
-`PPI-Q02`/live unit-summary, 85-response feedback-traceability, production SMTP
-or production-device push evidence gaps.
+`PPI-Q02`/live unit-summary, production SMTP or production-device push evidence
+gaps. The separate feedback gate is now closed by the
+[88/88 de-identified traceability table](feedback-traceability-20260827.md).
 
 ## Pull-request disposition refresh — 2026-08-27
 
@@ -582,8 +586,9 @@ cleanup without recording private keys or student data.
   constant; the retry boundary was exercised and cleaned with final
   queues/retry/scheduled sets empty.
 - This is a current MVP email-path pass and handover result, not production
-  SMTP sender-policy, bounce-monitoring or provider acceptance. It also does
-  not supply the separate 85-response product-feedback traceability matrix.
+  SMTP sender-policy, bounce-monitoring or provider acceptance. The separate
+  product-feedback gate is covered by the
+  [88/88 de-identified traceability table](feedback-traceability-20260827.md).
 - The previously open queued-delivery, group-link, test-isolation and
   task-availability pull requests (#43, #56, #57 and #65) were merged after
   the historical API run; exact final API `6c74dbbc` now has green hosted
@@ -943,7 +948,7 @@ BLOCKED — API PR77 merged exact hosted-green head 6c74dbb; Web PR105 merged gr
 ### `ON-MVP01`
 
 ```text
-BLOCKED / HANDED OVER — API PR77 merged green head 6c74dbb, Web PR105 merged green head 16c22c9 (607 tests/104 files plus exact-head CPD/PPI/Notifications matrices), and Deploy PR26 merged lock ad463dc pinning that pair; its exact Compose contract passes. Guide PR2 publishes the evidence. API eight-shard CI and rollup are green, though the slowest test step is 5:25 and misses the five-minute target by 25s. Exact composed predecessor lock 4851fc1 (API 6c74dbb/Web 5255c27) passed fresh clone/Compose, CPD, task-level PPI and four-event email acceptance; do not promote that running-stack result to the later Web/Deploy heads without a rerun. Still open: observable Web Push receipt/click, all-85 feedback traceability, CPD-Q05/D02, PPI-Q02/live unit summary, merged-Web image scan plus vulnerability disposition, and authorised go/no-go/rollback records. Evidence: docs/evidence/ontrack-mvp-2026-08-26/live-closure-validation-20260827.md
+BLOCKED / HANDED OVER — API PR77 merged green head 6c74dbb, Web PR105 merged green head 16c22c9 (607 tests/104 files plus exact-head CPD/PPI/Notifications matrices), and Deploy PR26 merged lock ad463dc pinning that pair; its exact Compose contract passes. Guide PR2 publishes the evidence. API eight-shard CI and rollup are green, though the slowest test step is 5:25 and misses the five-minute target by 25s. Exact composed predecessor lock 4851fc1 (API 6c74dbb/Web 5255c27) passed fresh clone/Compose, CPD, task-level PPI and four-event email acceptance; do not promote that running-stack result to the later Web/Deploy heads without a rerun. The supplied survey contains 88 responses and the de-identified traceability table maps all 88. Still open: observable Web Push receipt/click, CPD-Q05/D02, PPI-Q02/live unit summary, merged-Web image scan plus vulnerability disposition, and authorised go/no-go/rollback records. Evidence: docs/evidence/ontrack-mvp-2026-08-26/live-closure-validation-20260827.md and docs/evidence/ontrack-mvp-2026-08-26/feedback-traceability-20260827.md
 ```
 
 ## Evidence capture checklist
