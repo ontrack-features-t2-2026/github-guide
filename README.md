@@ -18,8 +18,10 @@ This guide explains where the repositories are, which shared feature branch your
 ## Getting set up
 
 - [Student setup and contribution guide](student-setup.md) — installs the prerequisites, clones the three repositories, selects the correct objective branches, starts Docker and opens a task pull request. Allow roughly 20–40 minutes plus the first Docker image download/build.
+- [OnTrack T2 2026 setup walkthrough](media/setup/ontrack-t2-2026-setup-walkthrough.mp4) — an 11 minute 37 second narrated companion covering access, cloning, objective branches, Docker, local database setup, task branches, validation, pull requests and handover.
+- [Setup walkthrough transcript](media/setup/ontrack-t2-2026-setup-walkthrough-transcript.md) — the complete accessible transcript. Use the written guide and branch register as the maintained source of truth if a branch changes after the recording.
 
-> **DOC-2 blocker (26 August 2026):** The separate environment setup video URL has not been supplied and verified. Add it here only after DOC-1 confirms the URL, content and duration. The [Jira ticket tutorial](https://youtu.be/GyJWYpOGj1o) explains how to find a ticket; it is not the environment setup video.
+The [short Jira ticket tutorial](https://youtu.be/GyJWYpOGj1o) only explains how to find a ticket; it is separate from the environment setup walkthrough above.
 
 ## Urgent access help
 
@@ -116,6 +118,8 @@ Local test accounts use the password `password`.
 - [First-Time Tutorial objective, branch plan and evidence index](first-time-tutorial-objective.md)
 - [Four-stream MVP evidence and handover index](docs/evidence/ontrack-mvp-2026-08-26/README.md)
 - [Student setup and contribution steps](student-setup.md)
+- [OnTrack T2 2026 setup walkthrough](media/setup/ontrack-t2-2026-setup-walkthrough.mp4)
+- [Setup walkthrough transcript](media/setup/ontrack-t2-2026-setup-walkthrough-transcript.md)
 - [Pull request template](pull-request-template.md)
 - [Peer review checklist](review-checklist.md)
 - [Jira ticket tutorial](https://youtu.be/GyJWYpOGj1o)
