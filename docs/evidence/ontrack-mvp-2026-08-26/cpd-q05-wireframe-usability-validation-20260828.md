@@ -22,15 +22,17 @@ The dataset was synthetic. The only local state difference was enabling Demo
 mode at `/demo-controls`. The initial one-unit quiet view was the intentional
 `DemoDataMaskInterceptor` baseline, not a product defect.
 
-## Mobile-layout follow-up — Web PR #120
+## Mobile-layout follow-up — merged Web PR #120
 
 The exact `16c22c9` validation below remains the historical as-built baseline.
 It is not rewritten as if it tested later code. Web
 [#120](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/120),
 head
 [`275a9a5ecd7ac3fa63043eaf10fec8f323824024`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/275a9a5ecd7ac3fa63043eaf10fec8f323824024),
-subsequently implements the requested stacked phone layout while preserving the
-existing desktop presentation at 640 px and wider.
+was merged into `11.0.x` as
+[`78dad4a99134bccf8429d8c778560ff9cbb1ac07`](https://github.com/ontrack-features-t2-2026/doubtfire-web/commit/78dad4a99134bccf8429d8c778560ff9cbb1ac07).
+It implements the requested stacked phone layout while preserving the existing
+desktop presentation at 640 px and wider.
 
 ```text
 Phone layout below 640 px
@@ -76,9 +78,9 @@ Validation recorded on PR #120:
 | Desktop preservation | Media rule restores the fixed 512 px horizontal unit-card strip, 64 px side padding, visible secondary filters and independent task scrolling at 640 px and wider. | Pass. |
 | Review boundary | Source/test heuristic review found no blocking accessibility regression. | Pass for implemented semantics; no claim of independent assistive-technology certification. |
 
-PR #120 remains subject to its configured GitHub review and required checks.
-This follow-up is implementation evidence, not a false claim that the earlier
-live run exercised code that did not yet exist.
+PR #120's required build, lint, test and CodeQL checks passed before merge. This
+follow-up is implementation evidence, not a false claim that the earlier live
+run exercised code that did not yet exist.
 
 ## Original `16c22c9` as-built text wireframe
 
@@ -160,7 +162,6 @@ The result does not claim:
 
 No CPD product-fix PR was required for the original live result. Web #108 is
 technically green but remains open and review-required. The later product
-follow-up is Web #120 and is also review-required. CPD can therefore be handed
-over as **validated / handed over — protected publication review pending**,
-with the phone improvement tracked separately and without rewriting historical
-evidence.
+follow-up, Web #120, is merged. CPD can therefore be handed over as
+**validated / handed over**, with the phone improvement published and without
+rewriting historical evidence.
