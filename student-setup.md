@@ -83,7 +83,7 @@ Do not pull or merge upstream changes unless your team asks you to.
 
 Find your exact branches in [branch-register.md](branch-register.md).
 
-### Cross-Unit Dashboard
+### Cross-Project Dashboard
 
 ```bash
 git -C doubtfire-web fetch origin
@@ -93,24 +93,16 @@ git -C doubtfire-api fetch origin
 git -C doubtfire-api switch feature/cross-unit
 ```
 
-### Email Notifications
+### Email and Mobile Notifications
+
+Both notification objectives use the same canonical branches. Do not use the older `feature/email-notifications` or `feature/mobile-notifications` refs for new T2 tasks.
 
 ```bash
 git -C doubtfire-web fetch origin
-git -C doubtfire-web switch feature/email-notifications
+git -C doubtfire-web switch feature/notifications
 
 git -C doubtfire-api fetch origin
-git -C doubtfire-api switch feature/email-notifications
-```
-
-### Mobile Notifications
-
-```bash
-git -C doubtfire-web fetch origin
-git -C doubtfire-web switch feature/mobile-notifications
-
-git -C doubtfire-api fetch origin
-git -C doubtfire-api switch feature/mobile-notifications
+git -C doubtfire-api switch feature/notifications
 ```
 
 ### Peer Progress Indicator
@@ -122,6 +114,10 @@ git -C doubtfire-web switch feature/peer-progress-indicator
 git -C doubtfire-api fetch origin
 git -C doubtfire-api switch feature/peer-progress-indicator
 ```
+
+### First-Time Tutorial
+
+Do not create or switch to `feature/student-onboarding` until tutorial implementation begins. The branch name and `11.0.x` source rule are requester-approved; the [First-Time Tutorial branch plan](first-time-tutorial-objective.md) records the current planning reference, the required creation-time re-audit and why there is no API or Deploy branch.
 
 If Git says the local branch does not exist, use this form:
 
@@ -185,13 +181,13 @@ Local test accounts use the password `password`:
 
 Move into the repository required by your Jira ticket.
 
-Example for an Email Notifications Web task:
+Example for an Email or Mobile Notifications Web task:
 
 ```bash
 cd ../../doubtfire-web
 
-git switch feature/email-notifications
-git pull --ff-only origin feature/email-notifications
+git switch feature/notifications
+git pull --ff-only origin feature/notifications
 
 git switch -c feature/ABC-123-notification-preferences
 ```
@@ -267,10 +263,10 @@ Your branch:
 feature/ABC-123-notification-preferences
 
 Correct base branch:
-feature/email-notifications
+feature/notifications
 ```
 
-Do not use `11.0.x` as the base for an ordinary task pull request.
+Do not use `11.0.x` or a combined integration/validation branch as the base for an ordinary task pull request.
 
 Open the pull request as a **Draft** if the work or testing is not finished. Copy the contents of [pull-request-template.md](pull-request-template.md) into the description.
 

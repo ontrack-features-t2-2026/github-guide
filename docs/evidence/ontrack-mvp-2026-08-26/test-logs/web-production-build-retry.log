@@ -1,0 +1,33 @@
+
+> doubtfire@11.0.0-45 build
+> ng build --configuration production
+
+❯ Building...
+main-JKOPCTWL.js (2:242584): Use of eval in "main-JKOPCTWL.js" is strongly discouraged as it poses security risks and may cause issues with minification.
+Killed
+fatal error: all goroutines are asleep - deadlock!
+
+goroutine 1 [chan receive]:
+github.com/evanw/esbuild/internal/helpers.(*ThreadSafeWaitGroup).Wait(...)
+	github.com/evanw/esbuild/internal/helpers/waitgroup.go:36
+main.runService.func2()
+	github.com/evanw/esbuild/cmd/esbuild/service.go:114 +0x8c
+main.runService(0x1)
+	github.com/evanw/esbuild/cmd/esbuild/service.go:160 +0x560
+main.main()
+	github.com/evanw/esbuild/cmd/esbuild/main.go:252 +0xb5c
+
+goroutine 2 [chan receive]:
+main.runService.func1()
+	github.com/evanw/esbuild/cmd/esbuild/service.go:98 +0x40
+created by main.runService in goroutine 1
+	github.com/evanw/esbuild/cmd/esbuild/service.go:97 +0x188
+
+goroutine 3 [chan receive]:
+main.(*serviceType).sendRequest(0x2621cf6b00f0, {0x52c880, 0x2621e3653d70})
+	github.com/evanw/esbuild/cmd/esbuild/service.go:192 +0x134
+main.runService.func3()
+	github.com/evanw/esbuild/cmd/esbuild/service.go:125 +0x44
+created by main.runService in goroutine 1
+	github.com/evanw/esbuild/cmd/esbuild/service.go:122 +0x2a8
+__EXIT_CODE=137

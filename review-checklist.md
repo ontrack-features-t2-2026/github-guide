@@ -24,13 +24,14 @@ Confirm the PR base branch matches the objective:
 
 | Objective | Correct base branch |
 |---|---|
-| Cross-Unit Dashboard | `feature/cross-unit` |
-| Email Notifications | `feature/email-notifications` |
-| Mobile Notifications | `feature/mobile-notifications` |
+| Cross-Project Dashboard | `feature/cross-unit` |
+| Email Notifications | `feature/notifications` |
+| Mobile Notifications | `feature/notifications` |
 | Peer Progress Indicator | `feature/peer-progress-indicator` |
+| First-Time Tutorial | Lead-approved tutorial integration branch; currently pending |
 | Approved local environment task | `fix/local-dev-run` |
 
-Ordinary student task PRs must not target `11.0.x` directly.
+Ordinary student task PRs must not target `11.0.x` or a combined integration/validation branch directly. A suggested Planner branch name is not a valid target until the written lead decision and base SHA are recorded in the [branch register](branch-register.md).
 
 ## 3. Inspect the changed files
 

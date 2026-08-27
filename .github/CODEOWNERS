@@ -1,0 +1,4 @@
+# CI and its ownership rules are security-sensitive and require lead review.
+/.github/workflows/ @ontrack-features-t2-2026/ontrack-leads
+/.github/scripts/ @ontrack-features-t2-2026/ontrack-leads
+/.github/CODEOWNERS @ontrack-features-t2-2026/ontrack-leads

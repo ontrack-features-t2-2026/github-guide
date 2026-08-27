@@ -4,7 +4,7 @@ Link or ticket number:
 
 ## Target branch
 
-Example: feature/email-notifications
+Example: feature/notifications
 
 ## What I changed
 
