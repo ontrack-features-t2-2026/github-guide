@@ -76,8 +76,12 @@ remain attached to `5255c271` rather than being promoted to the later head.
 - The composed API hydrated 30 tasks and 30 task definitions and returned 20
   recommendations across the four active units.
 
-This closes the final composed previous/all browser gap. Separate `CPD-Q05`
-and `CPD-D02` evidence was not found and remains a traceability/deferment item.
+This closed the predecessor composed previous/all browser gap. At the time of
+that run, separate `CPD-Q05`/`CPD-D02` evidence had not been found. The later
+[CPD-Q05 as-built record](cpd-q05-wireframe-usability-validation-20260828.md)
+and [clean merged-stack follow-up](follow-up-validation-20260828.md) supersede
+that evidence-gap statement without rewriting these predecessor observations;
+CPD-D02 Web #108 remains protected-review pending.
 
 ### Peer Progress Indicator
 
@@ -138,6 +142,31 @@ background receipt and click-through are **not** recorded as passed. Mobile
 Notifications remains blocked on one observable browser/device receipt and
 safe click-through result; no permission, receipt or click was fabricated.
 
+## 28 August clean merged-stack follow-up
+
+Web was restored clean to exact merged source `16c22c99`. With API `6c74dbbc`,
+Deploy lock `ad463dc8`, synthetic fixtures and local Demo mode enabled, the
+cache-free CPD assertions passed: Active exposed `COS10001`, `COS20007` and
+`COS30046` with task counts 37/15/5; Previous exposed `COS30243`; All and global
+search passed. The initial one-unit quiet view was intentional
+`DemoDataMaskInterceptor` behaviour. No CPD product fix was needed. The focused
+component run remains 54/54, and the as-built wireframe/accessibility record
+closes CPD-Q05 without inventing participant feedback.
+
+Open Deploy #27 verifier patch `37a90d7f` was run separately against this exact
+stack and passed its authenticated-settings and asynchronous-Mailpit checks. It
+was not substituted as the runtime Deploy revision. API #79/#80/#81 and Deploy
+#27 are technically green and protected-review pending; #81's 12 exact-union
+shards pass twice, with confirmation maximum test-step time 3:48 and shard wall
+time 7:22.
+
+Open Web #111 at `b37b75a0` is technically green: development High/Critical
+findings fall 428→30, and its exact hardened `deploy.Dockerfile` release-image
+scan reports zero detected findings at OCI index digest `sha256:d2b50b6e…`.
+The PR and digest-bound scan remain subject to protected review, provenance,
+configuration, application-security, deployment and release decisions. See
+the [full follow-up record](follow-up-validation-20260828.md).
+
 ## Security and release gates
 
 The development-image scans are evidence, not approval:
@@ -151,6 +180,11 @@ The development-image scans are evidence, not approval:
   are published. The vulnerability tuple is identical to predecessor
   `5255c271` because Docker/package inputs did not change. This closes the exact
   digest gap, not the risk.
+
+Open Web #111 is a separately labelled remediation candidate: development H/C
+falls 428→30 and its exact hardened release-image scan reports zero detected
+findings. It remains review-required and does not rewrite the merged-image
+result or create unconditional security/release approval.
 
 Neither image is production-safe as scanned. Remediation or an authorised,
 expiring risk acceptance is required before release. The subsequently supplied

@@ -2,9 +2,9 @@
 
 This is the working register for **MISC-X01 - Coordinate Cross-Objective Branches, Shared Surfaces, and Integration Order**.
 
-- **Source snapshot:** Planner workbook exported 26 August 2026; public GitHub refs refreshed 27 August 2026 at 12:28:17Z and pull requests refreshed at 12:15:29Z
+- **Source snapshot:** Planner workbook exported 26 August 2026; public GitHub refs and pull requests refreshed 27 August 2026 at 14:08:45Z
 - **Coordinator recorded in Planner:** Maple Fox
-- **Approval state:** Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester. This closes MISC-X01 document/coordination approval only and is not attributed to uncontacted individuals or converted into product/release approval.
+- **Approval state:** Requester approval recorded 27 Aug 2026; named-leader and inactive-peer subjective-opinion gates were waived by requester. This closes only the named factual document/coordination gates, is not attributed to uncontacted individuals, and does not waive protected GitHub review, security disposition or product/release approval.
 
 Contributors must read this register before changing a shared frontend, API contract, CI rule or Deploy configuration. A Planner assignee is not automatically an objective lead, reviewer or merge authority.
 
@@ -12,11 +12,11 @@ Contributors must read this register before changing a shared frontend, API cont
 
 | Item | Current state | Required decision or evidence |
 |---|---|---|
-| Web and API combined validation branches | Historical candidates remain provenance only. Closure API `6c74dbbc` and Web `16c22c99` passed hosted checks and merged into `11.0.x` through PRs #77/#105. | Preserve the exact composed predecessor boundary and do not treat merge as security disposition or release approval. |
+| Web and API combined validation branches | Historical candidates remain provenance only. Closure API `6c74dbbc` and Web `16c22c99` passed hosted checks and merged into `11.0.x` through PRs #77/#105. A separately labelled clean merged-tuple CPD follow-up also passes. | Preserve each exact evidence boundary and do not treat merge or local validation as security disposition or release approval. |
 | First-Time Tutorial Web branch | Requester approved the plan `feature/student-onboarding` from the then-current Web `11.0.x`; verified planning base `4034e7d1`. Named-leader confirmation was waived. No public branch was found or created. | Re-audit the base and assign an implementation owner before branch creation. |
 | Shared preferences and help structure | Requester approved the coordination default below for MISC-X01 closure and waived named-leader confirmation. | Downstream tickets must still record owners, accessibility review and any change to this default before altering a shared surface. |
 | Optional sub-category leads | All are explicitly **Unassigned** below; requester accepted that state for MISC-X01 closure. | Assign the relevant role before downstream implementation/review or retain Unassigned and escalate conflicts. |
-| Final Deploy path | Lock [`ad463dc8`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/ad463dc8b1b8005f0774819fe4d506da3c281947) pins API `6c74dbbc` / Web `16c22c99` and merged into `11.0.x` through PR #26. Fresh clone/Compose and running-stack acceptance belong to predecessor lock `4851fc1` with Web `5255c271`; all final Deploy hosted checks pass. | Rerun the composed acceptance at the merged Web/Deploy pair or explicitly accept that boundary, then obtain security and release decisions before production use. |
+| Final Deploy path | Lock [`ad463dc8`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/ad463dc8b1b8005f0774819fe4d506da3c281947) pins API `6c74dbbc` / Web `16c22c99` and merged into `11.0.x` through PR #26. Predecessor acceptance remains labelled; clean final-tuple CPD passes. Open Deploy #27 at `37a90d7f` corrects authenticated settings and asynchronous Mailpit polling, and its verifier passes against the final tuple. | Obtain #27's protected review before publishing the verifier change, then obtain security and release decisions before production use. |
 | New accessibility lint/CI gates | Coordination policy is defined, but no new gate is treated as approved here. | Demonstrate the rule on every active Web objective branch, assign remediation and obtain branch-protection approval. |
 | Objective evidence indexes | Existing evidence is linked where available; several new objectives do not yet have a public index. | Publish one index per objective and replace each explicit **TBD** entry. |
 
@@ -88,10 +88,21 @@ candidates:
    observable. The merged lock advances the Web gitlink to `16c22c99`; all
    three Deploy workflows and review policy pass. This is validation evidence,
    not a release decision.
+5. On 28 August, Web was restored clean to `16c22c99` and the exact merged
+   API/Web/Deploy tuple was exercised with synthetic fixtures. Local Demo mode
+   exposed `COS10001`, `COS20007`, `COS30046` and previous `COS30243`; CPD
+   Active/Previous/All/search passed with active task counts 37/15/5. The
+   one-unit quiet baseline was intentional `DemoDataMaskInterceptor` behaviour,
+   so no CPD product fix was needed. Open Deploy #27's verifier patch
+   `37a90d7f` was run separately against this stack and passed; it was not the
+   runtime Deploy source revision. The [follow-up
+   record](docs/evidence/ontrack-mvp-2026-08-26/follow-up-validation-20260828.md)
+   preserves this boundary. Open API #79/#80/#81, Deploy #27, Web #108/#111 and
+   Guide #2 remain subject to normal protected review.
 
 ### Current pull-request disposition gate
 
-The public pull-request snapshot was refreshed at **2026-08-27T12:15:29Z**.
+The public pull-request snapshot was refreshed at **2026-08-27T14:08:45Z**.
 The previously named API, Web and Deploy umbrella/follow-up pull requests were
 merged: API #43, #56, #57, #60, #62, #63, #65 and #74; Web #59, #60, #61,
 #69, #70, #71, #77, #78, #81 and #96; Deploy #11, #12, #18, #24 and #25.
@@ -103,14 +114,20 @@ The remaining open review surfaces observed in the audited repositories were:
 | Repository | Open pull request | Review state and coordination impact |
 |---|---|---|
 | API | [#72](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/72) | Changes requested; Safe Upload security work outside the four-MVP candidate but on an API shared surface. |
-| Web | [#103](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/103) | Changes requested; CPD project-card work on `feature/cross-unit`. |
+| API | [#79](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/79) | Open and technically green at `17538ce3`; notification documentation correction; protected review pending. |
+| API | [#80](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/80) | Open and technically green at `42d4ebaf`; FILE-S01 test/security evidence; protected review and retained risk disposition pending. |
+| API | [#81](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/81) | Open and technically green at `380d15bc`; 12 exact-union shards pass twice, with confirmation maximum test step 3:48 and shard wall time 7:22; protected review pending. |
+| Web | [#103](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/103) | Closed without merge while changes-requested; final CPD validation does not depend on the proposed reusable-card change. |
+| Web | [#108](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/108) | Open and technically green at `6136d540`; CPD-D02 user/contributor handover; protected review pending. |
+| Web | [#111](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/111) | Open and technically green at `b37b75a0`; development H/C 428→30 and exact hardened release-image scan reports zero detected findings. Protected review and security/release disposition pending. |
+| Deploy | [#27](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/27) | Open and technically green at `37a90d7f`; corrected verifier passes against the exact merged tuple; protected review pending. |
 | Guide | [#1](https://github.com/ontrack-features-t2-2026/github-guide/pull/1) | Review required; documentation CI policy, not product approval. |
 | Guide | [#2](https://github.com/ontrack-features-t2-2026/github-guide/pull/2) | Closure publication PR to `main`; its evidence refresh is the final documentation surface. |
 
 Web #72 and #104 are merged and approved. API #77, Web #105 and Deploy #26 are
-also merged with their hosted checks green. Merge state does not imply release
-approval or extend the exact composed-stack evidence to the later Web/Deploy
-heads.
+also merged with their hosted checks green. The separately labelled merged-
+tuple CPD/verifier follow-up is now recorded, but neither merge nor validation
+implies protected approval, security disposition or release authority.
 
 The closure candidates and source patches were reviewed before merge. A release
 owner must still review the evidence boundaries and open risks before release
@@ -184,7 +201,8 @@ Paths link to the branch that currently demonstrates the surface. They identify 
 
 **Decision status: Requester-approved coordination default on 27 August 2026;
 named-leader confirmation waived by requester.** This approval is not
-attributed to an uncontacted product, accessibility or frontend lead.
+attributed to an uncontacted product, accessibility or frontend lead and does
+not waive protected GitHub review, security review or release authority.
 
 The coordination default is one discoverable account/settings structure and one permanent help entry:
 
@@ -314,14 +332,14 @@ For proven Deploy work:
 | Objective or control | Evidence link | Current status |
 |---|---|---|
 | Branch heads and PR destinations | [T2 2026 branch register](branch-register.md) | Current snapshot; approvals identified separately from observations. |
-| 27 August ticket closure | [Documentation, tutorial and MVP closure status](closure-status-20260827.md) | DOC-2, TUT-F01, MISC-X01, scan and ON-MVP01 Planner-ready outcomes separated from publication/release follow-up. |
+| 27/28 August ticket closure | [Documentation, tutorial and MVP closure status](closure-status-20260827.md) | DOC-2, TUT-F01, MISC-X01, scan, CPD and ON-MVP01 outcomes separated from protected publication/security/release follow-up. |
 | Combined four-stream validation and handover | [OnTrack MVP evidence and handover index](docs/evidence/ontrack-mvp-2026-08-26/README.md) | Published final candidates/lock and remaining blockers recorded; no MVP completion or release is claimed. |
 | First-Time Tutorial | [Objective, branch plan and evidence index](first-time-tutorial-objective.md) | Repository foundation complete with requester-approved branch plan; publication and downstream role assignment remain. |
-| Cross-Project Dashboard | [Web status](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/feature/cross-unit/CROSS_UNIT_STATUS.md), [data-source map](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/feature/cross-unit/docs/cpd-data-source-map.md) | Existing evidence; CPD-MVP01 must still link exact final commits, runs and reviews. |
+| Cross-Project Dashboard | [CPD-Q05 as-built wireframe and validation](docs/evidence/ontrack-mvp-2026-08-26/cpd-q05-wireframe-usability-validation-20260828.md), [clean merged-stack follow-up](docs/evidence/ontrack-mvp-2026-08-26/follow-up-validation-20260828.md), [data-source map](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/feature/cross-unit/docs/cpd-data-source-map.md) | **Validated / handed over — protected publication review pending.** Exact merged tuple passes live CPD; no product fix required. CPD-D02 Web #108 remains review-required. |
 | Email Notifications | [API notification status](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/notifications/NOTIFICATIONS_STATUS.md), [event index](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/notifications/docs/notifications/events/README.md) | Shared Notifications evidence; EN-MVP01 must identify email-specific final evidence. |
 | Mobile Notifications | [Push setup](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/notifications/docs/notifications/push-setup.md), [local push testing](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/notifications/docs/notifications/testing-push-locally.md) | Shared Notifications evidence; MN-MVP01 must identify device/browser results and final review. |
 | Peer Progress Indicator | [PPI-Q02 validation and MVP handover](docs/evidence/ontrack-mvp-2026-08-26/ppi-q02-validation-handover-20260827.md), [exact-head Web handover](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/16c22c992c821e16981c8f8cb2601f0a61f73007/docs/ppi-f02-unit-summary-handover.md), [API data-source map](https://github.com/ontrack-features-t2-2026/doubtfire-api/blob/feature/peer-progress-indicator/docs/peer-progress/data-source-map.md) | **Validated / handed over** at merged Web `16c22c99`; live unit API remains future/out of scope and is not claimed. |
-| Combined stack | [Merged final lock](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/blob/ad463dc8b1b8005f0774819fe4d506da3c281947/ONTRACK-MVP-VALIDATION-LOCK-20260827.md); historical prior commits [`c4c0d9a5`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/c4c0d9a5fc37b9346206ed2963fbfa3684c2a696) / [`32c7abbf`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/32c7abbf5551d172970c31acea9522ec4da29b08) | Lock `ad463dc8` pins API `6c74dbbc` and Web `16c22c99` and merged through Deploy #26. Fresh recursive clone, Compose render/contract and running-stack acceptance passed on predecessor lock `4851fc1` with the same API and Web `5255c271`; no release decision is inferred. |
+| Combined stack | [Merged final lock](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/blob/ad463dc8b1b8005f0774819fe4d506da3c281947/ONTRACK-MVP-VALIDATION-LOCK-20260827.md), [28 August follow-up](docs/evidence/ontrack-mvp-2026-08-26/follow-up-validation-20260828.md); historical prior commits [`c4c0d9a5`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/c4c0d9a5fc37b9346206ed2963fbfa3684c2a696) / [`32c7abbf`](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/commit/32c7abbf5551d172970c31acea9522ec4da29b08) | Lock `ad463dc8` pins API `6c74dbbc` and Web `16c22c99`. Predecessor running-stack evidence remains labelled; a clean exact merged-tuple CPD pass and corrected open #27 verifier pass are now separately recorded. No security or release decision is inferred. |
 | Accessibility | **TBD - no public objective evidence index linked** | Blocker |
 | Theme | **TBD - no public objective evidence index linked** | Blocker |
 | Safe Uploads | **TBD - no public objective evidence index linked** | Blocker |
@@ -337,6 +355,7 @@ Review this table at least weekly while the objectives are active.
 | 2026-08-26 | MISC-X01 documentation audit | Canonical Notifications targets corrected; combined Web/API validation candidates published | Preferences/help structure, objective integration owners and sub-category leads remain unresolved | Staged CI and conditional Deploy rules documented | This register and [branch register](branch-register.md); approval links remain pending |
 | 2026-08-27 | MISC-X01 closure audit | Release/feature heads moved; named umbrella/follow-up PRs merged; old Web/Deploy integration refs deleted | Web #103 and API #72 remain active shared-surface review points; Web #72/#104 are merged | Weekly workflow PRs merged; prior-candidate Deploy head `32c7abb` created without release claim | [Branch register](branch-register.md), this PR table and prior gitlink commit `c4c0d9a5fc37b9346206ed2963fbfa3684c2a696` |
 | 2026-08-27 | MVP final-candidate validation | API [#77](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/77), Web [#105](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/105) and Deploy [#26](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/26) merged into `11.0.x`; Guide [#2](https://github.com/ontrack-features-t2-2026/github-guide/pull/2) is the publication PR into `main` | Final API `6c74dbbc`, Web `16c22c99` and Deploy lock `ad463dc8` are recorded | Hosted API eight-shard/roll-up CI, exact-head Web focused/hosted checks, PPI-Q02 mock-boundary validation, exact final-lock Compose contract, predecessor running-stack CPD/PPI/email acceptance and exact merged-Web scanning pass; Mobile OS receipt/click, image disposition and release decision remain open | [Final closure validation](docs/evidence/ontrack-mvp-2026-08-26/live-closure-validation-20260827.md), [PPI handover](docs/evidence/ontrack-mvp-2026-08-26/ppi-q02-validation-handover-20260827.md), [MVP evidence index](docs/evidence/ontrack-mvp-2026-08-26/README.md) and [closure status](closure-status-20260827.md) |
+| 2026-08-28 | Final follow-up validation | Web restored clean to `16c22c99`; merged tuple retained; open API #79/#80/#81, Deploy #27, Web #108/#111 and Guide #2 exact heads recorded | CPD #103 closed without merge; no product fix needed. CPD-Q05 as-built evidence added; CPD-D02 #108 remains protected-review pending | Clean merged-tuple CPD Active/Previous/All/search passes with active counts 37/15/5; #27 verifier passes separately; #81 12-shard exact-union passes twice; #111 hardening technically green with digest-bound zero-finding release scan | [Follow-up validation](docs/evidence/ontrack-mvp-2026-08-26/follow-up-validation-20260828.md), [CPD-Q05 record](docs/evidence/ontrack-mvp-2026-08-26/cpd-q05-wireframe-usability-validation-20260828.md) and [scan report](evidence/docker-image-vulnerability-scan-20260826.md). Protected review, Mobile receipt/click, security and release authority remain open. |
 | YYYY-MM-DD | **Unassigned** |  |  |  |  |
 
 ## Team-chat update template
@@ -346,15 +365,17 @@ coordination handover: current branches and PRs, explicit Unassigned roles,
 shared surfaces, proposed preferences/help structure, dependency order,
 feature/accessibility/theme boundaries, CI staging, conditional Deploy rules
 and the weekly review register are recorded. Requester approval recorded 27
-Aug 2026; named-leader confirmation waived by requester. MISC-X01 is therefore
-**repository complete / publication follow-up**. The effective coordination
-deadline and merged Guide link still need to be posted in Planner/team chat,
-and downstream implementation must assign its relevant Unassigned roles.
+Aug 2026; named-leader confirmation waived by requester for this factual
+coordination record. Protected review, security decisions and release authority
+are not waived. MISC-X01 is therefore **repository complete / publication
+follow-up**. The effective coordination deadline and merged Guide link still
+need to be posted in Planner/team chat, and downstream implementation must
+assign its relevant Unassigned roles.
 
 Planner-ready status:
 
 ```text
-MISC-X01 REPOSITORY COMPLETE / PUBLICATION FOLLOW-UP — Branch heads and live PR dispositions were refreshed on 27 August; shared surfaces, integration order, CI/Deploy rules and explicit Unassigned roles are documented. Requester approval recorded 27 Aug 2026; named-leader confirmation waived by requester. API 6c74dbb and Web 16c22c99 are merged into 11.0.x and pinned by merged Deploy lock ad463dc8; c4c0d9a/32c7abb remain prior-candidate provenance. Guide #2 is the publication PR to main. Fresh recursive clone, Compose contract, hosted API/Web/Deploy CI, PPI-Q02 mock-boundary validation, composed CPD/PPI/email acceptance and exact merged-Web scanning pass; observable Mobile OS receipt/click, image disposition and release approval remain open. Remaining publication actions: publish the Guide PR, post the effective deadline and add Planner/team-chat links; downstream work assigns relevant roles.
+MISC-X01 REPOSITORY COMPLETE / PUBLICATION FOLLOW-UP — Branch heads and live PR dispositions were refreshed through 28 August; shared surfaces, integration order, CI/Deploy rules and explicit Unassigned roles are documented. Requester approval recorded 27 Aug 2026; named-leader/inactive-peer subjective gates waived only for the factual handover. API 6c74dbb and Web 16c22c99 are merged into 11.0.x and pinned by merged Deploy lock ad463dc8; c4c0d9a/32c7abb remain prior-candidate provenance. Clean final-tuple CPD Active/Previous/All/search and corrected open Deploy PR27's verifier pass; CPD-Q05 has an as-built validation record. API PR79/80/81, Deploy PR27, Web PR108/111 and Guide PR2 are technically green where stated but protected reviews remain. Observable Mobile receipt/click, security disposition and release approval remain open. Remaining publication actions: publish reviewed Guide/CPD handovers, post the effective deadline and add Planner/team-chat links; downstream work assigns relevant roles.
 ```
 
 ```text
