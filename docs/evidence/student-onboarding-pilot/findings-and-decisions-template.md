@@ -1,9 +1,9 @@
 # TUT-U01-RUN — De-identified findings and decisions
 
-**Environment:** non-production / demo  
-**Dataset:** synthetic only  
-**Pilot date(s):** _TBD — do not fill until sessions run_  
-**Reviewers (labels only):** A (novice) · B · C  
+**Environment:** non-production / demo
+**Dataset:** synthetic only
+**Pilot date(s):** _TBD — do not fill until sessions run_
+**Reviewers (labels only):** A (novice) · B · C
 
 Severity guide:
 
