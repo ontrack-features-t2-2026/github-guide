@@ -1,11 +1,11 @@
-# TUT-U01-RUN — Pilot result (fill after execution)
+# TUT-U01-FIXES — Pilot result (fill after fixes and re-test)
 
-**Ticket:** TUT-U01-RUN (split from original TUT-U01)  
+**Ticket:** TUT-U01-FIXES (split from original TUT-U01)  
 **Status:** Template only — not a completed pilot claim  
-**Depends on:** TUT-Q01 evidence + TUT-U01-PREP + completed sessions in the findings table  
+**Depends on:** TUT-U01-RUN findings table filled  
 
 Guides and final MVP closure remain **TUT-D04** / **TUT-MVP01** (Maple). This
-file is only the pilot result required by TUT-U01.
+file is only the pilot result required by the original TUT-U01 card.
 
 ## What worked
 

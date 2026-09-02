@@ -69,12 +69,15 @@ For each step record:
 
 ---
 
-## After sessions (TUT-U01-RUN)
+## After sessions
 
-1. Copy observations into the findings and decisions table.
-2. Open **one focused fix ticket or PR per logical critical/high issue**.
-3. Re-test accepted critical/high fixes with this same script.
-4. Fill the pilot result and request Objective Lead, Documentation and Technical review.
-5. Post the pilot result link in team chat.
+**TUT-U01-RUN** ends when findings are triaged in the findings table.
 
-Do not open a separate handover ticket here — guides/MVP closure are **TUT-D04** / **TUT-MVP01**.
+**TUT-U01-FIXES** then:
+
+1. Open **one focused fix ticket or PR per logical critical/high issue**.
+2. Re-test accepted critical/high fixes with this same script.
+3. Fill the pilot result and request Objective Lead, Documentation and Technical review.
+4. Post the pilot result link in team chat.
+
+Do not open a separate MVP handover card here — that remains **TUT-D04** / **TUT-MVP01** (Maple).

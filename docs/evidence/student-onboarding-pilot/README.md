@@ -1,17 +1,17 @@
 # TUT-U01 — Student Onboarding Pilot (prep pack)
 
-**Ticket:** TUT-U01 (Planner O1-E — Testing, Pilot, Documentation and Handover)  
+**MS Planner ticket:** TUT-U01 (O1-E — Testing, Pilot, Documentation and Handover)  
 **Owner:** Jay Shrimpton  
-**Branch:** `docs/student-onboarding-pilot-result`  
-**Depends on:** TUT-Q01 (manual accessibility/browser QA) and a testable tutorial on staging/demo  
-**Status:** Prep only — script, consent and templates ready. Pilot sessions are **not started**.
+**Suggested task branch:** `docs/student-onboarding-pilot-result`  
+**PR base (provisional):** `main` on [github-guide](https://github.com/ontrack-features-t2-2026/github-guide)  
 
-This pack does **not** claim a completed pilot or working tutorial.
-Do not run reviewer sessions until TUT-Q01 evidence exists and a non-production
-environment with synthetic accounts is available.
+> **Base-branch note:** Planner lists target as **Documentation integration branch**. That exact branch name is not published in the Guide yet (review checklist still says tutorial integration target is pending). This PR uses `main` provisionally so review can start. Maple or a reviewer should retarget if a docs integration branch is the correct base.
 
-Guides and final MVP handover stay with Maple (**TUT-D04**, **TUT-MVP01**). This
-split only covers the original TUT-U01 pilot scope.
+**Depends on (for RUN/FIXES):** TUT-Q01 and a testable tutorial on non-production/demo  
+**Status:** TUT-U01-PREP deliverables are in this folder. Sessions are **not** started.
+
+This pack does **not** claim a completed pilot or working tutorial.  
+Guides / final MVP closure stay with Maple (**TUT-D04**, **TUT-MVP01**) — not part of this split.
 
 ## Contents
 
@@ -19,21 +19,18 @@ split only covers the original TUT-U01 pilot scope.
 |---|---|
 | [pilot-script-and-consent.md](./pilot-script-and-consent.md) | Pilot script and privacy/consent statement |
 | [findings-and-decisions-template.md](./findings-and-decisions-template.md) | De-identified findings / triage table (blank) |
-| [pilot-result-template.md](./pilot-result-template.md) | Pilot result, re-test and approval record (blank until execution) |
+| [pilot-result-template.md](./pilot-result-template.md) | Pilot result, re-test and approval record (blank until FIXES) |
 
-## Split of original TUT-U01 (two tickets only)
+## Split of original TUT-U01 (three Planner cards)
 
-| ID | Title | Scope from original checklist | When | Depends on |
-|---|---|---|---|---|
-| **TUT-U01-PREP** | Prepare pilot script, consent and evidence templates | Script + consent; privacy rules; blank findings and result tables | Now | None for prep |
-| **TUT-U01-RUN** | Run pilot, triage findings, fix critical issues and record result | Invite reviewers; run four outcomes + skip/replay; log de-identified findings; triage; focused fix PRs; re-test; short pilot result; request objective/docs/tech approval; post result link in team chat | After tutorial is testable | TUT-Q01 + TUT-U01-PREP |
-
-**Out of this split (already owned elsewhere):**
-
-- **TUT-D04** / **TUT-MVP01** — user/contributor guides and final MVP handover (Maple)
+| ID | Title | Status |
+|---|---|---|
+| **TUT-U01-PREP** | Prepare pilot script, consent and evidence templates | Done in this PR |
+| **TUT-U01-RUN** | Run pilot sessions and record de-identified findings | After TUT-Q01 |
+| **TUT-U01-FIXES** | Fix critical/high issues, re-test and publish pilot result | After TUT-U01-RUN |
 
 ## Privacy rule (always)
 
-Use demo/synthetic accounts only. Record de-identified observations only.
+Use demo/synthetic accounts only. Record de-identified observations only.  
 Do **not** collect or paste names, marks, feedback, extension details, disability
 information, unit performance or detailed behavioural analytics into evidence.
