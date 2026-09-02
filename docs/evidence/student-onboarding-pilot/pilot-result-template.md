@@ -1,7 +1,11 @@
-# TUT-U01 — Pilot result (fill after execution)
+# TUT-U01-RUN — Pilot result (fill after execution)
 
+**Ticket:** TUT-U01-RUN (split from original TUT-U01)  
 **Status:** Template only — not a completed pilot claim  
-**Depends on:** TUT-Q01 evidence + completed sessions recorded in the findings table  
+**Depends on:** TUT-Q01 evidence + TUT-U01-PREP + completed sessions in the findings table  
+
+Guides and final MVP closure remain **TUT-D04** / **TUT-MVP01** (Maple). This
+file is only the pilot result required by TUT-U01.
 
 ## What worked
 
@@ -26,7 +30,7 @@
 - [ ] No participant or assessment data appears in the report
 - [ ] All critical findings are fixed or have an approved owner and reason
 - [ ] Accepted fixes were re-tested with the original scenario
-- [ ] Final result approved for handover
+- [ ] Pilot result approved by objective lead, documentation reviewer and technical reviewer
 
 ## Approvals
 
@@ -42,4 +46,4 @@
 - Findings table: `findings-and-decisions-template.md` (filled copy)
 - Fix PRs: _TBD_
 - Re-test notes: _TBD_
-- Team chat post: _TBD_
+- Team chat post (pilot result link): _TBD_

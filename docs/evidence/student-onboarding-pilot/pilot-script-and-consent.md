@@ -1,4 +1,4 @@
-# TUT-U01 — Pilot script and consent (non-production)
+# TUT-U01-PREP — Pilot script and consent (non-production)
 
 ## Consent / privacy statement (read to reviewers)
 
@@ -69,10 +69,12 @@ For each step record:
 
 ---
 
-## After sessions
+## After sessions (TUT-U01-RUN)
 
 1. Copy observations into the findings and decisions table.
 2. Open **one focused fix ticket or PR per logical critical/high issue**.
 3. Re-test accepted critical/high fixes with this same script.
 4. Fill the pilot result and request Objective Lead, Documentation and Technical review.
-5. Post the result link in team chat.
+5. Post the pilot result link in team chat.
+
+Do not open a separate handover ticket here — guides/MVP closure are **TUT-D04** / **TUT-MVP01**.
