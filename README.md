@@ -113,6 +113,7 @@ Local test accounts use the password `password`.
 
 ## Related guides
 
+- [Contributor getting started outline](contributor-getting-started.md)
 - [Branch register](branch-register.md)
 - [Cross-objective coordination, shared surfaces and integration order](cross-objective-coordination.md)
 - [First-Time Tutorial objective, branch plan and evidence index](first-time-tutorial-objective.md)
