@@ -23,7 +23,7 @@ A Planner status by itself is not evidence that a feature works. Where a branch,
 | Troubleshooting guide      | Draft complete               | `docs/student-onboarding/troubleshooting.md`                                                                                                                           |
 | Contributor guide          | Draft complete               | `docs/student-onboarding/contributor-guide.md`                                                                                                                         |
 | Evidence index             | In progress                  | `docs/student-onboarding/evidence-index.md`                                                                                                                            |
-| Project handover           | Not created                  | `docs/student-onboarding/handover.md`                                                                                                                                  |
+| Project handover           | Interim draft complete       | `docs/student-onboarding/handover.md`                                                                                                                                  |
 | Fallback walkthrough       | Waiting for stable interface | Link to be added                                                                                                                                                       |
 | Second-contributor review  | Not completed                | Review result to be added                                                                                                                                              |
 
