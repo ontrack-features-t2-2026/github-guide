@@ -11,7 +11,12 @@ cheaper pass on the prototype before implementation.
 
 ## Before the session
 
-- [ ] Open the [prototype](prototype/index.html). It uses synthetic content only.
+- [ ] Open the prototype. It uses synthetic content only. Either open
+      [prototype/index.html](prototype/index.html) in a browser, or use the hosted
+      preview that renders it straight from the repository:
+      https://htmlpreview.github.io/?https://github.com/ontrack-features-t2-2026/github-guide/blob/18754df4467e6435e9d79de6e41d2f71074f58c8/docs/design/student-onboarding-prototype-review/prototype/index.html
+      After this pull request merges, a stable GitHub Pages link replaces the
+      preview above.
 - [ ] Have the [findings table](findings-and-decisions.md) open with no name fields.
 - [ ] Invite at least three reviewers where practical, including one less
       experienced OnTrack user.

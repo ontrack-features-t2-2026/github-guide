@@ -26,7 +26,7 @@ approval.
 | [design-decision.md](design-decision.md) | The three design options compared, the recommended direction and the accessibility rationale | 14 |
 | [wireframes.md](wireframes.md) | Desktop and narrow-screen wireframes for the welcome panel, guided step, skip confirmation and completion panel, plus the fallback states | 1, 2, 3, 5, 6 |
 | [keyboard-and-focus.md](keyboard-and-focus.md) | Focus order, initial focus, Escape behaviour, focus return, roles and names, and the step announcement | 3, 4 |
-| [prototype/index.html](prototype/index.html) | The clickable prototype using the draft copy and the proposed state rules. Open the file in a browser to use it. | 7 |
+| [prototype/index.html](prototype/index.html) | The clickable prototype using the draft copy and the proposed state rules. Open the file in a browser, or use the hosted preview linked in [review-script.md](review-script.md). | 7 |
 | [review-script.md](review-script.md) | The short review script covering the four outcomes, skip, dismissal and replay | 8, 9, 10 |
 | [findings-and-decisions.md](findings-and-decisions.md) | The de-identified findings table with severity and decision columns, filled during the review | 11, 12, 13 |
 | [evidence-index.md](evidence-index.md) | The item by item checklist mapping, the source provenance and the residual tickets | 14 |
