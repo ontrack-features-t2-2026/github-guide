@@ -1,78 +1,79 @@
-# First-Time OnTrack Tutorial – Project Handover
+
+# First-Time OnTrack Tutorial – Final Current-State Handover
 
 **Ticket:** TUT-D04
 **Documentation owner:** Jeffy Sam Babu
-**Status:** Interim handover
-**Last updated:** 9 September 2026
-**Project health:** Amber – documentation is progressing, but implementation and testing are not yet complete
+**Status:** Ready for documentation review
+**Last updated:** 16 September 2026
+**Project health:** Amber – documentation is complete for the current state, but the tutorial implementation is unfinished
 
-## 1. Purpose
+## 1. Handover Summary
 
-This handover records the current status of the First-Time OnTrack Tutorial and provides the information needed to continue the work.
+This handover records the documentation completed for the First-Time OnTrack Tutorial and the work that remains blocked by unfinished dependencies.
 
-The tutorial is intended to help new students understand the main areas of OnTrack. The planned tutorial covers selecting a unit, opening the project or task dashboard, understanding the target grade and finding the calendar.
+The student guide, troubleshooting guide, contributor guide, evidence index and maintenance information have been prepared using the approved project plans and the information currently available.
 
-This document only covers the tutorial and its maintenance. Calendar subscription instructions, site-wide accessibility guidance, and CSS or theme guidance remain within their separate project tickets.
+The tutorial itself is not ready for release. Several implementation, testing, security and pilot tasks remain incomplete. Behaviour that could not be verified has been clearly identified instead of being presented as complete.
 
 ## 2. Handover Location
 
-The tutorial documentation is stored in:
+The documentation is stored in:
 
 `github-guide/docs/student-onboarding/`
 
-Documentation branch:
-
-`docs/student-onboarding-user-and-contributor-guide`
-
 Repository:
 
-https://github.com/ontrack-features-t2-2026/github-guide
+[github-guide](https://github.com/ontrack-features-t2-2026/github-guide)
 
-Branch:
+Documentation branch:
 
-https://github.com/ontrack-features-t2-2026/github-guide/tree/docs/student-onboarding-user-and-contributor-guide
+[docs/student-onboarding-user-and-contributor-guide](https://github.com/ontrack-features-t2-2026/github-guide/tree/docs/student-onboarding-user-and-contributor-guide)
 
-## 3. Documentation Completed
+Documentation pull request:
 
-The following documentation drafts have been created:
+[Draft PR #7](https://github.com/ontrack-features-t2-2026/github-guide/pull/7)
 
-* Student guide
-* Troubleshooting guide
-* Contributor and maintenance guide
-* Evidence index
-* Project handover
-* Documentation overview
+## 3. Documentation Delivered
 
-These documents are drafts because some implementation details, screenshots, test results and pull request links are not available yet.
+The following documents are included:
 
-## 4. Current Implementation Status
+* [Documentation overview](README.md)
+* [Student guide](student-guide.md)
+* [Troubleshooting guide](troubleshooting.md)
+* [Contributor guide](contributor-guide.md)
+* [Evidence index](evidence-index.md)
+* [Second-contributor review record](second-contributor-review.md)
+* [Project handover](handover.md)
 
-Based on the latest Planner information:
+## 4. Current Project Status
 
-* **TUT-W01 – Tutorial shell and step registry:** Not started
-* **TUT-W02 – Eligibility and progress state:** Not started
-* **TUT-W03 – Four core tutorial steps:** In progress
-* **TUT-W04 – Replay and help access:** Not started
-* **TUT-S01 – Security and privacy review:** In progress
-* **TUT-Q01 – Tutorial testing:** Not started
-* **TUT-U01-RUN – Pilot sessions:** Not started
-* **TUT-U01-FIXES – Pilot fixes and final result:** Not started
-* **TUT-MVP01 – Final MVP validation:** Not started
+The latest available Planner information shows that the main tutorial implementation has not been completed.
 
-The documentation can continue as a draft, but it cannot be marked as final until these dependent tasks provide confirmed behaviour and evidence.
+| Work item                                  | Current status             |
+| ------------------------------------------ | -------------------------- |
+| TUT-W01 – Tutorial shell and step registry | Not completed              |
+| TUT-W02 – Eligibility and progress state   | Not completed              |
+| TUT-W03 – Four core tutorial steps         | In progress, not completed |
+| TUT-W04 – Replay and help access           | Not completed              |
+| TUT-S01 – Security and privacy review      | In progress, not completed |
+| TUT-Q01 – Tutorial testing                 | Not completed              |
+| TUT-U01-RUN – Pilot sessions               | Not completed              |
+| TUT-U01-FIXES – Pilot fixes and result     | Not completed              |
+| TUT-MVP01 – Final MVP validation           | Not completed              |
 
-## 5. Current Design Summary
+These incomplete work items prevent final verification of the tutorial behaviour, repository locations, stable targets, progress saving and replay controls.
 
-The tutorial is expected to:
+## 5. Planned Tutorial Behaviour
+
+Based on the approved project information, the tutorial is intended to:
 
 * Launch automatically for eligible first-time students.
 * Remain separate from the existing welcome and profile setup flow.
-* Let students move through the tutorial using Back and Next.
-* Allow students to select Skip for now.
-* Allow permanent automatic dismissal.
-* Let students finish or close the tutorial.
-* Provide a replay option through the planned Tutorial or Help location.
-* Keep normal OnTrack features usable if the tutorial encounters an error.
+* Guide students through four core areas of OnTrack.
+* Allow movement using Back and Next controls.
+* Provide Skip for now, dismissal, completion and close options.
+* Allow students to replay the tutorial through a Tutorial or Help location.
+* Leave normal OnTrack features available if the tutorial fails.
 * Store only the approved tutorial version, state and current step.
 
 The approved progress states are:
@@ -82,112 +83,158 @@ The approved progress states are:
 * `dismissed`
 * `completed`
 
-These details must be checked against the final implementation before publication.
+These behaviours must be checked against the final implementation before the tutorial is released.
 
-## 6. Important Resources
+## 6. Welcome and Profile Setup Boundary
 
-* [First-Time Tutorial Objective](https://github.com/ontrack-features-t2-2026/github-guide/blob/main/first-time-tutorial-objective.md)
-* [Branch Register](https://github.com/ontrack-features-t2-2026/github-guide/blob/main/branch-register.md)
-* [Cross-Objective Coordination](https://github.com/ontrack-features-t2-2026/github-guide/blob/main/cross-objective-coordination.md)
-* [Pilot Preparation Material](https://github.com/ontrack-features-t2-2026/github-guide/tree/docs/student-onboarding-pilot-result/docs/evidence/student-onboarding-pilot)
+The tutorial must remain separate from the existing welcome and profile setup process.
 
-The following related tickets must also be linked when their locations are confirmed:
+The existing `has_run_first_time_setup` behaviour should not be changed or reused as tutorial progress. Completing or dismissing the tutorial must not change a student’s profile setup state.
 
-* TUT-U01 – Tutorial pilot
-* CAL-D03 – Calendar subscription instructions
-* A11Y-D02 – Site-wide accessibility guidance
-* MG-05 – CSS and theme guidance
+## 7. Security and Privacy Position
 
-## 7. Security and Privacy Limits
+The documentation does not contain real student or assessment information.
 
-The tutorial documentation, screenshots, recordings and testing notes must not include:
+Future testing, screenshots and recordings must not include:
 
-* Real student names or identification numbers
-* Marks or grades
-* Assessment submissions
-* Feedback
-* Extensions
+* Student names or identification numbers
+* Marks, grades or submissions
+* Feedback or extensions
 * Disability information
 * Unit-performance information
-* Authentication details
-* Private API responses
+* Authentication details, secrets or private API responses
 
-Only demo or synthetic accounts should be used for screenshots, recordings and pilot testing.
+Only demo or synthetic accounts may be used.
 
-Tutorial progress should be limited to the approved version, state and current-step fields. Detailed student activity or per-click analytics are outside the current scope.
+Detailed activity tracking and per-click analytics are outside the approved scope. Tutorial failures should fail open so that students can continue using OnTrack.
 
-## 8. Known Limitations
+## 8. Testing and Evidence Status
 
-At the time of this handover:
+The required GitHub documentation validation for PR #7 has passed.
 
-* The complete tutorial interface is not stable.
-* The final repository file locations have not been confirmed.
-* The tutorial shell and step registry have not been completed.
-* Automatic launch and progress-saving behaviour have not been tested.
-* Replay and help access have not been implemented.
-* Final stable targets and selectors are not available.
-* Security and privacy testing is incomplete.
-* Automated and manual test results are not available.
-* Pilot sessions have not been completed.
-* Screenshots and the fallback walkthrough have not been created.
-* A second contributor has not yet followed the maintenance guide.
-* Final published guide and pull request links are still pending.
+Application-level automated tests, manual tests, accessibility checks, security tests and pilot results are not available because the related implementation and testing tickets are incomplete.
 
-## 9. Main Risks
+These missing results are recorded as blocked evidence in the evidence index. They have not been presented as successful tests.
 
-| Risk                                     | Effect                                                             | Required action                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------- |
-| Implementation is delayed                | Documentation may contain unconfirmed behaviour                    | Review all guides after the implementation pull requests are available |
-| Stable targets change                    | Tutorial steps may stop pointing to the correct interface elements | Confirm selectors with the developers and run regression tests         |
-| Progress saving is not confirmed         | Skip, completion or replay instructions may be inaccurate          | Test each progress state using a demo account                          |
-| Testing and pilot work remain incomplete | The tutorial cannot be considered ready for release                | Complete TUT-Q01 and the remaining TUT-U01 tasks                       |
-| Screenshots are created too early        | Images may become outdated                                         | Wait until the interface is stable                                     |
-| Real student data is captured            | Privacy requirements would be breached                             | Use synthetic data and perform a second privacy review                 |
-| Evidence links are missing               | TUT-D04 acceptance criteria may not be met                         | Update the evidence index before final approval                        |
+## 9. Walkthrough Decision
 
-## 10. API and Deployment Requirements
+A fallback walkthrough has not been recorded.
 
-No new API work or separate deployment is currently confirmed for this documentation ticket.
-
-API work is only required if the eligibility, progress-state or security tasks show that tutorial progress must be stored on the server. Any such requirement must be documented and linked before the guides are finalised.
-
-A separate deployment is not expected for the documentation itself. Deployment instructions should only be added if the implementation team confirms that the tutorial requires a specific release or configuration change.
-
-## 11. Next Steps
-
-Before this handover can be marked as final:
-
-1. Complete the tutorial shell, state handling, core steps and replay access.
-2. Confirm the final repository locations, step registry and stable targets.
-3. Confirm automatic launch, skip, dismissal, completion and replay behaviour.
-4. Confirm the tutorial version and version-change rule.
-5. Complete the security and privacy review.
-6. Complete automated and manual testing.
-7. Run the pilot using demo or synthetic accounts.
-8. Resolve or document the pilot findings.
-9. Update the student and contributor guides using confirmed behaviour.
-10. Add current screenshots after the interface becomes stable.
-11. Record a short fallback walkthrough only if it is still required.
-12. Ask a second contributor to follow the maintenance guide.
-13. Record the second contributor’s feedback and any documentation changes.
-14. Replace all pending entries in the evidence index with final links.
-15. Submit the documentation pull request for review and approval.
-
-## 12. Walkthrough Status
-
-The fallback walkthrough has not been recorded because the interface is not yet stable.
+The ticket requires the walkthrough to be created only after the interface is stable. Recording it now would risk producing inaccurate instructions and outdated screens.
 
 If a walkthrough is created later, it must:
 
 * Use demo or synthetic data.
-* Show only the main tutorial actions.
-* Display the tutorial version and recording date.
+* Show the tutorial version and recording date.
 * Receive a second privacy and accuracy review.
-* Support the written guides rather than replace them.
+* Support the written documentation rather than replace it.
 
-## 13. Final Handover Status
+## 10. Second-Contributor Review
 
-TUT-D04 is currently **partially completed**.
+A second-contributor review has been requested.
 
-The main written documentation structure is available, but the final technical details and evidence depend on unfinished implementation, testing, security review and pilot work. The guides should remain marked as drafts until those dependencies are completed and verified.
+The reviewer has been asked to follow the contributor guide as far as possible and report any unclear or missing step. If the reviewer is blocked because the implementation or step registry is unavailable, that result will be recorded as an implementation dependency.
+
+The review result must not be described as completed until an actual response is received.
+
+## 11. Known Limitations
+
+At the time of this handover:
+
+* The tutorial interface is not stable.
+* Final code locations have not been confirmed.
+* The tutorial shell and step registry are unavailable.
+* Stable targets and selectors are not available.
+* Automatic launch and progress saving have not been verified.
+* Replay and help access have not been verified.
+* Security and privacy testing is incomplete.
+* Automated and manual application test results are unavailable.
+* Pilot sessions and fixes are incomplete.
+* Final screenshots and walkthrough evidence are unavailable.
+* The second-contributor result is pending.
+
+## 12. Main Risks
+
+| Risk                                            | Effect                                                | Required follow-up                               |
+| ----------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------ |
+| Implementation differs from the planned design  | The guides may describe behaviour that changes        | Review every guide against the completed feature |
+| Stable targets change or remain unavailable     | Tutorial steps may not point to the correct interface | Confirm selectors and run regression tests       |
+| Progress saving is not verified                 | Skip, completion or replay guidance may be inaccurate | Test every approved progress state               |
+| Testing remains incomplete                      | The tutorial cannot be considered release-ready       | Complete TUT-Q01 and the pilot work              |
+| Media is created before the interface is stable | Screenshots or recordings may become outdated         | Wait until the interface is approved             |
+| Real data is accidentally captured              | Privacy requirements would be breached                | Use demo data and complete a second review       |
+
+## 13. API and Deployment Requirements
+
+No API work or separate deployment has been confirmed for TUT-D04.
+
+API work is only required if the eligibility, progress-state or security work confirms that tutorial progress must be stored on the server.
+
+A separate deployment is not required for the written documentation. Any future API, configuration or deployment requirement must be linked in the evidence index when confirmed.
+
+## 14. Required Follow-Up
+
+Before the tutorial is released:
+
+1. Complete TUT-W01, TUT-W02, TUT-W03 and TUT-W04.
+2. Confirm the final repository files, step registry and stable targets.
+3. Complete the security and privacy review.
+4. Complete automated and manual testing.
+5. Run the pilot using demo or synthetic accounts.
+6. Resolve or document the pilot findings.
+7. Verify the student and contributor guides against the working interface.
+8. Add approved screenshots only after the interface is stable.
+9. Record the fallback walkthrough only if it is still required.
+10. Complete and record the second-contributor review.
+11. Add all final branches, pull requests and test evidence.
+12. Update the documentation version and review date before release.
+
+## 15. Final Handover Statement
+
+The TUT-D04 documentation is ready for review as a current-state handover.
+
+The documentation work completed so far is available through PR #7. The tutorial feature itself is not ready for release, and the remaining implementation, testing, pilot and review work is clearly recorded for the next contributors.
+
+This handover closes the documentation work that can be completed with the information currently available. It does not claim that the unfinished tutorial implementation has been tested or approved.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
