@@ -2,7 +2,7 @@
 
 **Owner:** Jeffy Sam Babu
 **Status:** In progress
-**Last checked:** 9 September 2026
+**Last checked:** 16 September 2026
 
 ## Purpose
 
@@ -18,14 +18,14 @@ A Planner status by itself is not evidence that a feature works. Where a branch,
 | TUT-D04 branch             | Available                    | [docs/student-onboarding-user-and-contributor-guide](https://github.com/ontrack-features-t2-2026/github-guide/tree/docs/student-onboarding-user-and-contributor-guide) |
 | Documentation pull request | Draft – awaiting review      | [PR #7](https://github.com/ontrack-features-t2-2026/github-guide/pull/7)|                                                                                                                        |
 | Documentation folder       | Available                    | `docs/student-onboarding/`                                                                                                                                             |
-| Documentation overview     | Draft complete               | `docs/student-onboarding/README.md`                                                                                                                                    |
-| Student guide              | Draft complete               | `docs/student-onboarding/student-guide.md`                                                                                                                             |
-| Troubleshooting guide      | Draft complete               | `docs/student-onboarding/troubleshooting.md`                                                                                                                           |
-| Contributor guide          | Draft complete               | `docs/student-onboarding/contributor-guide.md`                                                                                                                         |
-| Evidence index             | In progress                  | `docs/student-onboarding/evidence-index.md`                                                                                                                            |
-| Project handover           | Interim draft complete       | `docs/student-onboarding/handover.md`                                                                                                                                  |
-| Fallback walkthrough       | Waiting for stable interface | Link to be added                                                                                                                                                       |
-| Second-contributor review  | Not completed                | Review result to be added                                                                                                                                              |
+| Documentation overview     | Ready for review                | `docs/student-onboarding/README.md`                                                                                                                                    |
+| Student guide              | Draft complete                  | `docs/student-onboarding/student-guide.md`                                                                                                                             |
+| Troubleshooting guide      | Draft complete                  | `docs/student-onboarding/troubleshooting.md`                                                                                                                           |
+| Contributor guide          | Draft complete                  | `docs/student-onboarding/contributor-guide.md`                                                                                                                         |
+| Evidence index             | Current-state complete          | `docs/student-onboarding/evidence-index.md`                                                                                                                            |
+| Project handover           | Final current-state handovernnn | `docs/student-onboarding/handover.md`                                                                                                                                  |
+| Fallback walkthrough       | Not created–interface not stable| See the walkthrough decision in `handover.md`                                                                                                                                                       |
+| Second-contributor review  | Review requested-result pending | Review result to be added                                                                                                                                              |
 
 ## Project Foundation
 
