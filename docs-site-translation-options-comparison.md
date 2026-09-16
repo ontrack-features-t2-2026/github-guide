@@ -1,6 +1,6 @@
 # DOC-5: Automated Translation Options for the Documentation Site
 
-**Research date:** 16 September 2026  
+**Research date:** 16 September 2026
 **Scope:** Research only. No translation feature has been implemented.
 
 ## Current Documentation Site
