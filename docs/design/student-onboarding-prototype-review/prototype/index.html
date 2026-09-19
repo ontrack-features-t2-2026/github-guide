@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>First-Time Tutorial Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
+<style>
+/*
+  Visual language matched to the live OnTrack / Formatif dashboard:
+    - white toolbar, indigo current-unit pill, three-bar logo, QR and avatar
+    - two-pane dashboard: left task list with status pills, right progress panels
+    - Material primary indigo (#3f3ce6, from the formatif palette), the real
+      task-status colours, Grotesk display type and Inter body
+  The tutorial overlay is the only new surface and follows the same look.
+*/
+:root{
+  --bg:#f1f1f4; --surface:#ffffff; --surface-2:#f5f5f7; --panel:#f4f4f7;
+  --ink:#1f2023; --muted:#6a6f77; --border:#e4e4e9;
+  --primary:#3f3ce6; --primary-ink:#ffffff; --primary-soft:#e7e6fb; --primary-track:#dcdbf9;
+  --good:#46a24a; --st-ready:#0b74d1; --spot:#e08a13; --focus:#2a27c8;
+  --shadow-card:0 1px 3px rgba(20,22,40,.10),0 1px 2px rgba(20,22,40,.10);
+  --shadow-pop:0 12px 32px rgba(20,22,40,.22); --toolbar-shadow:0 2px 6px rgba(20,22,40,.06);
+}
+/* White theme only, to match the live OnTrack app. No dark variant. */
+html{color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg); color:var(--ink);
+  font-family:"Inter","Roboto",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Space Grotesk","Grotesk","Inter",sans-serif;letter-spacing:-.01em}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
+button{font:inherit;cursor:pointer;color:inherit}
+a{color:var(--primary)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.micon{font-family:"Material Symbols Outlined";font-weight:normal;font-style:normal;font-size:22px;line-height:1;
+  display:inline-block;white-space:nowrap;-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased;vertical-align:middle}
+.tnum{font-variant-numeric:tabular-nums}
+
+.wrap{max-width:1160px;margin:0 auto;padding:22px 20px 150px}
+.intro{margin:6px 2px 16px}
+.intro h1{font-size:1.5rem;margin:0 0 4px}
+.intro p{margin:0;color:var(--muted);max-width:74ch;font-size:.95rem}
+.badge{display:inline-block;font-family:"Space Grotesk",sans-serif;font-size:.82rem;font-weight:600;
+  color:var(--primary-ink);background:var(--primary);border-radius:999px;padding:7px 15px;margin-bottom:10px}
+
+/* ---- shell ---- */
+.stage{position:relative;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg);box-shadow:var(--shadow-card)}
+.stage.narrow .shell{max-width:440px;margin:0 auto}
+.topbar{display:flex;align-items:center;gap:12px;background:var(--surface);box-shadow:var(--toolbar-shadow);padding:0 18px;height:66px;position:relative;z-index:2}
+.logo{height:28px;width:auto;flex:none;display:block}
+.unit-pill{background:var(--primary);color:var(--primary-ink);border:0;border-radius:999px;padding:8px 15px;
+  font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:.92rem;display:inline-flex;align-items:center;gap:7px}
+.unit-pill .micon{font-size:19px}
+.nav-sep{color:var(--muted);font-size:1.1rem}
+.nav-item{display:inline-flex;align-items:center;gap:5px;font-weight:600;font-size:.98rem}
+.nav-item .micon{font-size:20px;color:var(--muted)}
+.stage.narrow .nav-item{display:none}
+.spacer{flex:1}
+.iconround{width:42px;height:42px;border-radius:50%;border:0;background:transparent;color:var(--ink);display:grid;place-items:center}
+.iconround:hover{background:var(--surface-2)}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--primary);color:var(--primary-ink);display:grid;place-items:center;
+  font-weight:600;font-size:.85rem;font-family:"Space Grotesk",sans-serif}
+
+.dash{display:grid;grid-template-columns:320px 1fr;gap:18px;padding:18px;background:var(--bg)}
+.stage.narrow .dash{grid-template-columns:1fr;padding:14px}
+
+/* left task list */
+.tasklist{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:8px;box-shadow:var(--shadow-card);align-self:start}
+.search{display:flex;align-items:center;gap:9px;border:2px solid var(--primary);border-radius:11px;padding:10px 13px;margin:4px 4px 8px;color:var(--muted);font-size:.9rem}
+.search .micon{font-size:20px}
+.trow{display:flex;align-items:center;gap:10px;padding:12px 9px;border-top:1px solid var(--border);border-radius:8px}
+.trow:first-of-type{border-top:0}
+.trow.sel{box-shadow:inset 3px 0 0 var(--good);background:var(--surface-2)}
+.trow .tinfo{min-width:0}
+.trow .tn{font-weight:600;font-size:.92rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.trow .tsub{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:.76rem;margin-top:2px}
+.trow .tsub .micon{font-size:15px}
+.tstatus{margin-left:auto;flex:none;min-width:44px;height:30px;border-radius:999px;display:grid;place-items:center;color:#fff}
+.tstatus .micon{font-size:19px}
+.tstatus.done{background:var(--good)}
+.tstatus.fb{background:var(--st-ready)}
+
+/* main column */
+.main{display:flex;flex-direction:column;gap:14px;min-width:0}
+.dhead{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:13px 18px;font-weight:600;color:var(--muted)}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:var(--shadow-card)}
+.panel h2{font-size:1.15rem;margin:0 0 6px}
+.panel p{margin:0 0 12px;color:var(--muted);font-size:.9rem}
+.panel.soft{background:var(--panel);box-shadow:none}
+.panel.soft h2{font-size:1rem}
+.btn-outline{border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:9px 14px;font-weight:600;display:inline-flex;gap:8px;align-items:center;font-size:.9rem}
+.btn-outline:hover{background:var(--surface-2)}
+.btn-outline .micon{font-size:19px}
+.grade-select,.cal-note{margin-top:6px}
+.grade-select select{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font:inherit;font-weight:600;color:inherit}
+.help-line{margin:10px 0 0;color:var(--muted);font-size:.85rem}
+.cal-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--border);font-size:.9rem}
+.cal-item:first-of-type{border-top:0}
+.cal-date{font-size:.72rem;font-weight:700;color:var(--muted);min-width:34px;text-transform:uppercase;letter-spacing:.04em}
+.pill-btn{background:var(--primary);color:var(--primary-ink);border:0;border-radius:999px;padding:9px 16px;font-weight:600;display:inline-flex;gap:8px;align-items:center;margin-top:12px}
+.pill-btn .micon{font-size:19px}
+
+/* ---- spotlight ---- */
+.is-spotlit{position:relative;z-index:45;border-radius:14px;box-shadow:0 0 0 3px var(--surface),0 0 0 6px var(--spot),0 12px 30px rgba(0,0,0,.3)}
+.spot-tag{position:absolute;top:-10px;left:-3px;transform:translateY(-100%);background:var(--spot);color:#fff;font-size:.68rem;font-weight:700;
+  letter-spacing:.05em;padding:3px 9px;border-radius:7px;white-space:nowrap;z-index:46;display:inline-flex;align-items:center;gap:5px}
+.spot-tag .micon{font-size:15px}
+.overlay{position:fixed;inset:0;background:rgba(16,18,32,.52);z-index:40;opacity:0;pointer-events:none;transition:opacity .2s ease}
+.overlay.on{opacity:1;pointer-events:auto}
+
+/* ---- step card ---- */
+.stepcard{position:fixed;z-index:60;width:min(370px,calc(100vw - 26px));background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;box-shadow:var(--shadow-pop);padding:17px 17px 15px;transition:top .18s ease,left .18s ease,opacity .18s ease}
+.stepcard[hidden]{display:none}
+.stepcard .top{display:flex;align-items:flex-start;gap:8px}
+.stepcard .top .grow{flex:1}
+.pos{display:flex;align-items:center;gap:11px;margin-bottom:9px}
+.pos .num{font-size:.76rem;font-weight:600;color:var(--muted);font-family:"Space Grotesk",sans-serif}
+.bar{flex:1;height:6px;background:var(--primary-track);border-radius:999px;overflow:hidden}
+.bar > i{display:block;height:100%;background:var(--primary);width:25%;transition:width .2s ease}
+.stepcard h3{margin:2px 0 6px;font-size:1.14rem}
+.stepcard p{margin:0;color:var(--muted);font-size:.92rem}
+.note{margin-top:11px;font-size:.83rem;color:var(--spot);background:color-mix(in srgb,var(--spot) 12%,transparent);
+  border:1px solid color-mix(in srgb,var(--spot) 34%,var(--border));border-radius:10px;padding:9px 11px;display:none}
+.note.on{display:block}
+.controls{display:flex;align-items:center;gap:8px;margin-top:15px;flex-wrap:wrap}
+.controls .grow{flex:1}
+.btn{border:1px solid var(--border);background:var(--surface);color:inherit;border-radius:10px;padding:9px 14px;font-weight:600;font-size:.9rem}
+.btn:hover:not(:disabled){background:var(--surface-2)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.primary{background:var(--primary);color:var(--primary-ink);border-color:var(--primary)}
+.btn.ghost{border-color:transparent}
+.btn.ghost:hover{background:var(--surface-2)}
+.iconbtn{border:1px solid transparent;background:transparent;color:var(--muted);border-radius:8px;width:34px;height:34px;display:grid;place-items:center}
+.iconbtn .micon{font-size:22px}
+.iconbtn:hover{background:var(--surface-2);color:var(--ink)}
+
+/* ---- modals ---- */
+.modal{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(16,18,32,.5)}
+.modal.on{display:flex}
+.dlg{background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow-pop);width:min(452px,100%);padding:22px 22px 18px}
+.dlg .top{display:flex;align-items:flex-start;gap:10px}
+.dlg h3{margin:0 0 2px;font-size:1.2rem;flex:1}
+.dlg .lead{margin:6px 0 0;color:var(--muted);font-size:.94rem}
+.dlg ul{margin:12px 0 4px;padding-left:20px;color:var(--muted);font-size:.92rem}
+.dlg ul li{margin:3px 0}
+.check{display:flex;align-items:center;gap:9px;margin-top:15px;font-size:.9rem}
+.check input{width:17px;height:17px;accent-color:var(--primary)}
+.dlg .controls{margin-top:17px}
+
+/* ---- reviewer dock ---- */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:80;background:var(--surface);border-top:1px solid var(--border);box-shadow:0 -6px 20px rgba(20,22,40,.1)}
+.dock .inner{max-width:1160px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.dock .tag{font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--border);border-radius:7px;padding:4px 9px;font-weight:600}
+.dock .group{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dock .grow{flex:1}
+.tgl{display:inline-flex;align-items:center;gap:7px;font-size:.82rem;color:var(--muted);border:1px solid var(--border);border-radius:9px;padding:6px 10px}
+.tgl input{width:15px;height:15px;accent-color:var(--primary)}
+.act{border:1px solid var(--border);background:var(--surface-2);color:inherit;border-radius:9px;padding:8px 13px;font-weight:600;font-size:.85rem}
+.act:hover{background:var(--surface)}
+.act.primary{background:var(--primary);color:var(--primary-ink);border-color:var(--primary)}
+@media (max-width:680px){ .dash{grid-template-columns:1fr} .intro h1{font-size:1.25rem} }
+@media (prefers-reduced-motion: reduce){ *{transition:none !important;animation:none !important} }
+.no-motion *{transition:none !important;animation:none !important}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="intro">
+    <span class="badge">TUT-UX01 prototype</span>
+    <h1>First-Time OnTrack Tutorial</h1>
+    <p>A clickable prototype of the anchored guided tour, drawn over a mock of the real OnTrack dashboard with
+      synthetic content only. Use the tour controls to move through the four steps, or the reviewer dock at the
+      bottom to try the skip, dismissal, replay and fallback states.</p>
+  </div>
+
+  <div class="stage" id="stage">
+    <div class="shell">
+      <div class="topbar">
+        <svg class="logo" viewBox="0 0 294.58 171.12" aria-label="OnTrack home" role="img">
+          <path fill="#3691ff" d="M286.58,160.82h0a27.33,27.33,0,0,1-38.67,0l-139-139,9.87-9.87a40.72,40.72,0,0,1,57.57,0L286.58,122.17A27.33,27.33,0,0,1,286.58,160.82Z"/>
+          <path fill="#3939ff" d="M164.29,159.22h0a27.33,27.33,0,0,1-38.65,0L48.55,82.14,87.2,43.49l77.09,77.07A27.33,27.33,0,0,1,164.29,159.22Z"/>
+          <path fill="#5639ff" d="M67.76,143.79l-.38.38L48.44,163.11a27.36,27.36,0,0,1-38.67,0L8,161.34a27.33,27.33,0,0,1,0-38.66L27,103.74l.38-.38Z"/>
+        </svg>
+        <button class="unit-pill" id="t-unit">SIT374/SIT764 <span class="micon" aria-hidden="true">expand_more</span></button>
+        <span class="nav-sep" aria-hidden="true">&rsaquo;</span>
+        <span class="nav-item">Dashboard <span class="micon" aria-hidden="true">expand_more</span></span>
+        <span class="spacer"></span>
+        <button class="iconround" id="helpBtn" aria-haspopup="dialog" aria-label="Tutorial and Help"><span class="micon" aria-hidden="true">help</span></button>
+        <button class="iconround" aria-label="Show QR code"><span class="micon" aria-hidden="true">qr_code_2</span></button>
+        <div class="avatar" aria-hidden="true">SK</div>
+      </div>
+
+      <div class="dash">
+        <div class="tasklist" id="t-dashboard">
+          <div class="search"><span class="micon" aria-hidden="true">search</span> Search tasks...</div>
+          <div class="trow sel">
+            <div class="tinfo"><div class="tn">Company, Team and Me</div>
+              <div class="tsub"><span class="micon" aria-hidden="true">person</span> 1.1P - Pass Task</div></div>
+            <span class="tstatus done" title="Complete"><span class="micon" aria-hidden="true">check</span></span>
+          </div>
+          <div class="trow">
+            <div class="tinfo"><div class="tn">Company Objectives</div>
+              <div class="tsub"><span class="micon" aria-hidden="true">group</span> 2.1P - Pass Task</div></div>
+            <span class="tstatus done" title="Complete"><span class="micon" aria-hidden="true">check</span></span>
+          </div>
+          <div class="trow">
+            <div class="tinfo"><div class="tn">Responsible Team Member</div>
+              <div class="tsub"><span class="micon" aria-hidden="true">person</span> 2.2C - Credit Task</div></div>
+            <span class="tstatus fb" title="Ready for feedback"><span class="micon" aria-hidden="true">thumb_up</span></span>
+          </div>
+          <div class="trow">
+            <div class="tinfo"><div class="tn">Individual Retrospective</div>
+              <div class="tsub"><span class="micon" aria-hidden="true">person</span> 5.1P - Pass Task</div></div>
+            <span class="tstatus fb" title="Ready for feedback"><span class="micon" aria-hidden="true">thumb_up</span></span>
+          </div>
+        </div>
+
+        <div class="main">
+          <div class="dhead">Progress Dashboard</div>
+          <div class="panel">
+            <h2>Plan Your Tasks</h2>
+            <p>The Task Planner shows a timeline of your tasks, their due dates, and prerequisite relationships. Use it to plan when to start and submit tasks, ensuring prerequisites are completed early so you have time for feedback.</p>
+            <button class="btn-outline"><span class="micon" aria-hidden="true">open_in_new</span> View Task Planner</button>
+          </div>
+          <div class="panel soft" id="t-target">
+            <h2>Target Grade</h2>
+            <div class="grade-select">
+              <label class="sr-only" for="targetGrade">Target grade</label>
+              <select id="targetGrade">
+                <option>Pass</option><option selected>Credit</option>
+                <option>Distinction</option><option>High Distinction</option>
+              </select>
+            </div>
+            <p class="help-line">To change your target grade, use the <a href="#">Task Planner</a>.</p>
+          </div>
+          <div class="panel soft" id="t-calendar">
+            <h2>Calendar</h2>
+            <div class="cal-item"><span class="cal-date">Fri</span> 2.1P Design brief due</div>
+            <div class="cal-item"><span class="cal-date">Mon</span> Studio session</div>
+            <div class="cal-item"><span class="cal-date">Wed</span> 3.2C review window opens</div>
+            <button class="pill-btn"><span class="micon" aria-hidden="true">calendar_add_on</span> Add unit dates to calendar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="stepcard" id="stepcard" role="dialog" aria-labelledby="stepHead" aria-describedby="stepBody" hidden>
+  <div class="top">
+    <div class="grow">
+      <div class="pos">
+        <span class="num tnum" id="stepNum">Step 1 of 4</span>
+        <span class="bar" aria-hidden="true"><i id="stepBar"></i></span>
+      </div>
+      <h3 id="stepHead" tabindex="-1">Choose your unit</h3>
+    </div>
+    <button class="iconbtn" id="stepClose" aria-label="Close the tour"><span class="micon" aria-hidden="true">close</span></button>
+  </div>
+  <p id="stepBody">This is the unit selector.</p>
+  <div class="note" id="stepNote"></div>
+  <div class="controls">
+    <button class="btn" id="btnBack">Back</button>
+    <button class="btn primary" id="btnNext">Next</button>
+    <span class="grow"></span>
+    <button class="btn ghost" id="btnSkip">Skip for now</button>
+  </div>
+</div>
+
+<div class="modal" id="mWelcome">
+  <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="wHead" aria-describedby="wLead">
+    <div class="top">
+      <h3 id="wHead" tabindex="-1">Welcome to OnTrack</h3>
+      <button class="iconbtn" data-close="mWelcome" aria-label="Close"><span class="micon" aria-hidden="true">close</span></button>
+    </div>
+    <p class="lead" id="wLead">A short, optional tour shows you four things new students look for. It only shows you where they are and will not change anything for you.</p>
+    <ul>
+      <li>selecting a unit</li>
+      <li>the project or task dashboard</li>
+      <li>the target-grade option</li>
+      <li>the Calendar area</li>
+    </ul>
+    <label class="check"><input type="checkbox" id="wNoAuto"> Do not show this automatically again</label>
+    <div class="controls">
+      <button class="btn primary" id="wStart">Start the tour</button>
+      <button class="btn ghost" id="wSkip">Skip for now</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="mSkip">
+  <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="skHead" aria-describedby="skLead">
+    <div class="top">
+      <h3 id="skHead" tabindex="-1">Leave the tour?</h3>
+      <button class="iconbtn" data-close="mSkip" aria-label="Close"><span class="micon" aria-hidden="true">close</span></button>
+    </div>
+    <p class="lead" id="skLead">You can leave now and OnTrack will keep working normally.</p>
+    <label class="check"><input type="checkbox" id="skNoAuto"> Do not show this automatically again</label>
+    <div class="controls">
+      <button class="btn" id="skKeep">Keep the tour</button>
+      <span class="grow"></span>
+      <button class="btn primary" id="skLeave">Leave the tour</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="mDone">
+  <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="dHead" aria-describedby="dLead">
+    <div class="top">
+      <h3 id="dHead" tabindex="-1">You are ready to go</h3>
+      <button class="iconbtn" data-close="mDone" aria-label="Close"><span class="micon" aria-hidden="true">close</span></button>
+    </div>
+    <p class="lead" id="dLead">You have seen how to find your unit, the dashboard, the target-grade option and the Calendar area. You can replay this any time from Tutorial and Help in the menu.</p>
+    <div class="controls"><span class="grow"></span><button class="btn primary" id="dClose">Close</button></div>
+  </div>
+</div>
+
+<div class="modal" id="mNoUnit">
+  <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="nHead" aria-describedby="nLead">
+    <div class="top">
+      <h3 id="nHead" tabindex="-1">We could not find a current unit</h3>
+      <button class="iconbtn" data-close="mNoUnit" aria-label="Close"><span class="micon" aria-hidden="true">close</span></button>
+    </div>
+    <p class="lead" id="nLead">You may not be enrolled in a unit yet, or the enrolment information may still be loading. Check that you are signed in to the right account. You can keep using OnTrack normally.</p>
+    <div class="controls">
+      <button class="btn" id="nContinue">Continue anyway</button>
+      <span class="grow"></span>
+      <button class="btn primary" data-close="mNoUnit">Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="mStore">
+  <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="stHead" aria-describedby="stLead">
+    <div class="top">
+      <h3 id="stHead" tabindex="-1">Your progress may not be saved</h3>
+      <button class="iconbtn" data-close="mStore" aria-label="Close"><span class="micon" aria-hidden="true">close</span></button>
+    </div>
+    <p class="lead" id="stLead">You can keep going through the tour, but it may not remember where you stopped. OnTrack keeps working normally.</p>
+    <div class="controls"><span class="grow"></span><button class="btn primary" data-close="mStore">Continue</button></div>
+  </div>
+</div>
+
+<div class="dock">
+  <div class="inner">
+    <span class="tag">Prototype controls, not part of the product</span>
+    <div class="group">
+      <button class="act primary" id="dockWelcome">Show welcome</button>
+      <button class="act" id="dockReplay">Replay tour</button>
+    </div>
+    <span class="grow"></span>
+    <div class="group">
+      <label class="tgl"><input type="checkbox" id="optNarrow"> Narrow screen</label>
+      <label class="tgl"><input type="checkbox" id="optMotion"> Reduced motion</label>
+      <label class="tgl"><input type="checkbox" id="optNoUnit"> No current unit</label>
+      <label class="tgl"><input type="checkbox" id="optMissing"> Hide step 3 target</label>
+      <label class="tgl"><input type="checkbox" id="optStore"> Storage failure</label>
+    </div>
+  </div>
+</div>
+
+<div class="sr-only" id="srLive" aria-live="polite" aria-atomic="true"></div>
+
+<script>
+(function(){
+  var steps=[
+    {target:"t-unit",head:"Choose your unit",body:"This is the unit selector. Use it to move between the units you are enrolled in.",tag:"Unit selector"},
+    {target:"t-dashboard",head:"Open your dashboard",body:"This is your project and task dashboard. It lists the tasks for the unit you are viewing.",tag:"Task dashboard"},
+    {target:"t-target",head:"Set your target grade",body:"This is the target-grade option. It is where you choose the grade you are aiming for. The tour will not change it for you.",tag:"Target grade"},
+    {target:"t-calendar",head:"Find the Calendar",body:"This is the Calendar area. From here you can add unit dates to your own calendar.",tag:"Calendar"}
+  ];
+  var $=function(id){return document.getElementById(id)};
+  var stage=$("stage"), overlay=$("overlay"), card=$("stepcard"), srLive=$("srLive");
+  var cur=-1, returnFocus=null, spotEl=null, spotTag=null, activeModal=null;
+
+  function announce(t){srLive.textContent=""; setTimeout(function(){srLive.textContent=t},30)}
+  function canSave(){return !$("optStore").checked}
+  function save(state){ if(!canSave()){return false} try{localStorage.setItem("tut_demo",JSON.stringify(state));return true}catch(e){return false} }
+
+  function clearSpot(){
+    if(spotEl){spotEl.classList.remove("is-spotlit"); spotEl=null}
+    if(spotTag){spotTag.remove(); spotTag=null}
+  }
+  function setSpot(id){
+    clearSpot();
+    var el=$(id);
+    if(!el || el.offsetParent===null){return false}
+    el.classList.add("is-spotlit"); spotEl=el;
+    spotTag=document.createElement("span");
+    spotTag.className="spot-tag";
+    spotTag.innerHTML='<span class="micon" aria-hidden="true">near_me</span>'+steps[cur].tag;
+    el.appendChild(spotTag);
+    return true;
+  }
+  function placeCard(){
+    var pad=12;
+    if(spotEl){
+      var r=spotEl.getBoundingClientRect();
+      var cw=card.offsetWidth, ch=card.offsetHeight;
+      var top=r.bottom+pad, left=r.left;
+      if(top+ch > window.innerHeight-100){ top=r.top-ch-pad }
+      if(top<pad){ top=pad }
+      left=Math.max(pad, Math.min(left, window.innerWidth-cw-pad));
+      card.style.top=top+"px"; card.style.left=left+"px"; card.style.transform="none";
+    }else{
+      card.style.left="50%"; card.style.top="50%"; card.style.transform="translate(-50%,-50%)";
+    }
+  }
+
+  function openStep(i){
+    cur=i; var s=steps[i];
+    overlay.classList.add("on");
+    var found=setSpot(s.target);
+    $("stepNum").textContent="Step "+(i+1)+" of "+steps.length;
+    $("stepBar").style.width=((i+1)/steps.length*100)+"%";
+    $("stepHead").textContent=s.head;
+    $("stepBody").textContent=s.body;
+    var note=$("stepNote");
+    if(!found){ note.classList.add("on");
+      note.textContent="We could not highlight this control on the current screen. "+s.body+" You can continue with Next.";
+    }else{ note.classList.remove("on"); note.textContent="" }
+    $("btnBack").disabled=(i===0);
+    $("btnNext").textContent=(i===steps.length-1)?"Finish":"Next";
+    card.hidden=false; placeCard(); $("stepHead").focus();
+    announce("Step "+(i+1)+" of "+steps.length+". "+s.head+(found?"":". Target not shown on this screen."));
+    save({state:"in_progress",step:i});
+  }
+  function nextStep(){ if(cur<steps.length-1){openStep(cur+1)} else {finishTour()} }
+  function prevStep(){ if(cur>0){openStep(cur-1)} }
+  function hideTour(){ card.hidden=true; overlay.classList.remove("on"); clearSpot() }
+  function finishTour(){ hideTour(); save({state:"completed",step:steps.length-1}); openModal("mDone") }
+
+  function focusables(root){
+    return Array.prototype.slice.call(root.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+      .filter(function(el){return !el.disabled && el.offsetParent!==null});
+  }
+  function openModal(id){ var m=$(id); m.classList.add("on"); activeModal=m; var h=m.querySelector("h3"); if(h){h.focus()} }
+  function closeModal(id){ var m=$(id); m.classList.remove("on"); if(activeModal===m){activeModal=null} }
+
+  function startTour(){
+    if($("optNoUnit").checked){ closeModal("mWelcome"); openModal("mNoUnit"); return }
+    closeModal("mWelcome");
+    if(!canSave()){ openModal("mStore") }
+    openStep(0);
+  }
+  function beginFromWelcome(){ returnFocus=$("dockWelcome"); openModal("mWelcome"); var el=$("mWelcome").querySelector("h3"); if(el){el.focus()} }
+  function replay(){
+    returnFocus=$("helpBtn");
+    if($("optNoUnit").checked){ openModal("mNoUnit"); return }
+    if(!canSave()){ openModal("mStore") }
+    openStep(0);
+  }
+
+  $("btnNext").onclick=nextStep;
+  $("btnBack").onclick=prevStep;
+  $("btnSkip").onclick=function(){ hideTour(); openModal("mSkip") };
+  $("stepClose").onclick=function(){ hideTour(); openModal("mSkip") };
+  $("wStart").onclick=startTour;
+  $("wSkip").onclick=function(){
+    save({state:$("wNoAuto").checked?"dismissed":"skipped"});
+    closeModal("mWelcome"); if(returnFocus){returnFocus.focus()}
+  };
+  $("skKeep").onclick=function(){ closeModal("mSkip"); openStep(cur<0?0:cur) };
+  $("skLeave").onclick=function(){
+    save({state:$("skNoAuto").checked?"dismissed":"skipped"});
+    closeModal("mSkip"); cur=-1; if(returnFocus){returnFocus.focus()}
+  };
+  $("dClose").onclick=function(){ closeModal("mDone"); if(returnFocus){returnFocus.focus()} };
+  $("nContinue").onclick=function(){ closeModal("mNoUnit"); if(!canSave()){openModal("mStore")} openStep(1) };
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-close]"),function(b){
+    b.onclick=function(){
+      var id=b.getAttribute("data-close"); closeModal(id);
+      if(id==="mSkip"){ openStep(cur<0?0:cur); return }
+      if(returnFocus){returnFocus.focus()}
+    };
+  });
+
+  $("helpBtn").onclick=replay;
+  $("dockReplay").onclick=replay;
+  $("dockWelcome").onclick=beginFromWelcome;
+  $("optNarrow").onchange=function(){ stage.classList.toggle("narrow",this.checked); if(!card.hidden){placeCard()} };
+  $("optMotion").onchange=function(){ document.body.classList.toggle("no-motion",this.checked) };
+  $("optNoUnit").onchange=function(){ $("t-unit").style.visibility=this.checked?"hidden":"visible" };
+  $("optMissing").onchange=function(){ $("t-target").style.display=this.checked?"none":""; if(!card.hidden && cur===2){ openStep(2) } };
+
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Escape"){
+      if(activeModal){
+        var id=activeModal.id;
+        if(id==="mSkip"){ closeModal(id); openStep(cur<0?0:cur) }
+        else if(id==="mWelcome"){ save({state:"skipped"}); closeModal(id); if(returnFocus){returnFocus.focus()} }
+        else { closeModal(id); if(returnFocus){returnFocus.focus()} }
+        return;
+      }
+      if(!card.hidden){ hideTour(); openModal("mSkip") }
+      return;
+    }
+    if(e.key==="Tab" && activeModal){
+      var f=focusables(activeModal); if(!f.length){return}
+      var first=f[0], last=f[f.length-1];
+      if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus() }
+      else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus() }
+    }
+  });
+
+  window.addEventListener("resize",function(){ if(!card.hidden){placeCard()} });
+  window.addEventListener("scroll",function(){ if(!card.hidden){placeCard()} },true);
+
+  beginFromWelcome();
+})();
+</script>
+</body>
+</html>
