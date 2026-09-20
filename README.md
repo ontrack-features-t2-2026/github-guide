@@ -117,6 +117,7 @@ Local test accounts use the password `password`.
 - [Landing page content outline](landing-page-outline.md)
 - [Documentation search metadata review](docs-site-seo-review.md)
 - [Translation pilot status](docs-site-translation-pilot-status.md)
+- [Tutorial trigger, skip and replay rules](onboarding-tutorial-trigger-and-state-rules.md)
 - [AI drafting standard](ai-drafting-standard.md)
 - [Handover video template](handover-video-template.md)
 - [Branch register](branch-register.md)
