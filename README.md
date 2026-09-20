@@ -4,6 +4,18 @@ Welcome to the shared GitHub workspace for the OnTrack feature teams in Trimeste
 
 This guide explains where the repositories are, which shared feature branch your team uses, how Jira and GitHub fit together, and where to get help.
 
+## Current repository work for review
+
+The [remaining-buckets handover](remaining-buckets-handover.md) maps the current
+tutorial, security, documentation and migration work to published PRs, test
+evidence and remaining human activities. Start there for this review batch.
+[Tutorial Web #263](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/263),
+[API #170](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/170) and
+[Deploy #38](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/38)
+form the default-off tutorial change; the handover also links migration and the
+upstream PR template. These are isolated review PRs, not a change to the general
+organisation policy or evidence of named-leader approval.
+
 ## Start here
 
 1. Accept the invitation to the `ontrack-features-t2-2026` GitHub organisation.
@@ -45,7 +57,13 @@ The current operational feature targets are:
 - Email and Mobile Notifications: the shared canonical `feature/notifications` in Web and API; and
 - Peer Progress Indicator: `feature/peer-progress-indicator` in Web and API.
 
-The First-Time Tutorial plan uses `feature/student-onboarding` from the exact base recorded in the branch register when implementation begins. Requester approval was recorded on 27 August and named-leader confirmation was waived by the requester; the branch has not yet been created. It has no API or Deploy branch.
+The August First-Time Tutorial plan proposed `feature/student-onboarding` and
+initially assumed no API or Deploy change. That paragraph in the branch register
+is historical planning context. The current implementation instead uses isolated
+`codex/buckets-*` review branches, including the authenticated API rollout flag
+and deployment forwarding, as listed in the [current handover](remaining-buckets-handover.md).
+This records the submitted work without asserting a new general branch policy
+or named-leader approval.
 
 All exact links are listed in [branch-register.md](branch-register.md).
 

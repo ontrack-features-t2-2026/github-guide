@@ -11,8 +11,8 @@ The original student/contributor package was
 [merged in PR #7](https://github.com/ontrack-features-t2-2026/github-guide/pull/7)
 on 19 September 2026. This refresh replaces its planned code locations and
 missing-implementation statements with the current web implementation on
-`codex/buckets-tutorial-20260920`. The web PR and final evidence publication are
-pending; this document does not grant release approval.
+`codex/buckets-tutorial-20260920`, now published in [Web PR #263](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/263).
+Its browser evidence is being finalised; this document does not grant release approval.
 
 The implementation includes a reusable shell, typed four-step registry, stable
 targets, authenticated student eligibility, browser progress and **Tutorial and
@@ -23,8 +23,9 @@ Help** in the account menu. The exact source map is in the
 
 The tour is separate from profile setup and never changes
 `has_run_first_time_setup`. An automatic candidate is established only after
-observing incomplete setup and a successful empty current-user project-history
-response that includes inactive units. An empty active-unit list alone is not
+observing incomplete setup and an explicit `hasProjects: false` from the
+authenticated current-user history summary, including inactive units and
+withdrawn enrolments. An empty active-unit list alone is not
 enough. Existing projects, completed-profile accounts without saved state,
 failed history and invalid storage remain replay-only.
 
@@ -34,7 +35,8 @@ target. Find controls scroll to a target; the tour does not navigate, change
 grades, submit work or create Calendar subscriptions.
 
 Only `{version, state, step}` is stored under the current account's browser key.
-There is no progress API, server-side progress table or cross-device sync.
+The read-only history summary does not store progress. There is no progress
+API, server-side progress table or cross-device sync.
 Completed/dismissed choices survive version increases and replay. A temporary
 skip can be offered after a later sign-in/reload, while storage failures leave
 normal application use available. See the
@@ -43,8 +45,8 @@ for exact transitions and limitations.
 
 ## API, deployment and rollout
 
-The API branch `codex/buckets-api-20260920` adds `tutorialEnabled` to authenticated
-settings. `TUTORIAL_ENABLED` defaults off; use **`1`** to enable with the existing
+[API PR #170](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/170), from `codex/buckets-api-20260920`, adds `tutorialEnabled` to authenticated
+settings and a current-user history summary used by the automatic eligibility gate. `TUTORIAL_ENABLED` defaults off; use **`1`** to enable with the existing
 numeric parser. The text `true` is not an enabling value for that parser.
 [Deploy PR #38](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/38)
 forwards the flag to API containers with a default of `0`.
@@ -61,8 +63,9 @@ available. No live rollout was performed for this documentation update.
 Use the source-adjacent web
 [`docs/student-onboarding/` validation package](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/codex/buckets-tutorial-20260920/docs/student-onboarding)
 for exact tested revisions, commands, results, screenshots and limitations.
-That package is pending publication with the implementation branch. This guide
-deliberately does not duplicate changing QA totals or declare a checklist passed.
+That package is published with Web PR #263. Browser-harness evidence is being
+finalised there; this guide does not duplicate changing QA totals or declare an
+unrun checklist passed.
 
 The [evidence index](evidence-index.md) links the current branches and related
 PRs. PR #7's original documentation checks are historical evidence for that
@@ -85,7 +88,7 @@ behaviour, accessibility, pilot acceptance or production readiness.
 
 | Risk or limit | Follow-up |
 | --- | --- |
-| Documentation and implementation branches are still under review | Attach final PR links and tested commits; reconcile any review changes before rollout |
+| Documentation and implementation branches are still under review | Use the linked PRs and tested commits; reconcile any review changes before rollout |
 | Newly enrolled accounts with existing projects are conservatively replay-only | Keep this limitation explicit; a broader trigger needs a reliable reviewed account rule |
 | Browser storage does not sync and is inspectable in a shared browser profile | Keep stored data minimal and explain browser-local choices; do not treat it as authorisation |
 | UI changes can remove or hide targets | Update registry, attributes, fallback and regression checks together |
@@ -102,6 +105,6 @@ maintainer approves and merges it.
 
 - [Calendar guide](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/docs/CAL-DOC01-calendar-how-to.md).
 - [Theme contract](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/docs/theme/THEME-CONTRACT.md).
-- [MG-05 CSS guide](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/codex/buckets-migration-20260920/docs/css-style-guide.md), migration review branch; publication pending.
+- [MG-05 CSS guide](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/codex/buckets-migration-20260920/docs/css-style-guide.md), published for review in [Web PR #259](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/259).
 - [Tutorial/video index](../../tutorial-links.md).
 - [Handover video template](../../handover-video-template.md).

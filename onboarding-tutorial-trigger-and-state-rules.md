@@ -1,6 +1,6 @@
 # Tutorial trigger and state rules
 
-DOC-10 / TUT-D03. Implementation contract for PR review, 20 September 2026.
+DOC-10 / TUT-D03. Implementation contract for PR review, 21 September 2026.
 This extends the existing [problem and user stories](onboarding-tutorial-problem-statement-and-user-stories.md)
 and [step copy](onboarding-tutorial-step-copy.md). It does not claim product,
 security or pilot approval. The runtime switch defaults off.
@@ -12,10 +12,15 @@ existing `has_run_first_time_setup` field continues to mean profile setup; the
 tutorial reads that boundary and never writes or repurposes it.
 
 To establish a new-student candidate, observe incomplete profile setup and
-successfully read that current user's complete project history, including
-inactive projects. Zero projects establishes the no-prior-units condition.
-Missing, failed or non-empty history means replay only. Do not infer newness
-from an empty list of active units or missing browser storage.
+successfully read that current user's history summary from authenticated
+`GET /api/projects/history`. Only an explicit `hasProjects: false` establishes
+the no-prior-units condition. The API checks all projects owned by the current
+user, including inactive units and withdrawn enrolments, and returns only a
+boolean. The ordinary `/projects` endpoint excludes withdrawn enrolments even
+with `include_inactive=true`, so it cannot establish this condition.
+Missing endpoints, failed/malformed responses or `hasProjects: true` mean replay
+only. Do not infer newness from an empty list of active units or missing browser
+storage.
 
 Offer the tutorial only after profile setup and account/unit/project loading
 finish and the user is on a normal authenticated application route. Never cover
@@ -48,8 +53,8 @@ the welcome panel skips for this session; Escape from completion closes it.
 
 ## Three worked cases
 
-1. **Brand-new student:** incomplete profile plus a successful empty full-history
-   response establishes eligibility. Finish normal profile setup, then offer the
+1. **Brand-new student:** incomplete profile plus an explicit `hasProjects: false`
+   history response establishes eligibility. Finish normal profile setup, then offer the
    tour after data loads. With no units, explain the unit selector and fallback;
    do not create an enrolment.
 2. **Returning student:** completed profile with no tutorial record, or any prior

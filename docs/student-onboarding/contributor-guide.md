@@ -5,7 +5,7 @@
 This refresh builds on Jeffy Sam Babu's original documentation in
 [merged PR #7](https://github.com/ontrack-features-t2-2026/github-guide/pull/7).
 The source locations below were read from `codex/buckets-tutorial-20260920` in
-`doubtfire-web`; the implementation PR is pending. Read the shared
+`doubtfire-web`, published in [Web PR #263](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/263). Read the shared
 [trigger and state rules](../../onboarding-tutorial-trigger-and-state-rules.md)
 before changing eligibility or progress.
 
@@ -13,8 +13,8 @@ before changing eligibility or progress.
 
 | Repository | Responsibility | Current review branch / reference |
 | --- | --- | --- |
-| `doubtfire-web` | Shell, state, four steps, targets, replay and tests | `codex/buckets-tutorial-20260920`, PR pending |
-| `doubtfire-api` | Authenticated runtime feature flag | `codex/buckets-api-20260920` |
+| `doubtfire-web` | Shell, state, four steps, targets, replay and tests | `codex/buckets-tutorial-20260920`, [Web PR #263](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/263) |
+| `doubtfire-api` | Authenticated runtime flag and current-user history summary | `codex/buckets-api-20260920`, [API PR #170](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/170) |
 | `doubtfire-deploy` | Forward the flag to API processes | [PR #38](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/38) |
 | `github-guide` | Student/contributor guidance and shared state contract | `codex/buckets-documentation-20260920` |
 
@@ -47,19 +47,23 @@ Paths in this table are relative to `doubtfire-web` on the
 | Authenticated settings readiness | `src/app/api/services/authentication.service.ts` |
 
 The source-adjacent [validation and handover package](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/codex/buckets-tutorial-20260920/docs/student-onboarding)
-is pending publication with that branch. It owns the final commands, tested
-revisions, results and QA limitations; do not copy changing test totals here.
+is published with the web PR. It owns the commands, tested
+revisions, results and QA limitations; browser-harness evidence is being
+finalised there. Do not copy changing test totals here.
 
 ## Eligibility and profile boundary
 
 `has_run_first_time_setup` still means profile setup. The tutorial never writes
 it. An automatic candidate must be observed with incomplete profile setup and
-receive a successful empty response from the current-user `/projects` endpoint,
-using `include_inactive=true`, `include_task_definitions=false`, `page=1` and
-`per_page=1`. The query includes all history; one result is enough to disqualify
-a candidate, so it does not download every project.
+receive an explicit `hasProjects: false` from authenticated
+`GET /api/projects/history`. The API checks whether any project belongs to the
+current user, including inactive units and withdrawn enrolments, and returns
+only `{hasProjects: boolean}`. It uses the authenticated user rather than a
+supplied account ID and does not download project details. The ordinary `/projects` list is not a history check: even with
+`include_inactive=true` it excludes withdrawn enrolments.
 
-A failed, timed-out, malformed or non-empty response stays replay-only. Missing
+A missing endpoint, failure, timeout, malformed response or `hasProjects: true`
+stays replay-only. Only the explicit boolean `false` establishes empty history. Missing
 browser state does not prove newness. The service cancels obsolete history
 requests and checks the account and generation again before saving a result.
 The prompt waits for completed profile setup and loaded globals and excludes
@@ -80,7 +84,7 @@ are disabled. See the API branch's `config/application.rb`,
 Deploy PR #38 forwards the flag with a default of `0`. Updating the environment
 requires API process restart or container recreation to load it; no web rebuild
 is required. Do not turn it on before the API/web/docs changes are reviewed and
-available. There is no tutorial-progress API or database migration.
+available. The history endpoint is read-only. There is no tutorial-progress API or database migration.
 
 ## Steps, targets and navigation
 
@@ -137,8 +141,7 @@ store names, grades, feedback, enrolment history, tokens or per-click analytics.
 4. Run focused regressions from the web repository root:
 
    ```sh
-   npx vitest run src/app/student-onboarding/student-onboarding.service.spec.ts src/app/student-onboarding/student-onboarding.component.spec.ts
-   npx vitest run src/app/config/constants/doubtfire-constants.spec.ts src/app/common/header/header.component.spec.ts src/app/welcome/welcome.component.spec.ts
+   npm run test:ci -- --include='src/app/student-onboarding/*.spec.ts' --include='src/app/config/constants/doubtfire-constants.spec.ts' --include='src/app/welcome/welcome.component.spec.ts' --include='src/app/common/edit-profile-form/edit-profile-form.component.spec.ts' --include='src/app/common/header/header.component.spec.ts'
    ```
 
 5. Use the web [validation package](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/codex/buckets-tutorial-20260920/docs/student-onboarding)
@@ -150,7 +153,7 @@ store names, grades, feedback, enrolment history, tokens or per-click analytics.
 
 For styling, use the [theme contract](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/docs/theme/THEME-CONTRACT.md)
 and [MG-05 CSS guide](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/codex/buckets-migration-20260920/docs/css-style-guide.md)
-(migration review branch, publication pending). Calendar behaviour belongs to
+(published for review in [Web PR #259](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/259)). Calendar behaviour belongs to
 [the Calendar guide](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/docs/CAL-DOC01-calendar-how-to.md),
 not the tutorial implementation.
 

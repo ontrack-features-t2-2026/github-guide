@@ -2,6 +2,8 @@
 
 **Ticket:** TUT-D04 · **Updated:** 21 September 2026 · **Status:** Implementation review version
 
+Implementation reference: [Web PR #263](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/263). Review and institution rollout remain separate.
+
 The tutorial must leave normal OnTrack use available. Close it if needed; the
 [written student guide](student-guide.md) is available independently of rollout.
 
@@ -16,7 +18,7 @@ Automatic prompts also stay off when:
 - You are using a staff account.
 - Profile setup or application data loading is incomplete.
 - You are on the welcome, profile-editing, sign-in/out or SCORM page.
-- The current account has existing projects, including inactive units, during
+- The current account has existing projects, including inactive units and withdrawn enrolments, during
   the initial eligibility check.
 - Your profile was already complete and no valid tutorial progress is saved.
 - You previously completed or permanently dismissed the tutorial in this browser.

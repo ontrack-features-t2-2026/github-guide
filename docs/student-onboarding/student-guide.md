@@ -2,6 +2,8 @@
 
 **Ticket:** TUT-D04 · **Updated:** 21 September 2026 · **Status:** Implementation review version
 
+Implementation reference: [Web PR #263](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/263). Review and institution rollout remain separate.
+
 This describes the tutorial being reviewed for OnTrack. Your institution must
 enable it before the automatic prompt or replay option appears. The written
 guide remains available while the tutorial is disabled.
@@ -23,7 +25,8 @@ available control into view without activating it.
 ## When it appears
 
 The automatic prompt is for students observed during their initial profile
-setup whose account has no current or previous unit projects. It appears only
+setup whose account has no current or previous unit projects, including withdrawn
+enrolments. It appears only
 after profile setup and application data loading finish. Staff do not receive it.
 
 Students with an existing project, a completed profile but no saved tutorial

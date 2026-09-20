@@ -6,8 +6,9 @@ and Calendar. It is optional and does not perform those actions for the student.
 This package updates the original TUT-D04 documentation by Jeffy Sam Babu,
 [merged in PR #7](https://github.com/ontrack-features-t2-2026/github-guide/pull/7),
 to describe the implementation on web branch `codex/buckets-tutorial-20260920`.
-The implementation PR and final review evidence are pending. This is a guide to
-the review version, not a statement that the feature is enabled in production.
+The implementation is published in [Web PR #263](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/263), with the
+runtime setting in [API PR #170](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/170) and [Deploy PR #38](https://github.com/ontrack-features-t2-2026/doubtfire-deploy/pull/38).
+This describes the review version, not a feature enabled in production.
 
 ## Guides and evidence
 
@@ -23,7 +24,8 @@ the review version, not a statement that the feature is enabled in production.
 
 The authenticated API flag defaults off. When enabled, the tour observes a
 student's incomplete profile setup and checks for an empty project history,
-including inactive units, before establishing an automatic-start candidate.
+including inactive units and withdrawn enrolments, before establishing an
+automatic-start candidate. The API supplies a current-user boolean summary.
 It waits until profile setup and application data loading finish before opening.
 Returning students and students with existing projects can use **Tutorial and
 Help** in the account menu when the feature is enabled.
@@ -36,7 +38,7 @@ A missing unit or target leaves the written explanation and controls usable.
 
 - [Calendar instructions](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/docs/CAL-DOC01-calendar-how-to.md).
 - [Theme contract](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/docs/theme/THEME-CONTRACT.md).
-- [MG-05 CSS style guide](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/codex/buckets-migration-20260920/docs/css-style-guide.md), on the migration review branch; publication pending.
+- [MG-05 CSS style guide](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/codex/buckets-migration-20260920/docs/css-style-guide.md), published for review in [Web PR #259](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/259).
 - [Accessibility baseline](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/docs/A11Y-D01-Accessibility-Baseline_Phase1.md), with its recorded scope and limitations.
 - [Tutorial and video index](../../tutorial-links.md).
 
@@ -44,7 +46,8 @@ A missing unit or target leaves the written explanation and controls usable.
 
 Source and automated evidence belong in the web implementation's
 [validation package](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/codex/buckets-tutorial-20260920/docs/student-onboarding)
-(pending publication). Pilot sessions, independent human maintenance review and
+published with the web PR. Browser-harness evidence is being finalised there.
+Pilot sessions, independent human maintenance review and
 release approval are not claimed here. Any screenshots or recordings must use
 demo or synthetic accounts and receive a privacy and accuracy review. Do not
 record real student names, IDs, grades, submissions, feedback or credentials.

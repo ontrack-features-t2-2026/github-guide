@@ -13,8 +13,8 @@ This update does not send another request or claim that a reviewer has replied.
 Use the [contributor guide](contributor-guide.md) to update one tutorial step
 in a separate local review branch. The implementation now exists on
 `doubtfire-web:codex/buckets-tutorial-20260920`; the shell, registry, service,
-targets and tests have actual paths in the guide. Its PR is pending, so record
-the exact reviewed commit rather than assuming that `11.0.x` contains it.
+targets and tests have actual paths in the guide. Source is published in [Web PR #263](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/263);
+record the exact reviewed commit rather than assuming `11.0.x` contains it.
 
 1. Read the source map and [state contract](../../onboarding-tutorial-trigger-and-state-rules.md).
 2. Choose a small wording correction in `student-onboarding.steps.ts` and
@@ -43,7 +43,7 @@ accounts and enable it only in the disposable review environment.
 | Documentation changes following review | Awaiting response |
 
 An earlier absence of implementation is no longer the assumed blocker. A
-reviewer might still lack a published branch, working environment or required
+reviewer might still lack access to the branch, a working environment or required
 runtime flag; record that specific evidence without marking the exercise passed.
 Source reading, automated checks and an AI review do not substitute for the
 requested independent human maintenance exercise.

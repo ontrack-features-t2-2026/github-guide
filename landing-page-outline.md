@@ -38,5 +38,7 @@ This is an activity snapshot, not an assignment of owners or a release decision.
 
 Link the existing README access-help section, the maintained setup instructions
 and the tutorial index. Keep branch names in one maintained register rather than
-copying a fixed objective-branch map onto the landing page. Historical recordings
+copying a fixed objective-branch map onto the landing page. Link the
+[current review handover](remaining-buckets-handover.md) for the isolated PRs in
+this batch; it does not rewrite the general contribution policy. Historical recordings
 remain useful but should carry their recording date and a current-guide link.
