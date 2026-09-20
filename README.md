@@ -113,6 +113,12 @@ Local test accounts use the password `password`.
 
 ## Related guides
 
+- [Tutorials and walkthroughs index](tutorial-links.md)
+- [Landing page content outline](landing-page-outline.md)
+- [Documentation search metadata review](docs-site-seo-review.md)
+- [Translation pilot status](docs-site-translation-pilot-status.md)
+- [AI drafting standard](ai-drafting-standard.md)
+- [Handover video template](handover-video-template.md)
 - [Branch register](branch-register.md)
 - [Cross-objective coordination, shared surfaces and integration order](cross-objective-coordination.md)
 - [First-Time Tutorial objective, branch plan and evidence index](first-time-tutorial-objective.md)

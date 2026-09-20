@@ -43,3 +43,10 @@ Remove these before requesting review:
 - [ ] Redundant narration (for example "In this section, we will explain...")
 - [ ] Generic placeholders left unchanged (for example `foo/bar` or `<your-username-here>`)
 - [ ] Tone that does not match the rest of `github-guide` (prefer direct, active instructions)
+- [ ] Smart quotes or Unicode dashes inside commands, invisible characters, broken apostrophes and encoding replacement characters
+- [ ] Decorative punctuation or repeated headings that make the instructions harder to follow
+
+Keep ordinary punctuation and valid technical symbols where they help meaning.
+These are editing checks, not a reliable way to determine who wrote a passage.
+Record actual reviewers through their GitHub reviews; do not name someone as a
+reviewer before they have reviewed the work.
