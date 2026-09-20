@@ -1,49 +1,50 @@
-# First-Time OnTrack Tutorial Documentation
+# First-time OnTrack tutorial documentation
 
-This folder contains the student and contributor documentation for the First-Time OnTrack Tutorial.
+The tutorial introduces the unit selector, task dashboard, target-grade control
+and Calendar. It is optional and does not perform those actions for the student.
 
-The tutorial is intended to help new students understand the main areas of OnTrack, including selecting a unit, finding the project or task dashboard, understanding the target grade and locating the calendar.
+This package updates the original TUT-D04 documentation by Jeffy Sam Babu,
+[merged in PR #7](https://github.com/ontrack-features-t2-2026/github-guide/pull/7),
+to describe the implementation on web branch `codex/buckets-tutorial-20260920`.
+The implementation PR and final review evidence are pending. This is a guide to
+the review version, not a statement that the feature is enabled in production.
 
-## Documentation
+## Guides and evidence
 
-* [Student Guide](student-guide.md) – Explains what the tutorial teaches and how to start, skip, finish and replay it.
-* [Troubleshooting Guide](troubleshooting.md) – Provides help when a unit, tutorial feature or target is unavailable, or when progress cannot be saved.
-* [Contributor Guide](contributor-guide.md) – Explains the planned tutorial structure and how contributors should update it safely.
-* [Evidence Index](evidence-index.md) – Records the tickets, branches, pull requests, test results and other evidence connected to TUT-D04.
-* [Second-Contributor Review](second-contributor-review.md) – Records the independent maintenance-guide review and any implementation blockers.
-* [Final Current-State Handover](handover.md) – Summarises the project status, health, resources, risks, limitations and required follow-up.
+- [Student guide](student-guide.md): when the tour appears and how to use or replay it.
+- [Troubleshooting](troubleshooting.md): disabled rollout, missing targets and browser storage.
+- [Contributor guide](contributor-guide.md): actual source paths and maintenance checks.
+- [Evidence index](evidence-index.md): source branches, related PRs and review status.
+- [Handover](handover.md): implementation boundaries, rollout and outstanding human checks.
+- [Second-contributor review](second-contributor-review.md): the maintenance exercise and pending response.
+- [Trigger and state rules](../../onboarding-tutorial-trigger-and-state-rules.md): shared DOC-10/TUT-D03 contract.
 
-## Current Status
+## Current behaviour
 
-The documentation package is ready for review based on the project information currently available.
+The authenticated API flag defaults off. When enabled, the tour observes a
+student's incomplete profile setup and checks for an empty project history,
+including inactive units, before establishing an automatic-start candidate.
+It waits until profile setup and application data loading finish before opening.
+Returning students and students with existing projects can use **Tutorial and
+Help** in the account menu when the feature is enabled.
 
-The tutorial implementation is not ready for release. Several implementation, security, testing and pilot tasks remain incomplete. Behaviour that could not be verified is clearly marked in the guides and evidence index.
+Progress is stored in this browser for the current account. It does not sync
+between devices. Missing or invalid state does not make a returning account new.
+A missing unit or target leaves the written explanation and controls usable.
 
-The fallback walkthrough has not been recorded because the interface is not stable. This follows the ticket rule that recordings should only be created after the interface is approved.
+## Related guidance
 
-## Related Work
+- [Calendar instructions](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/docs/CAL-DOC01-calendar-how-to.md).
+- [Theme contract](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/docs/theme/THEME-CONTRACT.md).
+- [MG-05 CSS style guide](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/codex/buckets-migration-20260920/docs/css-style-guide.md), on the migration review branch; publication pending.
+- [Accessibility baseline](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/docs/A11Y-D01-Accessibility-Baseline_Phase1.md), with its recorded scope and limitations.
+- [Tutorial and video index](../../tutorial-links.md).
 
-This documentation supports **TUT-D04 – Publish user guidance, contributor guidance and project handover**.
+## Review boundary
 
-The following related areas remain separate and should be linked rather than rewritten here:
-
-* **TUT-U01** – Tutorial pilot preparation, sessions and fixes
-* **CAL-D03** – Calendar subscription instructions
-* **A11Y-D02** – Site-wide accessibility guidance
-* **MG-05** – CSS and theme guidance
-
-## Privacy
-
-Any future screenshots, recordings or testing evidence must use demo or synthetic data.
-
-Do not include real student names, identification numbers, marks, submissions, feedback, extensions, disability information, authentication details or unit-performance data.
-
-## Review and Release
-
-The written documentation may be reviewed independently of the unfinished feature. However, every guide must be checked again against the working tutorial before it is released to students.
-
-The implementation, testing and pilot tickets remain responsible for proving that the planned tutorial behaviour works.
-
-
-
-
+Source and automated evidence belong in the web implementation's
+[validation package](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/codex/buckets-tutorial-20260920/docs/student-onboarding)
+(pending publication). Pilot sessions, independent human maintenance review and
+release approval are not claimed here. Any screenshots or recordings must use
+demo or synthetic accounts and receive a privacy and accuracy review. Do not
+record real student names, IDs, grades, submissions, feedback or credentials.

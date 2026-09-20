@@ -1,97 +1,92 @@
-# First-Time OnTrack Tutorial – Student Guide
+# First-time OnTrack tutorial: student guide
 
-**Ticket:** TUT-D04
-**Status:** Draft
-**Last updated:** 9 September 2026
+**Ticket:** TUT-D04 · **Updated:** 21 September 2026 · **Status:** Implementation review version
 
-## What the Tutorial Covers
+This describes the tutorial being reviewed for OnTrack. Your institution must
+enable it before the automatic prompt or replay option appears. The written
+guide remains available while the tutorial is disabled.
 
-The First-Time OnTrack Tutorial is a short, optional guide for students who are new to OnTrack. It introduces four areas that students commonly need when getting started:
+## What the tutorial covers
 
-1. Selecting a unit.
-2. Opening the project or task dashboard and checking current tasks.
-3. Finding and understanding the target-grade option.
-4. Finding the Calendar area.
+The four steps explain how to:
 
-The tutorial only shows students where these features are and explains what they do. It will not select a unit, change a target grade, subscribe to a calendar or submit a task on the student’s behalf.
+1. Choose a unit with the unit selector.
+2. Find tasks and statuses on the unit's dashboard.
+3. Find the target-grade control.
+4. Find Calendar in the toolbar or account menu.
 
-## When the Tutorial Starts
+The tour highlights an available control on the current page and explains where
+to find it. It does not choose a unit, navigate to another page, change a grade,
+subscribe to a calendar or submit work for you. A **Find** button scrolls an
+available control into view without activating it.
 
-For an eligible new student, the tutorial is offered automatically after signing in. It waits until the existing welcome and profile setup has been completed and the required account, enrolment, unit and project information has loaded.
+## When it appears
 
-The tutorial is separate from the existing profile setup. Completing, skipping or dismissing the tutorial will not change the student’s profile setup information.
+The automatic prompt is for students observed during their initial profile
+setup whose account has no current or previous unit projects. It appears only
+after profile setup and application data loading finish. Staff do not receive it.
 
-It should not start automatically for staff members or for students who have already completed or dismissed the current version.
+Students with an existing project, a completed profile but no saved tutorial
+record, or unavailable history do not receive an unsolicited prompt. You can
+use the replay option instead. Finishing the tutorial does not change your
+profile setup information.
 
-## Moving Through the Tutorial
+## Start, move and finish
 
-Use **Next** to move to the next step and **Back** to return to the previous one.
+Choose **Start tutorial** on the welcome panel. Use **Next** and **Back** to move
+through the four steps. If a control is not visible, read the fallback text and
+continue; you can open the relevant unit page yourself when ready.
 
-Each step points to a real part of OnTrack. In some cases, the tutorial may move to the relevant page so the feature can be shown clearly. It will not complete an action or change a setting without the student choosing to do so.
+At the last step, **Finish** opens the completion panel. Select **Finish** again
+to acknowledge completion. **Close** or Escape on the completion panel also
+records completion. Completion prevents further automatic prompts in this browser.
 
-Select **Finish** after reaching the final step. Once the current version has been completed, it should not appear automatically again.
+Choose **Close** elsewhere to leave the tutorial and continue using OnTrack.
+This has the same temporary effect as skipping for now.
 
-Select **Close** at any time to leave the tutorial and continue using OnTrack.
+## Skip for now or stop automatic prompts
 
-## Skipping or Dismissing the Tutorial
+**Skip for now** opens a confirmation. Choose **Go back** to return to the same
+step, or **Skip tutorial** to leave. A temporary skip does not reopen the prompt
+again during this session; it can be offered on a later sign-in or page reload.
 
-### Skip for Now
+To prevent future automatic prompts, choose **Do not show automatically again**
+on that confirmation. You can still replay manually.
 
-Choose **Skip for now** if it is not a convenient time to complete the tutorial. OnTrack will continue working normally, and the tutorial may be offered again later based on the approved prompting rules.
+Escape from a tutorial step opens the skip confirmation. Escape there returns
+to the step. Escape from the welcome panel skips for this session.
 
-### Do Not Show Automatically Again
+## Replay
 
-Choose **Do not show automatically again** if you do not want the current version to appear automatically in the future.
+Open your **account menu** in the header, then choose **Tutorial and Help**.
+This is available to signed-in students once profile setup and loading finish,
+when the institution has enabled the feature. It is not shown on the welcome,
+profile-editing, sign-in/out or SCORM pages.
 
-This only turns off the automatic prompt. The tutorial can still be opened manually through the replay option.
+Replay starts from the welcome panel and uses the same four steps. It preserves
+your existing completion or dismissal choice; replaying does not turn automatic
+prompts back on.
 
-## Replaying the Tutorial
+## Missing units and saved progress
 
-The tutorial will be available through a permanent **Tutorial and Help** option in the approved student menu location.
+No unit is required to read the tutorial. If a unit or control is missing, the
+tour gives written directions and lets you continue. It cannot create an
+enrolment or restore a missing feature. Check with your teaching team if a unit
+is absent outside the tutorial too.
 
-Opening it manually will restart the current tutorial from the beginning. Replaying it will not remove a previously saved completion or dismissal choice.
+Progress and skip/completion choices are saved **in this browser for your
+account**. They do not sync to another device or browser. Private browsing,
+blocked storage or cleared site data can prevent saved progress from being read.
+A saving warning does not stop normal OnTrack use. See
+[troubleshooting](troubleshooting.md) for recovery; changing unrelated profile
+settings will not repair browser storage.
 
-The exact location of this option will be added to this guide after the replay feature in TUT-W04 has been completed and tested.
+## Get help
 
-## If a Unit or Feature Is Unavailable
+Use your teaching team's normal OnTrack support route and describe the affected
+step, page, browser, expected result and actual result. No new support inbox is
+introduced by this tutorial. Check any screenshot for private information before
+sharing it, including names, student IDs, grades, feedback and browser credentials.
 
-A student may not always have a current unit, project, target-grade option or Calendar entry available. If this happens, the tutorial should show a clear fallback message or safely continue without blocking the page.
-
-If no unit appears, check that the correct account is being used and that the enrolment information has loaded. Refreshing the page or signing in again may also help.
-
-If one tutorial step is unavailable, the rest of OnTrack should remain usable. The tutorial will not create a missing unit or enable a feature that is unavailable for the student’s account.
-
-## If Progress Does Not Save
-
-A browser, storage, network or API problem may prevent the tutorial from saving its progress. This should not stop the student from using OnTrack.
-
-Try the following:
-
-1. Close the tutorial.
-2. Refresh the page.
-3. Check the internet connection.
-4. Sign out and sign in again if necessary.
-5. Restart the tutorial from **Tutorial and Help** when the replay option is available.
-
-## Reporting a Problem
-
-Tutorial problems should be reported through the existing OnTrack support process. The final support link will be added after it has been confirmed by the project team.
-
-When reporting a problem, include:
-
-* The tutorial step where it happened.
-* What you expected to happen.
-* What happened instead.
-* The browser and device being used.
-* A screenshot, if it can be shared safely.
-
-Check screenshots before submitting them. Do not include student names, IDs, marks, assessment feedback, extension details, disability information or other private information.
-
-## Related Guidance
-
-This document only explains the First-Time OnTrack Tutorial. More detailed guidance is covered separately in:
-
-* CAL-D03 – Calendar subscription instructions
-* A11Y-D02 – Site-wide accessibility guidance
-* MG-05 – CSS and theme guidance
-
+For actual subscriptions and Calendar controls, use the separate
+[Calendar guide](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/docs/CAL-DOC01-calendar-how-to.md).
