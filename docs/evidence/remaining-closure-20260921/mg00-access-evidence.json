@@ -1,0 +1,35 @@
+{
+  "checked_at_utc": "2026-09-21T04:45:48.783110+00:00",
+  "repository": "ontrack-features-t2-2026/doubtfire-web",
+  "contributors": [
+    {
+      "username": "Sujay-Deakin",
+      "repository_permission": "write",
+      "organization_membership": "active",
+      "organization_role": "member",
+      "team": "ontrack-contributors",
+      "team_membership": "active",
+      "team_role": "member"
+    },
+    {
+      "username": "sakethsram8888",
+      "repository_permission": "write",
+      "organization_membership": "active",
+      "organization_role": "member",
+      "team": "ontrack-contributors",
+      "team_membership": "active",
+      "team_role": "member"
+    }
+  ],
+  "organization_default_repository_permission": "none",
+  "branch_evidence": {
+    "pr": "https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/259",
+    "base": "11.0.x",
+    "merged_at": "2026-09-21T03:46:16Z",
+    "merge_sha": "801be5c25d3c311e1a54a843d51a15dad69f0aef",
+    "note": "Actual reviewed migration PR merged to maintained base; no separate Brian conversation asserted."
+  },
+  "decision_file_note": "docs/notifications/DECISIONS.md exists in unmerged remaining-api local branch, absent from current API11.0.x d7f7a5b9. Do not cite local draft as a merged policy record.",
+  "requester_css_guide_confirmation": "Root relayed on2026-09-21: requester knows of no external CSS guide. No external communication performed.",
+  "mutations": "None to GitHub permissions, teams, memberships or PR state."
+}

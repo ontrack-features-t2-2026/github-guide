@@ -1,5 +1,12 @@
 # Remaining tutorial, security, documentation and migration work
 
+**21 September follow-up:** Web #263/#259, API #170, Deploy #38 and Guide #12
+have since been approved and merged. Upstream Web #533 is still open. Use
+[How to finish the remaining bucket tickets](remaining-ticket-completion.md)
+for current checks, precise remaining actions and the requester-confirmed CSS
+guide consultation. The original implementation/test snapshots below remain
+historical evidence, not the current review state.
+
 Source: the 20 September 2026 export of **OnTrack T2 2026**, the 39 rows not marked
 Completed in the four requested buckets. This handover covers repository work
 and PRs. The workbook has not been modified. Existing completed tickets and

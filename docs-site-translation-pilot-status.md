@@ -4,6 +4,10 @@ Checked 20 September 2026. **Blocked: hosted-service output is missing.** The
 requester confirmed that there is no existing pilot URL or Chinese output and
 asked for this missing input to be recorded while the other GitHub work proceeds.
 
+The follow-up [completion procedure](remaining-ticket-completion.md#doc-6-create-one-hosted-translation-sample-and-review-it)
+gives the exact preview setup and review steps. The input remains missing; the
+existence of a procedure is not a translation-quality result.
+
 [DOC-5](docs-site-translation-options-comparison.md) recommends a small
 hosted-service pilot and compares Weglot, Google Cloud Translation and Starlight
 internationalisation. It does not select a configured project or supply a

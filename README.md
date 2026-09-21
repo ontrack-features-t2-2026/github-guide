@@ -6,6 +6,9 @@ This guide explains where the repositories are, which shared feature branch your
 
 ## Current repository work for review
 
+For the checks and human handoffs that follow the merged work, use
+[How to finish the remaining bucket tickets](remaining-ticket-completion.md).
+
 The [remaining-buckets handover](remaining-buckets-handover.md) maps the current
 tutorial, security, documentation and migration work to published PRs, test
 evidence and remaining human activities. Start there for this review batch.
