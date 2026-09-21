@@ -29,7 +29,7 @@ The additional follow-up work is committed in separate reviewable PRs:
 | [Web #274](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/274) | Discovered dark-mode chart-label defect fixed, with a browser regression check. |
 | [Web #275](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/275) | Actual tutorial application checks, recording/transcript and remaining QA matrix. |
 
-The three web follow-up heads (`50565b1ac`, `21b068968`, `ac28e5339`) merge cleanly
+The three web follow-up heads (`50565b1ac`, `21b068968`, `26847919b`) merge cleanly
 with checked base `283b49336` and with each other. This is a checked snapshot,
 not a guarantee against later edits. These PRs have not been merged by this work.
 
@@ -250,7 +250,12 @@ currently holds MG-08/09/10/11 and check that person's actual GitHub login with:
 
 ```sh
 gh api repos/ontrack-features-t2-2026/doubtfire-web/collaborators/ACTUAL_LOGIN/permission --jq .permission
+gh api orgs/ontrack-features-t2-2026/teams/ontrack-contributors/memberships/ACTUAL_LOGIN --jq '{state, role}'
 ```
+
+Record effective write access and active `ontrack-contributors` membership for
+each current holder. Have the lead resolve any missing membership or permission;
+the named-user audit does not prove these conditions for an additional person.
 
 To finish the written-coordination item, reuse an existing Brian decision if one
 exists. Otherwise the lead can send:
@@ -339,8 +344,10 @@ thresholds and deliberate override. Verify each instruction against that actual
 revision before replacing the absence statements. A proposed command or an
 unmerged local implementation is insufficient.
 
-1. Have the deployment owner name the primary/backup operations contact and
-   institution mail/DNS owner. Store private contact details in the team's
+1. Have the deployment owner identify the institution mail/DNS owner required
+   for deliverability triage. A primary/backup operations contact is a useful
+   optional handover addition, not a separate original ticket requirement.
+   Store private contact details in the team's
    approved private operations location; put only an appropriate pointer in the
    public runbook. A sender address or GitHub role does not prove DNS ownership.
 2. Obtain three or four actual trimester failure records from the team: date,
