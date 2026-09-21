@@ -242,9 +242,24 @@ contributor's permissions. This document does not change anyone's access.
 For MG-05, the requester reported on 21 September that they know of no external
 CSS guide. Record that limited confirmation, link the
 [merged CSS guide](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/docs/css-style-guide.md)
-and its accepted PR #259, and close the document-delivery requirement. A separate
-newcomer session was not an explicit MG-05 checklist item and is not added as a
-new closure gate. Do not claim that no guide can exist elsewhere.
+and its accepted PR #259. [Web #269](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/269)
+updates the guide and MG-04 catalogue to the completed Flex Layout teardown while
+preserving the original dated inventory. Do not claim that no guide can exist
+elsewhere or that the requester supplied an unrecorded lead decision.
+
+Link an existing Brian/Maple answer about an external guide and the lead's layout
+direction. If the requester is the relevant lead, record that attribution
+explicitly; otherwise obtain the named lead's confirmation. The completed
+teardown proves the source state, but does not by itself establish who made the
+ticket's requested lead decision.
+
+The ticket's **How to check it worked** notes also specify a newcomer check:
+give the guide to someone unfamiliar with the repository, have them inspect a
+component from the dated catalogue, and ask them to identify Material, Tailwind,
+shared SCSS and component SCSS usage, including which layer wins when properties
+conflict. Record the person, date, source SHA, answers and any corrections.
+Attach the guide/PR, named lead record and actual newcomer validation result
+before claiming full closure.
 
 ## MG-11: verify charts with a real application/API session
 
@@ -274,6 +289,13 @@ work in an unmerged branch does not establish a live control. The runbook's
 absence statements remain accurate for that merged revision; update them after
 the relevant implementation actually lands and its commands are verified.
 
+The ticket names **NPR-F01, NPR-F02, NPR-S02, NPR-S03 and NPR-Q01** as dependencies.
+Their owners must supply the reviewed runtime behavior and evidence needed to
+document global/per-channel disabling without a deploy, numeric fan-out
+thresholds and deliberate override. Verify each instruction against that actual
+revision before replacing the absence statements. A proposed command or an
+unmerged local implementation is insufficient.
+
 1. Have the deployment owner name the primary/backup operations contact and
    institution mail/DNS owner. Store private contact details in the team's
    approved private operations location; put only an appropriate pointer in the
@@ -291,23 +313,31 @@ the relevant implementation actually lands and its commands are verified.
    confusing instructions. Fold their feedback into a small documentation PR.
    Recheck the documented switch/limit commands against the actual runtime.
 
-Close when the operational pointers, truthful incident evidence and independent
-operator exercise are recorded. Automated API tests cannot stand in for that
-specified human dry-run.
+Close when the runtime-dependent switch/limit/override instructions are verified,
+the operational pointers and truthful incident evidence are present, and the
+independent operator exercise and corrections are recorded. If those runtime
+dependencies remain unavailable, record the blocker or an explicit lead-approved
+scope exception; do not mark the original requirements complete. Automated API
+tests cannot stand in for the specified human dry-run.
 
 ## Mass Assignment Vulnerability Testing
 
-Use the local test report from this follow-up as the starting evidence. Each
-case must show a synthetic caller/role, method/path, protected-field injection,
-response, before/after persisted state and verdict. A non-error HTTP response
-alone does not prove that a protected field was written.
+**Completed locally on 21 September:** 20 scenarios and 46 HTTP/persisted-state
+checks passed across seven create/update routes against API
+`d7f7a5b9c2d34ef279ac3a70bc58823def64005c`. No protected-field assignment
+vulnerability was observed in these cases. The
+[findings report](docs/evidence/mass-assignment-20260921/findings.md) records
+synthetic caller/role, request, response, database checks and verdict. The
+[evidence README](docs/evidence/mass-assignment-20260921/README.md) explains the
+parameter review, tested boundaries, reproduction and initial fixture correction.
 
-Attach the report to the original security ticket, with its API SHA and tested
-endpoint list. Any confirmed vulnerability needs a focused fix and regression;
-coordinate disclosure before placing exploitable production details publicly.
-State the tested scope and omissions explicitly. Close the ticket when its
-request/response findings and any required follow-up are attached. No production
-accounts or endpoints are needed for the controlled test.
+The only remaining card action is to attach the published report link using
+**Add attachment → Link**, paste the provided
+[summary](docs/evidence/mass-assignment-20260921/planner-summary.txt) with the
+evidence URL, and check the six items as described in the evidence README.
+Close after accepting the explicitly bounded local-test scope. Synthetic writes
+were rolled back; the test container is stopped. No production patch or
+comprehensive penetration-test claim is implied by these passing cases.
 
 ## Record closure without manufacturing evidence
 

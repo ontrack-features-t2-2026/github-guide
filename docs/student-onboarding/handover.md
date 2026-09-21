@@ -3,7 +3,7 @@
 **Ticket:** TUT-D04
 **Original documentation owner:** Jeffy Sam Babu
 **Updated:** 21 September 2026
-**Status:** Implementation available for review; rollout defaults off
+**Status:** Implementation approved and merged; rollout defaults off; human acceptance incomplete
 
 ## What has changed
 
@@ -11,8 +11,11 @@ The original student/contributor package was
 [merged in PR #7](https://github.com/ontrack-features-t2-2026/github-guide/pull/7)
 on 19 September 2026. This refresh replaces its planned code locations and
 missing-implementation statements with the current web implementation on
-`codex/buckets-tutorial-20260920`, now published in [Web PR #263](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/263).
-Its browser evidence is being finalised; this document does not grant release approval.
+`codex/buckets-tutorial-20260920`, approved and merged in [Web PR #263](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/263).
+The documentation refresh was merged in [Guide #12](https://github.com/ontrack-features-t2-2026/github-guide/pull/12).
+Use the [21 September completion procedure](../../remaining-ticket-completion.md)
+for subsequent application evidence and the precise human requirements still open.
+This document does not grant release approval.
 
 The implementation includes a reusable shell, typed four-step registry, stable
 targets, authenticated student eligibility, browser progress and **Tutorial and
@@ -53,8 +56,9 @@ forwards the flag to API containers with a default of `0`.
 
 Changing the environment requires the API process to restart or its container
 to be recreated; no web build is required just to change the flag. Before
-rollout, reviewers must approve the API/web/configuration changes and the written
-guide must be reachable at its published link. Keeping the flag off prevents
+rollout, verify that the reviewed API/web/configuration revisions are deployed
+together and that the written guide is reachable at its published link. These
+source PRs have been approved and merged. Keeping the flag off prevents
 both automatic prompting and the replay entry while written guidance remains
 available. No live rollout was performed for this documentation update.
 
@@ -63,8 +67,9 @@ available. No live rollout was performed for this documentation update.
 Use the source-adjacent web
 [`docs/student-onboarding/` validation package](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/codex/buckets-tutorial-20260920/docs/student-onboarding)
 for exact tested revisions, commands, results, screenshots and limitations.
-That package is published with Web PR #263. Browser-harness evidence is being
-finalised there; this guide does not duplicate changing QA totals or declare an
+That package is published with Web PR #263. Its browser-harness results are
+completed and retain their fixture-only boundary. The completion procedure links
+subsequent full-application results separately; this guide does not declare an
 unrun checklist passed.
 
 The [evidence index](evidence-index.md) links the current branches and related
@@ -78,8 +83,8 @@ behaviour, accessibility, pilot acceptance or production readiness.
   was previously requested; no reviewer response has been supplied.
 - Pilot preparation material exists, but no student session findings or pilot
   retest outcome are claimed by this refresh.
-- Product, security and release approval remain separate from implementation
-  and automated tests.
+- Reuse the actual security-related PR review linked in the completion procedure;
+  product/pilot and release decisions still require their own evidence.
 - No new walkthrough recording or independent screenshot/privacy review is
   claimed here. Record or update media only against the reviewed interface,
   with synthetic accounts, version/date and a second privacy/accuracy review.
@@ -88,7 +93,7 @@ behaviour, accessibility, pilot acceptance or production readiness.
 
 | Risk or limit | Follow-up |
 | --- | --- |
-| Documentation and implementation branches are still under review | Use the linked PRs and tested commits; reconcile any review changes before rollout |
+| Follow-up evidence can test a different build from a later deployment | Use its exact tested commits and build configuration; recheck material differences before rollout |
 | Newly enrolled accounts with existing projects are conservatively replay-only | Keep this limitation explicit; a broader trigger needs a reliable reviewed account rule |
 | Browser storage does not sync and is inspectable in a shared browser profile | Keep stored data minimal and explain browser-local choices; do not treat it as authorisation |
 | UI changes can remove or hide targets | Update registry, attributes, fallback and regression checks together |
@@ -98,13 +103,13 @@ behaviour, accessibility, pilot acceptance or production readiness.
 Reviewers should follow the [student guide](student-guide.md), exercise a small
 change using the [contributor guide](contributor-guide.md), and record any
 corrections in the current PR. Retain the original PR #7 provenance when updating
-the package. Implementation remains in review branches until an independent reviewer or
-maintainer approves and merges it.
+the package. Implementation PRs are merged; follow-up documentation and evidence
+remain subject to independent review.
 
 ## Related resources
 
 - [Calendar guide](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/docs/CAL-DOC01-calendar-how-to.md).
 - [Theme contract](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/docs/theme/THEME-CONTRACT.md).
-- [MG-05 CSS guide](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/codex/buckets-migration-20260920/docs/css-style-guide.md), published for review in [Web PR #259](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/259).
+- [MG-05 CSS guide](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/docs/css-style-guide.md), merged in [Web PR #259](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/259); current teardown correction in [Web #269](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/269).
 - [Tutorial/video index](../../tutorial-links.md).
 - [Handover video template](../../handover-video-template.md).
