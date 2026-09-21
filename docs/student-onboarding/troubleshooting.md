@@ -1,110 +1,90 @@
-# First-Time OnTrack Tutorial – Troubleshooting
+# First-time OnTrack tutorial: troubleshooting
 
-**Ticket:** TUT-D04
-**Status:** Draft
-**Last updated:** 9 September 2026
+**Ticket:** TUT-D04 · **Updated:** 21 September 2026 · **Status:** Implementation review version
 
-This page covers common problems that may occur while using the First-Time OnTrack Tutorial. A tutorial problem should never prevent a student from continuing to use OnTrack.
+Implementation reference: [Web PR #263](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/263). Review and institution rollout remain separate.
 
-## The Tutorial Does Not Start Automatically
+The tutorial must leave normal OnTrack use available. Close it if needed; the
+[written student guide](student-guide.md) is available independently of rollout.
 
-The tutorial is only intended to launch automatically for eligible new students. It waits until sign-in, profile setup and the required account and enrolment information have loaded.
+## The tutorial does not start
 
-It may not start automatically if:
+First check whether your institution has enabled the tutorial. It defaults off,
+and a failed feature-settings request keeps it off. Refreshing cannot enable a
+feature the institution has disabled.
 
-* The current tutorial version was already completed.
-* Automatic prompts were previously dismissed.
-* The account belongs to a staff member.
-* Profile setup has not been completed.
-* Required unit or project information is still loading.
-* A browser or storage problem prevents the tutorial state from loading.
+Automatic prompts also stay off when:
 
-If the tutorial does not appear, refresh the page and allow the account information to finish loading. The tutorial can also be started manually through **Tutorial and Help** once the permanent replay option is available.
+- You are using a staff account.
+- Profile setup or application data loading is incomplete.
+- You are on the welcome, profile-editing, sign-in/out or SCORM page.
+- The current account has existing projects, including inactive units and withdrawn enrolments, during
+  the initial eligibility check.
+- Your profile was already complete and no valid tutorial progress is saved.
+- You previously completed or permanently dismissed the tutorial in this browser.
+- History could not be checked, or browser storage was blocked, invalid or from
+  an unsupported tutorial version.
 
-## No Current Unit Is Available
+The history check is deliberately conservative: an empty list of active units
+alone does not establish a new account. Once enabled and ready, use **account
+menu → Tutorial and Help** to replay without waiting for an automatic prompt.
 
-The first tutorial step needs a current unit to demonstrate unit selection. If no unit appears:
+## No unit, dashboard or target-grade control is available
 
-1. Confirm that the correct OnTrack account is being used.
-2. Wait for the enrolment information to finish loading.
-3. Refresh the page.
-4. Sign out and sign in again if necessary.
-5. Check the normal OnTrack unit area outside the tutorial.
+Read the fallback text and continue with **Next**, or close the tour. The tutorial
+does not navigate or create an enrolment for you. Open the unit yourself and
+check its dashboard outside the tutorial. If it is missing there too, contact
+your teaching team through the usual support route.
 
-The tutorial cannot create an enrolment or add a missing unit. If the unit is still unavailable, report the issue through the existing OnTrack support process.
+A hidden or offscreen target is not highlighted. The written directions remain
+visible. If a **Find** button is available, it scrolls to that control without
+clicking it. If a target stays missing after the page loads, report the step and
+page rather than changing unrelated settings.
 
-## A Project or Task Cannot Be Found
+## Calendar is unavailable
 
-The second step points students towards the project or task dashboard. This step may not work as expected when no project is available or the required page has not finished loading.
+Look for Calendar in the account menu; wider screens also show its toolbar
+button. If it is unavailable, continue the tutorial or use the
+[Calendar guide](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/11.0.x/docs/CAL-DOC01-calendar-how-to.md).
+The tutorial never creates a subscription or exposes a calendar URL.
 
-Close the tutorial and check whether the project or task dashboard works normally. If the page is available, restart the tutorial and try again.
+## Progress cannot be saved
 
-If the project is missing outside the tutorial as well, the problem is likely related to the account, unit or project setup rather than the tutorial.
+Tutorial progress is written to browser storage, not to a progress API. A network
+failure can prevent settings or eligibility from loading, but retrying the
+network does not repair blocked browser storage.
 
-## A Tutorial Target Is Missing
+Check whether private browsing, browser settings or an extension blocks or clears
+site data. You can finish reading the current tour even when a saving warning
+appears, then use manual replay. Do not clear site storage as a routine repair:
+it also removes the tutorial's saved decisions and may affect other app data.
 
-The tutorial uses stable targets to highlight parts of OnTrack. A target may be unavailable because the page is loading slowly, a feature is hidden for the current account or the interface has changed.
+Different browsers and devices have independent progress. Signing out preserves
+the current browser's saved choice and clears only the active session's state.
 
-When this happens, the tutorial should display a fallback message, move past the unavailable step or close safely. It should not freeze the page.
+## The prompt appears again
 
-Try refreshing the page and starting the tutorial again. If the same target remains unavailable, report the affected step and the page where it occurred.
+A temporary **Skip tutorial** or **Close** before completion permits a later
+prompt on sign-in/reload. Choose **Do not show automatically again** from the
+skip confirmation to stop automatic prompts in this browser. Acknowledging the
+completion panel with **Finish**, **Close** or Escape also prevents them.
 
-## The Target-Grade Option Is Unavailable
+If a completed or permanently dismissed tour returns, check that you are using
+the same account and browser profile and that its site data has not been removed.
+Record what action you used to leave the tour. A tutorial version increase alone
+must not re-prompt a completed or dismissed account.
 
-The target-grade option may not be available for every unit or account. The tutorial should explain that the feature cannot currently be shown and allow the student to continue.
+## Replay is missing
 
-The tutorial will not create or change a target grade. Check the normal unit or project area to confirm whether the option is available outside the tutorial.
+**Tutorial and Help** is in the account menu for eligible signed-in students
+when the runtime flag is on, setup and loading are complete, and the route is
+suitable. It is intentionally absent for staff and while rollout is disabled.
+Use the written guide while waiting; do not reset profile setup to reveal it.
 
-## The Calendar Option Is Unavailable
+## Report a problem
 
-The tutorial only shows students where to find the Calendar area. It does not subscribe the student to a calendar or change any calendar settings.
-
-If the Calendar entry is unavailable, continue with normal OnTrack use and refer to the separate CAL-D03 calendar guidance when it becomes available.
-
-## Tutorial Progress Does Not Save
-
-A browser, network, storage or API problem may stop the tutorial from saving the current step or state.
-
-Try the following:
-
-1. Check the internet connection.
-2. Close the tutorial.
-3. Refresh the page.
-4. Restart the tutorial.
-5. Sign out and sign in again if the problem continues.
-
-A saving failure should not block the rest of OnTrack, reset profile setup or cause the tutorial to open repeatedly.
-
-## The Tutorial Keeps Appearing
-
-If the tutorial continues to appear after being completed or permanently dismissed:
-
-1. Complete or dismiss it once more.
-2. Refresh the page.
-3. Check whether the browser is blocking or clearing site storage.
-4. Avoid using private browsing while testing saved tutorial progress.
-5. Record the browser name and the action used before the tutorial appeared again.
-
-Do not repeatedly change unrelated profile settings to fix the tutorial.
-
-## Replay Is Not Available
-
-The permanent replay option is planned under **Tutorial and Help**. Its exact menu location will be confirmed after TUT-W04 has been implemented and tested.
-
-Until then, the absence of this option is a known implementation limitation and not something the student can correct.
-
-## Reporting a Problem
-
-Report the problem through the approved OnTrack support process. The final support link will be added after confirmation from the project team.
-
-Include:
-
-* The tutorial step where the problem occurred.
-* What happened before the problem.
-* What you expected to happen.
-* What happened instead.
-* The browser and device used.
-* Whether refreshing or signing in again helped.
-
-Only provide screenshots that are safe to share. Remove or hide student names, IDs, marks, feedback, assessment information, extension details and other private information.
-
+Include the step, page, browser/device, expected behaviour, actual behaviour and
+whether it followed a reload, sign-in or storage warning. Share screenshots only
+after removing names, IDs, marks, submissions, feedback, extension details and
+credentials. Use the institution's established support route; this package does
+not claim a newly confirmed support contact.
