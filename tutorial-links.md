@@ -1,7 +1,8 @@
 # Tutorials and walkthroughs
 
-DOC-3. Link audit: 20 September 2026. This index collects the existing material
-in the main guide and its tutorial folders; it does not introduce a new tutorial.
+DOC-3. Original link audit: 20 September 2026; full-application walkthrough added
+21 September. This index collects setup and tutorial material in the main guide
+and its maintained evidence folders.
 
 | Resource | What it covers | Link and currency check |
 | --- | --- | --- |
@@ -9,7 +10,8 @@ in the main guide and its tutorial folders; it does not introduce a new tutorial
 | [Setup walkthrough, 11:37](https://github.com/ontrack-features-t2-2026/github-guide/blob/6eabb08535a9be040e908b7a237765197945badc/media/setup/ontrack-t2-2026-setup-walkthrough.mp4) | Narrated T2 environment setup and contribution workflow. | Immutable GitHub archive returned HTTP 200. The recorded branch map is an August snapshot. |
 | [Setup transcript](media/setup/ontrack-t2-2026-setup-walkthrough-transcript.md) | Accessible text companion to the setup video. | File exists; the same branch caveat applies. |
 | [Jira ticket tutorial](https://youtu.be/GyJWYpOGj1o) | Finding assigned work in Jira. | HTTP 200, page title “Jira View Tasks Tutorial”. This does not teach environment setup or Microsoft Planner. |
-| [First-time tutorial student guide](docs/student-onboarding/student-guide.md) | Unit selection, tasks, target grade, Calendar, skipping and replay. | File exists. Read with the implementation status in the [handover](docs/student-onboarding/handover.md); [Web PR #263](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/263) is published for review and rollout remains off by default. |
+| [First-time tutorial student guide](docs/student-onboarding/student-guide.md) | Unit selection, tasks, target grade, Calendar, skipping and replay. | Read with the current [handover](docs/student-onboarding/handover.md); [Web PR #263](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/263) is approved and merged; rollout remains off by default. |
+| [Tutorial v1 walkthrough and transcript](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/codex/tutorial-acceptance-20260921/docs/student-onboarding/full-app-qa) | Four real tutorial controls, completion and replay with synthetic application/API data. | Recorded 21 September 2026; exact web/API revisions and default/development build scope are documented. Independent human privacy/accuracy review remains pending. |
 | [Tutorial troubleshooting](docs/student-onboarding/troubleshooting.md) | Missing targets, saved progress and replay problems. | File exists. |
 | [Tutorial contributor guide](docs/student-onboarding/contributor-guide.md) | Shell, step registry, stable targets, state and regression boundaries. | File exists; current source paths and rollout are recorded in the implementation handover. |
 | [Interactive prototype](docs/design/student-onboarding-prototype-review/prototype/index.html) | Desktop/mobile tutorial and keyboard design for review. | File exists. Prototype only; it does not use live OnTrack data. |

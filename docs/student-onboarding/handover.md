@@ -85,9 +85,9 @@ behaviour, accessibility, pilot acceptance or production readiness.
   retest outcome are claimed by this refresh.
 - Reuse the actual security-related PR review linked in the completion procedure;
   product/pilot and release decisions still require their own evidence.
-- No new walkthrough recording or independent screenshot/privacy review is
-  claimed here. Record or update media only against the reviewed interface,
-  with synthetic accounts, version/date and a second privacy/accuracy review.
+- A [versioned full-application walkthrough and transcript](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/codex/tutorial-acceptance-20260921/docs/student-onboarding/full-app-qa)
+  now use synthetic accounts and record the tested revisions and date. A second
+  human privacy/accuracy review remains pending; the recording is not pilot evidence.
 
 ## Remaining risks and follow-up
 

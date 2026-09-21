@@ -20,6 +20,19 @@ minimum stored fields. The [documentation approval](https://github.com/ontrack-f
 accepts the implemented guides and their stated validation limits. Those are
 real review records; they do not show that a participant pilot took place.
 
+The additional follow-up work is committed in separate reviewable PRs:
+
+| PR | Follow-up result |
+| --- | --- |
+| [Guide #13](https://github.com/ontrack-features-t2-2026/github-guide/pull/13) | This procedure, dated access checks and completed mass-assignment report. |
+| [Web #269](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/269) | Current CSS/catalogue status and actual analytics/API acceptance evidence. |
+| [Web #274](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/274) | Discovered dark-mode chart-label defect fixed, with a browser regression check. |
+| [Web #275](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/275) | Actual tutorial application checks, recording/transcript and remaining QA matrix. |
+
+The three web follow-up heads (`50565b1ac`, `21b068968`, `ac28e5339`) merge cleanly
+with checked base `283b49336` and with each other. This is a checked snapshot,
+not a guarantee against later edits. These PRs have not been merged by this work.
+
 Two corrections to the earlier handover are important for closure:
 
 - **DOC-14 requires a PR and a review request.** Its checklist does not require
@@ -31,6 +44,16 @@ Two corrections to the earlier handover are important for closure:
   only when a supported test environment is available. Record unavailability.
 
 ## TUT-Q01: finish the application QA record
+
+The 21 September follow-up exercised the actual profile-to-tutorial boundary in
+Chrome. The enrolled-student dashboard, four targets, completion, replay and
+focus return passed in Chrome, Edge and Firefox. It also captured Chrome's
+native 200% welcome view and accessibility-tree evidence.
+The [full-application evidence](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/codex/tutorial-acceptance-20260921/docs/student-onboarding/full-app-qa)
+contains the exact results, recording and remaining matrix gaps. Reuse those
+completed checks; only mark the other rows passed after actually running them.
+The application artifact is a default/development build at `a9e7af46f`, paired
+with API `d7f7a5b9`; it is not a production-build or rollout result.
 
 Use the current merged web/API/deploy combination in a disposable local or
 staging environment with synthetic users. Record all three commit SHAs, the
@@ -80,11 +103,13 @@ The student/contributor guides are already merged. Finish these two items:
    name/handle, date, tested SHA, missing instructions and outcome in that review
    file. Fix any documentation problem they find. An agent review is not this
    requested human exercise.
-2. Record the stable tutorial with synthetic data: welcome, four steps, skip or
-   finish, then replay from the actual account menu. Show the version/date and
-   include a written transcript. Have a second person check privacy and accuracy;
-   record their review and add the recording/transcript to the
+2. Review the new [versioned full-application walkthrough](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/codex/tutorial-acceptance-20260921/docs/student-onboarding/full-app-qa)
+   and its transcript. It uses synthetic data and records the four steps,
+   completion and replay. Have a second person check privacy and accuracy;
+   record their actual result beside the links in the
    [tutorial index](tutorial-links.md) and [evidence index](docs/student-onboarding/evidence-index.md).
+   Re-record only if that review finds a problem or a material interface change
+   makes the version/date-labelled recording obsolete.
 
 Suggested request, for the requester to send:
 
@@ -261,7 +286,24 @@ conflict. Record the person, date, source SHA, answers and any corrections.
 Attach the guide/PR, named lead record and actual newcomer validation result
 before claiming full closure.
 
-## MG-11: verify charts with a real application/API session
+## MG-11: use the application evidence and review the contrast fix
+
+The 21 September synthetic convenor session rendered all three charts against
+the actual authenticated API. Values matched its responses; tutorial/task
+filters, grade grouping and simulated request failure/Retry passed. The
+[dated acceptance record](https://github.com/ontrack-features-t2-2026/doubtfire-web/blob/codex/migration-closure-docs-20260921/docs/migration/acceptance-2026-09-21.md)
+contains the responses, assertions and screenshots.
+
+It found one real defect: SVG labels stayed black in dark mode.
+[Web #274](https://github.com/ontrack-features-t2-2026/doubtfire-web/pull/274)
+fixes inherited label colour. Its Chrome check passed light/dark themes at
+desktop/390px widths, preserved chart colours and measured dark label contrast
+of 12.54:1, up from 1.37:1. That check overlaid compiled source SCSS onto the
+existing application artifact; it does not claim a freshly built local bundle.
+The PR's browser script defaults to checking the served build. Use that mode
+against a build containing the fix for the final result at that exact revision.
+
+For reproduction or retesting after changes:
 
 1. Use the current merged application with a synthetic convenor and a seeded unit
    that has students, tasks and more than one tutorial. Record the web/API SHAs.
@@ -277,8 +319,9 @@ before claiming full closure.
 5. Save synthetic screenshots, response/value comparisons and pass/fail results
    on MG-11. If a real defect appears, fix it with a focused regression and PR.
 
-The existing SVG tests, full suite and build remain valid evidence. This session
-adds the authenticated application result that fixtures alone cannot establish.
+The existing SVG tests, full suite and build remain valid at their recorded
+revisions. Retain the distinction between the authenticated application result,
+the CSS-overlay regression check and any later served-build result.
 
 ## NPR-D01: finish the operator handover
 

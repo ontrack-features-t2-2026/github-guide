@@ -66,7 +66,7 @@ behaviour or the accuracy of an external page.
 | Independent maintenance-guide exercise | [Requested; response pending](second-contributor-review.md) |
 | Student pilot sessions and retest | No results supplied |
 | Product/security/release approval | Security-related PR review exists; no pilot/product/release acceptance is inferred |
-| Walkthrough recording and privacy review | No new recording or review claimed |
+| Walkthrough recording and privacy review | [Versioned full-application recording and transcript](https://github.com/ontrack-features-t2-2026/doubtfire-web/tree/codex/tutorial-acceptance-20260921/docs/student-onboarding/full-app-qa) available; second human privacy/accuracy review pending |
 
 Use only synthetic data in visual evidence. Keep private student information,
 credentials, full calendar URLs and unrelated desktop content out of artifacts.
