@@ -1,0 +1,1405 @@
+{
+  "tested_source_sha": "d7f7a5b9c2d34ef279ac3a70bc58823def64005c",
+  "executed_at_utc": "2026-09-21T04:55:51Z",
+  "transport": "Rack::Test JSON requests through Rails.application and actual Grape authentication/authorization, in process",
+  "environment": "test",
+  "database": "mass_assignment_test_20260921",
+  "all_network_calls_blocked_by_webmock": true,
+  "background_jobs": "Sidekiq fake",
+  "mail_delivery": "test",
+  "results": [
+    {
+      "id": "U01",
+      "purpose": "Student own-profile update ignores raw role/admin/credential/identity fields",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 200,
+          "actual": 200,
+          "pass": true
+        },
+        {
+          "label": "Allowed nickname saved; protected identity and role unchanged",
+          "expected": {
+            "id": 8,
+            "username": "ma-student",
+            "login_id": null,
+            "role_id": 1,
+            "student_id": "9100001",
+            "first_name": "Synthetic",
+            "nickname": "Allowed nickname"
+          },
+          "actual": {
+            "id": 8,
+            "username": "ma-student",
+            "login_id": null,
+            "role_id": 1,
+            "student_id": "9100001",
+            "first_name": "Synthetic",
+            "nickname": "Allowed nickname"
+          },
+          "pass": true
+        },
+        {
+          "label": "Password hash unchanged (hash not disclosed)",
+          "expected": true,
+          "actual": true,
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "path": "/api/users/8",
+        "actor": "ma-student",
+        "system_role": "Student",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-student",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "role_id": 4,
+          "admin": true,
+          "user": {
+            "nickname": "Allowed nickname",
+            "system_role": "Admin",
+            "role_id": 4,
+            "role": "Admin",
+            "admin": true,
+            "is_admin": true,
+            "username": "ma-forged-admin",
+            "login_id": "ma-forged-login",
+            "encrypted_password": "forged-password-hash"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "content_type": "application/json",
+        "body": {
+          "id": 8,
+          "student_id": "9100001",
+          "email": "ma-student@example.invalid",
+          "first_name": "Synthetic",
+          "last_name": "student",
+          "username": "ma-student",
+          "nickname": "Allowed nickname",
+          "display_name": "Allowed nickname student",
+          "receive_task_notifications": true,
+          "receive_portfolio_notifications": true,
+          "receive_feedback_notifications": true,
+          "display_peer_progress": true,
+          "opt_in_to_research": null,
+          "has_run_first_time_setup": false,
+          "theme_preference": null,
+          "theme_preference_updated_at": null,
+          "institutional_identity_managed": false,
+          "email_editable": true,
+          "system_role": "Student"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "U02",
+      "purpose": "Student cannot update a different profile or select its owner through nested id",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 403,
+          "actual": 403,
+          "pass": true
+        },
+        {
+          "label": "Other profile unchanged",
+          "expected": {
+            "id": 9,
+            "username": "ma-other-student",
+            "login_id": null,
+            "role_id": 1,
+            "student_id": "9100002",
+            "first_name": "Synthetic",
+            "nickname": "other-student"
+          },
+          "actual": {
+            "id": 9,
+            "username": "ma-other-student",
+            "login_id": null,
+            "role_id": 1,
+            "student_id": "9100002",
+            "first_name": "Synthetic",
+            "nickname": "other-student"
+          },
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "path": "/api/users/9",
+        "actor": "ma-student",
+        "system_role": "Student",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-student",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "user": {
+            "id": 8,
+            "nickname": "Forged profile",
+            "system_role": "Admin",
+            "role_id": 4
+          }
+        }
+      },
+      "response": {
+        "status": 403,
+        "content_type": "application/json",
+        "body": {
+          "error": "Cannot modify user with id=9 - not authorised"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "U03",
+      "purpose": "Student cannot overwrite own managed student id",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 422,
+          "actual": 422,
+          "pass": true
+        },
+        {
+          "label": "Identity and allowed-field companion unchanged on rejection",
+          "expected": {
+            "id": 8,
+            "username": "ma-student",
+            "login_id": null,
+            "role_id": 1,
+            "student_id": "9100001",
+            "first_name": "Synthetic",
+            "nickname": "student"
+          },
+          "actual": {
+            "id": 8,
+            "username": "ma-student",
+            "login_id": null,
+            "role_id": 1,
+            "student_id": "9100001",
+            "first_name": "Synthetic",
+            "nickname": "student"
+          },
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "path": "/api/users/8",
+        "actor": "ma-student",
+        "system_role": "Student",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-student",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "user": {
+            "nickname": "Must not save",
+            "student_id": "9999999"
+          }
+        }
+      },
+      "response": {
+        "status": 422,
+        "content_type": "application/json",
+        "body": {
+          "error": "Student ID is managed account information and cannot be changed here."
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "U04",
+      "purpose": "Student cannot create users, even with role/admin injection",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 403,
+          "actual": 403,
+          "pass": true
+        },
+        {
+          "label": "No user created",
+          "expected": 6,
+          "actual": 6,
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/api/users",
+        "actor": "ma-student",
+        "system_role": "Student",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-student",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "user": {
+            "first_name": "Synthetic",
+            "last_name": "Created",
+            "email": "ma-created@example.invalid",
+            "username": "ma-created",
+            "nickname": "Created",
+            "system_role": "Admin",
+            "role_id": 4,
+            "admin": true,
+            "is_admin": true,
+            "encrypted_password": "forged-password-hash",
+            "login_id": "forged-login"
+          }
+        }
+      },
+      "response": {
+        "status": 403,
+        "content_type": "application/json",
+        "body": {
+          "error": "Not authorised to create new users"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "U05",
+      "purpose": "Convenor may create Student; raw role/admin/credential fields cannot override declared role",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 201,
+          "actual": 201,
+          "pass": true
+        },
+        {
+          "label": "Created requested Student",
+          "expected": 1,
+          "actual": 1,
+          "pass": true
+        },
+        {
+          "label": "Protected login id ignored",
+          "expected": null,
+          "actual": null,
+          "pass": true
+        },
+        {
+          "label": "Forged password hash ignored",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/api/users",
+        "actor": "ma-convenor",
+        "system_role": "Convenor",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-convenor",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "user": {
+            "first_name": "Synthetic",
+            "last_name": "Created",
+            "email": "ma-created@example.invalid",
+            "username": "ma-created",
+            "nickname": "Created",
+            "system_role": "Student",
+            "role_id": 4,
+            "admin": true,
+            "is_admin": true,
+            "encrypted_password": "forged-password-hash",
+            "login_id": "forged-login"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "content_type": "application/json",
+        "body": {
+          "id": 14,
+          "student_id": null,
+          "email": "ma-created@example.invalid",
+          "first_name": "Synthetic",
+          "last_name": "Created",
+          "username": "ma-created",
+          "nickname": "Created",
+          "display_name": "Created Created",
+          "receive_task_notifications": true,
+          "receive_portfolio_notifications": true,
+          "receive_feedback_notifications": true,
+          "display_peer_progress": true,
+          "opt_in_to_research": null,
+          "has_run_first_time_setup": false,
+          "institutional_identity_managed": false,
+          "email_editable": true,
+          "system_role": "Student"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "U06",
+      "purpose": "Convenor cannot create declared Admin role",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 403,
+          "actual": 403,
+          "pass": true
+        },
+        {
+          "label": "No user created",
+          "expected": 6,
+          "actual": 6,
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/api/users",
+        "actor": "ma-convenor",
+        "system_role": "Convenor",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-convenor",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "user": {
+            "first_name": "Synthetic",
+            "last_name": "Created",
+            "email": "ma-created@example.invalid",
+            "username": "ma-created",
+            "nickname": "Created",
+            "system_role": "Admin",
+            "role_id": 4,
+            "admin": true,
+            "is_admin": true,
+            "encrypted_password": "forged-password-hash",
+            "login_id": "forged-login"
+          }
+        }
+      },
+      "response": {
+        "status": 403,
+        "content_type": "application/json",
+        "body": {
+          "error": "Not authorised to create new users with role Admin"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "P01",
+      "purpose": "Student cannot create enrolment/project through protected-field injection",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 403,
+          "actual": 403,
+          "pass": true
+        },
+        {
+          "label": "No project created",
+          "expected": 2,
+          "actual": 2,
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/api/projects",
+        "actor": "ma-student",
+        "system_role": "Student",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-student",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "unit_id": 2,
+          "student_num": "ma-new-student",
+          "campus_id": 2,
+          "target_grade": 3,
+          "grade": 3,
+          "submitted_grade": 3,
+          "assessor_id": 8,
+          "user_id": 13,
+          "enrolled": false,
+          "spec_con_days": 100,
+          "project": {
+            "grade": 3,
+            "target_grade": 3,
+            "user_id": 13
+          }
+        }
+      },
+      "response": {
+        "status": 403,
+        "content_type": "application/json",
+        "body": {
+          "error": "Couldn't find Unit with id=2"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "P02",
+      "purpose": "Authorised enrolment ignores undeclared grade/owner/extension fields",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 201,
+          "actual": 201,
+          "pass": true
+        },
+        {
+          "label": "Server-owned defaults and correct selected student",
+          "expected": {
+            "user_id": 10,
+            "unit_id": 2,
+            "target_grade": 0,
+            "submitted_grade": null,
+            "grade": 0,
+            "grade_rationale": null,
+            "assessor_id": null,
+            "enrolled": true,
+            "spec_con_days": 0
+          },
+          "actual": {
+            "user_id": 10,
+            "unit_id": 2,
+            "target_grade": 0,
+            "submitted_grade": null,
+            "grade": 0,
+            "grade_rationale": null,
+            "assessor_id": null,
+            "enrolled": true,
+            "spec_con_days": 0
+          },
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/api/projects",
+        "actor": "ma-convenor",
+        "system_role": "Convenor",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-convenor",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "unit_id": 2,
+          "student_num": "ma-new-student",
+          "campus_id": 2,
+          "target_grade": 3,
+          "grade": 3,
+          "submitted_grade": 3,
+          "assessor_id": 8,
+          "user_id": 13,
+          "enrolled": false,
+          "spec_con_days": 100,
+          "project": {
+            "grade": 3,
+            "target_grade": 3,
+            "user_id": 13
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "content_type": "application/json",
+        "body": {
+          "id": 6,
+          "enrolled": true,
+          "student": {
+            "id": 10,
+            "student_id": "9100003",
+            "username": "ma-new-student",
+            "email": "ma-new-student@example.invalid",
+            "first_name": "Synthetic",
+            "last_name": "new-student",
+            "nickname": "new-student"
+          },
+          "target_grade": 0,
+          "campus_id": 2,
+          "compile_portfolio": false,
+          "grade": 0,
+          "grade_rationale": null,
+          "similarity_flag": false,
+          "has_portfolio": false,
+          "stats": {
+            "red_pct": 0,
+            "grey_pct": 1,
+            "orange_pct": 0,
+            "blue_pct": 0,
+            "green_pct": 0,
+            "order_scale": 0
+          }
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "P03",
+      "purpose": "Student target_grade is allowed; companion assessed grade/owner fields are ignored",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 200,
+          "actual": 200,
+          "pass": true
+        },
+        {
+          "label": "Only permitted own target grade changed",
+          "expected": {
+            "user_id": 8,
+            "unit_id": 2,
+            "target_grade": 1,
+            "submitted_grade": null,
+            "grade": 0,
+            "grade_rationale": null,
+            "assessor_id": null,
+            "enrolled": true,
+            "spec_con_days": 0
+          },
+          "actual": {
+            "user_id": 8,
+            "unit_id": 2,
+            "target_grade": 1,
+            "submitted_grade": null,
+            "grade": 0,
+            "grade_rationale": null,
+            "assessor_id": null,
+            "enrolled": true,
+            "spec_con_days": 0
+          },
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "path": "/api/projects/4",
+        "actor": "ma-student",
+        "system_role": "Student",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-student",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "target_grade": 1,
+          "grade": 3,
+          "grade_rationale": "Forged grade",
+          "assessor_id": 8,
+          "user_id": 13,
+          "unit_id": 9999999,
+          "spec_con_days": 100,
+          "project": {
+            "grade": 3,
+            "target_grade": 3,
+            "user_id": 13
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "content_type": "application/json",
+        "body": {
+          "campus_id": 2,
+          "target_grade": 1,
+          "submitted_grade": null,
+          "compile_portfolio": false,
+          "portfolio_available": false,
+          "uses_draft_learning_summary": false
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "P04",
+      "purpose": "Student cannot write assessed project grade",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 403,
+          "actual": 403,
+          "pass": true
+        },
+        {
+          "label": "Project assessment unchanged",
+          "expected": {
+            "user_id": 8,
+            "unit_id": 2,
+            "target_grade": 0,
+            "submitted_grade": null,
+            "grade": 0,
+            "grade_rationale": null,
+            "assessor_id": null,
+            "enrolled": true,
+            "spec_con_days": 0
+          },
+          "actual": {
+            "user_id": 8,
+            "unit_id": 2,
+            "target_grade": 0,
+            "submitted_grade": null,
+            "grade": 0,
+            "grade_rationale": null,
+            "assessor_id": null,
+            "enrolled": true,
+            "spec_con_days": 0
+          },
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "path": "/api/projects/4",
+        "actor": "ma-student",
+        "system_role": "Student",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-student",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "grade": 3,
+          "old_grade": 0,
+          "grade_rationale": "Forged grade",
+          "assessor_id": 8
+        }
+      },
+      "response": {
+        "status": 403,
+        "content_type": "application/json",
+        "body": {
+          "error": "You do not have permissions to assess this student"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "P05",
+      "purpose": "Student cannot change own enrolment status",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 403,
+          "actual": 403,
+          "pass": true
+        },
+        {
+          "label": "Project unchanged",
+          "expected": {
+            "user_id": 8,
+            "unit_id": 2,
+            "target_grade": 0,
+            "submitted_grade": null,
+            "grade": 0,
+            "grade_rationale": null,
+            "assessor_id": null,
+            "enrolled": true,
+            "spec_con_days": 0
+          },
+          "actual": {
+            "user_id": 8,
+            "unit_id": 2,
+            "target_grade": 0,
+            "submitted_grade": null,
+            "grade": 0,
+            "grade_rationale": null,
+            "assessor_id": null,
+            "enrolled": true,
+            "spec_con_days": 0
+          },
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "path": "/api/projects/4",
+        "actor": "ma-student",
+        "system_role": "Student",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-student",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "enrolled": false,
+          "target_grade": 3
+        }
+      },
+      "response": {
+        "status": 403,
+        "content_type": "application/json",
+        "body": {
+          "error": "You cannot change the enrolment for this student"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "P06",
+      "purpose": "Student cannot change another student target grade",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 403,
+          "actual": 403,
+          "pass": true
+        },
+        {
+          "label": "Other project unchanged",
+          "expected": {
+            "user_id": 9,
+            "unit_id": 2,
+            "target_grade": 0,
+            "submitted_grade": null,
+            "grade": 0,
+            "grade_rationale": null,
+            "assessor_id": null,
+            "enrolled": true,
+            "spec_con_days": 0
+          },
+          "actual": {
+            "user_id": 9,
+            "unit_id": 2,
+            "target_grade": 0,
+            "submitted_grade": null,
+            "grade": 0,
+            "grade_rationale": null,
+            "assessor_id": null,
+            "enrolled": true,
+            "spec_con_days": 0
+          },
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "path": "/api/projects/5",
+        "actor": "ma-student",
+        "system_role": "Student",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-student",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "target_grade": 3,
+          "user_id": 8
+        }
+      },
+      "response": {
+        "status": 403,
+        "content_type": "application/json",
+        "body": {
+          "error": "You do not have permissions to change this student"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "T01",
+      "purpose": "Student grade with submission trigger rejected before task/submission mutation",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 403,
+          "actual": 403,
+          "pass": true
+        },
+        {
+          "label": "Task assessment/status unchanged",
+          "expected": {
+            "project_id": 4,
+            "task_definition_id": 2,
+            "grade": null,
+            "quality_pts": -1,
+            "task_status_id": 1,
+            "assessment_date": null,
+            "submission_processing_user_id": null
+          },
+          "actual": {
+            "project_id": 4,
+            "task_definition_id": 2,
+            "grade": null,
+            "quality_pts": -1,
+            "task_status_id": 1,
+            "assessment_date": null,
+            "submission_processing_user_id": null
+          },
+          "pass": true
+        },
+        {
+          "label": "No submission created",
+          "expected": 0,
+          "actual": 0,
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "path": "/api/projects/4/task_def_id/2",
+        "actor": "ma-student",
+        "system_role": "Student",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-student",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "trigger": "ready_for_feedback",
+          "grade": 3,
+          "quality_pts": 5
+        }
+      },
+      "response": {
+        "status": 403,
+        "content_type": "application/json",
+        "body": {
+          "error": "You are not permitted to assess this task"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "T02",
+      "purpose": "Valid student submission ignores nested grade, raw status/assessor and quality injection",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 200,
+          "actual": 200,
+          "pass": true
+        },
+        {
+          "label": "Only allowed submission state, no injected assessment fields",
+          "expected": {
+            "project_id": 4,
+            "task_definition_id": 2,
+            "grade": null,
+            "quality_pts": -1,
+            "task_status_id": 9,
+            "assessment_date": null,
+            "submission_processing_user_id": null
+          },
+          "actual": {
+            "project_id": 4,
+            "task_definition_id": 2,
+            "grade": null,
+            "quality_pts": -1,
+            "task_status_id": 9,
+            "assessment_date": null,
+            "submission_processing_user_id": null
+          },
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "path": "/api/projects/4/task_def_id/2",
+        "actor": "ma-student",
+        "system_role": "Student",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-student",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "trigger": "ready_for_feedback",
+          "quality_pts": 5,
+          "task_status_id": 2,
+          "project_id": 5,
+          "assessment_date": "2099-01-01T00:00:00Z",
+          "submission_processing_user_id": 13,
+          "task": {
+            "grade": 3,
+            "task_status_id": 2,
+            "quality_pts": 5,
+            "project_id": 5
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "content_type": "application/json",
+        "body": {
+          "id": 3,
+          "project_id": 4,
+          "task_definition_id": 2,
+          "status": "ready_for_feedback",
+          "due_date": "2026-09-28",
+          "submission_date": "2026-09-21",
+          "effective_deadline": "2026-09-28T23:59:59.000-12:00",
+          "effective_deadline_reason": "standard_due_date",
+          "effective_deadline_source_id": null,
+          "effective_deadline_date": "2026-09-28",
+          "extensions": 0,
+          "scorm_extensions": 0,
+          "times_assessed": 0,
+          "quality_pts": -1,
+          "include_in_portfolio": true,
+          "new_stats": "{\"red_pct\":0.0,\"grey_pct\":0.0,\"orange_pct\":0.0,\"blue_pct\":1.0,\"green_pct\":0.0,\"order_scale\":100.0}"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "T03",
+      "purpose": "Raw model attributes cannot assign task completion or grade",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 200,
+          "actual": 200,
+          "pass": true
+        },
+        {
+          "label": "Protected fields unchanged",
+          "expected": {
+            "project_id": 4,
+            "task_definition_id": 2,
+            "grade": null,
+            "quality_pts": -1,
+            "task_status_id": 1,
+            "assessment_date": null,
+            "submission_processing_user_id": null
+          },
+          "actual": {
+            "project_id": 4,
+            "task_definition_id": 2,
+            "grade": null,
+            "quality_pts": -1,
+            "task_status_id": 1,
+            "assessment_date": null,
+            "submission_processing_user_id": null
+          },
+          "pass": true
+        },
+        {
+          "label": "Allowed portfolio selection saved",
+          "expected": false,
+          "actual": false,
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "path": "/api/projects/4/task_def_id/2",
+        "actor": "ma-student",
+        "system_role": "Student",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-student",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "include_in_portfolio": false,
+          "task_status_id": 2,
+          "quality_pts": 5,
+          "task": {
+            "grade": 3,
+            "task_status_id": 2
+          },
+          "assessment_date": "2099-01-01T00:00:00Z"
+        }
+      },
+      "response": {
+        "status": 200,
+        "content_type": "application/json",
+        "body": {
+          "id": 3,
+          "project_id": 4,
+          "task_definition_id": 2,
+          "status": "not_started",
+          "due_date": "2026-09-28",
+          "effective_deadline": "2026-09-28T23:59:59.000-12:00",
+          "effective_deadline_reason": "standard_due_date",
+          "effective_deadline_source_id": null,
+          "effective_deadline_date": "2026-09-28",
+          "extensions": 0,
+          "scorm_extensions": 0,
+          "times_assessed": 0,
+          "quality_pts": -1,
+          "include_in_portfolio": false,
+          "new_stats": "{red_pct: 0, grey_pct: 1, orange_pct: 0, blue_pct: 0, green_pct: 0, order_scale: 0}"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "T04",
+      "purpose": "Positive control: employed tutor can set task grade",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 200,
+          "actual": 200,
+          "pass": true
+        },
+        {
+          "label": "Authorised assessment saved",
+          "expected": 3,
+          "actual": 3,
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "path": "/api/projects/4/task_def_id/2",
+        "actor": "ma-tutor",
+        "system_role": "Tutor",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-tutor",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "grade": 3
+        }
+      },
+      "response": {
+        "status": 200,
+        "content_type": "application/json",
+        "body": {
+          "id": 3,
+          "project_id": 4,
+          "task_definition_id": 2,
+          "status": "not_started",
+          "due_date": "2026-09-28",
+          "effective_deadline": "2026-09-28T23:59:59.000-12:00",
+          "effective_deadline_reason": "standard_due_date",
+          "effective_deadline_source_id": null,
+          "effective_deadline_date": "2026-09-28",
+          "extensions": 0,
+          "scorm_extensions": 0,
+          "times_assessed": 0,
+          "grade": 3,
+          "quality_pts": -1,
+          "include_in_portfolio": true,
+          "new_stats": "{red_pct: 0, grey_pct: 1, orange_pct: 0, blue_pct: 0, green_pct: 0, order_scale: 0}"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "C01",
+      "purpose": "Comment creation ignores forged author, target, subtype and assessment fields",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 201,
+          "actual": 201,
+          "pass": true
+        },
+        {
+          "label": "Server-bound comment identity and text type",
+          "expected": {
+            "user_id": 8,
+            "task_id": 3,
+            "type": null,
+            "content_type": "text",
+            "assessor_id": null,
+            "task_status_id": null,
+            "extension_granted": null
+          },
+          "actual": {
+            "user_id": 8,
+            "task_id": 3,
+            "type": null,
+            "content_type": "text",
+            "assessor_id": null,
+            "task_status_id": null,
+            "extension_granted": null
+          },
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "path": "/api/projects/4/task_def_id/2/comments",
+        "actor": "ma-student",
+        "system_role": "Student",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-student",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "comment": "Synthetic comment evidence",
+          "user_id": 12,
+          "task_id": 4,
+          "type": "TaskStatusComment",
+          "content_type": "status",
+          "task_status_id": 2,
+          "assessor_id": 13,
+          "extension_granted": true
+        }
+      },
+      "response": {
+        "status": 201,
+        "content_type": "application/json",
+        "body": {
+          "id": 6,
+          "comment": "Synthetic comment evidence",
+          "has_attachment": false,
+          "type": "text",
+          "is_new": false,
+          "reply_to_id": null,
+          "author": {
+            "id": 8,
+            "first_name": "Synthetic",
+            "last_name": "student",
+            "display_name": "student student",
+            "email": "ma-student@example.invalid"
+          },
+          "recipient": {
+            "id": 11,
+            "first_name": "Synthetic",
+            "last_name": "convenor",
+            "display_name": "convenor convenor",
+            "email": "ma-convenor@example.invalid"
+          },
+          "created_at": "2026-09-21T04:55:48.794Z",
+          "recipient_read_time": null
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "C02",
+      "purpose": "Own comment editing ignores forged author/subtype/assessment fields",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 200,
+          "actual": 200,
+          "pass": true
+        },
+        {
+          "label": "Protected comment fields unchanged",
+          "expected": {
+            "user_id": 8,
+            "task_id": 3,
+            "type": null,
+            "content_type": "text",
+            "assessor_id": null,
+            "task_status_id": null,
+            "extension_granted": null
+          },
+          "actual": {
+            "user_id": 8,
+            "task_id": 3,
+            "type": null,
+            "content_type": "text",
+            "assessor_id": null,
+            "task_status_id": null,
+            "extension_granted": null
+          },
+          "pass": true
+        },
+        {
+          "label": "Allowed comment text saved",
+          "expected": "Synthetic after update",
+          "actual": "Synthetic after update",
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "path": "/api/projects/4/task_def_id/2/comments/7",
+        "actor": "ma-student",
+        "system_role": "Student",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-student",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "comment": "Synthetic after update",
+          "user_id": 12,
+          "task_id": 4,
+          "type": "TaskStatusComment",
+          "content_type": "status",
+          "task_status_id": 2,
+          "assessor_id": 13,
+          "extension_granted": true
+        }
+      },
+      "response": {
+        "status": 200,
+        "content_type": "application/json",
+        "body": {
+          "id": 7,
+          "comment": "Synthetic after update",
+          "has_attachment": false,
+          "type": "text",
+          "is_new": false,
+          "reply_to_id": null,
+          "author": {
+            "id": 8,
+            "first_name": "Synthetic",
+            "last_name": "student",
+            "display_name": "student student",
+            "email": "ma-student@example.invalid"
+          },
+          "recipient": {
+            "id": 11,
+            "first_name": "Synthetic",
+            "last_name": "convenor",
+            "display_name": "convenor convenor",
+            "email": "ma-convenor@example.invalid"
+          },
+          "created_at": "2026-09-21T04:55:49.215Z",
+          "recipient_read_time": null
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "C03",
+      "purpose": "Student cannot edit tutor comment by forging author id",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 403,
+          "actual": 403,
+          "pass": true
+        },
+        {
+          "label": "Tutor comment unchanged",
+          "expected": {
+            "user_id": 12,
+            "task_id": 3,
+            "type": null,
+            "content_type": "text",
+            "assessor_id": null,
+            "task_status_id": null,
+            "extension_granted": null,
+            "comment": "Synthetic tutor feedback"
+          },
+          "actual": {
+            "user_id": 12,
+            "task_id": 3,
+            "type": null,
+            "content_type": "text",
+            "assessor_id": null,
+            "task_status_id": null,
+            "extension_granted": null,
+            "comment": "Synthetic tutor feedback"
+          },
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "path": "/api/projects/4/task_def_id/2/comments/8",
+        "actor": "ma-student",
+        "system_role": "Student",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": "ma-student",
+          "auth_token": "[REDACTED local synthetic token]"
+        },
+        "body": {
+          "comment": "Forged feedback",
+          "user_id": 8,
+          "type": null,
+          "task_id": 3
+        }
+      },
+      "response": {
+        "status": 403,
+        "content_type": "application/json",
+        "body": {
+          "error": "You can only edit your own comments"
+        }
+      },
+      "verdict": "PASS"
+    },
+    {
+      "id": "A01",
+      "purpose": "Anonymous profile write rejected before protected fields are considered",
+      "checks": [
+        {
+          "label": "HTTP",
+          "expected": 419,
+          "actual": 419,
+          "pass": true
+        },
+        {
+          "label": "Profile unchanged",
+          "expected": {
+            "id": 8,
+            "username": "ma-student",
+            "login_id": null,
+            "role_id": 1,
+            "student_id": "9100001",
+            "first_name": "Synthetic",
+            "nickname": "student"
+          },
+          "actual": {
+            "id": 8,
+            "username": "ma-student",
+            "login_id": null,
+            "role_id": 1,
+            "student_id": "9100001",
+            "first_name": "Synthetic",
+            "nickname": "student"
+          },
+          "pass": true
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "path": "/api/users/8",
+        "actor": "anonymous",
+        "system_role": "none",
+        "headers": {
+          "Content-Type": "application/json",
+          "username": null,
+          "auth_token": null
+        },
+        "body": {
+          "user": {
+            "nickname": "Anonymous",
+            "role_id": 4,
+            "system_role": "Admin"
+          }
+        }
+      },
+      "response": {
+        "status": 419,
+        "content_type": "application/json",
+        "body": {
+          "error": "No authentication details provided. Authentication is required to access this resource."
+        }
+      },
+      "verdict": "PASS"
+    }
+  ],
+  "remaining_fixture_rows": {
+    "users": 0,
+    "units": 0
+  }
+}

@@ -1,5 +1,13 @@
 # Remaining tutorial, security, documentation and migration work
 
+**21 September follow-up:** Web #263/#259, API #170, Deploy #38 and Guide #12
+have since been approved and merged. Upstream Web #533 is still open. Use
+[How to finish the remaining bucket tickets](remaining-ticket-completion.md)
+for current checks, precise remaining actions and the requester-confirmed CSS
+guide consultation. The original implementation/test snapshots below remain
+historical evidence. Subsequent security and application evidence is linked in
+the completion procedure; it does not invent human sessions or approvals.
+
 Source: the 20 September 2026 export of **OnTrack T2 2026**, the 39 rows not marked
 Completed in the four requested buckets. This handover covers repository work
 and PRs. The workbook has not been modified. Existing completed tickets and
@@ -29,10 +37,10 @@ deployment and documentation changes together before enabling it.
 | TUT-W03 | Four existing controls explained with trusted copy and missing-target guidance; no automatic grade, enrolment, calendar or submission mutation. |
 | TUT-W04 | Tutorial and Help entry added to the existing account menu; replay preserves saved completion/dismissal. |
 | TUT-T01 | Focused automated state/component/settings/welcome/header regression tests are in the web PR; exact results are in its validation record. |
-| TUT-S01 | Data flow, stored fields, shared-device risk, profile boundary, dependency decision and tests are documented beside the implementation. Independent security approval remains pending. |
-| TUT-Q01 | Reproducible browser/keyboard/viewport checks and their actual limitations belong in the web validation record. Do not infer native assistive-technology or full-stack pilot completion from component tests. |
+| TUT-S01 | Threat model, data flow, fields, profile boundary, dependency decision and tests are published. The accepted Web #263 review discusses these controls; record any required named security-role acceptance separately. |
+| TUT-Q01 | Fixture-browser checks plus subsequent actual-application evidence have explicit source/scope limits. Use the completion procedure's current matrix and remaining checks; application QA does not establish a human pilot. |
 | PR-TUT-17 | Default-off authenticated API flag, client gate and deployment environment wiring span web/API/deploy PRs. |
-| TUT-D04 | Existing guide contribution [#7](https://github.com/ontrack-features-t2-2026/github-guide/pull/7) is retained and updated to the implemented contract and real source paths. Independent maintenance review and final recording remain human activities. |
+| TUT-D04 | Guides from [#7](https://github.com/ontrack-features-t2-2026/github-guide/pull/7) were updated and accepted in #12. A versioned synthetic application walkthrough is now recorded; the second-contributor exercise and human media review remain pending. |
 | TUT-MVP01 | This PR index plus the [tutorial handover](docs/student-onboarding/handover.md) records the reviewable repository result. MVP release/pilot approval is not declared. |
 | TUT-U01-RUN | Live sessions with at least three reviewers are outside the requested GitHub-only work. Existing script and blank templates remain available; no sessions or observations were fabricated. |
 | TUT-U01-FIXES | No actual pilot findings were supplied. Repository defects found during implementation/QA are fixed and tested in the web PR; this is not a fabricated pilot result. Publish a pilot verdict only after real findings exist. |
@@ -42,7 +50,7 @@ deployment and documentation changes together before enabling it.
 | Ticket | Repository result / remaining boundary |
 | --- | --- |
 | BGW-03 | Already fixed by API commit `42f7373191bb0b6686e0d2d4ee71cc3a2f814f80`, merged in [#111](https://github.com/ontrack-features-t2-2026/doubtfire-api/pull/111). Existing communications-mailer regression rerun successfully; no duplicate patch. |
-| Mass Assignment Vulnerability Testing | Source ticket explicitly requests live-test findings attached to the ticket and no repository edits. Excluded under GitHub-only scope. |
+| Mass Assignment Vulnerability Testing | Follow-up completed 20 local scenarios / 46 checks at API `d7f7a5b9`. [Report and raw evidence](docs/evidence/mass-assignment-20260921/README.md) are published; attach the link to the original card. No vulnerability observed within this bounded scope. |
 
 ## Documentation: 16 unfinished source rows
 
@@ -69,7 +77,7 @@ deployment and documentation changes together before enabling it.
 
 | Ticket | Repository result / remaining boundary |
 | --- | --- |
-| MG-00 | Branch/access conversation with Brian is not performed. Implementation uses isolated branches from current `11.0.x`; successful pushes demonstrate this account's access, not another contributor's permission. |
+| MG-00 | Dated audit verifies both named contributors have write access; organisation defaults were untouched. Written branch coordination and checks for any additional current code-ticket holders still require records. |
 | MG-01 | Recovery register audits the stranded T1 PRs against current upstream code, with live/superseded/non-migration verdicts and evidence. No historical PR was closed or retargeted. |
 | MG-02 | Open upstream PRs grouped by base/age/content with a draft closing note and explicit author-review exceptions. No closing note was posted. |
 | MG-04 | Current component/style inventory with counts, source examples and priorities replaces stale ticket assumptions. |
